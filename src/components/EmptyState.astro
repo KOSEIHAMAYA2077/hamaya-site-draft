@@ -1,0 +1,30 @@
+---
+interface Props {
+  type: 'works' | 'notes';
+  level?: 2 | 3;
+}
+const { type, level = 2 } = Astro.props;
+const Heading: 'h2' | 'h3' = level === 2 ? 'h2' : 'h3';
+const works = type === 'works';
+---
+
+<div class="empty-state">
+  <div class="empty-symbol" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div>
+    <p class="empty-kicker">{works ? 'WORKS' : 'NOTES'} / まだ空です</p>
+    <Heading class="empty-title">
+      {works
+        ? 'まだ公開している作品はありません。'
+        : 'まだ公開している記事はありません。'}
+    </Heading>
+    <p>
+      {works
+        ? '大学入学以降の制作を、少しずつまとめていきます。'
+        : '学んだことや、日々の気づきを書き足していきます。'}
+    </p>
+  </div>
+</div>

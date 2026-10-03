@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import EntryRow from '../../components/EntryRow.astro';
+import { publishedWorks } from '../../lib/content';
+const works = await publishedWorks();
+---
+
+<Layout title="作品" section="works">
+  <div class="shell inner-page">
+    <header class="page-heading">
+      <p class="eyebrow">01 / WORKS</p>
+      <h1>作品</h1>
+      <p>
+        つくったものと、試しているもの。
+        <br />
+        大学入学以降の制作を、少しずつまとめます。
+      </p>
+      <span class="record-count">{works.length}件の記録</span>
+    </header>
+    {works.length ? (
+      <div class="entry-list">
+        {works.map((entry) => (
+          <EntryRow entry={entry} />
+        ))}
+      </div>
+    ) : (
+      <EmptyState type="works" />
+    )}
+  </div>
+</Layout>

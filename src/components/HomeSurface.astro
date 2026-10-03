@@ -1,0 +1,237 @@
+---
+import { publishedWorks, publishedNotes } from '../lib/content';
+import { path } from '../lib/paths';
+import EmptyState from './EmptyState.astro';
+import EntryRow from './EntryRow.astro';
+import StudioVisual from './StudioVisual.astro';
+import { site } from '../lib/site';
+interface Props {
+  direction?: 'orbit' | 'paper' | 'field';
+  study?: boolean;
+}
+const { direction = 'orbit', study = false } = Astro.props;
+const works = await publishedWorks();
+const notes = await publishedNotes();
+const recent = [...works, ...notes]
+  .sort((a, b) => b.data.date.localeCompare(a.data.date))
+  .slice(0, 4);
+---
+
+<div class:list={['home-surface', `direction-${direction}`]}>
+  {study && (
+    <div class="study-banner shell">
+      <a href={path('directions/')}>← 方向性の比較へ</a>
+      <span>方向性 {direction.toUpperCase()}</span>
+    </div>
+  )}
+  <section class="hero shell" aria-labelledby="home-title">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="small-orbit" aria-hidden="true"></span>PERSONAL ARCHIVE
+        <span class="eyebrow-index">01 / 04</span>
+      </p>
+      <h1 id="home-title">
+        <span>つくったものと、</span>
+        <span>考えたこと。</span>
+      </h1>
+      <p class="hero-description">
+        制作物、学んだこと、日々の雑記。
+        <br />
+        あとで振り返れるように、ここに残します。
+      </p>
+      <a class="round-link" href={path('works/')}>
+        <span>作品を見にいく</span>
+        <span class="round-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </a>
+      <p class="hero-footnote">
+        <span aria-hidden="true">＋</span>少しずつ、書き足していく場所。
+      </p>
+    </div>
+    <div class="hero-object" data-reactive-visual>
+      <StudioVisual direction={direction} />
+      <p class="visual-caption">
+        <span>IDEAS → MAKING → NOTES</span>
+        <button
+          class="motion-toggle"
+          type="button"
+          data-motion-toggle
+          aria-pressed="false"
+          hidden
+        >
+          動きを止める
+        </button>
+      </p>
+    </div>
+  </section>
+  <section class="archive-paths shell" aria-labelledby="paths-title">
+    <div class="section-lead">
+      <p class="eyebrow">EXPLORE</p>
+      <h2 id="paths-title">ここに置くもの</h2>
+      <p>つくることと、考えること。その途中も。</p>
+    </div>
+    <div class="paths-list">
+      <a class="archive-path" href={path('works/')}>
+        <span class="path-number">01</span>
+        <div>
+          <h3>作品</h3>
+          <p>つくったもの。試しているもの。</p>
+        </div>
+        <span class="path-count">
+          {works.length.toString().padStart(2, '0')}件
+        </span>
+        <span class="path-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </a>
+      <a class="archive-path" href={path('notes/')}>
+        <span class="path-number">02</span>
+        <div>
+          <h3>学び・雑記</h3>
+          <p>わかったこと。まだ考えていること。</p>
+        </div>
+        <span class="path-count">
+          {notes.length.toString().padStart(2, '0')}件
+        </span>
+        <span class="path-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </a>
+      <a class="archive-path" href={path('about/')}>
+        <span class="path-number">03</span>
+        <div>
+          <h3>自己紹介</h3>
+          <p>この場所をつくっている人について。</p>
+        </div>
+        <span class="path-count">{site.bio ? '紹介' : '未入力'}</span>
+        <span class="path-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </a>
+    </div>
+  </section>
+  <section class="recent-section shell" aria-labelledby="recent-title">
+    <div class="section-top">
+      <div>
+        <p class="eyebrow">RECENT</p>
+        <h2 id="recent-title">最近の記録</h2>
+      </div>
+      <a class="text-link" href={path('notes/')}>
+        学び・雑記の一覧へ <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    {recent.length ? (
+      <div class="entry-list">
+        {recent.map((entry) => (
+          <EntryRow entry={entry} level={3} />
+        ))}
+      </div>
+    ) : (
+      <EmptyState type="notes" level={3} />
+    )}
+  </section>
+  <section class="about-strip shell">
+    <span class="eyebrow">ABOUT THIS PLACE</span>
+    <p>
+      まだ途中のものも、
+      <br />
+      考え直したことも残しておきたい。
+    </p>
+    <a class="round-link" href={path('about/')}>
+      <span>自己紹介へ</span>
+      <span class="round-arrow" aria-hidden="true">
+        ↗
+      </span>
+    </a>
+  </section>
+</div>
+
+<script>
+  const visual = document.querySelector<HTMLElement>('[data-reactive-visual]');
+  const toggle = document.querySelector<HTMLButtonElement>(
+    '[data-motion-toggle]',
+  );
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const pointer = window.matchMedia('(pointer: fine)');
+  let paused = false;
+  try {
+    paused = localStorage.getItem('archive-motion') === 'off';
+  } catch {
+    /* preference storage is optional */
+  }
+  let queued = false;
+  let pointerX = 0;
+  let pointerY = 0;
+  function paint() {
+    queued = false;
+    if (!visual || paused || reduced.matches) return;
+    const bounds = visual.getBoundingClientRect();
+    const progress = Math.max(
+      -1,
+      Math.min(
+        1,
+        (innerHeight / 2 - bounds.top - bounds.height / 2) / innerHeight,
+      ),
+    );
+    visual.style.setProperty('--visual-x', `${pointerX * 6}px`);
+    visual.style.setProperty('--visual-y', `${progress * 14 + pointerY * 5}px`);
+    visual.style.setProperty(
+      '--visual-turn',
+      `${pointerX * 0.6 + progress * 0.5}deg`,
+    );
+  }
+  function queue() {
+    if (!queued && visual && !paused && !reduced.matches) {
+      queued = true;
+      requestAnimationFrame(paint);
+    }
+  }
+  function sync() {
+    const off = paused || reduced.matches;
+    document.documentElement.dataset.motion = off ? 'off' : 'on';
+    if (toggle) {
+      toggle.hidden = reduced.matches;
+      toggle.textContent = paused ? '動きを再開' : '動きを止める';
+      toggle.setAttribute('aria-pressed', String(paused));
+    }
+    if (off && visual) {
+      ['--visual-x', '--visual-y', '--visual-turn'].forEach((key) =>
+        visual.style.removeProperty(key),
+      );
+    } else queue();
+  }
+  if (visual && toggle) {
+    sync();
+    toggle.addEventListener('click', () => {
+      paused = !paused;
+      try {
+        localStorage.setItem('archive-motion', paused ? 'off' : 'on');
+      } catch {
+        /* no storage needed for this page */
+      }
+      sync();
+    });
+    visual.addEventListener('pointermove', (event) => {
+      if (!pointer.matches || event.pointerType !== 'mouse') return;
+      const bounds = visual.getBoundingClientRect();
+      pointerX = Math.max(
+        -1,
+        Math.min(1, ((event.clientX - bounds.left) / bounds.width) * 2 - 1),
+      );
+      pointerY = Math.max(
+        -1,
+        Math.min(1, ((event.clientY - bounds.top) / bounds.height) * 2 - 1),
+      );
+      queue();
+    });
+    visual.addEventListener('pointerleave', () => {
+      pointerX = 0;
+      pointerY = 0;
+      queue();
+    });
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue, { passive: true });
+    reduced.addEventListener('change', sync);
+  }
+</script>

@@ -1,0 +1,73 @@
+---
+import { site } from '../lib/site';
+import { path } from '../lib/paths';
+import '../styles/global.css';
+interface Props {
+  title?: string;
+  description?: string;
+  section?: 'home' | 'works' | 'notes' | 'about';
+}
+const { title, description = site.description, section = 'home' } = Astro.props;
+const links = [
+  { href: '', label: 'ホーム', key: 'home' },
+  { href: 'works/', label: '作品', key: 'works' },
+  { href: 'notes/', label: '学び・雑記', key: 'notes' },
+  { href: 'about/', label: '自己紹介', key: 'about' },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#f2f1eb" />
+    <link rel="icon" type="image/svg+xml" href={path('favicon.svg')} />
+    <title>{title ? `${title} | ${site.name}` : `${site.name} — 制作と記録`}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">
+      本文へ移動
+    </a>
+    <header class="site-header shell">
+      <a class="site-name" href={path()} aria-label={`${site.name} ホーム`}>
+        {site.name}
+        <span class="name-caption">制作と記録</span>
+      </a>
+      <nav aria-label="主なページ">
+        <ul>
+          {links.map(({ href, label, key }) => (
+            <li>
+              <a
+                href={path(href)}
+                aria-current={section === key ? 'page' : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <span class="draft-label">
+        <span aria-hidden="true"></span>下書き
+      </span>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer shell">
+      <p>
+        {site.name}
+        <span>制作と記録を、少しずつ。</span>
+      </p>
+      <div>
+        <a href={site.links.github}>
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <span class="footer-note">公開前のローカル確認用</span>
+      </div>
+    </footer>
+  </body>
+</html>

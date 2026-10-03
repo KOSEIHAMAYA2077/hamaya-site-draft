@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HomeSurface from '../../components/HomeSurface.astro';
+export function getStaticPaths() {
+  return ['orbit', 'paper', 'field'].map((direction) => ({
+    params: { direction },
+  }));
+}
+const direction = Astro.params.direction as 'orbit' | 'paper' | 'field';
+---
+
+<Layout title={`方向性 ${direction}`}>
+  <HomeSurface direction={direction} study />
+</Layout>

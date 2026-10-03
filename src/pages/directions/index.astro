@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StudioVisual from '../../components/StudioVisual.astro';
+import { path } from '../../lib/paths';
+const directions = [
+  {
+    id: 'orbit',
+    name: '01 / 静かな軌道',
+    description:
+      '浮遊する銀色の曲線と、広い読み物の面。余白と奥行きの釣り合いがよく、毎日使う拠点の第一案です。',
+    decision: '採用案',
+  },
+  {
+    id: 'paper',
+    name: '02 / 円のある紙面',
+    description:
+      '精密な図面と、重なる円。文章に集中しやすい落ち着いた方向です。',
+    decision: '比較案',
+  },
+  {
+    id: 'field',
+    name: '03 / やわらかな場',
+    description: '銀色のリボンと、流れる配置。動きのある表情を試した方向です。',
+    decision: '比較案',
+  },
+] as const;
+---
+
+<Layout title="方向性の比較">
+  <div class="shell inner-page">
+    <header class="page-heading">
+      <p class="eyebrow">DESIGN STUDIES / LOCAL DRAFT</p>
+      <h1>明るい制作室、3つの方向。</h1>
+      <p>
+        同じ内容で、曲線と奥行きのつくり方を比較できます。
+        <br />
+        ブランドのロゴや素材は使用していません。
+      </p>
+    </header>
+    <div class="studies-grid">
+      {directions.map((d) => (
+        <article class="study-card">
+          <a href={path(`directions/${d.id}/`)}>
+            <div class="study-visual">
+              <StudioVisual direction={d.id} />
+            </div>
+            <span class="study-decision">{d.decision}</span>
+            <h2>{d.name}</h2>
+            <p>{d.description}</p>
+            <span class="text-link">動く下書きを開く ↗</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

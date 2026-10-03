@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { path } from '../lib/paths';
+---
+
+<Layout title="ページが見つかりません">
+  <div class="shell inner-page not-found">
+    <p class="eyebrow">404 / NOT FOUND</p>
+    <h1>ここには、まだ何もありません。</h1>
+    <p>ページが移動したか、URLが違っているようです。</p>
+    <a class="round-link" href={path()}>
+      <span>ホームへ戻る</span>
+      <span class="round-arrow" aria-hidden="true">
+        ↗
+      </span>
+    </a>
+  </div>
+</Layout>

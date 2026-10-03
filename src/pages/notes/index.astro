@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import EntryRow from '../../components/EntryRow.astro';
+import { publishedNotes } from '../../lib/content';
+const notes = await publishedNotes();
+---
+
+<Layout title="学び・雑記" section="notes">
+  <div class="shell inner-page">
+    <header class="page-heading">
+      <p class="eyebrow">02 / NOTES</p>
+      <h1>学び・雑記</h1>
+      <p>
+        学んだこと、日々の気づき。
+        <br />
+        書きながら、少しずつ整理していきます。
+      </p>
+    </header>
+    <div class="notes-tools" data-note-tools hidden>
+      <div class="filter-group" role="group" aria-label="記事の種類">
+        <button type="button" data-filter="all" aria-pressed="true">
+          すべて
+        </button>
+        <button type="button" data-filter="学び" aria-pressed="false">
+          学び
+        </button>
+        <button type="button" data-filter="雑記" aria-pressed="false">
+          雑記
+        </button>
+      </div>
+      <div class="search-field">
+        <label for="note-search">記録を探す</label>
+        <input
+          id="note-search"
+          type="search"
+          placeholder="タイトル・本文の要約・タグ"
+        />
+      </div>
+    </div>
+    <p
+      class="results-count"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      data-count
+    >
+      {notes.length}件の記録
+    </p>
+    {notes.length ? (
+      <>
+        <div class="entry-list">
+          {notes.map((entry) => (
+            <EntryRow entry={entry} />
+          ))}
+        </div>
+        <div class="no-results" data-no-results hidden>
+          <h2>一致する記録がありません。</h2>
+          <p>別の言葉で探すか、種類を「すべて」に戻してみてください。</p>
+          <button type="button" class="reset-button" data-reset>
+            条件をリセット
+          </button>
+        </div>
+      </>
+    ) : (
+      <EmptyState type="notes" />
+    )}
+  </div>
+</Layout>
+<script>
+  const tools = document.querySelector<HTMLElement>('[data-note-tools]');
+  const search = document.querySelector<HTMLInputElement>('#note-search');
+  const entries = [...document.querySelectorAll<HTMLElement>('[data-entry]')];
+  const filters = [
+    ...document.querySelectorAll<HTMLButtonElement>('[data-filter]'),
+  ];
+  const count = document.querySelector<HTMLElement>('[data-count]');
+  const noResults = document.querySelector<HTMLElement>('[data-no-results]');
+  let category = 'all';
+  function update() {
+    const query = (search?.value || '').trim().toLocaleLowerCase('ja');
+    let visible = 0;
+    entries.forEach((entry) => {
+      entry.hidden =
+        !(category === 'all' || entry.dataset.category === category) ||
+        !(entry.dataset.search || '').includes(query);
+      if (!entry.hidden) visible += 1;
+    });
+    filters.forEach((button) =>
+      button.setAttribute(
+        'aria-pressed',
+        String(button.dataset.filter === category),
+      ),
+    );
+    if (count) count.textContent = `${visible}件の記録`;
+    if (noResults) noResults.hidden = visible > 0;
+  }
+  if (tools && search && entries.length > 0) {
+    tools.hidden = false;
+    search.addEventListener('input', update);
+    filters.forEach((button) =>
+      button.addEventListener('click', () => {
+        category = button.dataset.filter || 'all';
+        update();
+      }),
+    );
+    document.querySelector('[data-reset]')?.addEventListener('click', () => {
+      category = 'all';
+      search.value = '';
+      update();
+      search.focus();
+    });
+  }
+</script>

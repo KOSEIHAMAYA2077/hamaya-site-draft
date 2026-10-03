@@ -1,0 +1,51 @@
+---
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { publishedWorks, formatDate } from '../../lib/content';
+import { path } from '../../lib/paths';
+export async function getStaticPaths() {
+  return (await publishedWorks()).map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={entry.data.title}
+  description={entry.data.description}
+  section="works"
+>
+  <article class="shell article-page">
+    <a class="back-link" href={path('works/')}>
+      ← 作品の一覧へ
+    </a>
+    <header class="article-heading">
+      <p class="eyebrow">WORK / {entry.data.status}</p>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+      <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
+      <ul class="tags" aria-label="タグ">
+        {entry.data.tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    {(entry.data.url || entry.data.repository) && (
+      <aside class="article-links" aria-label="作品のリンク">
+        {entry.data.url && <a href={entry.data.url}>作品を見る ↗</a>}
+        {entry.data.repository && (
+          <a href={entry.data.repository}>コードを見る ↗</a>
+        )}
+      </aside>
+    )}
+    <a class="back-link bottom-back" href={path('works/')}>
+      ← 作品の一覧へ
+    </a>
+  </article>
+</Layout>

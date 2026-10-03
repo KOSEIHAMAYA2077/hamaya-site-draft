@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/content';
+import { path } from '../lib/paths';
+interface Props {
+  entry: CollectionEntry<'notes'> | CollectionEntry<'works'>;
+  level?: 2 | 3;
+}
+const { entry, level = 2 } = Astro.props;
+const Heading: 'h2' | 'h3' = level === 2 ? 'h2' : 'h3';
+const isWork = entry.collection === 'works';
+const category = isWork ? entry.data.status : entry.data.category;
+---
+
+<article
+  class="entry-row"
+  data-entry
+  data-category={category}
+  data-search={`${entry.data.title} ${entry.data.description} ${entry.data.tags.join(' ')}`.toLocaleLowerCase(
+    'ja',
+  )}
+>
+  <a href={path(`${entry.collection}/${entry.id}/`)}>
+    <div class="entry-meta">
+      <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
+      <span>{category}</span>
+    </div>
+    <div>
+      <Heading class="entry-title">{entry.data.title}</Heading>
+      <p>{entry.data.description}</p>
+      <ul class="tags" aria-label="タグ">
+        {entry.data.tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    </div>
+    <span class="entry-arrow" aria-hidden="true">
+      ↗
+    </span>
+  </a>
+</article>
