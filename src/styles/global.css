@@ -395,7 +395,7 @@
   }
   .studies-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
   .study-banner {
@@ -600,6 +600,32 @@
   }
   .entry-meta time {
     font-family: ui-monospace, monospace;
+  }
+  .entry-content {
+    min-width: 0;
+  }
+  .entry-content.has-cover {
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .entry-cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 28px 6px 6px 6px;
+    background: var(--line);
+  }
+  .work-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 50px 8px 8px 8px;
+    margin-bottom: 3rem;
+    background: #e5e8df;
   }
   .entry-row .entry-title {
     font-size: 21px;
@@ -1217,6 +1243,49 @@
   text-decoration: underline;
   text-underline-offset: 0.3em;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.material-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-block: -1rem 0.7rem;
+  font-size: 12px;
+}
+.material-picker > span:first-child {
+  color: var(--muted);
+  margin-right: 0.3rem;
+  font-size: 11px;
+}
+.material-picker button {
+  min-height: 44px;
+  padding: 0.45rem 1rem;
+  border: 1px solid #abb8ae;
+  border-radius: 99px;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+.material-picker button[aria-pressed='true'] {
+  background: #dfe8c9;
+  border-color: #809779;
+}
+.material-picker button:hover {
+  background: #e6ebdc;
+}
+html[data-motion='off'] .material-picker button {
+  transition: none;
+}
 html[data-motion='off'] .hero-object > .studio-visual {
   transform: none;
   transition: none;
@@ -1224,5 +1293,122 @@ html[data-motion='off'] .hero-object > .studio-visual {
 @media (prefers-reduced-motion: reduce) {
   .hero-object > .studio-visual {
     transform: none;
+  }
+}
+
+.content-preview-banner {
+  padding: 0.8rem 1rem;
+  background: #dce7d6;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-size: 12px;
+}
+.direction-signal {
+  --accent: #3c5b54;
+  --signal: #bddd6c;
+}
+.direction-signal .hero {
+  position: relative;
+  min-height: 760px;
+  grid-template-columns: 1fr 1.08fr;
+}
+.direction-signal .hero h1 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  font-size: clamp(40px, 4.7vw, 68px);
+  line-height: 1.42;
+}
+.direction-signal .hero-object {
+  background: radial-gradient(ellipse at 58% 48%, #e1e5de 0%, transparent 68%);
+}
+.direction-signal .hero-object > .signal-visual {
+  transform: translate3d(var(--visual-x, 0px), var(--visual-y, 0px), 0)
+    rotate(var(--visual-turn, 0deg));
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.25, 1);
+}
+.direction-signal .hero .round-link {
+  border: 1px solid #aebaae;
+  border-radius: 99px;
+  padding: 0.3rem 0.4rem 0.3rem 1.5rem;
+  background: #edf1e5;
+  font-weight: 500;
+}
+.direction-signal .hero .round-arrow {
+  background: var(--signal);
+  border-color: transparent;
+}
+.direction-signal .hero .round-link:hover .round-arrow {
+  background: #a4ce4c;
+}
+.direction-signal .small-orbit {
+  background: var(--signal);
+  border: 0;
+  height: 12px;
+  width: 18px;
+}
+.direction-signal .archive-paths {
+  border-top: 0;
+  position: relative;
+  gap: 3rem;
+  padding: 3rem;
+  background-color: #f6f6ee;
+  background-image: linear-gradient(135deg, #e6eae144, #ffffff44);
+  border-radius: 90px 12px 12px 90px;
+}
+.direction-signal .archive-path {
+  border-color: #b7c0b1;
+}
+.direction-signal .archive-path:hover,
+.direction-signal .archive-path:focus-visible {
+  background: #e3ebd8;
+  border-radius: 40px 8px 8px 40px;
+  padding-inline: 0.8rem;
+}
+.direction-signal .path-arrow {
+  border-color: #bbc7b6;
+}
+.direction-signal .section-lead h2 {
+  font-size: 32px;
+}
+.direction-signal .about-strip {
+  background: #e0e9d3;
+  border-radius: 14px 100px 14px 100px;
+}
+html[data-motion='off'] .hero-object > .signal-visual {
+  transform: none;
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-object > .signal-visual {
+    transform: none;
+  }
+}
+@media (max-width: 760px) {
+  .direction-signal .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .direction-signal .hero h1 {
+    font-size: clamp(33px, 7.4vw, 49px);
+  }
+  .direction-signal .hero-object {
+    margin-top: 0.5rem;
+  }
+  .direction-signal .archive-paths {
+    padding: 2rem 1.3rem;
+    border-radius: 55px 8px 8px 55px;
+  }
+  .direction-signal .section-lead h2 {
+    font-size: 25px;
+  }
+  .entry-content.has-cover {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .entry-cover {
+    max-width: 420px;
+  }
+  .work-cover {
+    border-radius: 28px 6px 6px 6px;
   }
 }

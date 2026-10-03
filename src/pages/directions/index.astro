@@ -1,38 +1,50 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import StudioVisual from '../../components/StudioVisual.astro';
+import SignalVisual from '../../components/SignalVisual.astro';
 import { path } from '../../lib/paths';
 const directions = [
   {
+    id: 'signal',
+    name: '01 / 光の制作室',
+    description:
+      '銀色の立体と光、少量の鮮やかなアクセント。操作とスクロールに反応する、体験を強めた方向です。',
+    decision: '体験を強めた対案',
+  },
+  {
     id: 'orbit',
-    name: '01 / 静かな軌道',
+    name: '02 / 静かな軌道',
     description:
       '浮遊する銀色の曲線と、広い読み物の面。余白と奥行きの釣り合いがよく、毎日使う拠点の第一案です。',
-    decision: '採用案',
+    decision: '静かな基準案',
   },
   {
     id: 'paper',
-    name: '02 / 円のある紙面',
+    name: '03 / 円のある紙面',
     description:
       '精密な図面と、重なる円。文章に集中しやすい落ち着いた方向です。',
     decision: '比較案',
   },
   {
     id: 'field',
-    name: '03 / やわらかな場',
+    name: '04 / やわらかな場',
     description: '銀色のリボンと、流れる配置。動きのある表情を試した方向です。',
     decision: '比較案',
   },
 ] as const;
 ---
 
-<Layout title="方向性の比較">
+<Layout
+  title="方向性の比較"
+  description="明るい制作室の読みやすさと、体験の強さを比較する下書き。"
+  section={null}
+>
   <div class="shell inner-page">
     <header class="page-heading">
       <p class="eyebrow">DESIGN STUDIES / LOCAL DRAFT</p>
-      <h1>明るい制作室、3つの方向。</h1>
+      <h1>明るい制作室の方向性。</h1>
       <p>
-        同じ内容で、曲線と奥行きのつくり方を比較できます。
+        読みやすさと、体験の強さを比較できます。
         <br />
         ブランドのロゴや素材は使用していません。
       </p>
@@ -42,7 +54,11 @@ const directions = [
         <article class="study-card">
           <a href={path(`directions/${d.id}/`)}>
             <div class="study-visual">
-              <StudioVisual direction={d.id} />
+              {d.id === 'signal' ? (
+                <SignalVisual />
+              ) : (
+                <StudioVisual direction={d.id} />
+              )}
             </div>
             <span class="study-decision">{d.decision}</span>
             <h2>{d.name}</h2>

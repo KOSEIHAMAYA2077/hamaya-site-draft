@@ -17,6 +17,8 @@ npm run dev
 
 ## 記事・作品を追加する
 
+画面から書く場合は [下書きの道具](http://127.0.0.1:4321/write/) を開きます。記事・作品の設定と本文を入力し、Markdownを確認してダウンロードできます。入力は自動保存されません。詳しい手順は [docs/WRITING.md](docs/WRITING.md) にあります。
+
 ```sh
 npm run new -- note first-note --title "今日学んだこと"
 npm run new -- work first-work --title "制作の記録"
@@ -26,7 +28,7 @@ npm run new -- work first-work --title "制作の記録"
 
 `draft: true` の内容は一覧にも詳細ページにも出ません。ただし、Markdownの元ファイルはprivateリポジトリへ保存されます。私的メール、業務の非公開資料、金融情報、内部メモ、認証情報は下書きにも入れないでください。
 
-プロフィール、リンク、画像の差し替え方と未入力項目は [docs/CONTENT.md](docs/CONTENT.md) にまとめています。設計の意図は [docs/DESIGN.md](docs/DESIGN.md)、実読した参考資料とライセンスは [docs/REFERENCES.md](docs/REFERENCES.md) を参照してください。
+プロフィール、リンク、画像の差し替え方と未入力項目は [docs/CONTENT.md](docs/CONTENT.md) にまとめています。既存記事1件と公開GitHub作品6件の下書き、出典と除外した対象は [docs/MIGRATION.md](docs/MIGRATION.md) にあります。設計の意図は [docs/DESIGN.md](docs/DESIGN.md)、実読した参考資料とライセンスは [docs/REFERENCES.md](docs/REFERENCES.md) を参照してください。
 
 ## 確認する
 
@@ -48,6 +50,10 @@ BASE_PATH=/repo-name npm run preview
 ```
 
 この場合のローカルURLは `http://127.0.0.1:4321/repo-name/` です。将来、ユーザーサイト `username.github.io` のルートで公開する場合はbaseを `/` にします。`BASE_PATH` を省略したbuildがこの設定です。
+
+公開URLを決めた後は、HTTPSのoriginを `SITE_ORIGIN` に設定します。パスはこの値に含めず、`BASE_PATH` に設定してください。たとえば公開前の検証専用コピーなら、`SITE_ORIGIN=https://example.invalid BASE_PATH=/hamaya-site-draft npm run build` で確認できます。buildとtestには同じ値を渡します。この例のURLを公開先として使わないでください。
+
+ページごとの題・説明・OGの基本項目を生成します。`SITE_ORIGIN` が未設定のローカル下書きではcanonicalとOGのURL・画像を出しません。共有画像も本人が選ぶまで未入力です。設定手順は [docs/CONTENT.md](docs/CONTENT.md) にあります。
 
 ## 本人の判断を待つ公開作業
 
@@ -76,3 +82,5 @@ git remote remove origin
 ```
 
 移行先で専用privateリポジトリのURLとprivate設定を確認してから、remoteを追加して保存します。既存の公開リポジトリを保存先にしないでください。GitHubへの保存はPages公開とは別の作業です。
+
+検証結果と依存関係の注意点は [docs/VALIDATION.md](docs/VALIDATION.md) にあります。4つの方向性は [比較ページ](http://127.0.0.1:4321/directions/) で見られます。ホームは「静かな軌道」を基準にし、[光の制作室](http://127.0.0.1:4321/directions/signal/) は立体感と光を強めた対案として残しています。

@@ -10,6 +10,7 @@ const { entry, level = 2 } = Astro.props;
 const Heading: 'h2' | 'h3' = level === 2 ? 'h2' : 'h3';
 const isWork = entry.collection === 'works';
 const category = isWork ? entry.data.status : entry.data.category;
+const cover = isWork ? entry.data.cover : undefined;
 ---
 
 <article
@@ -25,14 +26,27 @@ const category = isWork ? entry.data.status : entry.data.category;
       <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
       <span>{category}</span>
     </div>
-    <div>
-      <Heading class="entry-title">{entry.data.title}</Heading>
-      <p>{entry.data.description}</p>
-      <ul class="tags" aria-label="タグ">
-        {entry.data.tags.map((tag) => (
-          <li>{tag}</li>
-        ))}
-      </ul>
+    <div class:list={['entry-content', { 'has-cover': Boolean(cover) }]}>
+      {cover && (
+        <img
+          class="entry-cover"
+          src={path(cover.src)}
+          alt={cover.alt}
+          width="640"
+          height="360"
+          loading="lazy"
+          decoding="async"
+        />
+      )}
+      <div class="entry-copy">
+        <Heading class="entry-title">{entry.data.title}</Heading>
+        <p>{entry.data.description}</p>
+        <ul class="tags" aria-label="タグ">
+          {entry.data.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      </div>
     </div>
     <span class="entry-arrow" aria-hidden="true">
       ↗

@@ -7,8 +7,19 @@ const siteSchema = z.object({
   bio: z.string().nullable(),
   portrait: z
     .object({
-      src: z.string().regex(/^images\/[a-zA-Z0-9_./-]+$/),
-      alt: z.string().min(1),
+      src: z
+        .string()
+        .regex(/^images\/[a-zA-Z0-9_./-]+$/)
+        .refine(
+          (src) =>
+            src
+              .split('/')
+              .every(
+                (segment) => segment && segment !== '.' && segment !== '..',
+              ),
+          { message: '写真のsrcはimages/配下のファイルを指定してください。' },
+        ),
+      alt: z.string().trim().min(1),
     })
     .nullable(),
   links: z.object({
@@ -17,5 +28,25 @@ const siteSchema = z.object({
       .url({ hostname: /^atcoder\.jp$/, protocol: /^https$/ })
       .nullable(),
   }),
+  socialImage: z
+    .object({
+      src: z
+        .string()
+        .regex(/^images\/[a-zA-Z0-9_./-]+$/)
+        .refine(
+          (src) =>
+            src
+              .split('/')
+              .every(
+                (segment) => segment && segment !== '.' && segment !== '..',
+              ),
+          {
+            message: '共有画像のsrcはimages/配下のファイルを指定してください。',
+          },
+        ),
+      alt: z.string().trim().min(1),
+    })
+    .nullable()
+    .default(null),
 });
 export const site = siteSchema.parse(data);

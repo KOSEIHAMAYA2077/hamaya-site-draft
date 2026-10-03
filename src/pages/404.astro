@@ -3,7 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import { path } from '../lib/paths';
 ---
 
-<Layout title="ページが見つかりません">
+<Layout
+  title="ページが見つかりません"
+  section={null}
+  canonical={false}
+  image={null}
+>
   <div class="shell inner-page not-found">
     <p class="eyebrow">404 / NOT FOUND</p>
     <h1>ここには、まだ何もありません。</h1>

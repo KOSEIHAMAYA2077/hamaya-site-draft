@@ -5,9 +5,28 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
-  section?: 'home' | 'works' | 'notes' | 'about';
+  section?: 'home' | 'works' | 'notes' | 'about' | null;
+  type?: 'website' | 'article';
+  image?: { src: string; alt: string } | null;
+  canonical?: boolean;
 }
-const { title, description = site.description, section = 'home' } = Astro.props;
+const {
+  title,
+  description = site.description,
+  section = 'home',
+  type = 'website',
+  image = site.socialImage,
+  canonical: includeCanonical = true,
+} = Astro.props;
+const pageTitle = title
+  ? `${title} | ${site.name}`
+  : `${site.name} — 制作と記録`;
+const canonical =
+  Astro.site && includeCanonical
+    ? new URL(Astro.url.pathname, Astro.site).href
+    : undefined;
+const shareImage =
+  Astro.site && image ? new URL(path(image.src), Astro.site).href : undefined;
 const links = [
   { href: '', label: 'ホーム', key: 'home' },
   { href: 'works/', label: '作品', key: 'works' },
@@ -17,7 +36,7 @@ const links = [
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +44,24 @@ const links = [
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#f2f1eb" />
     <link rel="icon" type="image/svg+xml" href={path('favicon.svg')} />
-    <title>{title ? `${title} | ${site.name}` : `${site.name} — 制作と記録`}</title>
+    <title>{pageTitle}</title>
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={site.name} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    {shareImage && <meta property="og:image" content={shareImage} />}
+    {shareImage && <meta property="og:image:alt" content={image?.alt} />}
+    <script is:inline>
+      try {
+        if (localStorage.getItem('archive-motion') === 'off')
+          document.documentElement.dataset.motion = 'off';
+      } catch {
+        /* optional motion preference */
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">

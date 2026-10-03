@@ -4,12 +4,18 @@ import { path } from '../lib/paths';
 import EmptyState from './EmptyState.astro';
 import EntryRow from './EntryRow.astro';
 import StudioVisual from './StudioVisual.astro';
+import SignalVisual from './SignalVisual.astro';
 import { site } from '../lib/site';
 interface Props {
-  direction?: 'orbit' | 'paper' | 'field';
+  direction?: 'orbit' | 'paper' | 'field' | 'signal';
   study?: boolean;
+  previewNotice?: boolean;
 }
-const { direction = 'orbit', study = false } = Astro.props;
+const {
+  direction = 'orbit',
+  study = false,
+  previewNotice = false,
+} = Astro.props;
 const works = await publishedWorks();
 const notes = await publishedNotes();
 const recent = [...works, ...notes]
@@ -23,6 +29,11 @@ const recent = [...works, ...notes]
       <a href={path('directions/')}>← 方向性の比較へ</a>
       <span>方向性 {direction.toUpperCase()}</span>
     </div>
+  )}
+  {previewNotice && (
+    <p class="content-preview-banner shell">
+      表示の比較用です。公開リポジトリの資料を仮配置しています。本人の掲載判断を待っています。
+    </p>
   )}
   <section class="hero shell" aria-labelledby="home-title">
     <div class="hero-copy">
@@ -49,8 +60,45 @@ const recent = [...works, ...notes]
         <span aria-hidden="true">＋</span>少しずつ、書き足していく場所。
       </p>
     </div>
-    <div class="hero-object" data-reactive-visual>
-      <StudioVisual direction={direction} />
+    <div class="hero-object" data-reactive-visual data-material="metal">
+      {direction === 'signal' ? (
+        <SignalVisual />
+      ) : (
+        <StudioVisual direction={direction} />
+      )}
+      {direction === 'signal' && (
+        <div
+          class="material-picker"
+          role="group"
+          aria-label="立体の質感"
+          data-material-picker
+          hidden
+        >
+          <span>質感を切り替える</span>
+          <button
+            type="button"
+            data-material-choice="metal"
+            aria-pressed="true"
+          >
+            銀色
+          </button>
+          <button
+            type="button"
+            data-material-choice="line"
+            aria-pressed="false"
+          >
+            光の線
+          </button>
+          <span
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+            data-material-status
+          >
+            銀色の質感です。
+          </span>
+        </div>
+      )}
       <p class="visual-caption">
         <span>IDEAS → MAKING → NOTES</span>
         <button
@@ -153,6 +201,33 @@ const recent = [...works, ...notes]
     '[data-motion-toggle]',
   );
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const materials = document.querySelector<HTMLElement>(
+    '[data-material-picker]',
+  );
+  if (visual && materials) {
+    materials.hidden = false;
+    const choices = [
+      ...materials.querySelectorAll<HTMLButtonElement>(
+        '[data-material-choice]',
+      ),
+    ];
+    choices.forEach((choice) =>
+      choice.addEventListener('click', () => {
+        const selected = choice.dataset.materialChoice;
+        if (selected !== 'metal' && selected !== 'line') return;
+        visual.dataset.material = selected;
+        choices.forEach((button) =>
+          button.setAttribute('aria-pressed', String(button === choice)),
+        );
+        const status = materials.querySelector<HTMLElement>(
+          '[data-material-status]',
+        );
+        if (status)
+          status.textContent =
+            selected === 'metal' ? '銀色の質感です。' : '光の線の質感です。';
+      }),
+    );
+  }
   const pointer = window.matchMedia('(pointer: fine)');
   let paused = false;
   try {
@@ -174,11 +249,17 @@ const recent = [...works, ...notes]
         (innerHeight / 2 - bounds.top - bounds.height / 2) / innerHeight,
       ),
     );
-    visual.style.setProperty('--visual-x', `${pointerX * 6}px`);
-    visual.style.setProperty('--visual-y', `${progress * 14 + pointerY * 5}px`);
+    visual.style.setProperty(
+      '--visual-x',
+      `${pointerX * (visual.closest('.direction-signal') ? 10 : 6)}px`,
+    );
+    visual.style.setProperty(
+      '--visual-y',
+      `${progress * (visual.closest('.direction-signal') ? 30 : 14) + pointerY * 5}px`,
+    );
     visual.style.setProperty(
       '--visual-turn',
-      `${pointerX * 0.6 + progress * 0.5}deg`,
+      `${pointerX * (visual.closest('.direction-signal') ? 1.7 : 0.6) + progress * 0.5}deg`,
     );
   }
   function queue() {

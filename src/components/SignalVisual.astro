@@ -1,0 +1,416 @@
+<div class="signal-visual" aria-hidden="true">
+  <svg viewBox="0 0 600 600" fill="none" focusable="false">
+    <defs>
+      <radialGradient id="signal-ground">
+        <stop stop-color="#263137" stop-opacity="0.32" />
+        <stop offset="0.45" stop-color="#36434a" stop-opacity="0.14" />
+        <stop offset="1" stop-color="#36434a" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient
+        id="signal-depth"
+        x1="122"
+        y1="180"
+        x2="468"
+        y2="419"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#1c242a" />
+        <stop offset="0.3" stop-color="#56646b" />
+        <stop offset="0.52" stop-color="#10171c" />
+        <stop offset="0.79" stop-color="#4e5a61" />
+        <stop offset="1" stop-color="#20292f" />
+      </linearGradient>
+      <linearGradient
+        id="signal-metal"
+        x1="146"
+        y1="141"
+        x2="432"
+        y2="414"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#78878e" />
+        <stop offset="0.14" stop-color="#fafdff" />
+        <stop offset="0.26" stop-color="#c0ccd0" />
+        <stop offset="0.37" stop-color="#4e5d66" />
+        <stop offset="0.44" stop-color="#26343d" />
+        <stop offset="0.49" stop-color="#f4fbff" />
+        <stop offset="0.63" stop-color="#d5dfe1" />
+        <stop offset="0.76" stop-color="#6b7b84" />
+        <stop offset="0.87" stop-color="#f5faff" />
+        <stop offset="1" stop-color="#939fa4" />
+      </linearGradient>
+      <linearGradient
+        id="signal-rim"
+        x1="94"
+        y1="184"
+        x2="506"
+        y2="397"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#f7fcff" />
+        <stop offset="0.35" stop-color="#fafcff" />
+        <stop offset="0.57" stop-color="#788c95" />
+        <stop offset="0.76" stop-color="#f8fdff" />
+        <stop offset="1" stop-color="#42545f" />
+      </linearGradient>
+      <linearGradient
+        id="signal-glass"
+        x1="144"
+        y1="61"
+        x2="427"
+        y2="494"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#ffffff" stop-opacity="0.92" />
+        <stop offset="0.26" stop-color="#b5c6cf" stop-opacity="0.32" />
+        <stop offset="0.5" stop-color="#e3edf3" stop-opacity="0.58" />
+        <stop offset="0.64" stop-color="#fcffff" stop-opacity="0.95" />
+        <stop offset="0.87" stop-color="#8296a2" stop-opacity="0.35" />
+        <stop offset="1" stop-color="#a3b6c0" stop-opacity="0.7" />
+      </linearGradient>
+      <linearGradient
+        id="signal-line-surface"
+        x1="134"
+        y1="152"
+        x2="457"
+        y2="431"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#74a5ab" stop-opacity="0.2" />
+        <stop offset="0.24" stop-color="#ffffff" stop-opacity="0.65" />
+        <stop offset="0.47" stop-color="#82b1b5" stop-opacity="0.14" />
+        <stop offset="0.68" stop-color="#4b8187" stop-opacity="0.24" />
+        <stop offset="0.85" stop-color="#faffff" stop-opacity="0.7" />
+        <stop offset="1" stop-color="#79a5ad" stop-opacity="0.28" />
+      </linearGradient>
+      <linearGradient
+        id="signal-line-depth"
+        x1="113"
+        y1="198"
+        x2="453"
+        y2="405"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#315961" stop-opacity="0.07" />
+        <stop offset="0.4" stop-color="#315961" stop-opacity="0.23" />
+        <stop offset="0.72" stop-color="#8bb0b3" stop-opacity="0.09" />
+        <stop offset="1" stop-color="#315961" stop-opacity="0.19" />
+      </linearGradient>
+      <radialGradient id="signal-satellite" cx="30%" cy="25%" r="75%">
+        <stop stop-color="#c5d0d5" />
+        <stop offset="0.25" stop-color="#64747e" />
+        <stop offset="0.62" stop-color="#283842" />
+        <stop offset="1" stop-color="#101b23" />
+      </radialGradient>
+    </defs>
+
+    <ellipse
+      class="signal-shadow"
+      cx="316"
+      cy="492"
+      rx="216"
+      ry="51"
+      fill="url(#signal-ground)"
+    />
+    <g class="signal-sculpture">
+      <g stroke="#4d606b" stroke-opacity="0.28" stroke-width="1">
+        <ellipse
+          cx="303"
+          cy="280"
+          rx="251"
+          ry="182"
+          transform="rotate(-28 303 280)"
+        />
+        <path
+          d="M73 402C152 494 343 505 484 378C555 313 572 222 529 173"
+          stroke-dasharray="2 9"
+        />
+      </g>
+
+      <g transform="rotate(-24 300 275)">
+        <ellipse
+          cx="300"
+          cy="275"
+          rx="125"
+          ry="229"
+          stroke="#607682"
+          stroke-opacity="0.32"
+          stroke-width="1.2"
+        />
+        <ellipse
+          cx="300"
+          cy="275"
+          rx="119"
+          ry="223"
+          stroke="url(#signal-glass)"
+          stroke-width="12"
+        />
+        <path
+          d="M175 275C175 149 231 46 300 46C369 46 425 149 425 275"
+          stroke="#f8fcff"
+          stroke-width="1.8"
+          stroke-opacity="0.95"
+        />
+      </g>
+
+      <g class="signal-material-metal" transform="rotate(-28 300 280)">
+        <ellipse
+          cx="300"
+          cy="295"
+          rx="180"
+          ry="110"
+          stroke="url(#signal-depth)"
+          stroke-width="66"
+        />
+        <ellipse
+          cx="300"
+          cy="279"
+          rx="180"
+          ry="110"
+          stroke="url(#signal-metal)"
+          stroke-width="64"
+        />
+        <ellipse
+          cx="300"
+          cy="279"
+          rx="212"
+          ry="142"
+          stroke="url(#signal-rim)"
+          stroke-width="1.4"
+        />
+        <ellipse
+          cx="300"
+          cy="279"
+          rx="148"
+          ry="78"
+          stroke="#324650"
+          stroke-opacity="0.72"
+          stroke-width="1.6"
+        />
+        <path
+          d="M91 269C97 193 189 139 300 137C405 138 495 188 509 255"
+          stroke="#ffffff"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-opacity="0.9"
+        />
+        <path
+          d="M154 284C164 326 227 356 300 357C370 357 430 330 443 291"
+          stroke="#f7fcff"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-opacity="0.86"
+        />
+        <path
+          class="signal-accent-stroke"
+          d="M490 341A212 142 0 0 1 263 419"
+          stroke-width="3.4"
+          stroke-linecap="round"
+        />
+        <path
+          d="M487 347A211 143 0 0 1 280 427"
+          stroke="#19262e"
+          stroke-width="1"
+          stroke-opacity="0.66"
+        />
+      </g>
+
+      <g class="signal-material-line" transform="rotate(-28 300 280)">
+        <ellipse
+          cx="300"
+          cy="295"
+          rx="180"
+          ry="110"
+          stroke="url(#signal-line-depth)"
+          stroke-width="66"
+        />
+        <ellipse
+          cx="300"
+          cy="279"
+          rx="180"
+          ry="110"
+          stroke="url(#signal-line-surface)"
+          stroke-width="64"
+        />
+        <g stroke="#2c414b" stroke-width="1.4">
+          <ellipse cx="300" cy="279" rx="212" ry="142" />
+          <ellipse cx="300" cy="279" rx="148" ry="78" />
+        </g>
+        <g stroke="#2d626b" stroke-width="1" stroke-opacity="0.48">
+          <ellipse cx="300" cy="295" rx="213" ry="143" />
+          <ellipse cx="300" cy="295" rx="147" ry="77" />
+          <path d="M512 279V295M480 354V370M393 407V423M278 420V436M169 391V407M100 328V344" />
+        </g>
+        <ellipse
+          cx="300"
+          cy="279"
+          rx="180"
+          ry="110"
+          stroke="#357681"
+          stroke-width="0.9"
+          stroke-opacity="0.47"
+          stroke-dasharray="2 7"
+        />
+        <g stroke="#43858d" stroke-width="0.8" stroke-opacity="0.52">
+          <path d="M509 254L446 265M474 198L421 234M405 156L373 211M315 137L310 201M219 148L244 207M140 184L188 227M94 245L156 260M91 303L154 292M136 371L185 329M211 408L238 350M304 421L303 357M397 405L368 348M471 363L419 325M509 304L446 293" />
+        </g>
+        <path
+          d="M91 269C97 193 189 139 300 137C405 138 495 188 509 255"
+          stroke="#ffffff"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-opacity="0.9"
+        />
+        <path
+          d="M490 341A212 142 0 0 1 263 419"
+          stroke="#2c7c82"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+        <path
+          d="M154 284C164 326 227 356 300 357C370 357 430 330 443 291"
+          stroke="#2c7c82"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-opacity="0.76"
+        />
+      </g>
+
+      <g transform="rotate(-24 300 275)">
+        <path
+          d="M181 275C181 398 234 498 300 498C366 498 419 398 419 275"
+          stroke="url(#signal-glass)"
+          stroke-width="12"
+        />
+        <path
+          d="M175 275C175 401 231 504 300 504C369 504 425 401 425 275"
+          stroke="#ffffff"
+          stroke-width="1.5"
+          stroke-opacity="0.86"
+        />
+        <path
+          d="M187 288C191 400 240 491 300 492"
+          stroke="#708794"
+          stroke-width="0.9"
+          stroke-opacity="0.48"
+        />
+      </g>
+
+      <g>
+        <circle cx="112" cy="409" r="17" fill="url(#signal-satellite)" />
+        <path
+          class="signal-accent-stroke"
+          d="M99 401C104 394 112 391 120 395"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <circle
+          cx="112"
+          cy="409"
+          r="27"
+          stroke="#344c58"
+          stroke-opacity="0.25"
+          stroke-width="0.9"
+        />
+      </g>
+      <circle class="signal-accent-fill" cx="490" cy="177" r="4" />
+      <circle cx="303" cy="54" r="2" fill="#4d6674" />
+      <path
+        d="M359 514C383 508 410 495 431 480"
+        stroke="#536e7c"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-opacity="0.38"
+      />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .signal-visual {
+    --signal-accent: #b7da4e;
+    display: block;
+    position: relative;
+    width: min(100%, 37.5rem);
+    min-width: 0;
+    aspect-ratio: 1;
+    isolation: isolate;
+    overflow: hidden;
+    overflow: clip;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: signal-arrive 1.3s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  }
+
+  .signal-material-metal,
+  .signal-material-line,
+  .signal-shadow {
+    transition: opacity 0.6s ease;
+  }
+
+  .signal-material-metal,
+  .signal-shadow {
+    opacity: 1;
+  }
+
+  .signal-material-line {
+    opacity: 0;
+  }
+
+  .signal-accent-stroke {
+    stroke: var(--signal-accent);
+    transition: stroke 0.6s ease;
+  }
+
+  .signal-accent-fill {
+    fill: var(--signal-accent);
+    transition: fill 0.6s ease;
+  }
+
+  :global(.hero-object[data-material='line']) .signal-visual {
+    --signal-accent: #2c7c82;
+  }
+
+  :global(.hero-object[data-material='line']) .signal-material-metal {
+    opacity: 0;
+  }
+
+  :global(.hero-object[data-material='line']) .signal-material-line {
+    opacity: 1;
+  }
+
+  :global(.hero-object[data-material='line']) .signal-shadow {
+    opacity: 0.52;
+  }
+
+  @keyframes signal-arrive {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.975);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  :global(html[data-motion='off']) .signal-visual,
+  :global(html[data-motion='off']) .signal-visual * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .signal-visual,
+    .signal-visual * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

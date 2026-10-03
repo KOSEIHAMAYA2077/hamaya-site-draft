@@ -16,6 +16,23 @@ const works = defineCollection({
     url: z.url({ protocol: /^https$/ }).optional(),
     repository: z.url({ protocol: /^https$/ }).optional(),
     status: z.enum(['制作中', '完成', '記録']).default('記録'),
+    cover: z
+      .object({
+        src: z
+          .string()
+          .regex(/^images\/[a-zA-Z0-9_./-]+$/)
+          .refine(
+            (src) =>
+              src
+                .split('/')
+                .every(
+                  (segment) => segment && segment !== '.' && segment !== '..',
+                ),
+            { message: '表紙のsrcはimages/配下のファイルを指定してください。' },
+          ),
+        alt: z.string().trim().min(1),
+      })
+      .optional(),
   }),
 });
 const notes = defineCollection({

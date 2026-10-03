@@ -3,6 +3,8 @@ import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { parse as parseYaml } from 'yaml';
+import { decodeHTMLAttribute } from 'entities';
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url));
 const dist = path.join(projectRoot, 'dist');
@@ -48,6 +50,7 @@ const contentFiles = (
   await filesIn(path.join(projectRoot, 'src/content'))
 ).filter((filename) => filename.endsWith('.md'));
 const published = [];
+const drafts = [];
 const approvedExternalLinks = new Set(
   Object.values(site.links)
     .filter(Boolean)
@@ -57,15 +60,22 @@ const approvedExternalLinks = new Set(
 for (const filename of contentFiles) {
   const content = await readFile(filename, 'utf8');
   const header = content.match(/^---\s*\n([\s\S]*?)\n---(?:\n|$)/)?.[1] || '';
-  if (!/^draft:\s*false\s*$/m.test(header)) continue;
-  published.push(filename);
-  for (const match of content.matchAll(/\[[^\]]*\]\((https:\/\/[^\s)]+)\)/g))
-    approvedExternalLinks.add(new URL(match[1]).href);
-  for (const match of header.matchAll(
-    /^(?:url|repository):\s*["']?(https:\/\/[^\s"']+)["']?\s*$/gm,
-  )) {
-    approvedExternalLinks.add(new URL(match[1]).href);
+  const data = parseYaml(header) || {};
+  if (data.draft !== false) {
+    drafts.push(filename);
+    continue;
   }
+  published.push(filename);
+  for (const match of content.matchAll(/\[[^\]]*\]\((https:\/\/[^\s)]+)\)/gi))
+    approvedExternalLinks.add(new URL(match[1]).href);
+  for (const match of content.matchAll(/<(https:\/\/[^\s>]+)>/gi))
+    approvedExternalLinks.add(new URL(match[1]).href);
+  for (const match of content.matchAll(
+    /^\s{0,3}\[[^\]]+\]:\s*<?(https:\/\/[^\s>]+)>?/gim,
+  ))
+    approvedExternalLinks.add(new URL(match[1]).href);
+  for (const url of [data.url, data.repository].filter(Boolean))
+    approvedExternalLinks.add(new URL(url).href);
 }
 
 function attributes(tag) {
@@ -73,11 +83,9 @@ function attributes(tag) {
   for (const match of tag.matchAll(
     /([\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g,
   )) {
-    result[match[1].toLowerCase()] = (
-      match[2] ??
-      match[3] ??
-      match[4]
-    ).replaceAll('&amp;', '&');
+    result[match[1].toLowerCase()] = decodeHTMLAttribute(
+      match[2] ?? match[3] ?? match[4],
+    );
   }
   return result;
 }
@@ -163,6 +171,72 @@ test('下書き見本は一覧にも詳細ルートにも含まれない', () =>
   }
 });
 
+test('確認待ちの全下書きは詳細ルートと一覧リンクに混入しない', async () => {
+  for (const filename of drafts) {
+    const relative = path
+      .relative(path.join(projectRoot, 'src/content'), filename)
+      .split(path.sep)
+      .join('/')
+      .replace(/\.md$/, '');
+    assert.equal(
+      await exists(path.join(dist, relative, 'index.html')),
+      false,
+      relative,
+    );
+    const draftHref = `${base}/${relative}/`;
+    for (const html of pages.values()) {
+      const hrefs = [...html.matchAll(/<a\b[^>]*>/g)].map(
+        (match) => attributes(match[0]).href,
+      );
+      assert.ok(!hrefs.includes(draftHref), `下書きへのリンク: ${draftHref}`);
+    }
+  }
+});
+
+test('各ページのtitle・説明・OGと設定したcanonicalのbaseが一致する', async () => {
+  for (const [filename, html] of pages) {
+    const title = decodeHTMLAttribute(
+      html.match(/<title>([\s\S]*?)<\/title>/)?.[1] || '',
+    );
+    assert.ok(title.includes(site.name), filename);
+    const meta = new Map(
+      [...html.matchAll(/<meta\b[^>]*>/g)].map((match) => {
+        const attrs = attributes(match[0]);
+        return [attrs.property || attrs.name, attrs.content];
+      }),
+    );
+    assert.ok(meta.get('description')?.trim(), filename);
+    assert.equal(meta.get('og:title'), title, filename);
+    assert.equal(meta.get('og:description'), meta.get('description'), filename);
+    assert.equal(meta.get('og:locale'), 'ja_JP', filename);
+    assert.ok(['website', 'article'].includes(meta.get('og:type')), filename);
+    const canonical = [...html.matchAll(/<link\b[^>]*>/g)]
+      .map((match) => attributes(match[0]))
+      .find((link) => link.rel === 'canonical')?.href;
+    if (process.env.SITE_ORIGIN && path.basename(filename) !== '404.html') {
+      const relative = path
+        .relative(dist, filename)
+        .split(path.sep)
+        .join('/')
+        .replace(/index\.html$/, '');
+      const expected = new URL(`${base}/${relative}`, process.env.SITE_ORIGIN)
+        .href;
+      assert.equal(canonical, expected, filename);
+      assert.equal(meta.get('og:url'), expected, filename);
+      if (meta.has('og:image')) {
+        const image = new URL(meta.get('og:image'));
+        assert.equal(image.origin, new URL(process.env.SITE_ORIGIN).origin);
+        await checkLocalReference(image.pathname, filename);
+        assert.ok(meta.get('og:image:alt')?.trim());
+      }
+    } else {
+      assert.equal(canonical, undefined, filename);
+      assert.equal(meta.get('og:url'), undefined, filename);
+      assert.equal(meta.get('og:image'), undefined, filename);
+    }
+  }
+});
+
 test('各ページに単一h1・main・スキップリンク・noindexがある', () => {
   assert.ok(pages.size >= 5);
   for (const [filename, html] of pages) {
@@ -189,6 +263,7 @@ test('HTMLのリンク・画像・CSS・スクリプトとCSS内参照がBASE_PA
   for (const [filename, html] of pages) {
     for (const match of html.matchAll(/<(a|link|img|script|source)\b[^>]*>/g)) {
       const attrs = attributes(match[0]);
+      if (match[1] === 'link' && attrs.rel === 'canonical') continue;
       const reference = attrs.href ?? attrs.src;
       if (reference)
         await checkLocalReference(reference, filename, {

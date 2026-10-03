@@ -1,0 +1,657 @@
+---
+import Layout from '../layouts/Layout.astro';
+const today = new Date().toISOString().slice(0, 10);
+---
+
+<Layout
+  title="下書きを書く"
+  description="記事や作品を少し書いて、Markdownの下書きとして残す道具。"
+  section={null}
+>
+  <div class="shell inner-page writer-page">
+    <header class="page-heading">
+      <p class="eyebrow">
+        <span class="small-orbit" aria-hidden="true"></span>下書きの道具
+      </p>
+      <h1>少し書いて、残しておく。</h1>
+      <p>
+        入力はこの画面だけで扱います。自動保存はしません。
+        <br />
+        Markdownをダウンロードして追加できます。
+      </p>
+    </header>
+
+    <ol class="writer-steps" aria-label="下書きを追加する手順">
+      <li>
+        <span>01</span>種類と題を決める
+      </li>
+      <li>
+        <span>02</span>本文を書く
+      </li>
+      <li>
+        <span>03</span>確認してダウンロード
+      </li>
+    </ol>
+    <noscript>
+      <p class="writer-notice">
+        この道具には JavaScript
+        が必要です。Markdownファイルを直接編集する方法も使えます。
+      </p>
+    </noscript>
+
+    <div id="draft-writer" role="form" aria-label="下書きの入力">
+      <div class="writer-fields">
+        <div class="writer-field">
+          <label for="write-kind">
+            残すもの <span>必須</span>
+          </label>
+          <select id="write-kind" required aria-describedby="error-kind">
+            <option value="">選んでください</option>
+            <option value="note">記事</option>
+            <option value="work">作品</option>
+          </select>
+          <p class="field-error" id="error-kind" data-error="kind" hidden></p>
+        </div>
+        <div class="writer-field">
+          <label for="write-date">
+            日付 <span>必須</span>
+          </label>
+          <input
+            id="write-date"
+            type="date"
+            value={today}
+            required
+            autocomplete="off"
+            aria-describedby="date-hint error-date"
+          />
+          <p class="field-hint" id="date-hint">
+            最初の日付はUTCの今日です。記録したい日に変えられます。
+          </p>
+          <p class="field-error" id="error-date" data-error="date" hidden></p>
+        </div>
+        <div class="writer-field field-wide">
+          <label for="write-title">
+            題 <span>必須</span>
+          </label>
+          <input
+            id="write-title"
+            type="text"
+            required
+            autocomplete="off"
+            aria-describedby="error-title"
+          />
+          <p class="field-error" id="error-title" data-error="title" hidden></p>
+        </div>
+        <div class="writer-field field-wide">
+          <label for="write-description">
+            短い要約 <span>必須</span>
+          </label>
+          <textarea
+            id="write-description"
+            rows="2"
+            required
+            autocomplete="off"
+            aria-describedby="description-hint error-description"
+          ></textarea>
+          <p class="field-hint" id="description-hint">
+            一覧に出す説明を、短く書きます。
+          </p>
+          <p
+            class="field-error"
+            id="error-description"
+            data-error="description"
+            hidden
+          ></p>
+        </div>
+        <div class="writer-field">
+          <label for="write-slug">
+            ファイル名 <span>必須</span>
+          </label>
+          <input
+            id="write-slug"
+            type="text"
+            required
+            maxlength="64"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-describedby="slug-hint error-slug"
+          />
+          <p class="field-hint" id="slug-hint">
+            半角の小文字・数字・ハイフンで指定します。拡張子は不要です。
+          </p>
+          <p class="field-error" id="error-slug" data-error="slug" hidden></p>
+        </div>
+        <div class="writer-field" data-note-field hidden>
+          <label for="write-category">
+            記事の種類 <span>必須</span>
+          </label>
+          <select
+            id="write-category"
+            required
+            disabled
+            aria-describedby="error-category"
+          >
+            <option value="">選んでください</option>
+            <option value="学び">学び</option>
+            <option value="雑記">雑記</option>
+          </select>
+          <p
+            class="field-error"
+            id="error-category"
+            data-error="category"
+            hidden
+          ></p>
+        </div>
+        <div class="writer-field" data-work-field hidden>
+          <label for="write-status">
+            作品の状態 <span>必須</span>
+          </label>
+          <select
+            id="write-status"
+            required
+            disabled
+            aria-describedby="error-status"
+          >
+            <option value="">選んでください</option>
+            <option value="制作中">制作中</option>
+            <option value="完成">完成</option>
+            <option value="記録">記録</option>
+          </select>
+          <p
+            class="field-error"
+            id="error-status"
+            data-error="status"
+            hidden
+          ></p>
+        </div>
+        <div class="writer-field field-wide">
+          <label for="write-tags">
+            タグ <span>任意</span>
+          </label>
+          <textarea
+            id="write-tags"
+            rows="2"
+            autocomplete="off"
+            aria-describedby="tags-hint error-tags"
+          ></textarea>
+          <p class="field-hint" id="tags-hint">
+            カンマか改行で区切ります。空のタグは残しません。
+          </p>
+          <p class="field-error" id="error-tags" data-error="tags" hidden></p>
+        </div>
+        <div class="writer-field" data-work-field hidden>
+          <label for="write-url">
+            作品のURL <span>任意</span>
+          </label>
+          <input
+            id="write-url"
+            type="url"
+            autocomplete="off"
+            disabled
+            aria-describedby="url-hint error-url"
+          />
+          <p class="field-hint" id="url-hint">
+            掲載してよいHTTPSのURLがあるときだけ入力します。
+          </p>
+          <p class="field-error" id="error-url" data-error="url" hidden></p>
+        </div>
+        <div class="writer-field" data-work-field hidden>
+          <label for="write-repository">
+            リポジトリのURL <span>任意</span>
+          </label>
+          <input
+            id="write-repository"
+            type="url"
+            autocomplete="off"
+            disabled
+            aria-describedby="repository-hint error-repository"
+          />
+          <p class="field-hint" id="repository-hint">
+            掲載してよいHTTPSのURLがあるときだけ入力します。
+          </p>
+          <p
+            class="field-error"
+            id="error-repository"
+            data-error="repository"
+            hidden
+          ></p>
+        </div>
+      </div>
+
+      <div class="writer-field writer-body">
+        <label for="write-body">
+          本文 <span>必須</span>
+        </label>
+        <textarea
+          id="write-body"
+          rows="14"
+          required
+          autocomplete="off"
+          aria-describedby="body-hint error-body"
+        ></textarea>
+        <p class="field-hint" id="body-hint">
+          Markdownで書けます。見出しは ##
+          から始めます。画面を閉じる前にダウンロードしてください。
+        </p>
+        <p class="field-error" id="error-body" data-error="body" hidden></p>
+      </div>
+      <div class="writer-actions">
+        <button
+          type="button"
+          class="writer-button"
+          data-preview-button
+          disabled
+        >
+          Markdownを確認
+        </button>
+        <button
+          type="button"
+          class="writer-button writer-download"
+          data-download-button
+          disabled
+        >
+          下書きをダウンロード <span aria-hidden="true">↓</span>
+        </button>
+      </div>
+      <p
+        class="writer-feedback"
+        data-feedback
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        ファイルは下書きとして書き出します。公開する内容はあとで確認できます。
+      </p>
+
+      <section
+        class="writer-preview"
+        data-preview-panel
+        hidden
+        aria-labelledby="preview-heading"
+      >
+        <div class="preview-heading">
+          <h2 id="preview-heading">ダウンロードする内容</h2>
+          <span class="preview-draft">下書き</span>
+        </div>
+        <p class="preview-destination" data-destination></p>
+        <label class="field-hint" for="write-preview">
+          Markdownの本文と設定を、そのまま表示しています。
+        </label>
+        <textarea
+          id="write-preview"
+          rows="16"
+          readonly
+          spellcheck="false"
+        ></textarea>
+        <p class="field-hint">
+          同じ名前のファイルがある場合は、別のファイル名にしてから追加してください。
+        </p>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { DraftExportError, exportDraft } from '../lib/draft-export.mjs';
+
+  const writer = document.querySelector<HTMLElement>('#draft-writer');
+  if (writer) {
+    const ids = [
+      'kind',
+      'date',
+      'title',
+      'description',
+      'slug',
+      'category',
+      'status',
+      'tags',
+      'url',
+      'repository',
+      'body',
+    ] as const;
+    const fields = Object.fromEntries(
+      ids.map((id) => [
+        id,
+        writer.querySelector<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >(`#write-${id}`)!,
+      ]),
+    ) as Record<
+      (typeof ids)[number],
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >;
+    const feedback = writer.querySelector<HTMLElement>('[data-feedback]')!;
+    const preview =
+      writer.querySelector<HTMLTextAreaElement>('#write-preview')!;
+    const panel = writer.querySelector<HTMLElement>('[data-preview-panel]')!;
+    const destination =
+      writer.querySelector<HTMLElement>('[data-destination]')!;
+    const previewButton = writer.querySelector<HTMLButtonElement>(
+      '[data-preview-button]',
+    )!;
+    const downloadButton = writer.querySelector<HTMLButtonElement>(
+      '[data-download-button]',
+    )!;
+    let needsConfirmation = false;
+    fields.date.value = new Date().toISOString().slice(0, 10);
+    previewButton.disabled = false;
+    downloadButton.disabled = false;
+
+    function clearErrors() {
+      ids.forEach((id) => {
+        fields[id].removeAttribute('aria-invalid');
+        const error = writer!.querySelector<HTMLElement>(
+          `[data-error="${id}"]`,
+        )!;
+        error.hidden = true;
+        error.textContent = '';
+      });
+    }
+
+    function showKind() {
+      for (const kind of ['note', 'work']) {
+        writer!
+          .querySelectorAll<HTMLElement>(`[data-${kind}-field]`)
+          .forEach((field) => {
+            field.hidden = fields.kind.value !== kind;
+            field
+              .querySelectorAll<HTMLInputElement | HTMLSelectElement>(
+                'input, select',
+              )
+              .forEach((control) => {
+                control.disabled = field.hidden;
+              });
+          });
+      }
+    }
+    showKind();
+    fields.kind.addEventListener('change', showKind);
+
+    function confirmDraft() {
+      clearErrors();
+      try {
+        const input = Object.fromEntries(
+          ids.map((id) => [id, fields[id].value]),
+        );
+        const draft = exportDraft(input);
+        preview.value = draft.markdown;
+        destination.textContent = `${draft.filename} を ${draft.directory} に追加できます。`;
+        panel.hidden = false;
+        needsConfirmation = true;
+        feedback.textContent =
+          'Markdownを確認できます。入力内容は保存されていません。';
+        return draft;
+      } catch (error) {
+        panel.hidden = true;
+        preview.value = '';
+        destination.textContent = '';
+        if (error instanceof DraftExportError) {
+          needsConfirmation = true;
+          feedback.textContent = `入力を確認してください。${Object.values(error.issues).join(' ')}`;
+          for (const id of ids) {
+            const message = error.issues[id];
+            if (!message) continue;
+            fields[id].setAttribute('aria-invalid', 'true');
+            const messageElement = writer!.querySelector<HTMLElement>(
+              `[data-error="${id}"]`,
+            )!;
+            messageElement.textContent = message;
+            messageElement.hidden = false;
+          }
+          const firstInvalid = ids.find((id) => error.issues[id]);
+          if (firstInvalid) fields[firstInvalid].focus();
+        } else {
+          feedback.textContent =
+            '書き出せませんでした。入力を確認して、もう一度試してください。';
+        }
+        return undefined;
+      }
+    }
+
+    writer.addEventListener('input', () => {
+      // Clear the previous preview so it cannot be confused with current input.
+      if (needsConfirmation) {
+        panel.hidden = true;
+        preview.value = '';
+        destination.textContent = '';
+        feedback.textContent = '入力を変更しました。もう一度確認できます。';
+        needsConfirmation = false;
+      }
+      clearErrors();
+    });
+    previewButton.addEventListener('click', () => {
+      confirmDraft();
+    });
+    downloadButton.addEventListener('click', () => {
+      const draft = confirmDraft();
+      if (!draft) return;
+      const blob = new Blob([draft.markdown], {
+        type: 'text/markdown;charset=utf-8',
+      });
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = draft.filename;
+      document.body.append(link);
+      try {
+        link.click();
+        feedback.textContent = `${draft.filename} のダウンロードを開始しました。保存先を確認してから画面を閉じてください。`;
+      } finally {
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+      }
+    });
+  }
+</script>
+
+<style>
+  .writer-page {
+    max-width: 960px;
+  }
+  .writer-page .page-heading h1 {
+    font-size: clamp(30px, 4vw, 50px);
+  }
+  .writer-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 2.3rem;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 2.5rem;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .writer-steps li {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .writer-steps span {
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+  }
+  .writer-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.7rem 2rem;
+  }
+  .writer-field {
+    min-width: 0;
+  }
+  .field-wide {
+    grid-column: 1 / -1;
+  }
+  .writer-field > label {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+  }
+  .writer-field > label span {
+    color: var(--muted);
+    font-size: 10px;
+  }
+  input,
+  textarea,
+  select {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+  }
+  select {
+    cursor: pointer;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+  [aria-invalid='true'] {
+    border-color: #9c4235;
+  }
+  .field-hint,
+  .field-error {
+    font-size: 11px;
+    margin-top: 0.4rem;
+    line-height: 1.8;
+  }
+  .field-hint {
+    color: var(--muted);
+  }
+  .field-error {
+    color: #8e352b;
+  }
+  .writer-body {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .writer-body textarea {
+    min-height: 320px;
+  }
+  .writer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.7rem;
+  }
+  .writer-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    background: transparent;
+    padding: 0.7rem 1.4rem;
+    font-size: 13px;
+  }
+  .writer-button:hover {
+    border-color: var(--accent);
+    background: #e7ebe2;
+  }
+  .writer-download {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .writer-download:hover {
+    background: var(--accent);
+    color: var(--white);
+  }
+  .writer-button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  .writer-feedback {
+    margin-top: 1.2rem;
+    color: var(--muted);
+    font-size: 12px;
+    min-height: 2.2em;
+  }
+  .writer-preview {
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--line);
+    border-radius: 8px 48px 8px 8px;
+    background: #e9ebe4;
+  }
+  .preview-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .preview-heading h2 {
+    font-size: 21px;
+  }
+  .preview-draft {
+    font-size: 10px;
+    color: var(--accent);
+    border: 1px solid var(--line);
+    padding: 0.15rem 0.65rem;
+    border-radius: 99px;
+  }
+  .preview-destination {
+    font-size: 12px;
+    margin-top: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+  .writer-preview label {
+    display: block;
+    margin-block: 1rem 0.6rem;
+  }
+  .writer-preview textarea {
+    min-height: 310px;
+    font-family: ui-monospace, 'SFMono-Regular', monospace;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .writer-notice {
+    border: 1px solid var(--line);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 760px) {
+    .writer-fields {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .writer-steps {
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .writer-actions {
+      gap: 0.75rem;
+    }
+    .writer-button {
+      width: 100%;
+    }
+    .writer-preview {
+      padding: 1.3rem;
+      border-top-right-radius: 30px;
+    }
+    .writer-preview textarea {
+      font-size: 16px;
+    }
+  }
+</style>
