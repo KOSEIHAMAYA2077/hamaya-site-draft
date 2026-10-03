@@ -5,6 +5,10 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 import { decodeHTMLAttribute } from 'entities';
+import {
+  comparisonEnabled,
+  comparisonSources,
+} from '../src/lib/collection-study.mjs';
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url));
 const dist = path.join(projectRoot, 'dist');
@@ -52,6 +56,12 @@ const contentFiles = (
 const published = [];
 const drafts = [];
 const draftTitles = [];
+const comparePage = path.join(dist, 'compare/collection/index.html');
+const compareOn = comparisonEnabled(process.env.LOCAL_COMPARISON);
+const comparisonTitles = new Set();
+const comparisonUrls = new Set(
+  comparisonSources.map((source) => source.repository),
+);
 const approvedExternalLinks = new Set(
   Object.values(site.links)
     .filter(Boolean)
@@ -62,6 +72,14 @@ for (const filename of contentFiles) {
   const content = await readFile(filename, 'utf8');
   const header = content.match(/^---\s*\n([\s\S]*?)\n---(?:\n|$)/)?.[1] || '';
   const data = parseYaml(header) || {};
+  const entryId = path.basename(filename, '.md');
+  if (
+    comparisonSources.some(
+      (source) =>
+        source.id === entryId && source.repository === data.repository,
+    )
+  )
+    comparisonTitles.add(data.title);
   if (data.draft !== false) {
     drafts.push(filename);
     if (typeof data.title === 'string') draftTitles.push(data.title);
@@ -107,7 +125,11 @@ async function checkLocalReference(reference, page, { anchor = false } = {}) {
       `外部URLはHTTPSのみ: ${reference}`,
     );
     assert.ok(
-      anchor && approvedExternalLinks.has(resolved.href),
+      anchor &&
+        (approvedExternalLinks.has(resolved.href) ||
+          (compareOn &&
+            page === comparePage &&
+            comparisonUrls.has(resolved.href))),
       `未確認の外部URL: ${reference}`,
     );
     return;
@@ -195,11 +217,14 @@ test('確認待ちの全下書きは詳細ルートと一覧リンクに混入�
   }
 });
 
-test('下書きの題はHTML・JS・JSONへ埋め込まれない', async () => {
+test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時の専用HTMLだけに限定する', async () => {
   const output = await Promise.all(
     builtFiles
       .filter((filename) => /\.(?:html|js|json)$/.test(filename))
-      .map((filename) => readFile(filename, 'utf8')),
+      .map(async (filename) => ({
+        filename,
+        content: await readFile(filename, 'utf8'),
+      })),
   );
   const publishedTitles = new Set(
     await Promise.all(
@@ -219,12 +244,33 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれない', async () => {
       .replaceAll('<', '&lt;')
       .replaceAll('>', '&gt;')
       .replaceAll('"', '&quot;');
-    for (const content of output) {
+    for (const { filename, content } of output) {
+      if (compareOn && filename === comparePage && comparisonTitles.has(title))
+        continue;
       assert.ok(
         !content.includes(title) && !content.includes(escaped),
         `下書きの題が出力されています: ${title}`,
       );
     }
+  }
+});
+
+test('非公開比較は明示build時だけ生成し、通常ページへの導線や制作時期を混入させない', async () => {
+  assert.equal(await exists(comparePage), compareOn);
+  if (compareOn) {
+    const html = pages.get(comparePage);
+    for (const source of comparisonSources)
+      assert.match(html, new RegExp(`href="${source.repository}"`));
+    assert.doesNotMatch(html, /<time\b|説明は未入力です。/);
+    assert.equal(
+      (html.match(/data-piece-panel=/g) || []).length,
+      comparisonSources.length,
+    );
+    assert.match(html, /非公開の比較案/);
+  }
+  for (const [filename, html] of pages) {
+    if (filename === comparePage) continue;
+    assert.ok(!html.includes(`${base}/compare/collection/`), filename);
   }
 });
 

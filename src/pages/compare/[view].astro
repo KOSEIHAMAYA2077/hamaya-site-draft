@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import CollectionStudy from '../../components/CollectionStudy.astro';
+import relationships from '../../data/work-records.json';
+import {
+  collectionStudy,
+  comparisonEnabled,
+} from '../../lib/collection-study.mjs';
+
+export function getStaticPaths() {
+  return comparisonEnabled(import.meta.env.LOCAL_COMPARISON)
+    ? [{ params: { view: 'collection' } }]
+    : [];
+}
+const entries = collectionStudy(
+  await getCollection('works'),
+  relationships,
+  await getCollection('notes'),
+);
+---
+
+<Layout
+  title="制作の棚・非公開比較"
+  description="確認済みGitHub作品を選び、記録やコードへ進む非公開の比較案。"
+  section={null}
+>
+  <CollectionStudy entries={entries} />
+</Layout>

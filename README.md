@@ -32,6 +32,8 @@ npm run new -- work first-work --title "制作の記録"
 
 プロフィール、リンク、画像の差し替え方と未入力項目は [docs/CONTENT.md](docs/CONTENT.md) にまとめています。既存記事1件と公開GitHub作品6件の下書き、出典と除外した対象は [docs/MIGRATION.md](docs/MIGRATION.md) にあります。設計の意図は [docs/DESIGN.md](docs/DESIGN.md)、実読した参考資料とライセンスは [docs/REFERENCES.md](docs/REFERENCES.md) を参照してください。
 
+検証済みGitHub作品を眺める独立案「制作の棚」は、明示した非公開比較buildだけで表示します。既存ホームや通常の下書き除外は保持しています。使い方、資料の範囲、関連記録の対応、検証結果は [docs/COLLECTION_STUDY.md](docs/COLLECTION_STUDY.md) にあります。
+
 ## 確認する
 
 ```sh

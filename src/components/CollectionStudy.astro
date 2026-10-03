@@ -1,0 +1,619 @@
+---
+import { path } from '../lib/paths';
+interface Props {
+  entries: {
+    id: string;
+    title: string;
+    description: string | null;
+    repository: string;
+    relatedNotes: { title: string; id: string }[];
+  }[];
+}
+const { entries } = Astro.props;
+---
+
+<div class="collection-study shell" data-collection-study>
+  <div class="collection-context">
+    <a href={path()}>← 現在のホーム</a>
+    <span>非公開の比較案 · 掲載候補</span>
+    <a href={path('directions/desk/')}>分類を開く案 ↗</a>
+  </div>
+  <header class="collection-heading">
+    <div>
+      <p class="collection-eyebrow">制作の棚</p>
+      <h1>また、ひとつ開く。</h1>
+    </div>
+    <p>気になる制作から、記録やコードへ。</p>
+  </header>
+
+  <div class="collection-scene">
+    <nav class="collection-shelf" aria-label="掲載候補の作品を選ぶ">
+      <p class="shelf-caption">どれを開きますか</p>
+      <div class="shelf-object" aria-hidden="true">
+        <svg viewBox="0 0 500 500" focusable="false">
+          <defs>
+            <linearGradient id="shelf-silver" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f9faf5" />
+              <stop offset=".25" stop-color="#b8c5c5" />
+              <stop offset=".46" stop-color="#f5f6ee" />
+              <stop offset=".66" stop-color="#8a9e9b" />
+              <stop offset=".85" stop-color="#d7e0d7" />
+              <stop offset="1" stop-color="#fcfcf5" />
+            </linearGradient>
+            <linearGradient id="shelf-edge" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#4c6566" />
+              <stop offset=".48" stop-color="#a9bbb6" />
+              <stop offset="1" stop-color="#d8e4d4" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="249" cy="417" rx="139" ry="17" fill="#415b5510" />
+          <path
+            d="M98 299C83 178 222 52 362 108C444 141 432 258 346 331C265 401 111 397 98 299Z M153 276C164 333 258 337 317 287C376 237 391 161 335 147C255 126 159 202 153 276Z"
+            fill="url(#shelf-edge)"
+            fill-rule="evenodd"
+            transform="translate(1 14)"
+          />
+          <path
+            d="M98 299C83 178 222 52 362 108C444 141 432 258 346 331C265 401 111 397 98 299Z M153 276C164 333 258 337 317 287C376 237 391 161 335 147C255 126 159 202 153 276Z"
+            fill="url(#shelf-silver)"
+            fill-rule="evenodd"
+            stroke="#a6b8b3"
+            stroke-width=".8"
+          />
+          <path
+            d="M99 296C87 182 225 56 361 109M154 276C166 330 258 334 315 286"
+            fill="none"
+            stroke="#fdfdf5"
+            stroke-width="2"
+          />
+          <ellipse
+            cx="249"
+            cy="260"
+            rx="229"
+            ry="126"
+            transform="rotate(-29 249 260)"
+            fill="none"
+            stroke="#8aa29a"
+            stroke-opacity=".35"
+            stroke-width="1"
+          />
+          <ellipse
+            cx="249"
+            cy="260"
+            rx="221"
+            ry="118"
+            transform="rotate(-29 249 260)"
+            fill="none"
+            stroke="#8aa29a"
+            stroke-opacity=".17"
+            stroke-dasharray="2 8"
+          />
+        </svg>
+      </div>
+      <ul class="shelf-pieces">
+        {entries.map((entry, index) => (
+          <li class={`shelf-piece shelf-piece-${index + 1}`}>
+            <a
+              href={`#piece-${entry.id}`}
+              data-piece-choice={entry.id}
+              aria-controls={`piece-${entry.id}`}
+            >
+              <span class="piece-mark" aria-hidden="true"></span>
+              <span class="piece-title">{entry.title}</span>
+              <span class="piece-open" aria-hidden="true">
+                ＋
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="shelf-footnote">公開GitHubで確認した作品から。</p>
+    </nav>
+
+    <div class="collection-reading">
+      {entries.map((entry, index) => {
+        const next = entries[(index + 1) % entries.length];
+        return (
+          <article
+            class="collection-piece"
+            id={`piece-${entry.id}`}
+            data-piece-panel={entry.id}
+            aria-labelledby={`title-${entry.id}`}
+            tabindex="-1"
+          >
+            <header class="piece-heading">
+              <p class="collection-eyebrow">開いている制作</p>
+              <h2 id={`title-${entry.id}`}>{entry.title}</h2>
+            </header>
+            {entry.description && (
+              <div class="piece-description">
+                <p class="source-caption">GitHubの説明</p>
+                <p>{entry.description}</p>
+              </div>
+            )}
+            <section
+              class="piece-records"
+              aria-labelledby={`records-${entry.id}`}
+            >
+              <h3 id={`records-${entry.id}`}>関連する学び・雑記</h3>
+              {entry.relatedNotes.length ? (
+                <ul>
+                  {entry.relatedNotes.map((note) => (
+                    <li>
+                      <a href={path(`notes/${note.id}/`)}>{note.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>この制作に結び付けた記録はまだありません。</p>
+              )}
+              <div class="record-actions">
+                <a href={path('notes/')}>
+                  学び・雑記を開く <span aria-hidden="true">↗</span>
+                </a>
+                <a href={path('write/?kind=note')}>
+                  記録を書く <span aria-hidden="true">＋</span>
+                </a>
+              </div>
+            </section>
+            <section class="piece-next" aria-labelledby={`next-${entry.id}`}>
+              <div class="next-heading">
+                <span aria-hidden="true">↗</span>
+                <h3 id={`next-${entry.id}`}>次に触るもの</h3>
+              </div>
+              <a
+                class="next-code"
+                href={entry.repository}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>GitHubでコードを開く</span>
+                <span class="new-window">別タブ ↗</span>
+              </a>
+              <a
+                class="next-piece"
+                href={`#piece-${next.id}`}
+                data-piece-choice={next.id}
+              >
+                <span>もうひとつ開く</span>
+                <span>
+                  {next.title} <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            </section>
+          </article>
+        );
+      })}
+      <p
+        class="collection-status"
+        role="status"
+        aria-live="polite"
+        data-piece-status
+      ></p>
+    </div>
+  </div>
+  <p class="collection-comparison-note">
+    作品名と説明はGitHubで確認した情報です。このサイトへの掲載と主案の採用は、本人の確認待ちです。
+  </p>
+</div>
+
+<script>
+  const collection = document.querySelector<HTMLElement>(
+    '[data-collection-study]',
+  );
+  if (collection) {
+    const panels = [
+      ...collection.querySelectorAll<HTMLElement>('[data-piece-panel]'),
+    ];
+    const shelf = [
+      ...collection.querySelectorAll<HTMLAnchorElement>(
+        '.shelf-pieces [data-piece-choice]',
+      ),
+    ];
+    const choices = [
+      ...collection.querySelectorAll<HTMLAnchorElement>('[data-piece-choice]'),
+    ];
+    const status = collection.querySelector<HTMLElement>(
+      '[data-piece-status]',
+    )!;
+    const initialId =
+      panels.find((panel) => `#${panel.id}` === location.hash)?.dataset
+        .piecePanel ?? panels[0]?.dataset.piecePanel;
+    function openPiece(id: string, announce = true) {
+      const current = panels.find((panel) => panel.dataset.piecePanel === id);
+      if (!current) return;
+      // Reveal the reading panel immediately, without an animation or new route.
+      panels.forEach((panel) => {
+        panel.hidden = panel !== current;
+      });
+      shelf.forEach((choice) => {
+        if (choice.dataset.pieceChoice === id)
+          choice.setAttribute('aria-current', 'true');
+        else choice.removeAttribute('aria-current');
+      });
+      collection!.dataset.openPiece = id;
+      if (announce)
+        status.textContent = `${current.querySelector('h2')!.textContent}を開きました。`;
+    }
+    if (initialId) openPiece(initialId, false);
+    choices.forEach((choice) =>
+      choice.addEventListener('click', (event) => {
+        const id = choice.dataset.pieceChoice!;
+        const isNext = choice.classList.contains('next-piece');
+        event.preventDefault();
+        openPiece(id);
+        history.replaceState(null, '', choice.getAttribute('href')!);
+        // A next link is inside a panel that just became hidden. Move focus to
+        // its visible shelf link. Shelf selection keeps its own keyboard focus.
+        if (isNext)
+          shelf
+            .find((link) => link.dataset.pieceChoice === id)
+            ?.focus({ preventScroll: true });
+        if (matchMedia('(max-width: 850px)').matches) {
+          const reduce =
+            matchMedia('(prefers-reduced-motion: reduce)').matches ||
+            document.documentElement.dataset.motion === 'off';
+          const current = panels.find(
+            (panel) => panel.dataset.piecePanel === id,
+          );
+          current?.focus({ preventScroll: true });
+          current?.scrollIntoView({
+            behavior: reduce ? 'instant' : 'smooth',
+            block: 'start',
+          });
+        }
+      }),
+    );
+    window.addEventListener('hashchange', () => {
+      const panel = panels.find((panel) => `#${panel.id}` === location.hash);
+      if (panel?.dataset.piecePanel) openPiece(panel.dataset.piecePanel);
+    });
+  }
+</script>
+
+<style>
+  .collection-study {
+    padding-block: 1.3rem 2.8rem;
+  }
+  .collection-context {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .collection-context a {
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .collection-context a:last-child {
+    margin-left: auto;
+  }
+  .collection-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    margin: 1.2rem 0 1.2rem;
+  }
+  .collection-eyebrow {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .collection-heading h1 {
+    font-size: clamp(29px, 3.6vw, 46px);
+    letter-spacing: 0.035em;
+  }
+  .collection-heading > p {
+    color: var(--muted);
+    font-size: 13px;
+    padding-bottom: 0.5rem;
+  }
+  .collection-scene {
+    display: grid;
+    grid-template-columns: 1fr 1.04fr;
+    gap: 2.2rem;
+    align-items: start;
+  }
+  .collection-shelf {
+    position: relative;
+    min-width: 0;
+    height: 510px;
+    isolation: isolate;
+  }
+  .shelf-caption {
+    font-size: 11px;
+    color: var(--muted);
+    padding-top: 1rem;
+  }
+  .shelf-object {
+    position: absolute;
+    inset: 30px -10px 20px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  .shelf-object svg {
+    width: 100%;
+    height: 100%;
+  }
+  .shelf-pieces {
+    list-style: none;
+    padding: 0;
+  }
+  .shelf-piece {
+    position: absolute;
+    width: 43%;
+  }
+  .shelf-piece-1 {
+    left: 6%;
+    top: 75px;
+  }
+  .shelf-piece-2 {
+    right: 0;
+    top: 24px;
+  }
+  .shelf-piece-3 {
+    left: 0;
+    top: 235px;
+  }
+  .shelf-piece-4 {
+    right: 0;
+    top: 200px;
+  }
+  .shelf-piece-5 {
+    left: 5%;
+    top: 365px;
+  }
+  .shelf-piece-6 {
+    right: 0;
+    top: 400px;
+  }
+  .shelf-piece a {
+    display: grid;
+    grid-template-columns: 8px 1fr 15px;
+    gap: 0.65rem;
+    padding: 0.7rem 0.5rem 0.7rem 0;
+    min-height: 52px;
+    align-items: baseline;
+    text-decoration: none;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .piece-mark {
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    align-self: start;
+    margin-top: 0.6rem;
+  }
+  .piece-title {
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  .piece-open {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .shelf-piece a[aria-current='true'] {
+    border-bottom-color: var(--accent);
+  }
+  .shelf-piece a[aria-current='true'] .piece-mark {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px #48685e13;
+  }
+  .shelf-piece a[aria-current='true'] .piece-open {
+    color: var(--accent);
+  }
+  .shelf-piece a:hover {
+    color: var(--accent);
+  }
+  .shelf-footnote {
+    position: absolute;
+    bottom: 0;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .collection-reading {
+    min-width: 0;
+  }
+  .collection-piece {
+    position: relative;
+    padding: 1.5rem 2rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 30px 6px 36px 6px;
+    box-shadow: 12px 15px 0 #d9dfd426;
+    scroll-margin-top: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .piece-heading h2 {
+    font-size: clamp(21px, 2.2vw, 28px);
+    line-height: 1.5;
+  }
+  .piece-description {
+    margin-top: 1rem;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .source-caption {
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .piece-records {
+    margin-top: 1.2rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+  .collection-piece h3 {
+    font-size: 13px;
+  }
+  .piece-records > p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 0.4rem;
+  }
+  .record-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    margin-top: 0.4rem;
+  }
+  .record-actions a {
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .piece-next {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .next-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .next-heading > span {
+    color: var(--accent);
+    font-size: 20px;
+  }
+  .next-code {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    min-height: 48px;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .new-window {
+    color: var(--muted);
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .next-piece {
+    display: grid;
+    gap: 0.2rem;
+    min-height: 52px;
+    padding-top: 0.55rem;
+    border-top: 1px dashed var(--line);
+    text-decoration: none;
+  }
+  .next-piece > span:first-child {
+    color: var(--muted);
+    font-size: 10px;
+  }
+  .next-piece > span:last-child {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  .collection-status {
+    font-size: 11px;
+    color: var(--muted);
+    min-height: 1.9em;
+  }
+  .collection-comparison-note {
+    margin-top: 1.6rem;
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+  }
+  @media (max-width: 1050px) {
+    .collection-scene {
+      gap: 1.5rem;
+    }
+    .collection-piece {
+      padding: 1.5rem;
+    }
+    .piece-title {
+      font-size: 15px;
+    }
+  }
+  @media (max-width: 850px) {
+    .collection-context {
+      flex-wrap: wrap;
+      gap: 0.2rem 1.2rem;
+    }
+    .collection-context span {
+      order: 3;
+      width: 100%;
+    }
+    .collection-heading {
+      display: block;
+      margin-top: 1.6rem;
+    }
+    .collection-heading > p {
+      margin-top: 0.6rem;
+    }
+    .collection-scene {
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+    }
+    .collection-shelf {
+      height: 460px;
+    }
+    .shelf-object {
+      inset: 12px 0 12px;
+      opacity: 0.48;
+    }
+    .shelf-piece {
+      width: 45%;
+    }
+    .shelf-piece-1 {
+      left: 0;
+      top: 55px;
+      width: 52%;
+    }
+    .shelf-piece-1 .piece-title {
+      font-size: 12px;
+    }
+    .shelf-piece-2 {
+      right: 0;
+      top: 20px;
+    }
+    .shelf-piece-3 {
+      left: 0;
+      top: 175px;
+    }
+    .shelf-piece-4 {
+      right: 0;
+      top: 170px;
+    }
+    .shelf-piece-5 {
+      left: 0;
+      top: 305px;
+    }
+    .shelf-piece-6 {
+      right: 0;
+      top: 338px;
+    }
+    .piece-title {
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .shelf-piece a {
+      gap: 0.45rem;
+      grid-template-columns: 6px 1fr 12px;
+    }
+    .collection-piece {
+      padding: 1.35rem;
+      border-radius: 24px 5px 28px 5px;
+    }
+    .piece-heading h2 {
+      font-size: 23px;
+    }
+  }
+</style>
