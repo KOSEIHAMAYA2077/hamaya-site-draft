@@ -70,7 +70,7 @@ test('HTML・イベント属性・SVG・閉じタグをすべて文字として�
   );
 });
 
-test('通常のHTTP(S)と安全なローカルpath・fragmentだけをリンクにする', () => {
+test('通常のHTTP(S)と安全なローカルpath・fragmentだけを無効なリンク表示にする', () => {
   for (const destination of [
     'https://example.test/記事?q=1&v=2#節',
     'HTTP://example.test/',
@@ -81,17 +81,28 @@ test('通常のHTTP(S)と安全なローカルpath・fragmentだけをリンク�
     '#section',
   ]) {
     const html = renderDraftPreview(`[本文](${destination})`);
-    assert.match(html, /^<p><a href="/);
-    assert.match(html, /">本文<\/a><\/p>$/);
+    assert.equal(
+      html,
+      '<p><span class="draft-preview-link" role="link" aria-disabled="true" tabindex="0">本文</span></p>',
+    );
   }
   assert.equal(
     renderDraftPreview('[query](https://example.test/?a=1&amp;b=2)'),
-    '<p><a href="https://example.test/?a=1&amp;b=2">query</a></p>',
+    '<p><span class="draft-preview-link" role="link" aria-disabled="true" tabindex="0">query</span></p>',
   );
   assert.equal(
     renderDraftPreview('[**exact label**](https://example.test/)'),
-    '<p><a href="https://example.test/"><strong>exact label</strong></a></p>',
+    '<p><span class="draft-preview-link" role="link" aria-disabled="true" tabindex="0"><strong>exact label</strong></span></p>',
   );
+});
+
+test('読む表示の内部・外部リンクは未保存入力を失う遷移経路を生成しない', () => {
+  const body =
+    '[内部](/notes/)\n\n[外部](https://example.test/)\n\n[節](#section)';
+  const html = renderDraftPreview(body);
+  assert.equal((html.match(/aria-disabled="true"/g) || []).length, 3);
+  assert.equal((html.match(/tabindex="0"/g) || []).length, 3);
+  assert.doesNotMatch(html, /<a\b|\b(?:href|src|onclick|onkeydown)\s*=/i);
 });
 
 test('危険なscheme・entity偽装・制御文字・外部相対URL・認証情報を拒否する', () => {

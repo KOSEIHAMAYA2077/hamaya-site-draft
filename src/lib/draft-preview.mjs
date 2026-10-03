@@ -22,8 +22,8 @@ function escapeHtml(value) {
 /** @param {string} value */
 function safeUrl(value) {
   if (!value || value.length > MAX_LINK_LENGTH) return null;
-  // Decode before checking protocols, including nested entity disguises. The
-  // returned value is escaped again when written into our fixed href attribute.
+  // Decode before checking protocols, including nested entity disguises.
+  // Valid destinations receive a disabled link appearance in this preview.
   for (let pass = 0; pass < MAX_DEPTH; pass += 1) {
     const decoded = decodeHTML(value);
     if (decoded === value) break;
@@ -187,9 +187,11 @@ function inline(source, budget, depth = 0, links = true) {
         } else {
           const label = inline(match.label, budget, depth + 1, false);
           const destination = safeUrl(match.destination);
+          // No anchor or URL attribute: reading a draft must not navigate away
+          // from the editor and discard unsaved input, including with a keyboard.
           parts.push(
             destination
-              ? `<a href="${escapeHtml(destination)}">${label}</a>`
+              ? `<span class="draft-preview-link" role="link" aria-disabled="true" tabindex="0">${label}</span>`
               : label,
           );
         }

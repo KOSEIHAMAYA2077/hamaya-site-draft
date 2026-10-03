@@ -60,12 +60,16 @@ const today = new Date().toISOString().slice(0, 10);
           autocomplete="off"
           aria-describedby="body-hint error-body"
         ></textarea>
+        <p class="field-hint" id="reader-hint" data-reader-hint hidden>
+          本文の表示確認用です。リンクはここでは開きません。
+        </p>
         <div
           class="reader-panel"
           data-reader-panel
           hidden
           role="region"
           aria-label="本文のプレビュー"
+          aria-describedby="reader-hint"
           tabindex="0"
         ></div>
         <p class="field-hint" id="body-hint">
@@ -422,6 +426,7 @@ const today = new Date().toISOString().slice(0, 10);
       '[data-reader-button]',
     )!;
     const reader = writer.querySelector<HTMLElement>('[data-reader-panel]')!;
+    const readerHint = writer.querySelector<HTMLElement>('[data-reader-hint]')!;
     const fileInput = writer.querySelector<HTMLInputElement>('#write-import')!;
     const importStatus = writer.querySelector<HTMLElement>(
       '[data-import-status]',
@@ -498,6 +503,7 @@ const today = new Date().toISOString().slice(0, 10);
       readMode = read;
       fields.body.hidden = read;
       reader.hidden = !read;
+      readerHint.hidden = !read;
       editButton.setAttribute('aria-pressed', String(!read));
       readerButton.setAttribute('aria-pressed', String(read));
       if (read) {
@@ -851,8 +857,10 @@ const today = new Date().toISOString().slice(0, 10);
   .reader-panel :global(code) {
     font-size: 0.9em;
   }
-  .reader-panel :global(a) {
-    text-decoration: underline;
+  .reader-panel :global(.draft-preview-link) {
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+    cursor: default;
   }
   .reader-panel :global(blockquote) {
     border-left: 3px solid var(--line);
