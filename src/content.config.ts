@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { validHttpsUrl, validImagePath } from './lib/content-safety.mjs';
 
 const shared = z.object({
   title: z.string().min(1),
@@ -13,23 +14,21 @@ const shared = z.object({
 const works = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/works' }),
   schema: shared.extend({
-    url: z.url({ protocol: /^https$/ }).optional(),
-    repository: z.url({ protocol: /^https$/ }).optional(),
+    url: z
+      .string()
+      .refine(validHttpsUrl, '認証情報を含まないHTTPSのURLを指定してください。')
+      .optional(),
+    repository: z
+      .string()
+      .refine(validHttpsUrl, '認証情報を含まないHTTPSのURLを指定してください。')
+      .optional(),
     status: z.enum(['制作中', '完成', '記録']).default('記録'),
     cover: z
       .object({
-        src: z
-          .string()
-          .regex(/^images\/[a-zA-Z0-9_./-]+$/)
-          .refine(
-            (src) =>
-              src
-                .split('/')
-                .every(
-                  (segment) => segment && segment !== '.' && segment !== '..',
-                ),
-            { message: '表紙のsrcはimages/配下のファイルを指定してください。' },
-          ),
+        src: z.string().refine(validImagePath, {
+          message:
+            '表紙のsrcはimages/配下のPNG・JPEG・WebP・GIF・AVIFを指定してください。',
+        }),
         alt: z.string().trim().min(1),
       })
       .optional(),

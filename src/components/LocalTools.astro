@@ -1,32 +1,42 @@
 ---
 import { path } from '../lib/paths';
+import { localBuildEnabled } from '../lib/build-mode.mjs';
 interface Props {
   kind?: 'note' | 'work';
   label?: string;
 }
 const { kind = 'note', label = '下書きを書く' } = Astro.props;
+const enabled = localBuildEnabled(
+  {
+    LOCAL_STUDIO: import.meta.env.LOCAL_STUDIO,
+    LOCAL_COMPARISON: import.meta.env.LOCAL_COMPARISON,
+  },
+  import.meta.env.DEV,
+);
 ---
 
-<a
-  class="local-write-link"
-  href={path(`write/?kind=${kind}`)}
-  data-local-tool
-  hidden
->
-  {label}
-  <span aria-hidden="true">↗</span>
-</a>
+{enabled && (
+  <>
+    <a
+      class="local-write-link"
+      href={path(`write/?kind=${kind}`)}
+      data-local-tool
+      hidden
+    >
+      {label}
+      <span aria-hidden="true">↗</span>
+    </a>
 
-<script>
-  // This is a display hint for the local writing tool, not access control.
-  if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
-    document
-      .querySelectorAll<HTMLElement>('[data-local-tool]')
-      .forEach((link) => {
-        link.hidden = false;
-      });
-  }
-</script>
+    <script is:inline>
+      // This is a display hint for the local writing tool, not access control.
+      if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
+        document.querySelectorAll('[data-local-tool]').forEach((link) => {
+          link.hidden = false;
+        });
+      }
+    </script>
+  </>
+)}
 
 <style>
   .local-write-link {

@@ -1,0 +1,228 @@
+{
+  "dateUTC": "2026-10-04",
+  "baseline": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80",
+  "branch": "audit-static-safety",
+  "sourceContent": {
+    "files": 9,
+    "allDraft": true
+  },
+  "inputBefore": {
+    "browser": "153.0.8010.12",
+    "markers": {
+      "raw": "executed",
+      "image": "executed",
+      "inlineSvg": "executed",
+      "iframe": "executed",
+      "svgAsImage": null,
+      "javascript": 1,
+      "entityJavascript": 1
+    },
+    "svgDirectNavigation": 1
+  },
+  "inputAfter": {
+    "browser": "153.0.8010.12",
+    "isolatedFixture": true,
+    "pageErrors": [],
+    "markers": {
+      "__auditRaw": null,
+      "__auditImage": null,
+      "__auditSvg": null,
+      "__auditFrame": null,
+      "__auditLink": null,
+      "__auditEntity": null,
+      "__auditMetadata": null
+    },
+    "activeElementsInProse": 0,
+    "links": ["/hamaya-site-draft/notes/"],
+    "image": {
+      "src": "/hamaya-site-draft/images/approved.png",
+      "naturalWidth": 1,
+      "alt": "Synthetic raster <img onerror=example>"
+    },
+    "literalCodeVisible": true
+  },
+  "rejectedBuilds": {
+    "rawHTML": 1,
+    "relativeImageImport": 1
+  },
+  "distributionBrowser": {
+    "browser": "153.0.8010.12",
+    "checks": [
+      {
+        "name": "normal-1280",
+        "publicPages": 4,
+        "privateRoutes": "404",
+        "overflow": false,
+        "keyboardSkip": true
+      },
+      {
+        "name": "normal-375",
+        "publicPages": 4,
+        "privateRoutes": "404",
+        "overflow": false,
+        "keyboardSkip": true
+      },
+      {
+        "name": "normal-320",
+        "publicPages": 4,
+        "privateRoutes": "404",
+        "overflow": false,
+        "keyboardSkip": true
+      },
+      {
+        "name": "base-1280",
+        "publicPages": 4,
+        "privateRoutes": "404",
+        "overflow": false,
+        "keyboardSkip": true
+      },
+      {
+        "name": "base-375",
+        "publicPages": 4,
+        "privateRoutes": "404",
+        "overflow": false,
+        "keyboardSkip": true
+      },
+      {
+        "name": "base-320",
+        "publicPages": 4,
+        "privateRoutes": "404",
+        "overflow": false,
+        "keyboardSkip": true
+      },
+      {
+        "name": "local-writer-1280",
+        "import": true,
+        "invalidUrlPreservesInput": true,
+        "previewNoExecution": true,
+        "keyboardNoNavigation": true,
+        "exportedDraft": true,
+        "baseImports": true
+      },
+      {
+        "name": "local-writer-375",
+        "import": true,
+        "invalidUrlPreservesInput": true,
+        "previewNoExecution": true,
+        "keyboardNoNavigation": true,
+        "exportedDraft": true,
+        "baseImports": true
+      }
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  "independentDistribution": [
+    {
+      "mode": "local-current",
+      "htmlPages": 12,
+      "htmlLocalTools": true,
+      "privateRoutesAbsent": false,
+      "privateBundlesAbsent": false,
+      "canaryAbsentAllBytes": true,
+      "localPathsAbsent": true,
+      "totalFiles": 23,
+      "buildTests": 11
+    },
+    {
+      "mode": "default-current",
+      "htmlPages": 5,
+      "htmlLocalTools": false,
+      "privateRoutesAbsent": true,
+      "privateBundlesAbsent": true,
+      "canaryAbsentAllBytes": true,
+      "localPathsAbsent": true,
+      "totalFiles": 12,
+      "buildTests": 11
+    },
+    {
+      "mode": "comparison-base",
+      "htmlPages": 14,
+      "htmlLocalTools": true,
+      "privateRoutesAbsent": false,
+      "privateBundlesAbsent": false,
+      "canaryAbsentAllBytes": true,
+      "localPathsAbsent": true,
+      "totalFiles": 26,
+      "buildTests": 11
+    },
+    {
+      "mode": "default-base",
+      "htmlPages": 5,
+      "htmlLocalTools": false,
+      "privateRoutesAbsent": true,
+      "privateBundlesAbsent": true,
+      "canaryAbsentAllBytes": true,
+      "localPathsAbsent": true,
+      "totalFiles": 12,
+      "buildTests": 11
+    },
+    {
+      "case": "unadopted public file",
+      "returnCode": 1,
+      "expectedGuardError": true,
+      "notCopied": true
+    }
+  ],
+  "advisory": {
+    "id": "GHSA-ch52-4w7c-c8xp",
+    "reportedHighEntries": 2,
+    "underlyingAdvisories": 1,
+    "patchedVersionAtReview": null,
+    "packages": ["astro@7.3.5", "http-cache-semantics@4.2.0"],
+    "status": "dependency unresolved; no affected shared-cache request path found in current static architecture"
+  },
+  "buildMatrix": [
+    {
+      "mode": "normal",
+      "base": "/",
+      "pages": 5,
+      "testsPassed": 75
+    },
+    {
+      "mode": "normal",
+      "base": "/hamaya-site-draft",
+      "pages": 5,
+      "testsPassed": 75
+    },
+    {
+      "mode": "local",
+      "base": "/hamaya-site-draft",
+      "pages": 12,
+      "testsPassed": 75
+    },
+    {
+      "mode": "compare",
+      "base": "/hamaya-site-draft",
+      "pages": 14,
+      "testsPassed": 75
+    }
+  ],
+  "developmentRoutes": {
+    "/": {
+      "status": 200,
+      "localEntry": true,
+      "writer": false
+    },
+    "/write/": {
+      "status": 200,
+      "localEntry": true,
+      "writer": true
+    },
+    "/directions/": {
+      "status": 200,
+      "localEntry": true,
+      "writer": false
+    },
+    "/compare/focus/": {
+      "status": 404
+    }
+  },
+  "lint": {
+    "astroFiles": 58,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0,
+    "formatting": "pass"
+  }
+}

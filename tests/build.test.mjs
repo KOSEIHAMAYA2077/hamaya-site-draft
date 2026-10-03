@@ -9,6 +9,10 @@ import {
   comparisonEnabled,
   comparisonSources,
 } from '../src/lib/collection-study.mjs';
+import {
+  localBuildEnabled,
+  privateRoutePrefixes,
+} from '../src/lib/build-mode.mjs';
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url));
 const dist = path.join(projectRoot, 'dist');
@@ -61,6 +65,7 @@ const comparePages = new Map([
   [path.join(dist, 'compare/focus/index.html'), 'data-focus-panel'],
 ]);
 const compareOn = comparisonEnabled(process.env.LOCAL_COMPARISON);
+const localOn = localBuildEnabled(process.env);
 const comparisonTitles = new Set();
 const comparisonUrls = new Set(
   comparisonSources.map((source) => source.repository),
@@ -183,6 +188,57 @@ test('トップ・作品・記事・自己紹介・404と.nojekyllが生成さ�
     '.nojekyll',
   ]) {
     assert.ok(await exists(path.join(dist, filename)), filename);
+  }
+});
+
+test('通常配布はローカル制作道具・試作ルート・そのbundleを含めない', async () => {
+  assert.equal(
+    pages.get(path.join(dist, 'index.html')).includes('data-local-tool'),
+    localOn,
+    'local build の執筆入口だけを出力する',
+  );
+  for (const file of [
+    'write/index.html',
+    'directions/index.html',
+    'directions/desk/index.html',
+  ])
+    assert.equal(await exists(path.join(dist, file)), localOn, file);
+  if (!localOn) {
+    for (const filename of builtFiles) {
+      const relative = path.relative(dist, filename).split(path.sep).join('/');
+      assert.ok(
+        !privateRoutePrefixes.some((prefix) =>
+          relative.startsWith(`${prefix}/`),
+        ),
+        relative,
+      );
+      if (/\.(?:html|js|css|json)$/.test(relative)) {
+        const content = await readFile(filename, 'utf8');
+        assert.doesNotMatch(
+          content,
+          /draft-writer|data-focus-study|data-collection-study|data-desk-surface|LOCAL_COMPARISON|DESIGN STUDIES/,
+        );
+        for (const prefix of privateRoutePrefixes)
+          assert.ok(
+            !content.includes(`${base}/${prefix}/`),
+            `${relative}: private route reference`,
+          );
+      }
+    }
+  }
+});
+
+test('生成物は不要なsource map・端末パス・元Markdownを含めない', async () => {
+  for (const filename of builtFiles) {
+    const relative = path.relative(dist, filename).split(path.sep).join('/');
+    assert.doesNotMatch(relative, /\.(?:map|md|astro|ts)$/);
+    if (/\.(?:html|js|css|json|txt)$/.test(relative)) {
+      const content = await readFile(filename, 'utf8');
+      assert.doesNotMatch(
+        content,
+        /sourceMappingURL|\/Users\/[^\s"']+|\/private\/tmp\/|[A-Z]:\\Users\\/,
+      );
+    }
   }
 });
 

@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import data from '../data/site.json';
+import { validHttpsUrl, validImagePath } from './content-safety.mjs';
 
 const siteSchema = z.object({
   name: z.string().min(1),
@@ -7,43 +8,28 @@ const siteSchema = z.object({
   bio: z.string().nullable(),
   portrait: z
     .object({
-      src: z
-        .string()
-        .regex(/^images\/[a-zA-Z0-9_./-]+$/)
-        .refine(
-          (src) =>
-            src
-              .split('/')
-              .every(
-                (segment) => segment && segment !== '.' && segment !== '..',
-              ),
-          { message: '写真のsrcはimages/配下のファイルを指定してください。' },
-        ),
+      src: z.string().refine(validImagePath, {
+        message:
+          '写真のsrcはimages/配下のPNG・JPEG・WebP・GIF・AVIFを指定してください。',
+      }),
       alt: z.string().trim().min(1),
     })
     .nullable(),
   links: z.object({
-    github: z.url({ hostname: /^github\.com$/, protocol: /^https$/ }),
+    github: z
+      .url({ hostname: /^github\.com$/, protocol: /^https$/ })
+      .refine(validHttpsUrl),
     atcoder: z
       .url({ hostname: /^atcoder\.jp$/, protocol: /^https$/ })
+      .refine(validHttpsUrl)
       .nullable(),
   }),
   socialImage: z
     .object({
-      src: z
-        .string()
-        .regex(/^images\/[a-zA-Z0-9_./-]+$/)
-        .refine(
-          (src) =>
-            src
-              .split('/')
-              .every(
-                (segment) => segment && segment !== '.' && segment !== '..',
-              ),
-          {
-            message: '共有画像のsrcはimages/配下のファイルを指定してください。',
-          },
-        ),
+      src: z.string().refine(validImagePath, {
+        message:
+          '共有画像のsrcはimages/配下のPNG・JPEG・WebP・GIF・AVIFを指定してください。',
+      }),
       alt: z.string().trim().min(1),
     })
     .nullable()

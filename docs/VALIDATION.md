@@ -1,5 +1,7 @@
 # 追加実装の検証
 
+この文書は `experience-next` の記録です。`audit-static-safety` における通常配布の分離、HTML・画像入力の修復、最新の検証は [SECURITY_AUDIT.md](SECURITY_AUDIT.md) を参照してください。
+
 確認日は2026-10-03 UTCです。対象は独立したprivate下書きの `experience-next` です。初期版は `main` と `baseline-10b2870` に残しています。初期版の検証は [VALIDATION_BASELINE.md](VALIDATION_BASELINE.md) に保存しました。既存サイトの編集や外部公開は行っていません。
 
 ## 本体と自動確認

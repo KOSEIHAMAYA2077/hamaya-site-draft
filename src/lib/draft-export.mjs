@@ -1,3 +1,5 @@
+import { validHttpsUrl, validImagePath } from './content-safety.mjs';
+
 /**
  * @typedef {Object} DraftInput
  * @property {string} [kind]
@@ -48,22 +50,6 @@ function validDate(value) {
   return (
     Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value
   );
-}
-
-/** @param {string} value */
-function validHttpsUrl(value) {
-  if (/[\s\\]/.test(value) || !/^https:\/\//i.test(value)) return false;
-  try {
-    const url = new URL(value);
-    return (
-      url.protocol === 'https:' &&
-      Boolean(url.hostname) &&
-      !url.username &&
-      !url.password
-    );
-  } catch {
-    return false;
-  }
 }
 
 /**
@@ -149,16 +135,9 @@ export function exportDraft(input = {}) {
       issues.repository =
         'リポジトリは、ログイン情報を含まない HTTPS の完全なURLを入力してください。';
     if (cover !== undefined) {
-      if (
-        !cover ||
-        typeof cover !== 'object' ||
-        typeof cover.src !== 'string' ||
-        !/^images\/[a-zA-Z0-9_./-]+$/.test(cover.src) ||
-        !cover.src
-          .split('/')
-          .every((segment) => segment && segment !== '.' && segment !== '..')
-      )
-        issues.coverSrc = '表紙は images/ 配下のファイルを指定してください。';
+      if (!cover || typeof cover !== 'object' || !validImagePath(cover.src))
+        issues.coverSrc =
+          '表紙は images/ 配下のPNG・JPEG・WebP・GIF・AVIFを指定してください。';
       if (
         !cover ||
         typeof cover.alt !== 'string' ||
