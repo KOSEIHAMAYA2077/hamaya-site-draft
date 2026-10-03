@@ -56,7 +56,10 @@ const contentFiles = (
 const published = [];
 const drafts = [];
 const draftTitles = [];
-const comparePage = path.join(dist, 'compare/collection/index.html');
+const comparePages = new Map([
+  [path.join(dist, 'compare/collection/index.html'), 'data-piece-panel'],
+  [path.join(dist, 'compare/focus/index.html'), 'data-focus-panel'],
+]);
 const compareOn = comparisonEnabled(process.env.LOCAL_COMPARISON);
 const comparisonTitles = new Set();
 const comparisonUrls = new Set(
@@ -128,7 +131,7 @@ async function checkLocalReference(reference, page, { anchor = false } = {}) {
       anchor &&
         (approvedExternalLinks.has(resolved.href) ||
           (compareOn &&
-            page === comparePage &&
+            comparePages.has(page) &&
             comparisonUrls.has(resolved.href))),
       `未確認の外部URL: ${reference}`,
     );
@@ -245,7 +248,11 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時�
       .replaceAll('>', '&gt;')
       .replaceAll('"', '&quot;');
     for (const { filename, content } of output) {
-      if (compareOn && filename === comparePage && comparisonTitles.has(title))
+      if (
+        compareOn &&
+        comparePages.has(filename) &&
+        comparisonTitles.has(title)
+      )
         continue;
       assert.ok(
         !content.includes(title) && !content.includes(escaped),
@@ -256,21 +263,26 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時�
 });
 
 test('非公開比較は明示build時だけ生成し、通常ページへの導線や制作時期を混入させない', async () => {
-  assert.equal(await exists(comparePage), compareOn);
-  if (compareOn) {
-    const html = pages.get(comparePage);
-    for (const source of comparisonSources)
-      assert.match(html, new RegExp(`href="${source.repository}"`));
-    assert.doesNotMatch(html, /<time\b|説明は未入力です。/);
-    assert.equal(
-      (html.match(/data-piece-panel=/g) || []).length,
-      comparisonSources.length,
-    );
-    assert.match(html, /非公開の比較案/);
+  for (const [comparePage, panelAttribute] of comparePages) {
+    assert.equal(await exists(comparePage), compareOn, comparePage);
+    if (compareOn) {
+      const html = pages.get(comparePage);
+      for (const source of comparisonSources)
+        assert.match(html, new RegExp(`href="${source.repository}"`));
+      assert.doesNotMatch(html, /<time\b|説明は未入力です。/);
+      assert.equal(
+        (html.match(new RegExp(`${panelAttribute}=`, 'g')) || []).length,
+        comparisonSources.length,
+      );
+      assert.match(html, /非公開の比較案/);
+      if (panelAttribute === 'data-focus-panel')
+        assert.match(html, /data-focus-choice=/);
+    }
   }
   for (const [filename, html] of pages) {
-    if (filename === comparePage) continue;
-    assert.ok(!html.includes(`${base}/compare/collection/`), filename);
+    if (comparePages.has(filename)) continue;
+    for (const view of ['collection', 'focus'])
+      assert.ok(!html.includes(`${base}/compare/${view}/`), filename);
   }
 });
 

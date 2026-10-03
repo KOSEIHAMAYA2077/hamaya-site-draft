@@ -1,0 +1,790 @@
+---
+import { path } from '../lib/paths';
+import FocusSculpture from './FocusSculpture.astro';
+interface Props {
+  entries: {
+    id: string;
+    title: string;
+    description: string | null;
+    repository: string;
+    relatedNotes: { id: string; title: string; excerpt: string | null }[];
+  }[];
+}
+const { entries } = Astro.props;
+---
+
+<div class="focus-study shell" data-focus-study>
+  <div class="focus-context">
+    <div>
+      <h1>制作を開く</h1>
+      <span>非公開の比較案</span>
+    </div>
+    <button
+      type="button"
+      class="focus-motion"
+      data-focus-motion
+      hidden
+      aria-pressed="false"
+    >
+      動きを止める
+    </button>
+  </div>
+
+  <div class="focus-stage">
+    <div class="focus-selection">
+      <span class="focus-position" aria-hidden="true">
+        <span data-focus-position>01</span> /{' '}
+        {String(entries.length).padStart(2, '0')}
+      </span>
+      <details class="focus-picker" data-focus-picker>
+        <summary>
+          他の制作を選ぶ <span aria-hidden="true">＋</span>
+        </summary>
+        <nav aria-label="掲載候補の制作">
+          <ul>
+            {entries.map((entry, index) => (
+              <li>
+                <a
+                  href={`#piece-${entry.id}`}
+                  data-focus-choice={entry.id}
+                  aria-controls={`reading-${entry.id}`}
+                >
+                  <span class="choice-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span>{entry.title}</span>
+                  <span class="choice-mark" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </details>
+    </div>
+
+    <div class="focus-art" data-focus-scene>
+      <FocusSculpture />
+      <div class="focus-art-label" aria-hidden="true">
+        <span class="focus-light"></span>
+        <span data-focus-art-position>01</span>
+        <span>いま開いている制作</span>
+      </div>
+    </div>
+
+    <div class="focus-reader">
+      {entries.map((entry, index) => {
+        const lead = entry.relatedNotes[0];
+        const next = entries[(index + 1) % entries.length];
+        return (
+          <article
+            class="focus-piece"
+            id={`piece-${entry.id}`}
+            data-focus-panel={entry.id}
+            aria-labelledby={`focus-title-${entry.id}`}
+          >
+            <header class="focus-title">
+              <p class="focus-kicker">開いている制作</p>
+              <h2 id={`focus-title-${entry.id}`}>
+                {entry.title
+                  .split(/(?<=[a-z])(?=[A-Z])/u)
+                  .map((part, partIndex) => (
+                    <>
+                      {partIndex > 0 && <wbr />}
+                      {part}
+                    </>
+                  ))}
+              </h2>
+            </header>
+            <div class="focus-body" id={`reading-${entry.id}`}>
+              {entry.description && (
+                <div class="focus-description">
+                  <p class="focus-source">GitHubにある説明</p>
+                  <p>{entry.description}</p>
+                </div>
+              )}
+              {lead ? (
+                <section
+                  class="focus-record"
+                  aria-labelledby={`record-${entry.id}`}
+                >
+                  <p class="focus-kicker">この制作から、ひとつ読む</p>
+                  <h3 id={`record-${entry.id}`}>{lead.title}</h3>
+                  {lead.excerpt && <p class="focus-excerpt">{lead.excerpt}</p>}
+                  <a
+                    class="focus-primary"
+                    data-focus-primary
+                    href={path(`notes/${lead.id}/`)}
+                  >
+                    <span>記録を読む</span>
+                    <span class="focus-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                </section>
+              ) : (
+                <a
+                  class="focus-primary"
+                  data-focus-primary
+                  href={entry.repository}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>GitHubでコードを開く</span>
+                  <span class="focus-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              )}
+              {entry.relatedNotes.length > 1 && (
+                <ul
+                  class="focus-other-records"
+                  aria-label="この制作のほかの記録"
+                >
+                  {entry.relatedNotes.slice(1).map((note) => (
+                    <li>
+                      <a href={path(`notes/${note.id}/`)}>{note.title} ↗</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div class="focus-secondary">
+                {lead && (
+                  <a
+                    href={entry.repository}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHubのコード ↗
+                  </a>
+                )}
+                <a href={path('write/?kind=note')}>記録を書く ＋</a>
+                <a href={path('notes/')}>学び・雑記へ ↗</a>
+              </div>
+              <a
+                class="focus-next"
+                href={`#piece-${next.id}`}
+                data-focus-choice={next.id}
+              >
+                <span>もうひとつ開く</span>
+                <span>
+                  {next.title} <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+  <p
+    class="focus-status sr-only"
+    role="status"
+    aria-live="polite"
+    data-focus-status
+  ></p>
+  <div class="focus-footnote">
+    <p>
+      作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。
+    </p>
+    <a href={path()}>現在のホームへ ↗</a>
+  </div>
+</div>
+
+<script>
+  const focusStudy = document.querySelector<HTMLElement>('[data-focus-study]');
+  if (focusStudy) {
+    const root = focusStudy;
+    const panels = [
+      ...root.querySelectorAll<HTMLElement>('[data-focus-panel]'),
+    ];
+    const picker = root.querySelector<HTMLDetailsElement>(
+      '[data-focus-picker]',
+    )!;
+    const summary = picker.querySelector<HTMLElement>('summary')!;
+    const choices = [
+      ...root.querySelectorAll<HTMLAnchorElement>('[data-focus-choice]'),
+    ];
+    const scene = root.querySelector<HTMLElement>('[data-focus-scene]')!;
+    const status = root.querySelector<HTMLElement>('[data-focus-status]')!;
+    const motion = root.querySelector<HTMLButtonElement>(
+      '[data-focus-motion]',
+    )!;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    // These are visual poses, not dates, progress, categories, or work ratings.
+    const poses = [
+      [-5, -2, 0, -26],
+      [2, 3, -2, 32],
+      [-2, -2, 2, 91],
+      [5, 2, 0, 154],
+      [0, -3, -1, 212],
+      [-4, 1, 1, 272],
+    ];
+    let paused = document.documentElement.dataset.motion === 'off';
+    let accentAngle = poses[0][3];
+
+    function syncMotion() {
+      document.documentElement.dataset.motion =
+        paused || reduced.matches ? 'off' : 'on';
+      motion.hidden = reduced.matches;
+      motion.textContent = paused ? '動きを再開' : '動きを止める';
+      motion.setAttribute('aria-pressed', String(paused));
+    }
+    function select(id: string, announce = true) {
+      const index = panels.findIndex(
+        (panel) => panel.dataset.focusPanel === id,
+      );
+      if (index < 0) return false;
+      const current = panels[index];
+      // Reading content changes synchronously. Only the decorative sculpture
+      // transitions, so reduced motion never postpones access to the work.
+      panels.forEach((panel) => {
+        panel.hidden = panel !== current;
+      });
+      choices.forEach((choice) => {
+        if (!picker.contains(choice)) return;
+        if (choice.dataset.focusChoice === id)
+          choice.setAttribute('aria-current', 'true');
+        else choice.removeAttribute('aria-current');
+      });
+      const number = String(index + 1).padStart(2, '0');
+      root
+        .querySelectorAll('[data-focus-position], [data-focus-art-position]')
+        .forEach((el) => {
+          el.textContent = number;
+        });
+      const [turn, x, y, accent] = poses[index];
+      // Take the shorter arc, including the last-to-first selection.
+      accentAngle += ((((accent - accentAngle + 540) % 360) + 360) % 360) - 180;
+      scene.style.setProperty('--focus-turn', `${turn}deg`);
+      scene.style.setProperty('--focus-x', `${x}px`);
+      scene.style.setProperty('--focus-y', `${y}px`);
+      scene.style.setProperty('--focus-accent-turn', `${accentAngle}deg`);
+      root.dataset.openWork = id;
+      if (announce)
+        status.textContent = `${current.querySelector('h2')!.textContent}を開きました。`;
+      return true;
+    }
+    root.dataset.focusEnhanced = '';
+    syncMotion();
+    const initial =
+      panels.find((panel) => `#${panel.id}` === location.hash) ?? panels[0];
+    if (initial?.dataset.focusPanel) select(initial.dataset.focusPanel, false);
+    choices.forEach((choice) => {
+      choice.addEventListener('click', (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+          return;
+        const id = choice.dataset.focusChoice;
+        if (!id || !select(id)) return;
+        event.preventDefault();
+        picker.open = false;
+        history.replaceState(history.state, '', choice.getAttribute('href')!);
+        // Both picker selection and next-work links return to the same visible
+        // control. Do not scroll the reader away from its selection context.
+        summary.focus({ preventScroll: true });
+        const bounds = summary.getBoundingClientRect();
+        if (bounds.top < 12 || bounds.bottom > innerHeight - 12) {
+          // A reader may choose the next work after scrolling a long record.
+          // Restore the shared selection context in one step, never a long
+          // animated trip. Selection near the top keeps its current position.
+          window.scrollTo({
+            top: Math.max(0, scrollY + root.getBoundingClientRect().top - 12),
+            behavior: 'instant',
+          });
+        }
+      });
+    });
+    picker.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && picker.open) {
+        picker.open = false;
+        summary.focus({ preventScroll: true });
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (picker.open && !picker.contains(event.target as Node))
+        picker.open = false;
+    });
+    window.addEventListener('hashchange', () => {
+      const panel = panels.find(
+        (candidate) => `#${candidate.id}` === location.hash,
+      );
+      if (panel?.dataset.focusPanel) select(panel.dataset.focusPanel);
+    });
+    motion.addEventListener('click', () => {
+      paused = !paused;
+      try {
+        localStorage.setItem('archive-motion', paused ? 'off' : 'on');
+      } catch {
+        /* optional preference */
+      }
+      syncMotion();
+    });
+    reduced.addEventListener('change', syncMotion);
+  }
+</script>
+
+<style>
+  .focus-study {
+    padding-block: 1.5rem 1rem;
+  }
+  .focus-context {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.7rem;
+  }
+  .focus-context > div {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .focus-context h1 {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+  .focus-context > div > span {
+    color: var(--muted);
+    font-size: 10px;
+  }
+  .focus-motion {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    padding: 0.4rem 0 0.4rem 0.5rem;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+  }
+  .focus-stage {
+    position: relative;
+  }
+  .focus-selection {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .focus-position {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .focus-position > span {
+    color: var(--ink);
+  }
+  .focus-picker {
+    position: static;
+    flex: 1;
+  }
+  .focus-picker summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    min-height: 44px;
+    gap: 1rem;
+    font-size: 13px;
+  }
+  .focus-picker summary::-webkit-details-marker {
+    display: none;
+  }
+  .focus-picker summary > span {
+    font-size: 21px;
+    font-weight: 300;
+  }
+  .focus-picker[open] summary > span {
+    transform: rotate(45deg);
+  }
+  .focus-picker nav {
+    position: absolute;
+    inset: calc(100% + 8px) 0 auto;
+    max-height: min(60vh, 420px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0.65rem 1.1rem 1rem;
+    border: 1px solid #c8cdc5;
+    border-radius: 0 0 26px 3px;
+    background: #fafaf7;
+    box-shadow: 0 14px 28px #26313712;
+  }
+  .focus-picker ul {
+    list-style: none;
+    padding: 0;
+  }
+  .focus-picker li + li {
+    border-top: 1px solid #dfe2d9;
+  }
+  .focus-picker a {
+    display: grid;
+    grid-template-columns: 20px 1fr 18px;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 52px;
+    padding: 0.65rem 0;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+  .choice-index {
+    font-size: 10px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .choice-mark {
+    opacity: 0;
+    color: #55751d;
+  }
+  .focus-picker a[aria-current] .choice-mark {
+    opacity: 1;
+  }
+  .focus-picker a[aria-current] {
+    color: #3e581c;
+  }
+  .focus-picker a:hover > span:nth-child(2) {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .focus-art {
+    width: min(500px, 100%);
+    margin: 2rem auto;
+    position: relative;
+    pointer-events: none;
+  }
+  .focus-art-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-top: -1.8rem;
+    position: relative;
+  }
+  .focus-art-label > span:nth-child(2) {
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .focus-light {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8aad31;
+    box-shadow: 0 0 0 4px #bede6430;
+  }
+  .focus-piece {
+    padding-block: 1.5rem 3rem;
+  }
+  .focus-title {
+    min-width: 0;
+  }
+  .focus-kicker {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+  .focus-title h2 {
+    font-size: clamp(32px, 3.4vw, 48px);
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    margin-top: 0.55rem;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+  .focus-body {
+    min-width: 0;
+    padding-top: 1.7rem;
+  }
+  .focus-description {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .focus-source {
+    color: var(--muted);
+    font-size: 10px;
+    margin-bottom: 0.4rem;
+  }
+  .focus-record {
+    margin-top: 1.8rem;
+    padding-left: 1.15rem;
+    border-left: 2px solid #94b548;
+  }
+  .focus-record h3 {
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 0.55rem;
+  }
+  .focus-excerpt {
+    color: #555e5c;
+    font-size: 13px;
+    margin-top: 0.65rem;
+    line-height: 1.8;
+  }
+  .focus-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 48px;
+    padding: 0.2rem 0.3rem 0.2rem 0;
+    margin-top: 1.4rem;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .focus-arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #c2df70;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 300;
+  }
+  .focus-primary:hover > span:first-child {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+  .focus-primary:hover .focus-arrow {
+    background: #afcf5a;
+  }
+  .focus-secondary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    margin-top: 1.25rem;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .focus-secondary a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    text-decoration: none;
+  }
+  .focus-secondary a:hover {
+    text-decoration: underline;
+  }
+  .focus-next {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .focus-next > span:first-child {
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .focus-next > span:last-child {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .focus-next:hover > span:last-child {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+  .focus-other-records {
+    padding-left: 1.2rem;
+    margin-top: 1.2rem;
+    font-size: 13px;
+  }
+  .focus-footnote {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.4rem;
+    margin-top: 3rem;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .focus-footnote a {
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+  [data-focus-enhanced] .focus-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: 'selection art' 'title art' 'body art';
+    grid-template-rows: auto auto 1fr;
+    column-gap: 5rem;
+  }
+  [data-focus-enhanced] .focus-selection {
+    grid-area: selection;
+    margin-bottom: 2rem;
+  }
+  [data-focus-enhanced] .focus-reader,
+  [data-focus-enhanced] .focus-piece {
+    display: contents;
+  }
+  [data-focus-enhanced] .focus-title {
+    grid-area: title;
+  }
+  [data-focus-enhanced] .focus-body {
+    grid-area: body;
+  }
+  [data-focus-enhanced] .focus-art {
+    grid-area: art;
+    width: 100%;
+    margin: 2.5rem 0 0;
+    align-self: start;
+  }
+  @media (max-width: 1000px) and (min-width: 761px) {
+    [data-focus-enhanced] .focus-stage {
+      column-gap: 2.5rem;
+      grid-template-columns: 1.1fr 1fr;
+    }
+    .focus-title h2 {
+      font-size: 34px;
+    }
+  }
+  @media (max-width: 760px) {
+    .focus-study {
+      padding-block: 0.65rem 0.5rem;
+    }
+    .focus-context {
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+      min-height: 32px;
+    }
+    .focus-context > div {
+      gap: 0.7rem;
+    }
+    .focus-context h1 {
+      font-size: 11px;
+    }
+    .focus-context > div > span {
+      font-size: 9px;
+    }
+    .focus-motion {
+      font-size: 10px;
+    }
+    .focus-selection {
+      gap: 1rem;
+    }
+    .focus-picker summary {
+      font-size: 12px;
+    }
+    .focus-picker nav {
+      padding: 0.45rem 0.8rem 0.7rem;
+    }
+    .focus-picker a {
+      font-size: 13px;
+      gap: 0.5rem;
+    }
+    .focus-art {
+      width: 180px;
+      margin: 1rem auto;
+    }
+    .focus-art-label {
+      font-size: 9px;
+      gap: 0.45rem;
+      margin-top: -0.5rem;
+    }
+    .focus-art-label > span:last-child {
+      display: none;
+    }
+    .focus-light {
+      width: 4px;
+      height: 4px;
+      box-shadow: 0 0 0 3px #bede6430;
+    }
+    .focus-title h2 {
+      font-size: clamp(21px, 6vw, 25px);
+      line-height: 1.35;
+      margin-top: 0.4rem;
+      letter-spacing: -0.03em;
+    }
+    .focus-kicker {
+      font-size: 10px;
+      letter-spacing: 0.03em;
+    }
+    .focus-body {
+      padding-top: 0.85rem;
+    }
+    .focus-description {
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .focus-source {
+      font-size: 9px;
+      margin-bottom: 0.3rem;
+    }
+    .focus-record {
+      margin-top: 1.15rem;
+      padding-left: 0.85rem;
+    }
+    .focus-record h3 {
+      font-size: 18px;
+      line-height: 1.55;
+      margin-top: 0.4rem;
+    }
+    .focus-excerpt {
+      font-size: 12px;
+      line-height: 1.75;
+      margin-top: 0.45rem;
+    }
+    .focus-primary {
+      font-size: 13px;
+      margin-top: 0.85rem;
+      gap: 1.1rem;
+      min-height: 46px;
+    }
+    .focus-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 23px;
+    }
+    .focus-secondary {
+      margin-top: 0.7rem;
+      gap: 0.3rem 1.3rem;
+    }
+    .focus-next {
+      margin-top: 1.1rem;
+      padding-top: 0.85rem;
+    }
+    .focus-footnote {
+      display: block;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      font-size: 10px;
+    }
+    .focus-footnote a {
+      display: inline-block;
+      margin-top: 0.8rem;
+    }
+    [data-focus-enhanced] .focus-stage {
+      grid-template-columns: minmax(0, 1fr) clamp(120px, 38vw, 150px);
+      grid-template-areas: 'selection selection' 'title art' 'body body';
+      column-gap: 0.5rem;
+    }
+    [data-focus-enhanced] .focus-selection {
+      margin-bottom: 0.9rem;
+    }
+    [data-focus-enhanced] .focus-title {
+      align-self: center;
+    }
+    [data-focus-enhanced] .focus-art {
+      margin: 0;
+      min-height: 126px;
+      align-self: center;
+    }
+  }
+</style>

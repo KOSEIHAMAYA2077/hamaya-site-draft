@@ -34,6 +34,8 @@ npm run new -- work first-work --title "制作の記録"
 
 検証済みGitHub作品を眺める独立案「制作の棚」は、明示した非公開比較buildだけで表示します。既存ホームや通常の下書き除外は保持しています。使い方、資料の範囲、関連記録の対応、検証結果は [docs/COLLECTION_STUDY.md](docs/COLLECTION_STUDY.md) にあります。
 
+Astraの批評を受けた別比較版「一作品を開く」は、同じ比較buildの `/compare/focus/` です。作品を主役にした表示、モバイルの切替、立体との対応、画面位置の実測は [docs/FOCUS_STUDY.md](docs/FOCUS_STUDY.md) にあります。
+
 ## 確認する
 
 ```sh
