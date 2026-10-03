@@ -5,6 +5,7 @@ import EmptyState from './EmptyState.astro';
 import EntryRow from './EntryRow.astro';
 import StudioVisual from './StudioVisual.astro';
 import SignalVisual from './SignalVisual.astro';
+import LocalTools from './LocalTools.astro';
 import { site } from '../lib/site';
 interface Props {
   direction?: 'orbit' | 'paper' | 'field' | 'signal';
@@ -50,12 +51,15 @@ const recent = [...works, ...notes]
         <br />
         あとで振り返れるように、ここに残します。
       </p>
-      <a class="round-link" href={path('works/')}>
-        <span>作品を見にいく</span>
-        <span class="round-arrow" aria-hidden="true">
-          ↗
-        </span>
-      </a>
+      <div class="hero-actions">
+        <a class="round-link" href={path('works/')}>
+          <span>作品を見にいく</span>
+          <span class="round-arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+        <LocalTools />
+      </div>
       <p class="hero-footnote">
         <span aria-hidden="true">＋</span>少しずつ、書き足していく場所。
       </p>
@@ -229,6 +233,9 @@ const recent = [...works, ...notes]
     );
   }
   const pointer = window.matchMedia('(pointer: fine)');
+  const scene = visual?.querySelector<SVGSVGElement>(
+    '.studio-visual, .signal-visual',
+  );
   let paused = false;
   try {
     paused = localStorage.getItem('archive-motion') === 'off';
@@ -236,11 +243,34 @@ const recent = [...works, ...notes]
     /* preference storage is optional */
   }
   let queued = false;
+  let inView = true;
+  let controlsHovered = false;
   let pointerX = 0;
   let pointerY = 0;
+  function inspectingMaterial() {
+    return (
+      controlsHovered || Boolean(materials?.contains(document.activeElement))
+    );
+  }
+  function syncPoseHold() {
+    if (!visual || !scene) return;
+    const hold = inspectingMaterial() && !paused && !reduced.matches;
+    if (hold && !visual.hasAttribute('data-pose-fixed')) {
+      visual.style.setProperty(
+        '--fixed-pose',
+        getComputedStyle(scene).transform,
+      );
+      visual.setAttribute('data-pose-fixed', '');
+    } else if (!hold) {
+      visual.removeAttribute('data-pose-fixed');
+      visual.style.removeProperty('--fixed-pose');
+      queue();
+    }
+  }
   function paint() {
     queued = false;
-    if (!visual || paused || reduced.matches) return;
+    if (!visual || paused || reduced.matches || !inView || inspectingMaterial())
+      return;
     const bounds = visual.getBoundingClientRect();
     const progress = Math.max(
       -1,
@@ -263,7 +293,14 @@ const recent = [...works, ...notes]
     );
   }
   function queue() {
-    if (!queued && visual && !paused && !reduced.matches) {
+    if (
+      !queued &&
+      visual &&
+      !paused &&
+      !reduced.matches &&
+      inView &&
+      !inspectingMaterial()
+    ) {
       queued = true;
       requestAnimationFrame(paint);
     }
@@ -281,6 +318,7 @@ const recent = [...works, ...notes]
         visual.style.removeProperty(key),
       );
     } else queue();
+    syncPoseHold();
   }
   if (visual && toggle) {
     sync();
@@ -295,6 +333,7 @@ const recent = [...works, ...notes]
     });
     visual.addEventListener('pointermove', (event) => {
       if (!pointer.matches || event.pointerType !== 'mouse') return;
+      if ((event.target as Element).closest('button, .material-picker')) return;
       const bounds = visual.getBoundingClientRect();
       pointerX = Math.max(
         -1,
@@ -314,5 +353,49 @@ const recent = [...works, ...notes]
     window.addEventListener('scroll', queue, { passive: true });
     window.addEventListener('resize', queue, { passive: true });
     reduced.addEventListener('change', sync);
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        if (inView) queue();
+      });
+      observer.observe(visual);
+    }
+    if (materials) {
+      materials.addEventListener('pointerenter', () => {
+        controlsHovered = true;
+        syncPoseHold();
+      });
+      materials.addEventListener('pointerleave', () => {
+        controlsHovered = false;
+        syncPoseHold();
+      });
+      materials.addEventListener('focusin', syncPoseHold);
+      materials.addEventListener('focusout', () =>
+        queueMicrotask(syncPoseHold),
+      );
+    }
   }
 </script>
+
+<style>
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.2rem;
+    margin-top: 2.1rem;
+  }
+  .hero-actions :global(.round-link) {
+    margin-top: 0 !important;
+  }
+  @media (max-width: 760px) {
+    .hero-actions {
+      margin-top: 1.5rem;
+    }
+  }
+  .hero-object[data-pose-fixed] > :global(.studio-visual),
+  .hero-object[data-pose-fixed] > :global(.signal-visual) {
+    transform: var(--fixed-pose, none) !important;
+    transition: none !important;
+  }
+</style>

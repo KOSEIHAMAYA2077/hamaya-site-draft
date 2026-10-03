@@ -51,6 +51,7 @@ const contentFiles = (
 ).filter((filename) => filename.endsWith('.md'));
 const published = [];
 const drafts = [];
+const draftTitles = [];
 const approvedExternalLinks = new Set(
   Object.values(site.links)
     .filter(Boolean)
@@ -63,6 +64,7 @@ for (const filename of contentFiles) {
   const data = parseYaml(header) || {};
   if (data.draft !== false) {
     drafts.push(filename);
+    if (typeof data.title === 'string') draftTitles.push(data.title);
     continue;
   }
   published.push(filename);
@@ -189,6 +191,39 @@ test('確認待ちの全下書きは詳細ルートと一覧リンクに混入�
         (match) => attributes(match[0]).href,
       );
       assert.ok(!hrefs.includes(draftHref), `下書きへのリンク: ${draftHref}`);
+    }
+  }
+});
+
+test('下書きの題はHTML・JS・JSONへ埋め込まれない', async () => {
+  const output = await Promise.all(
+    builtFiles
+      .filter((filename) => /\.(?:html|js|json)$/.test(filename))
+      .map((filename) => readFile(filename, 'utf8')),
+  );
+  const publishedTitles = new Set(
+    await Promise.all(
+      published.map(async (filename) => {
+        const content = await readFile(filename, 'utf8');
+        return parseYaml(
+          content.match(/^---\s*\n([\s\S]*?)\n---(?:\n|$)/)?.[1] || '',
+        ).title;
+      }),
+    ),
+  );
+  for (const title of draftTitles.filter(
+    (title) => !publishedTitles.has(title),
+  )) {
+    const escaped = title
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;');
+    for (const content of output) {
+      assert.ok(
+        !content.includes(title) && !content.includes(escaped),
+        `下書きの題が出力されています: ${title}`,
+      );
     }
   }
 });

@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Toc from '../../components/Toc.astro';
 import { publishedWorks, formatDate } from '../../lib/content';
 import { path } from '../../lib/paths';
 export async function getStaticPaths() {
@@ -10,7 +11,7 @@ export async function getStaticPaths() {
   }));
 }
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 ---
 
 <Layout
@@ -45,6 +46,7 @@ const { Content } = await render(entry);
         decoding="async"
       />
     )}
+    <Toc headings={headings} />
     <div class="prose">
       <Content />
     </div>

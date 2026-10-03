@@ -1,0 +1,977 @@
+---
+import { publishedWorks, publishedNotes } from '../lib/content';
+import { path } from '../lib/paths';
+import { site } from '../lib/site';
+import SignalVisual from './SignalVisual.astro';
+import DeskEntry from './DeskEntry.astro';
+
+const works = await publishedWorks();
+const notes = await publishedNotes();
+const categories = [
+  { id: 'works', label: '作品', number: '01', count: `${works.length}件` },
+  {
+    id: 'notes',
+    label: '学び・雑記',
+    number: '02',
+    count: `${notes.length}件`,
+  },
+  {
+    id: 'about',
+    label: '自己紹介',
+    number: '03',
+    count: site.bio ? '紹介' : '未入力',
+  },
+];
+---
+
+<div class="desk-surface shell" data-desk-surface>
+  <div class="desk-study">
+    <a href={path('directions/')}>← 方向性の比較へ</a>
+    <span>分類を開く制作机</span>
+  </div>
+
+  <section class="desk-hero" aria-labelledby="desk-title">
+    <header class="desk-intro">
+      <div>
+        <p class="desk-eyebrow">
+          <span aria-hidden="true"></span>制作と記録
+        </p>
+        <h1 id="desk-title">
+          つくったものと、
+          <br />
+          考えたこと。
+        </h1>
+      </div>
+      <p class="desk-description">
+        制作物、学んだこと、日々の雑記。
+        <br />
+        気になるところから、開いてみてください。
+      </p>
+    </header>
+
+    <div class="desk-stage" data-desk-stage>
+      <div class="desk-selector">
+        <p class="desk-selector-caption">何を見ますか</p>
+        <div
+          class="desk-choices"
+          role="group"
+          aria-label="この制作机で開く分類"
+        >
+          {categories.map((category) => (
+            <div class="desk-choice">
+              <a class="desk-fallback" href={path(`${category.id}/`)}>
+                <span class="desk-choice-number" aria-hidden="true">
+                  {category.number}
+                </span>
+                <span class="desk-choice-label">{category.label}</span>
+                <span class="desk-choice-count">
+                  {category.count} <span aria-hidden="true">↗</span>
+                </span>
+              </a>
+              <button
+                type="button"
+                data-desk-choice={category.id}
+                data-desk-announcement={`${category.label}、${category.id === 'about' ? category.count : `公開${category.count}`}を表示しました。`}
+                aria-pressed={category.id === 'works' ? 'true' : 'false'}
+                aria-controls={`desk-panel-${category.id}`}
+                hidden
+              >
+                <span class="desk-choice-number" aria-hidden="true">
+                  {category.number}
+                </span>
+                <span class="desk-choice-label">{category.label}</span>
+                <span class="desk-choice-count">
+                  {category.count} <span aria-hidden="true">＋</span>
+                </span>
+              </button>
+            </div>
+          ))}
+        </div>
+        <p class="desk-selector-note">選んだ分類を、この机に。</p>
+        <div class="desk-rail-mark" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="desk-reader">
+        <div class="desk-planes" aria-hidden="true">
+          <span class="desk-plane-back"></span>
+          <span class="desk-plane-front"></span>
+        </div>
+        <div class="desk-sculpture" aria-hidden="true">
+          <SignalVisual />
+        </div>
+
+        <section
+          class="desk-panel"
+          id="desk-panel-works"
+          aria-labelledby="desk-works-title"
+          data-desk-panel="works"
+        >
+          <header class="desk-panel-heading">
+            <div>
+              <p class="desk-eyebrow">01 / WORKS</p>
+              <h2 id="desk-works-title">作品</h2>
+            </div>
+            <p class="desk-count">
+              <strong>{works.length.toString().padStart(2, '0')}</strong>
+              <span>公開作品</span>
+            </p>
+          </header>
+          {works.length ? (
+            <ul class="desk-entry-list">
+              {works.slice(0, 3).map((entry) => (
+                <DeskEntry entry={entry} />
+              ))}
+            </ul>
+          ) : (
+            <div class="desk-empty">
+              <span class="desk-empty-mark" aria-hidden="true">
+                ＋
+              </span>
+              <div>
+                <h3>まだ公開している作品はありません。</h3>
+                <p>制作の記録を、少しずつ追加していきます。</p>
+              </div>
+            </div>
+          )}
+          <a class="desk-list-link" href={path('works/')}>
+            <span>作品の一覧へ</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </section>
+
+        <section
+          class="desk-panel"
+          id="desk-panel-notes"
+          aria-labelledby="desk-notes-title"
+          data-desk-panel="notes"
+        >
+          <header class="desk-panel-heading">
+            <div>
+              <p class="desk-eyebrow">02 / NOTES</p>
+              <h2 id="desk-notes-title">学び・雑記</h2>
+            </div>
+            <p class="desk-count">
+              <strong>{notes.length.toString().padStart(2, '0')}</strong>
+              <span>公開記事</span>
+            </p>
+          </header>
+          {notes.length ? (
+            <ul class="desk-entry-list">
+              {notes.slice(0, 3).map((entry) => (
+                <DeskEntry entry={entry} />
+              ))}
+            </ul>
+          ) : (
+            <div class="desk-empty">
+              <span class="desk-empty-mark" aria-hidden="true">
+                ＋
+              </span>
+              <div>
+                <h3>まだ公開している記事はありません。</h3>
+                <p>学んだことや、日々の考えを残していきます。</p>
+              </div>
+            </div>
+          )}
+          <a class="desk-list-link" href={path('notes/')}>
+            <span>学び・雑記の一覧へ</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </section>
+
+        <section
+          class="desk-panel"
+          id="desk-panel-about"
+          aria-labelledby="desk-about-title"
+          data-desk-panel="about"
+        >
+          <header class="desk-panel-heading">
+            <div>
+              <p class="desk-eyebrow">03 / ABOUT</p>
+              <h2 id="desk-about-title">自己紹介</h2>
+            </div>
+            <p class="desk-count desk-profile-state">
+              <span>{site.bio ? '紹介文あり' : '紹介文未入力'}</span>
+            </p>
+          </header>
+          <div class="desk-profile">
+            {site.portrait ? (
+              <img
+                src={path(site.portrait.src)}
+                alt={site.portrait.alt}
+                width="96"
+                height="112"
+                loading="lazy"
+              />
+            ) : (
+              <div class="desk-portrait-empty">
+                <span aria-hidden="true">＋</span>
+                <p>写真未入力</p>
+              </div>
+            )}
+            <div>
+              <h3>{site.name}</h3>
+              <p>{site.bio || '自己紹介文は未入力です。'}</p>
+            </div>
+          </div>
+          <dl class="desk-profile-links">
+            <div>
+              <dt>GitHub</dt>
+              <dd>
+                <a href={site.links.github}>
+                  プロフィール <span aria-hidden="true">↗</span>
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>AtCoder</dt>
+              <dd>
+                {site.links.atcoder ? (
+                  <a href={site.links.atcoder}>
+                    プロフィール <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  'URL未入力'
+                )}
+              </dd>
+            </div>
+          </dl>
+          <a class="desk-list-link" href={path('about/')}>
+            <span>自己紹介のページへ</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </section>
+      </div>
+    </div>
+    <p
+      class="sr-only"
+      data-desk-status
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></p>
+    <p class="desk-afterword">
+      <span aria-hidden="true">＋</span>少しずつ、書き足していく場所。
+    </p>
+  </section>
+</div>
+
+<script>
+  const desk = document.querySelector<HTMLElement>('[data-desk-surface]');
+  if (desk) {
+    const choices = [
+      ...desk.querySelectorAll<HTMLButtonElement>('[data-desk-choice]'),
+    ];
+    const panels = [...desk.querySelectorAll<HTMLElement>('[data-desk-panel]')];
+    const status = desk.querySelector<HTMLElement>('[data-desk-status]');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function syncMotion() {
+      let preferenceOff = document.documentElement.dataset.motion === 'off';
+      try {
+        preferenceOff = localStorage.getItem('archive-motion') === 'off';
+      } catch {
+        /* The Layout preference still applies when storage is unavailable. */
+      }
+      desk!.dataset.deskMotion =
+        reduced.matches || preferenceOff ? 'off' : 'on';
+    }
+
+    syncMotion();
+    reduced.addEventListener('change', syncMotion);
+    window.addEventListener('storage', syncMotion);
+    panels.forEach((panel) => {
+      panel.hidden = panel.dataset.deskPanel !== 'works';
+    });
+    desk.dataset.deskEnhanced = 'true';
+    desk.querySelectorAll<HTMLElement>('.desk-fallback').forEach((link) => {
+      link.hidden = true;
+    });
+    choices.forEach((choice) => {
+      choice.hidden = false;
+      choice.addEventListener('click', () => {
+        const selected = choice.dataset.deskChoice;
+        if (!panels.some((panel) => panel.dataset.deskPanel === selected))
+          return;
+        syncMotion();
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.deskPanel !== selected;
+        });
+        choices.forEach((button) => {
+          button.setAttribute('aria-pressed', String(button === choice));
+        });
+        desk.dataset.deskOpen = 'true';
+        desk.dataset.deskSelected = selected;
+        if (status) status.textContent = choice.dataset.deskAnnouncement || '';
+      });
+    });
+  }
+</script>
+
+<style>
+  .desk-surface {
+    --desk-edge: #b8c0bb;
+    --desk-accent: #c8e84d;
+    --desk-ink: #2b3234;
+    color: var(--desk-ink);
+    padding-top: 21px;
+  }
+
+  .desk-study {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: #606864;
+    font-size: 11px;
+  }
+
+  .desk-study a {
+    text-decoration: none;
+  }
+  .desk-study a:hover {
+    text-decoration: underline;
+  }
+
+  .desk-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 24px 24px;
+  }
+
+  .desk-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #606864;
+    letter-spacing: 0.09em;
+  }
+
+  .desk-eyebrow > span {
+    width: 7px;
+    height: 7px;
+    background: var(--desk-accent);
+    border: 1px solid #7b8c53;
+  }
+
+  .desk-intro h1 {
+    margin-top: 10px;
+    font-size: clamp(32px, 3.8vw, 50px);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.3;
+  }
+
+  .desk-description {
+    padding-bottom: 5px;
+    color: #606864;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .desk-stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    min-height: 368px;
+    border: 1px solid var(--desk-edge);
+    background: #f8f8f2;
+    box-shadow: 8px 8px 0 #e4e7df;
+    isolation: isolate;
+  }
+
+  .desk-selector {
+    position: relative;
+    z-index: 2;
+    padding: 25px 18px;
+    border-right: 1px solid var(--desk-edge);
+    background: #eceee7;
+  }
+
+  .desk-selector-caption {
+    margin-bottom: 18px;
+    font-size: 12px;
+    color: #606864;
+  }
+
+  .desk-choices {
+    display: grid;
+    gap: 9px;
+  }
+  .desk-choice {
+    min-width: 0;
+  }
+
+  .desk-choice button,
+  .desk-choice a {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    width: 100%;
+    text-align: left;
+    align-items: center;
+    column-gap: 8px;
+    padding: 12px 13px;
+    min-height: 67px;
+    border: 1px solid #bfc5bd;
+    border-radius: 2px;
+    background: #f8f8f2;
+    text-decoration: none;
+  }
+
+  .desk-choice button:hover,
+  .desk-choice a:hover {
+    background: #ffffff;
+    border-color: #738175;
+  }
+
+  .desk-choice button[aria-pressed='true'] {
+    border-color: #606e62;
+    box-shadow: 3px 3px 0 #c7d6ae;
+    background: #ffffff;
+  }
+
+  .desk-choice-number {
+    align-self: start;
+    font-size: 10px;
+    color: #606864;
+    line-height: 2;
+  }
+
+  .desk-choice-label {
+    font-size: 15px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  .desk-choice-count {
+    grid-column: 2;
+    font-size: 10px;
+    color: #606864;
+  }
+  .desk-choice-count > span {
+    float: right;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+  .desk-selector-note {
+    margin-top: 21px;
+    font-size: 11px;
+    color: #606864;
+  }
+  .desk-rail-mark {
+    display: flex;
+    gap: 5px;
+    margin-top: 17px;
+  }
+  .desk-rail-mark > span {
+    width: 5px;
+    height: 5px;
+    border: 1px solid #8b9690;
+  }
+  .desk-rail-mark > span:first-child {
+    background: var(--desk-accent);
+  }
+
+  .desk-reader {
+    position: relative;
+    isolation: isolate;
+    padding: 25px 28px 21px;
+    overflow: hidden;
+    overflow: clip;
+    min-width: 0;
+    background: linear-gradient(105deg, #fafaf5 28%, #edf0e980);
+  }
+
+  .desk-planes {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .desk-planes > span {
+    position: absolute;
+    border: 1px solid #a8b3b068;
+    background: linear-gradient(145deg, #ffffff85, #bccbd318 60%, #ffffff7a);
+    transition: transform 350ms cubic-bezier(0.2, 0.75, 0.3, 1);
+  }
+
+  .desk-plane-back {
+    width: 310px;
+    height: 250px;
+    top: 5px;
+    right: 48px;
+    transform: rotate(-17deg) skewY(4deg);
+  }
+  .desk-plane-front {
+    width: 315px;
+    height: 246px;
+    top: 95px;
+    right: -35px;
+    transform: rotate(9deg) skewY(-6deg);
+  }
+
+  .desk-sculpture {
+    position: absolute;
+    top: 8px;
+    right: -30px;
+    width: 385px;
+    transform-origin: 100% 0;
+    pointer-events: none;
+    z-index: -1;
+    transition:
+      transform 350ms cubic-bezier(0.2, 0.75, 0.3, 1),
+      opacity 350ms ease;
+  }
+
+  .desk-sculpture :global(svg) {
+    animation: none !important;
+  }
+  .desk-sculpture :global(.signal-visual) {
+    --signal-accent: #c8e84d;
+  }
+  .desk-panel {
+    position: relative;
+    min-width: 0;
+  }
+  .desk-panel + .desk-panel {
+    margin-top: 42px;
+    padding-top: 25px;
+    border-top: 1px solid var(--desk-edge);
+  }
+  [data-desk-enhanced] .desk-panel {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .desk-panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+    max-width: calc(100% - 160px);
+  }
+
+  .desk-panel-heading h2 {
+    font-size: 27px;
+    margin-top: 5px;
+    line-height: 1.5;
+  }
+  .desk-count {
+    display: grid;
+    justify-items: end;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  .desk-count strong {
+    font-size: 31px;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+  }
+  .desk-count > span {
+    font-size: 10px;
+    color: #606864;
+  }
+  .desk-profile-state > span {
+    font-size: 11px;
+  }
+  .desk-empty {
+    display: flex;
+    gap: 15px;
+    padding: 23px 0;
+    max-width: calc(100% - 205px);
+    border-block: 1px solid #ccd0ca;
+  }
+  .desk-empty-mark {
+    color: #778773;
+    font-size: 27px;
+    line-height: 1.1;
+    font-weight: 300;
+  }
+  .desk-empty h3 {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .desk-empty p {
+    margin-top: 9px;
+    color: #606864;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .desk-entry-list {
+    padding: 0;
+    margin: 0;
+    max-width: calc(100% - 180px);
+  }
+
+  .desk-list-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    width: fit-content;
+    min-width: 180px;
+    min-height: 44px;
+    margin-top: 24px;
+    padding: 8px 0;
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 1px solid #7e8b81;
+  }
+
+  .desk-list-link > span:last-child {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .desk-list-link:hover {
+    border-bottom-color: #2b3234;
+    background: #eff3e8;
+  }
+  .desk-profile {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 19px;
+    max-width: calc(100% - 160px);
+  }
+  .desk-profile img {
+    width: 76px;
+    aspect-ratio: 6 / 7;
+    object-fit: cover;
+    border: 1px solid #ccd0ca;
+  }
+  .desk-profile h3 {
+    font-size: 19px;
+  }
+  .desk-profile > div > p {
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #606864;
+    white-space: pre-line;
+  }
+  .desk-portrait-empty {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    border: 1px solid #ccd0ca;
+    background: #e9ede5;
+    min-height: 86px;
+  }
+  .desk-portrait-empty > span {
+    font-size: 21px;
+    line-height: 1.2;
+    color: #778773;
+  }
+  .desk-portrait-empty > p {
+    font-size: 10px !important;
+  }
+  .desk-profile-links {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 26px;
+    font-size: 12px;
+  }
+  .desk-profile-links > div {
+    display: flex;
+    gap: 10px;
+  }
+  .desk-profile-links dt {
+    color: #606864;
+  }
+  .desk-afterword {
+    margin-top: 20px;
+    color: #606864;
+    font-size: 11px;
+  }
+  .desk-afterword > span {
+    margin-right: 9px;
+    color: #809477;
+  }
+
+  [data-desk-open='true'] .desk-sculpture {
+    opacity: 0.58;
+    transform: translate(-8px, -8px) scale(0.34) rotate(12deg);
+  }
+  [data-desk-open='true'] .desk-plane-back {
+    transform: translate(155px, -130px) rotate(-10deg) scale(0.5);
+  }
+  [data-desk-open='true'] .desk-plane-front {
+    transform: translate(135px, -60px) rotate(5deg) scale(0.5);
+  }
+  [data-desk-selected='notes'] .desk-sculpture {
+    transform: translate(-8px, -8px) scale(0.34) rotate(-7deg);
+  }
+  [data-desk-selected='about'] .desk-sculpture {
+    transform: translate(-8px, -8px) scale(0.34) rotate(27deg);
+  }
+  [data-desk-open='true'] .desk-empty,
+  [data-desk-open='true'] .desk-entry-list,
+  [data-desk-open='true'] .desk-profile {
+    max-width: 100%;
+  }
+
+  :global(html[data-motion='off']) .desk-sculpture,
+  :global(html[data-motion='off']) .desk-planes > span,
+  [data-desk-motion='off'] .desk-sculpture,
+  [data-desk-motion='off'] .desk-planes > span {
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .desk-sculpture,
+    .desk-planes > span {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 1020px) and (min-width: 761px) {
+    .desk-stage {
+      grid-template-columns: 190px minmax(0, 1fr);
+    }
+    .desk-selector {
+      padding-inline: 13px;
+    }
+    .desk-reader {
+      padding-inline: 22px;
+    }
+    .desk-sculpture {
+      width: 300px;
+      right: -40px;
+      top: 50px;
+    }
+    .desk-empty {
+      max-width: calc(100% - 150px);
+    }
+    .desk-entry-list,
+    .desk-profile {
+      max-width: calc(100% - 100px);
+    }
+    .desk-panel-heading {
+      max-width: calc(100% - 90px);
+    }
+    .desk-description {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .desk-surface {
+      padding-top: 15px;
+    }
+    .desk-study {
+      font-size: 10px;
+      gap: 8px;
+    }
+    .desk-intro {
+      display: block;
+      padding-block: 20px 20px;
+    }
+    .desk-intro h1 {
+      font-size: clamp(29px, 7.8vw, 42px);
+      line-height: 1.32;
+      margin-top: 8px;
+    }
+    .desk-description {
+      margin-top: 12px;
+      padding-bottom: 0;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    .desk-stage {
+      grid-template-columns: minmax(0, 1fr);
+      min-height: 0;
+      box-shadow: 5px 5px 0 #e4e7df;
+    }
+    .desk-selector {
+      border-right: 0;
+      border-bottom: 1px solid var(--desk-edge);
+      padding: 11px 11px 13px;
+    }
+    .desk-selector-caption {
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+    .desk-choices {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+    }
+    .desk-choice button,
+    .desk-choice a {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 76px;
+      padding: 8px 9px;
+      gap: 2px;
+    }
+    .desk-choice-number {
+      font-size: 9px;
+      line-height: 1.3;
+    }
+    .desk-choice-label {
+      font-size: 13px;
+    }
+    .desk-choice-count {
+      width: 100%;
+      font-size: 10px;
+    }
+    .desk-selector-note,
+    .desk-rail-mark {
+      display: none;
+    }
+    .desk-reader {
+      padding: 20px 18px 19px;
+    }
+    .desk-panel-heading {
+      margin-bottom: 18px;
+      max-width: calc(100% - 54px);
+      gap: 12px;
+    }
+    .desk-panel-heading h2 {
+      font-size: 23px;
+      margin-top: 3px;
+    }
+    .desk-panel-heading .desk-eyebrow {
+      font-size: 9px;
+    }
+    .desk-count strong {
+      font-size: 25px;
+    }
+    .desk-count > span {
+      font-size: 9px;
+    }
+    .desk-sculpture {
+      top: -2px;
+      right: -39px;
+      width: 140px;
+      opacity: 0.65;
+    }
+    .desk-plane-back {
+      width: 110px;
+      height: 84px;
+      top: 2px;
+      right: 0;
+    }
+    .desk-plane-front {
+      width: 95px;
+      height: 80px;
+      top: 35px;
+      right: -8px;
+    }
+    .desk-empty {
+      max-width: 100%;
+      padding-block: 17px;
+      gap: 10px;
+    }
+    .desk-empty h3 {
+      font-size: 14px;
+    }
+    .desk-empty p {
+      margin-top: 7px;
+      font-size: 12px;
+    }
+    .desk-empty-mark {
+      font-size: 21px;
+    }
+    .desk-entry-list {
+      max-width: 100%;
+    }
+    .desk-list-link {
+      margin-top: 14px;
+      font-size: 13px;
+      min-width: 165px;
+    }
+    .desk-profile {
+      max-width: 100%;
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 12px;
+    }
+    .desk-profile img {
+      width: 56px;
+    }
+    .desk-profile h3 {
+      font-size: 18px;
+    }
+    .desk-profile > div > p {
+      font-size: 12px;
+    }
+    .desk-portrait-empty {
+      min-height: 74px;
+    }
+    .desk-portrait-empty > p {
+      font-size: 9px !important;
+    }
+    .desk-profile-links {
+      margin-top: 16px;
+      font-size: 11px;
+      gap: 10px;
+    }
+    .desk-profile-links > div {
+      gap: 8px;
+    }
+    .desk-profile-state > span {
+      font-size: 9px;
+    }
+    .desk-afterword {
+      margin-top: 16px;
+      font-size: 10px;
+    }
+    [data-desk-open='true'] .desk-sculpture {
+      transform: translate(-2px, -5px) scale(0.56) rotate(12deg);
+    }
+    [data-desk-selected='notes'] .desk-sculpture {
+      transform: translate(-2px, -5px) scale(0.56) rotate(-7deg);
+    }
+    [data-desk-selected='about'] .desk-sculpture {
+      transform: translate(-2px, -5px) scale(0.56) rotate(27deg);
+    }
+    [data-desk-open='true'] .desk-plane-back {
+      transform: translate(25px, -30px) rotate(-10deg) scale(0.5);
+    }
+    [data-desk-open='true'] .desk-plane-front {
+      transform: translate(25px, -15px) rotate(5deg) scale(0.5);
+    }
+  }
+
+  @media (max-width: 360px) {
+    .desk-study {
+      font-size: 9px;
+    }
+    .desk-intro {
+      padding-block: 18px;
+    }
+    .desk-intro h1 {
+      font-size: 29px;
+    }
+    .desk-description {
+      font-size: 11px;
+    }
+    .desk-reader {
+      padding-inline: 14px;
+    }
+    .desk-selector {
+      padding-inline: 9px;
+    }
+    .desk-choice button,
+    .desk-choice a {
+      padding-inline: 7px;
+    }
+    .desk-choice-label {
+      font-size: 12px;
+    }
+    .desk-empty h3 {
+      font-size: 13px;
+    }
+    .desk-panel-heading {
+      max-width: calc(100% - 45px);
+    }
+  }
+</style>

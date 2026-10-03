@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import EmptyState from '../../components/EmptyState.astro';
 import EntryRow from '../../components/EntryRow.astro';
 import { publishedNotes } from '../../lib/content';
+import { NOTE_QUERY_LIMIT } from '../../lib/note-query.mjs';
 const notes = await publishedNotes();
 ---
 
@@ -39,8 +40,18 @@ const notes = await publishedNotes();
           id="note-search"
           type="search"
           placeholder="タイトル・本文の要約・タグ"
+          maxlength={NOTE_QUERY_LIMIT}
         />
       </div>
+      <button
+        type="button"
+        class="reset-button clear-query"
+        data-reset
+        data-clear-query
+        hidden
+      >
+        条件をリセット
+      </button>
     </div>
     <p
       class="results-count"
@@ -72,6 +83,13 @@ const notes = await publishedNotes();
   </div>
 </Layout>
 <script>
+  import {
+    normalizeNoteQuery,
+    noteQueryString,
+    readNoteQuery,
+    withNoteQuery,
+  } from '../../lib/note-query.mjs';
+
   const tools = document.querySelector<HTMLElement>('[data-note-tools]');
   const search = document.querySelector<HTMLInputElement>('#note-search');
   const entries = [...document.querySelectorAll<HTMLElement>('[data-entry]')];
@@ -80,39 +98,89 @@ const notes = await publishedNotes();
   ];
   const count = document.querySelector<HTMLElement>('[data-count]');
   const noResults = document.querySelector<HTMLElement>('[data-no-results]');
-  let category = 'all';
+  const clearQuery = document.querySelector<HTMLElement>('[data-clear-query]');
+  const links = entries.flatMap((entry) => {
+    const link = entry.querySelector<HTMLAnchorElement>('a');
+    return link ? [{ link, pathname: link.pathname }] : [];
+  });
+  let conditions = readNoteQuery(window.location.search);
+
   function update() {
-    const query = (search?.value || '').trim().toLocaleLowerCase('ja');
+    const query = conditions.q.toLocaleLowerCase('ja');
     let visible = 0;
     entries.forEach((entry) => {
       entry.hidden =
-        !(category === 'all' || entry.dataset.category === category) ||
-        !(entry.dataset.search || '').includes(query);
+        !(
+          conditions.category === 'all' ||
+          entry.dataset.category === conditions.category
+        ) || !(entry.dataset.search || '').includes(query);
       if (!entry.hidden) visible += 1;
     });
     filters.forEach((button) =>
       button.setAttribute(
         'aria-pressed',
-        String(button.dataset.filter === category),
+        String(button.dataset.filter === conditions.category),
       ),
     );
     if (count) count.textContent = `${visible}件の記録`;
     if (noResults) noResults.hidden = visible > 0;
-  }
-  if (tools && search && entries.length > 0) {
-    tools.hidden = false;
-    search.addEventListener('input', update);
-    filters.forEach((button) =>
-      button.addEventListener('click', () => {
-        category = button.dataset.filter || 'all';
-        update();
-      }),
-    );
-    document.querySelector('[data-reset]')?.addEventListener('click', () => {
-      category = 'all';
-      search.value = '';
-      update();
-      search.focus();
+    if (clearQuery)
+      clearQuery.hidden = !conditions.q && conditions.category === 'all';
+    links.forEach(({ link, pathname }) => {
+      link.href = withNoteQuery(pathname, conditions);
     });
   }
+
+  function saveConditions() {
+    const next = `${window.location.pathname}${noteQueryString(conditions)}${window.location.hash}`;
+    if (
+      next !==
+      `${window.location.pathname}${window.location.search}${window.location.hash}`
+    )
+      window.history.replaceState(window.history.state, '', next);
+    update();
+  }
+
+  function restoreConditions() {
+    conditions = readNoteQuery(window.location.search);
+    if (search) search.value = conditions.q;
+    saveConditions();
+  }
+
+  if (tools && search && entries.length > 0) {
+    tools.hidden = false;
+    restoreConditions();
+    search.addEventListener('input', () => {
+      conditions = normalizeNoteQuery({
+        q: search.value,
+        category: conditions.category,
+      });
+      saveConditions();
+    });
+    filters.forEach((button) =>
+      button.addEventListener('click', () => {
+        conditions = normalizeNoteQuery({
+          q: search.value,
+          category: button.dataset.filter,
+        });
+        saveConditions();
+      }),
+    );
+    document.querySelectorAll('[data-reset]').forEach((button) =>
+      button.addEventListener('click', () => {
+        conditions = normalizeNoteQuery();
+        search.value = '';
+        saveConditions();
+        search.focus();
+      }),
+    );
+    window.addEventListener('popstate', restoreConditions);
+    window.addEventListener('pageshow', restoreConditions);
+  }
 </script>
+
+<style>
+  .clear-query {
+    flex-shrink: 0;
+  }
+</style>

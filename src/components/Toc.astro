@@ -1,0 +1,60 @@
+---
+import { articleHeadings } from '../lib/article-headings.mjs';
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+const { headings } = Astro.props;
+const sections = articleHeadings(headings);
+---
+
+{sections.length > 0 && (
+  <nav class="article-toc" aria-label="この記事の見出し">
+    <details>
+      <summary>
+        この記事の見出し <span>{sections.length}項目</span>
+      </summary>
+      <ol>
+        {sections.map(({ text, href }) => (
+          <li>
+            <a href={href}>{text}</a>
+          </li>
+        ))}
+      </ol>
+    </details>
+  </nav>
+)}
+
+<style>
+  .article-toc {
+    margin-block: 1.5rem 2rem;
+    border-block: 1px solid var(--line);
+  }
+  summary {
+    cursor: pointer;
+    padding-block: 1rem;
+    font-size: 13px;
+  }
+  summary span {
+    margin-left: 0.7rem;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  ol {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0 0 1rem 1.5rem;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  a {
+    display: inline-block;
+    padding-block: 0.3rem;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 700px) {
+    a {
+      padding-block: 0.6rem;
+    }
+  }
+</style>

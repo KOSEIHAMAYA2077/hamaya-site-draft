@@ -5,6 +5,13 @@ import SignalVisual from '../../components/SignalVisual.astro';
 import { path } from '../../lib/paths';
 const directions = [
   {
+    id: 'desk',
+    name: '新案 / 分類を開く制作机',
+    description:
+      '最初の画面から作品・学びと雑記・自己紹介を開く案。立体が隅へ退き、同じ場所で記録を読めます。',
+    decision: '日々使うための比較案',
+  },
+  {
     id: 'signal',
     name: '01 / 光の制作室',
     description:
@@ -54,7 +61,7 @@ const directions = [
         <article class="study-card">
           <a href={path(`directions/${d.id}/`)}>
             <div class="study-visual">
-              {d.id === 'signal' ? (
+              {d.id === 'signal' || d.id === 'desk' ? (
                 <SignalVisual />
               ) : (
                 <StudioVisual direction={d.id} />

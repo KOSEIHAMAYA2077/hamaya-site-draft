@@ -1,0 +1,125 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/content';
+import { path } from '../lib/paths';
+
+interface Props {
+  entry: CollectionEntry<'works'> | CollectionEntry<'notes'>;
+}
+
+const { entry } = Astro.props;
+const isWork = entry.collection === 'works';
+const category = isWork ? entry.data.status : entry.data.category;
+const cover = isWork ? entry.data.cover : undefined;
+---
+
+<li class:list={['desk-entry', { 'desk-entry-cover': Boolean(cover) }]}>
+  <a href={path(`${entry.collection}/${entry.id}/`)}>
+    {cover && (
+      <img
+        src={path(cover.src)}
+        alt={cover.alt}
+        width="160"
+        height="90"
+        loading="lazy"
+        decoding="async"
+      />
+    )}
+    <div class="desk-entry-copy">
+      <div class="desk-entry-meta">
+        <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
+        <span>{category}</span>
+      </div>
+      <h3>{entry.data.title}</h3>
+      <p>{entry.data.description}</p>
+    </div>
+    <span class="desk-entry-arrow" aria-hidden="true">
+      ↗
+    </span>
+  </a>
+</li>
+
+<style>
+  .desk-entry {
+    border-top: 1px solid #ccd0ca;
+    list-style: none;
+  }
+
+  .desk-entry > a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 15px 0;
+    text-decoration: none;
+  }
+
+  .desk-entry-cover > a {
+    grid-template-columns: 106px minmax(0, 1fr) 24px;
+  }
+
+  .desk-entry img {
+    width: 106px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid #ccd0ca;
+  }
+
+  .desk-entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: #616863;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .desk-entry h3 {
+    margin-top: 5px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .desk-entry p {
+    margin-top: 4px;
+    color: #616863;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .desk-entry-arrow {
+    font-size: 19px;
+    justify-self: end;
+  }
+
+  .desk-entry a:hover h3,
+  .desk-entry a:focus-visible h3 {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  @media (max-width: 760px) {
+    .desk-entry > a {
+      padding-block: 13px;
+      gap: 10px;
+    }
+
+    .desk-entry-cover > a {
+      grid-template-columns: 64px minmax(0, 1fr) 18px;
+    }
+
+    .desk-entry img {
+      width: 64px;
+    }
+
+    .desk-entry h3 {
+      font-size: 16px;
+    }
+
+    .desk-entry-meta {
+      font-size: 11px;
+      gap: 8px;
+    }
+  }
+</style>

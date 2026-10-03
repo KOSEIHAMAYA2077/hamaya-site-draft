@@ -1,4 +1,5 @@
 ---
+import LocalTools from './LocalTools.astro';
 interface Props {
   type: 'works' | 'notes';
   level?: 2 | 3;
@@ -26,5 +27,17 @@ const works = type === 'works';
         ? '大学入学以降の制作を、少しずつまとめていきます。'
         : '学んだことや、日々の気づきを書き足していきます。'}
     </p>
+    <div class="empty-actions">
+      <LocalTools kind={works ? 'work' : 'note'} />
+    </div>
   </div>
 </div>
+
+<style>
+  .empty-actions:has([hidden]) {
+    display: none;
+  }
+  .empty-actions {
+    margin-top: 0.85rem;
+  }
+</style>

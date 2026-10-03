@@ -7,10 +7,13 @@
  * @property {string} [date]
  * @property {string} [category]
  * @property {string} [status]
- * @property {string} [tags]
+ * @property {string | string[]} [tags]
  * @property {string} [body]
  * @property {string} [url]
  * @property {string} [repository]
+ * @property {{src: string, alt: string}} [cover]
+ * @property {boolean} [verbatimBody] Keep the selected file's body unchanged.
+ * @property {boolean} [verbatimMetadata] Keep selected file's scalar values unchanged.
  */
 
 export class DraftExportError extends Error {
@@ -73,29 +76,45 @@ export function exportDraft(input = {}) {
   const issues = {};
   const kind = text(input.kind);
   const slug = text(input.slug).trim();
-  const title = text(input.title).trim();
-  const description = text(input.description).trim();
-  const date = text(input.date).trim();
+  const metadataText = (/** @type {unknown} */ value) =>
+    input.verbatimMetadata && typeof value === 'string' ? value : text(value);
+  const title = metadataText(input.title);
+  const description = metadataText(input.description);
+  const date = input.verbatimMetadata
+    ? metadataText(input.date)
+    : text(input.date).trim();
   const category = text(input.category);
   const status = text(input.status);
-  const body = text(input.body);
-  const tags = [
-    ...new Set(
-      text(input.tags)
-        .split(/[,\n]/)
-        .map((tag) => tag.trim())
-        .filter(Boolean),
-    ),
-  ];
-  const url = text(input.url).trim();
-  const repository = text(input.repository).trim();
+  const body =
+    input.verbatimBody && typeof input.body === 'string'
+      ? input.body
+      : text(input.body);
+  const tags = Array.isArray(input.tags)
+    ? [...input.tags]
+    : [
+        ...new Set(
+          text(input.tags)
+            .split(/[,\n]/)
+            .map((tag) => tag.trim())
+            .filter(Boolean),
+        ),
+      ];
+  const url = input.verbatimMetadata
+    ? metadataText(input.url)
+    : text(input.url).trim();
+  const repository = input.verbatimMetadata
+    ? metadataText(input.repository)
+    : text(input.repository).trim();
+  const cover = input.cover;
 
   if (!['note', 'work'].includes(kind))
     issues.kind = '記事か作品を選んでください。';
-  if (!title) issues.title = '題を入力してください。';
+  if (!title.trim()) issues.title = '題を入力してください。';
   else if (/[\n\u0085\u2028\u2029]/.test(title))
     issues.title = '題は1行で入力してください。';
-  if (!description) issues.description = '短い要約を入力してください。';
+  if (!description.trim()) issues.description = '短い要約を入力してください。';
+  if (!tags.every((tag) => typeof tag === 'string'))
+    issues.tags = 'タグは文字列で入力してください。';
   if (!validDate(date))
     issues.date = '日付は実在する日を YYYY-MM-DD で入力してください。';
   if (!slug || slug.length > 64 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
@@ -129,6 +148,25 @@ export function exportDraft(input = {}) {
     if (repository && !validHttpsUrl(repository))
       issues.repository =
         'リポジトリは、ログイン情報を含まない HTTPS の完全なURLを入力してください。';
+    if (cover !== undefined) {
+      if (
+        !cover ||
+        typeof cover !== 'object' ||
+        typeof cover.src !== 'string' ||
+        !/^images\/[a-zA-Z0-9_./-]+$/.test(cover.src) ||
+        !cover.src
+          .split('/')
+          .every((segment) => segment && segment !== '.' && segment !== '..')
+      )
+        issues.coverSrc = '表紙は images/ 配下のファイルを指定してください。';
+      if (
+        !cover ||
+        typeof cover.alt !== 'string' ||
+        !cover.alt.trim() ||
+        /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(cover.alt)
+      )
+        issues.coverAlt = '表紙の説明を入力してください。';
+    }
   }
   if (Object.keys(issues).length) throw new DraftExportError(issues);
 
@@ -146,8 +184,16 @@ export function exportDraft(input = {}) {
   if (kind === 'work') {
     if (url) lines.push(`url: ${quote(url)}`);
     if (repository) lines.push(`repository: ${quote(repository)}`);
+    if (cover) {
+      lines.push(
+        'cover:',
+        `  src: ${quote(cover.src)}`,
+        `  alt: ${quote(cover.alt)}`,
+      );
+    }
   }
-  const markdown = `${lines.join('\n')}\n---\n\n${body}${body.endsWith('\n') ? '' : '\n'}`;
+  const ending = input.verbatimBody || body.endsWith('\n') ? '' : '\n';
+  const markdown = `${lines.join('\n')}\n---\n\n${body}${ending}`;
   return {
     filename: `${slug}.md`,
     directory: kind === 'note' ? 'src/content/notes/' : 'src/content/works/',

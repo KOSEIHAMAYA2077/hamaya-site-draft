@@ -2,6 +2,7 @@
 import { site } from '../lib/site';
 import { path } from '../lib/paths';
 import '../styles/global.css';
+import LocalTools from '../components/LocalTools.astro';
 interface Props {
   title?: string;
   description?: string;
@@ -102,6 +103,7 @@ const links = [
         <a href={site.links.github}>
           GitHub <span aria-hidden="true">↗</span>
         </a>
+        <LocalTools label="下書きの道具" />
         <span class="footer-note">公開前のローカル確認用</span>
       </div>
     </footer>

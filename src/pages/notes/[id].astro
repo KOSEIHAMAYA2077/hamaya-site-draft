@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Toc from '../../components/Toc.astro';
 import { publishedNotes, formatDate } from '../../lib/content';
 import { path } from '../../lib/paths';
 export async function getStaticPaths() {
@@ -10,7 +11,7 @@ export async function getStaticPaths() {
   }));
 }
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 ---
 
 <Layout
@@ -20,7 +21,7 @@ const { Content } = await render(entry);
   type="article"
 >
   <article class="shell article-page">
-    <a class="back-link" href={path('notes/')}>
+    <a class="back-link" href={path('notes/')} data-note-back>
       ← 学び・雑記の一覧へ
     </a>
     <header class="article-heading">
@@ -34,11 +35,31 @@ const { Content } = await render(entry);
         ))}
       </ul>
     </header>
+    <Toc headings={headings} />
     <div class="prose">
       <Content />
     </div>
-    <a class="back-link bottom-back" href={path('notes/')}>
+    <a class="back-link bottom-back" href={path('notes/')} data-note-back>
       ← 学び・雑記の一覧へ
     </a>
   </article>
 </Layout>
+
+<script>
+  import { notesListHref } from '../../lib/note-query.mjs';
+
+  function restoreBackLinks() {
+    const href = notesListHref(
+      window.location.search,
+      import.meta.env.BASE_URL,
+    );
+    document
+      .querySelectorAll<HTMLAnchorElement>('[data-note-back]')
+      .forEach((link) => {
+        link.href = href;
+      });
+  }
+  restoreBackLinks();
+  window.addEventListener('popstate', restoreBackLinks);
+  window.addEventListener('pageshow', restoreBackLinks);
+</script>
