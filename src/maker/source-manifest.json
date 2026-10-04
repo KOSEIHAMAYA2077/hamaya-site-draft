@@ -1,0 +1,61 @@
+{
+  "referenceDate": "2026-10-04",
+  "purpose": "ユーザー依頼の非公開接続。Maker Field JSONから1件のMarkdown下書きを手動で渡す。",
+  "adaptation": {
+    "file": "adapter.mjs",
+    "kind": "Independent browser adaptation; not an unchanged vendor copy",
+    "changes": [
+      "Separated read-only JSON validation and conversion from Node CLI, VM and filesystem writing",
+      "No Maker Field localStorage, history, subscription or global store code copied",
+      "Added duplicate JSON key rejection, including escaped equivalent keys, before JSON.parse",
+      "Retained structure, character, record, image and UTF-8 byte limits",
+      "Replaced Node hashing and buffers with WebCrypto, TextEncoder and Uint8Array",
+      "Reused the site's existing draft exporter; output remains one note with draft: true"
+    ]
+  },
+  "sources": [
+    {
+      "package": "maker-field-markdown-adapter",
+      "file": "adapter.mjs",
+      "scope": "Input character checks, field mapping, literal fences, report and output limits",
+      "sha256": "16c2a214c5587246a97a37f5b8acf1dc7aa39d80313a26d4a1867dde1b91e853"
+    },
+    {
+      "package": "maker-field-markdown-adapter",
+      "file": "vendor/maker-field/storage.js",
+      "scope": "Data structure, field, date, image and record validation rules only",
+      "sha256": "8ae3ac5d2af4b1c54ae3a6a890c3484f1586a5b07afa5a58aa545c9cd24f8f69"
+    },
+    {
+      "package": "maker-field-markdown-adapter",
+      "file": "CONTRACT.md",
+      "scope": "Local one-record Markdown handoff contract and source attribution",
+      "sha256": "ab36482e08426dae0533641648d8a13a7db61d9e918fc8835ec0cba707856f33"
+    },
+    {
+      "package": "maker-field-markdown-adapter",
+      "file": "vendor-sources.json",
+      "scope": "Original copy labels and hashes",
+      "sha256": "444f5f82cfc172221f435247d1e0cfadc0c38ba18ba71795e82187a568a2300e"
+    }
+  ],
+  "existingSiteModulesReused": [
+    {
+      "file": "../lib/draft-export.mjs",
+      "matchesSource": "maker-field-markdown-adapter/vendor/site-contract/draft-export.mjs",
+      "sha256": "8b49e3003a7e3b4e49f664fc0aa1eca495409614e5baea5f33b91eae7fbc46e6"
+    },
+    {
+      "file": "../lib/content-safety.mjs",
+      "matchesSource": "maker-field-markdown-adapter/vendor/site-contract/content-safety.mjs",
+      "sha256": "157788da12e96b2cd615d5285efcf8fee8d363daee1bc20fc86361ce9bbd5e95"
+    }
+  ],
+  "verification": "Source files and existing site module bytes were SHA-256 hashed read-only; original source was not executed or modified.",
+  "license": {
+    "status": "元配布LICENSE記載なし",
+    "note": "参照したアダプター配下にLICENSE/NOTICEは確認できなかった。新ライセンス付与なし。出典記録は再配布許諾を表すものではない。ユーザー依頼の非公開接続として独立実装した。"
+  },
+  "thirdPartyRuntimeCopies": [],
+  "newRuntimeDependencies": []
+}

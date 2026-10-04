@@ -62,6 +62,7 @@ export default defineConfig({
           if (localBuildEnabled(process.env, command === 'dev')) {
             for (const [pattern, entrypoint] of [
               ['/write', './src/local-pages/write.astro'],
+              ['/write/maker-field', './src/local-pages/maker-field.astro'],
               ['/directions', './src/local-pages/directions/index.astro'],
               ['/directions/desk', './src/local-pages/directions/desk.astro'],
               [

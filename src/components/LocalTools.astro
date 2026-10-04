@@ -29,6 +29,18 @@ const enabled = localBuildEnabled(
       <span aria-hidden="true">↗</span>
     </a>
 
+    <a
+      class="local-write-link"
+      href={path('write/maker-field/')}
+      target="_blank"
+      rel="noopener"
+      data-local-tool
+      data-maker-entry
+      hidden
+    >
+      制作ログを下書きに <span>（別タブ）</span>
+    </a>
+
     {import.meta.env.LOCAL_EXPERIMENTS === '1' && (
       <a
         class="local-write-link"

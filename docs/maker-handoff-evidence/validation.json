@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-04",
+  "baseCommit": "739bcdbcabaa2ef3dcda077ced41e2821634efd8",
+  "lint": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "builds": [
+    {
+      "configuration": "root",
+      "environment": {},
+      "pages": 5,
+      "tests": 149,
+      "passed": 149,
+      "failed": 0
+    },
+    {
+      "configuration": "base",
+      "environment": {
+        "BASE_PATH": "/hamaya-site-draft"
+      },
+      "pages": 5,
+      "tests": 149,
+      "passed": 149,
+      "failed": 0
+    },
+    {
+      "configuration": "final-local",
+      "environment": {
+        "BASE_PATH": "/hamaya-site-draft",
+        "LOCAL_COMPARISON": "1",
+        "LOCAL_EXPERIMENTS": "1"
+      },
+      "pages": 16,
+      "tests": 149,
+      "passed": 149,
+      "failed": 0
+    }
+  ],
+  "browserPreview": {
+    "url": "http://127.0.0.1:4354/hamaya-site-draft/write/maker-field/",
+    "pages": 15,
+    "environment": {
+      "BASE_PATH": "/hamaya-site-draft",
+      "LOCAL_COMPARISON": "1"
+    },
+    "evidence": "browser-evidence.json",
+    "scope": "Synthetic fixtures only. No actual owner records used."
+  },
+  "sourceIntegrity": {
+    "manifestSourceHashesMatched": 4,
+    "reusedSiteModulesMatched": 2,
+    "originalMakerOrAdapterExecuted": false,
+    "originalMakerOrAdapterChanged": false
+  },
+  "otherWorktrees": {
+    "site-draft": "edfd8a2",
+    "site-audit": "10f6781",
+    "site-comparison-guide": "06701a7",
+    "site-experiments": "83377a0",
+    "site-quiet-use": "739bcdb",
+    "site-work-candidates": "386ba02"
+  },
+  "otherWorktreesClean": true,
+  "privateRepoVerified": true,
+  "published": false
+}

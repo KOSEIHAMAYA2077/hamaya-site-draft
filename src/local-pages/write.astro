@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { path } from '../lib/paths';
 const today = new Date().toISOString().slice(0, 10);
 ---
 
@@ -13,6 +14,16 @@ const today = new Date().toISOString().slice(0, 10);
       <p class="eyebrow">下書きの道具</p>
       <h1>書いて、残しておく。</h1>
       <p>この画面で書いて、Markdownで持ち帰れます。自動保存はしません。</p>
+      <p>
+        <a
+          href={path('write/maker-field/')}
+          target="_blank"
+          rel="noopener"
+          data-maker-writer-entry
+        >
+          制作ログを下書きに（別タブで開く）
+        </a>
+      </p>
     </header>
     <noscript>
       <p class="writer-notice">

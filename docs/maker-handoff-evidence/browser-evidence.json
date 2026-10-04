@@ -1,0 +1,311 @@
+{
+  "browser": "153.0.8010.12",
+  "scope": "Synthetic fixtures only; no Maker source or examples modified.",
+  "checks": [
+    {
+      "name": "unsaved-writer-opens-independent-bridge-tab"
+    },
+    {
+      "name": "literal-preview-long-japanese-and-cancel-preserves-input",
+      "inputBodyCodeUnits": 125171,
+      "fileChooserCancel": "cancel DOM event plus empty selection; no OS picker automation",
+      "replacementCancel": true
+    },
+    {
+      "name": "reject-duplicate-id-without-input-loss"
+    },
+    {
+      "name": "reject-escaped-duplicate-without-input-loss"
+    },
+    {
+      "name": "reject-unknown-field-without-input-loss"
+    },
+    {
+      "name": "reject-surrogate-high-without-input-loss"
+    },
+    {
+      "name": "reject-surrogate-low-without-input-loss"
+    },
+    {
+      "name": "reject-malformed-without-input-loss"
+    },
+    {
+      "name": "reject-invalid-utf8-without-input-loss"
+    },
+    {
+      "name": "reject-too-large-without-input-loss"
+    },
+    {
+      "name": "actual-download-preserves-full-literal-body",
+      "bytes": 354808,
+      "filename": "synthetic-maker-roundtrip.md",
+      "draft": true,
+      "imageBytesOmitted": true
+    },
+    {
+      "name": "bridge-download-writer-import-reader-download-roundtrip",
+      "bodyExact": true,
+      "frontmatterExact": true
+    },
+    {
+      "name": "return-to-original-writer-import-cancel-preserves-unsaved-text"
+    },
+    {
+      "name": "same-screen-filename-reuse-rejected"
+    },
+    {
+      "name": "missing-title-not-invented"
+    },
+    {
+      "name": "missing-date-not-invented"
+    },
+    {
+      "name": "empty-data-readable"
+    },
+    {
+      "name": "mobile-320-keyboard-reduced-motion",
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "no-javascript-readable-and-file-input-disabled"
+    },
+    {
+      "name": "no-external-request-input-transmission-storage-write-or-script-execution",
+      "requests": 27
+    },
+    {
+      "name": "selection-a-b-a-and-empty-selection-restore-per-record-input"
+    },
+    {
+      "name": "replacement-cancel-and-json-error-preserve-both-record-inputs"
+    },
+    {
+      "name": "delayed-old-conversion-cannot-replace-current-selection-result",
+      "delayedRealWebCrypto": true,
+      "completedBWhileAHeld": true
+    },
+    {
+      "name": "confirmed-new-json-and-same-json-reload-clear-old-record-inputs"
+    },
+    {
+      "name": "explicit-reading-reset-clears-all-record-inputs"
+    },
+    {
+      "name": "latest-build-desktop-and-mobile-captures",
+      "screenshots": 5,
+      "mobileOverflow": false
+    },
+    {
+      "name": "no-external-request-input-transmission-storage-write-or-script-execution",
+      "requests": 12
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "dialogs": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/write/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.Czb7wsWH.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.CKgCLAfF.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/write/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.Czb7wsWH.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.CKgCLAfF.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.nDGRLLcq.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.nDGRLLcq.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4354/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "containsFixture": false
+    }
+  ],
+  "failedRequests": [],
+  "storageWrites": [],
+  "accidentalExecutions": [],
+  "followup": {
+    "browser": "153.0.8010.12",
+    "mode": "selection regression only",
+    "preservedPreviousChecks": 20
+  }
+}

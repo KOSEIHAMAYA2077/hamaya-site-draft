@@ -1,0 +1,494 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { path } from '../lib/paths';
+---
+
+<Layout
+  title="制作ログを、下書きに。"
+  description="Maker FieldのJSONから1件を選び、Markdownの下書きとして持ち帰る道具。"
+  section={null}
+>
+  <div class="maker-page shell">
+    <header class="maker-heading">
+      <p class="maker-eyebrow">下書きの道具</p>
+      <h1>制作ログを、下書きに。</h1>
+      <p class="maker-lede">
+        Maker Fieldで書き出したJSONから、残したい1件を選びます。
+      </p>
+      <p class="maker-hint">
+        このブラウザ内で読み込みます。元のJSONはそのまま残り、画像本体は下書きに含みません。
+        ページを閉じると、ここでの入力は消えます。
+      </p>
+    </header>
+
+    <noscript>
+      <p class="maker-notice">
+        この道具にはJavaScriptが必要です。読み込み欄は使えません。
+        <a href={path('write/')}>書く画面へ</a>
+      </p>
+    </noscript>
+
+    <div
+      id="maker-field-bridge"
+      data-maker-field
+      role="form"
+      aria-label="制作ログから下書きを作る"
+    >
+      <section class="maker-step" aria-labelledby="maker-step-file">
+        <header class="maker-step-heading">
+          <span class="maker-step-number" aria-hidden="true">
+            01
+          </span>
+          <h2 id="maker-step-file">JSONを選ぶ</h2>
+        </header>
+        <div class="maker-step-content">
+          <label class="maker-label" for="maker-file">
+            Maker FieldのJSON
+          </label>
+          <input
+            id="maker-file"
+            type="file"
+            accept=".json"
+            disabled
+            aria-describedby="maker-file-hint maker-file-status"
+          />
+          <p id="maker-file-hint" class="maker-hint">
+            Maker
+            Fieldの「データを持ち出す・戻す」→「JSONを書き出す」で用意できます。
+            8 MiBまで・5,000件まで。開く前に、件数を確認できます。
+          </p>
+          <p class="maker-hint">
+            別のJSONを開くと、今の選択と入力を置き換えます。取り消した場合や読み込みに失敗した場合は、そのまま残ります。
+          </p>
+          <p id="maker-file-status" class="maker-status" role="status"></p>
+
+          <div id="maker-pending" class="maker-pending" hidden>
+            <p id="maker-pending-info"></p>
+            <div class="maker-actions">
+              <button id="maker-load" class="maker-primary" type="button">
+                このJSONを開く
+              </button>
+              <button id="maker-cancel" class="maker-quiet" type="button">
+                やめる
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="maker-records"
+        class="maker-step"
+        aria-labelledby="maker-step-record"
+        hidden
+      >
+        <header class="maker-step-heading">
+          <span class="maker-step-number" aria-hidden="true">
+            02
+          </span>
+          <h2 id="maker-step-record">残したい1件を選ぶ</h2>
+        </header>
+        <div class="maker-step-content">
+          <p id="maker-count" class="maker-hint"></p>
+          <label class="maker-label" for="maker-choice">
+            制作ログ
+          </label>
+          <select
+            id="maker-choice"
+            aria-describedby="maker-count maker-selection-status"
+          >
+            <option value="">1件を選んでください</option>
+          </select>
+          <p id="maker-selection-status" class="maker-status" role="status"></p>
+          <p class="maker-hint">
+            記録を選び直しても、入力した要約と設定はこのページを開いている間は残ります。
+            別のJSONを開くか、読み込みをやめると消えます。
+          </p>
+          <button id="maker-reset" class="maker-quiet" type="button">
+            読み込みをやめる
+          </button>
+
+          <section
+            id="maker-preview"
+            class="maker-preview"
+            aria-labelledby="maker-title"
+            hidden
+          >
+            <p class="maker-eyebrow">選んだログの内容</p>
+            <h3 id="maker-title"></h3>
+            <p id="maker-meta" class="maker-hint"></p>
+            <dl id="maker-fields"></dl>
+          </section>
+        </div>
+      </section>
+
+      <section
+        id="maker-output-fields"
+        class="maker-step"
+        aria-labelledby="maker-step-output"
+        hidden
+      >
+        <header class="maker-step-heading">
+          <span class="maker-step-number" aria-hidden="true">
+            03
+          </span>
+          <h2 id="maker-step-output">下書きを整える</h2>
+        </header>
+        <div class="maker-step-content">
+          <p class="maker-hint">
+            短い要約と分類、保存するファイル名を決めます。
+          </p>
+          <div class="maker-field">
+            <label class="maker-label" for="maker-description">
+              短い要約 <span class="maker-required">必須</span>
+            </label>
+            <textarea
+              id="maker-description"
+              rows="4"
+              required
+              aria-describedby="maker-description-hint"
+            ></textarea>
+            <p id="maker-description-hint" class="maker-hint">
+              このログに何を残したか、ひとこと添えてください。
+            </p>
+          </div>
+          <div class="maker-field">
+            <label class="maker-label" for="maker-category">
+              分類 <span class="maker-required">必須</span>
+            </label>
+            <select id="maker-category" required>
+              <option value="">選んでください</option>
+              <option value="学び">学び</option>
+              <option value="雑記">雑記</option>
+            </select>
+          </div>
+          <div class="maker-field">
+            <label class="maker-label" for="maker-slug">
+              ファイル名 <span class="maker-required">必須</span>
+            </label>
+            <input
+              id="maker-slug"
+              type="text"
+              maxlength="64"
+              required
+              autocomplete="off"
+              autocapitalize="none"
+              spellcheck="false"
+              aria-describedby="maker-slug-hint"
+            />
+            <p id="maker-slug-hint" class="maker-hint">
+              半角英小文字・数字・ハイフンで64文字まで。例：maker-note-01
+            </p>
+          </div>
+          <button id="maker-prepare" class="maker-primary" type="button">
+            下書きを確認
+          </button>
+          <p id="maker-error" class="maker-error" role="alert" hidden></p>
+
+          <div id="maker-result" class="maker-result" hidden>
+            <p id="maker-output-summary"></p>
+            <details class="maker-output-details">
+              <summary>書き出す内容</summary>
+              <pre
+                id="maker-output-preview"
+                tabindex="0"
+                aria-label="書き出すMarkdownの内容"
+              ></pre>
+            </details>
+            <div class="maker-actions">
+              <button
+                id="maker-download"
+                class="maker-primary"
+                type="button"
+                disabled
+              >
+                下書きをダウンロード
+              </button>
+              <a
+                id="maker-next"
+                href={path('write/#write-import')}
+                target="_blank"
+                rel="noopener"
+                hidden
+              >
+                書く画面で確認する（別タブ）
+              </a>
+            </div>
+            <p class="maker-hint">
+              書く画面で、ダウンロードしたMarkdownを読み込みます。
+            </p>
+            <p
+              id="maker-download-status"
+              class="maker-status"
+              role="status"
+            ></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .maker-page {
+    max-width: 850px;
+    padding-block: 3.5rem 4rem;
+  }
+  .maker-heading {
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+  }
+  .maker-eyebrow,
+  .maker-step-number {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .maker-heading h1 {
+    margin-block: 0.7rem 1rem;
+    font-size: clamp(27px, 3.6vw, 42px);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .maker-lede {
+    font-size: 15px;
+    margin-bottom: 0.8rem;
+  }
+  .maker-hint {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.85;
+    margin-top: 0.55rem;
+  }
+  .maker-step {
+    min-width: 0;
+    border-top: 1px solid var(--line);
+    padding-block: 1.6rem 2rem;
+  }
+  .maker-step-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+  .maker-step-heading h2 {
+    font-size: 21px;
+  }
+  .maker-step-number {
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .maker-step-content {
+    min-width: 0;
+    padding-left: 2rem;
+  }
+  .maker-label {
+    display: block;
+    margin-block: 0.6rem 0.45rem;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .maker-required {
+    margin-left: 0.5rem;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 400;
+  }
+  input,
+  textarea,
+  select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: var(--white);
+    color: var(--ink);
+    padding: 0.65rem 0.8rem;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  input,
+  select {
+    min-height: 46px;
+  }
+  input[type='file'] {
+    padding: 0.45rem;
+    font-size: 13px;
+  }
+  input[type='file']::file-selector-button {
+    min-height: 36px;
+    margin-right: 0.6rem;
+    border: 1px solid #aebcb3;
+    border-radius: 4px;
+    background: #e8ede5;
+    color: var(--ink);
+    padding: 0.35rem 0.75rem;
+    font: inherit;
+    cursor: pointer;
+  }
+  textarea {
+    resize: vertical;
+  }
+  button {
+    min-height: 44px;
+    max-width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    border-radius: 6px;
+  }
+  .maker-primary {
+    background: var(--accent);
+    color: var(--white);
+    border: 1px solid var(--accent);
+  }
+  .maker-primary:hover:not(:disabled) {
+    background: #39574e;
+  }
+  .maker-quiet {
+    background: transparent;
+    border: 1px solid var(--line);
+  }
+  .maker-quiet:hover {
+    background: #e8ede5;
+  }
+  :disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .maker-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1rem;
+    margin-top: 1rem;
+  }
+  .maker-actions a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  .maker-status {
+    color: var(--accent);
+    font-size: 12px;
+    margin-block: 0.7rem;
+  }
+  .maker-status:empty {
+    margin: 0;
+  }
+  .maker-pending,
+  .maker-notice {
+    background: #e9eee5;
+    border-left: 2px solid #97ad9b;
+    padding: 1rem 1.2rem;
+    margin-block: 1rem;
+    font-size: 13px;
+  }
+  .maker-preview {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 16px 5px 16px 5px;
+    padding: 1.3rem;
+    margin-top: 1.4rem;
+    min-width: 0;
+  }
+  .maker-preview h3 {
+    margin-top: 0.5rem;
+    font-size: 20px;
+  }
+  #maker-fields {
+    margin-top: 1.2rem;
+    min-width: 0;
+  }
+  #maker-fields :global(dt) {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 1.1rem;
+  }
+  #maker-fields :global(dd) {
+    min-width: 0;
+    margin: 0.3rem 0 0;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  #maker-fields :global(pre),
+  #maker-output-preview {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.85;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-height: 24rem;
+    overflow: auto;
+  }
+  .maker-field {
+    margin-block: 1.2rem;
+  }
+  .maker-error {
+    margin-top: 1rem;
+    padding-left: 0.8rem;
+    border-left: 2px solid #975f48;
+    color: #784936;
+    font-size: 13px;
+  }
+  .maker-result {
+    margin-top: 1.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .maker-output-details {
+    margin-top: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: var(--white);
+    min-width: 0;
+  }
+  .maker-output-details summary {
+    min-height: 44px;
+    padding: 0.65rem 0.9rem;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  #maker-output-preview {
+    padding: 1rem;
+    max-height: 28rem;
+    overflow: auto;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 600px) {
+    .maker-page {
+      padding-block: 2rem 2.5rem;
+    }
+    .maker-heading {
+      margin-bottom: 1.8rem;
+    }
+    .maker-step-heading {
+      gap: 0.7rem;
+    }
+    .maker-step-heading h2 {
+      font-size: 19px;
+    }
+    .maker-step-content {
+      padding-left: 0;
+    }
+    .maker-preview,
+    .maker-pending {
+      padding: 1rem;
+    }
+  }
+</style>
+
+<script>
+  import '../maker/bridge-controller.mjs';
+</script>

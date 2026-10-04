@@ -230,6 +230,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
   );
   for (const file of [
     'write/index.html',
+    'write/maker-field/index.html',
     'directions/index.html',
     'directions/desk/index.html',
   ])
@@ -247,7 +248,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
         const content = await readFile(filename, 'utf8');
         assert.doesNotMatch(
           content,
-          /draft-writer|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|data-candidate-study|data-candidate-entry|LOCAL_CANDIDATES|LOCAL_COMPARISON|DESIGN STUDIES/,
+          /draft-writer|data-maker-(?:entry|writer-entry|field)|maker-field-bridge|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|data-candidate-study|data-candidate-entry|LOCAL_CANDIDATES|LOCAL_COMPARISON|DESIGN STUDIES/,
         );
         for (const prefix of privateRoutePrefixes)
           assert.ok(
