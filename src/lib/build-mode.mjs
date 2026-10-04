@@ -5,7 +5,8 @@ export function localBuildEnabled(env = {}, development = false) {
     env.LOCAL_STUDIO === '1' ||
     env.LOCAL_COMPARISON === '1' ||
     env.LOCAL_EXPERIMENTS === '1' ||
-    env.LOCAL_CANDIDATES === '1'
+    env.LOCAL_CANDIDATES === '1' ||
+    env.LOCAL_TIMELINE === '1'
   );
 }
 

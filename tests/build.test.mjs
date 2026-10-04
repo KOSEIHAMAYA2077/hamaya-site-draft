@@ -29,6 +29,14 @@ const workCandidates = JSON.parse(
 );
 const candidateOn = process.env.LOCAL_CANDIDATES === '1';
 const candidatePage = path.join(dist, 'compare/candidates/index.html');
+const timelineOn = process.env.LOCAL_TIMELINE === '1';
+const timelinePage = path.join(dist, 'compare/timeline/index.html');
+const timelineExternalLinks = new Set(
+  workCandidates.flatMap((candidate) => [
+    new URL(candidate.repositoryUrl).href,
+    new URL(`${candidate.repositoryUrl}/commit/${candidate.commit}`).href,
+  ]),
+);
 const candidateDraftTitles = new Set();
 const candidateLinks = (candidate) =>
   new Set(
@@ -168,7 +176,10 @@ async function checkLocalReference(reference, page, { anchor = false } = {}) {
             comparisonUrls.has(resolved.href)) ||
           (candidateOn &&
             page === candidatePage &&
-            candidateExternalLinks.has(resolved.href))),
+            candidateExternalLinks.has(resolved.href)) ||
+          (timelineOn &&
+            page === timelinePage &&
+            timelineExternalLinks.has(resolved.href))),
       `未確認の外部URL: ${reference}`,
     );
     return;
@@ -248,7 +259,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
         const content = await readFile(filename, 'utf8');
         assert.doesNotMatch(
           content,
-          /draft-writer|data-maker-(?:entry|writer-entry|field)|maker-field-bridge|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|data-candidate-study|data-candidate-entry|LOCAL_CANDIDATES|LOCAL_COMPARISON|DESIGN STUDIES/,
+          /draft-writer|data-maker-(?:entry|writer-entry|field)|maker-field-bridge|data-timeline-(?:study|panel|choice|entry)|TimelineStudy|LOCAL_TIMELINE|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|data-candidate-study|data-candidate-entry|LOCAL_CANDIDATES|LOCAL_COMPARISON|DESIGN STUDIES/,
         );
         for (const prefix of privateRoutePrefixes)
           assert.ok(
@@ -313,7 +324,7 @@ test('作品候補9件は全て確認待ちの下書きで、既存6件と追加
   }
 });
 
-test('作品候補の本文と専用JSは明示した候補ページだけに限定する', async () => {
+test('候補の説明は明示した専用HTML、候補操作は候補ページに限定する', async () => {
   assert.equal(await exists(candidatePage), candidateOn);
   const dedicatedScripts = new Set();
   for (const filename of builtFiles) {
@@ -334,6 +345,7 @@ test('作品候補の本文と専用JSは明示した候補ページだけに限
     if (filename.endsWith('.js') && content.includes('data-candidate-study'))
       dedicatedScripts.add(filename);
     if (candidateOn && filename === candidatePage) continue;
+    if (timelineOn && filename === timelinePage) continue;
     for (const candidate of workCandidates) {
       for (const field of ['title', 'summary']) {
         const value = candidate[field];
@@ -527,6 +539,9 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時�
           comparisonTitles.has(title)) ||
         (candidateOn &&
           filename === candidatePage &&
+          candidateDraftTitles.has(title)) ||
+        (timelineOn &&
+          filename === timelinePage &&
           candidateDraftTitles.has(title))
       )
         continue;

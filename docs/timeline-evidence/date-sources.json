@@ -1,0 +1,113 @@
+{
+  "dateField": "commit.committer.date",
+  "timezone": "UTC",
+  "verifiedAt": "2026-10-04",
+  "scope": "One public repository record per fixed SHA; nine records retained separately.",
+  "apiSnapshot": {
+    "method": "GET",
+    "endpoint": "/repos/{repository}/commits/{sha}",
+    "successfulReadCount": 9,
+    "fieldsRead": [
+      "sha",
+      "html_url",
+      "commit.author.date",
+      "commit.committer.date"
+    ],
+    "rawResponsesSaved": false,
+    "note": "The values below were read successfully through the ordinary GitHub API. Full API responses were not saved. This evidence file records the observed values without a second fetch. Initial sandbox connection failures produced no metadata response."
+  },
+  "notes": [
+    "For all nine fixed commits, the existing candidate commitDate equals both commit.author.date and commit.committer.date.",
+    "The earlier candidate files do not identify which of those two fields was originally transcribed. This study explicitly uses the now-checked commit.committer.date field.",
+    "verifiedAt is the metadata research date, not a date of making, completion, first publication or verified operation.",
+    "These dates are recorded Git commit timestamps, not measurements of the owner's working time, effort, progress or authorship.",
+    "Keep all records on the same UTC day: three on 2026-07-29 and two on 2026-09-06. A display tie-breaker does not assert same-day work order.",
+    "Do not replace a missing date with verifiedAt or infer a creation date. No commit timestamp is missing in these nine records.",
+    "Use UTC consistently. Converting to Japan time changes de10-nano-voice-changer to 2026-08-01 and game-ai-search-puzzles to 2026-08-02.",
+    "The fixed inspected commit can differ from a public demo or another branch. It does not establish a demo update date or the state of every branch.",
+    "Only existing descriptions, metadata and source links are used. No repository code, images or other assets are reproduced here, and no additional license claim is made."
+  ],
+  "items": [
+    {
+      "id": "glyph-matter",
+      "repository": "KOSEIHAMAYA2077/glyph-matter",
+      "sha": "9d238cc7aa408dd74d839f05ad64a334a31b93a4",
+      "authorDate": "2026-10-03T10:23:41Z",
+      "committerDate": "2026-10-03T10:23:41Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/glyph-matter/commits/9d238cc7aa408dd74d839f05ad64a334a31b93a4",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/glyph-matter/commit/9d238cc7aa408dd74d839f05ad64a334a31b93a4"
+    },
+    {
+      "id": "semantic-glyph-lab",
+      "repository": "KOSEIHAMAYA2077/semantic-glyph-lab",
+      "sha": "2bbb550eb549f8c991eac155b5fb8b2b89758ada",
+      "authorDate": "2026-09-30T08:00:03Z",
+      "committerDate": "2026-09-30T08:00:03Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/semantic-glyph-lab/commits/2bbb550eb549f8c991eac155b5fb8b2b89758ada",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/commit/2bbb550eb549f8c991eac155b5fb8b2b89758ada"
+    },
+    {
+      "id": "mining-forge",
+      "repository": "KOSEIHAMAYA2077/mining-forge",
+      "sha": "6983e8032585ba7781a2c2e7dcf937ee71129d96",
+      "authorDate": "2026-09-06T12:27:08Z",
+      "committerDate": "2026-09-06T12:27:08Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/mining-forge/commits/6983e8032585ba7781a2c2e7dcf937ee71129d96",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/mining-forge/commit/6983e8032585ba7781a2c2e7dcf937ee71129d96"
+    },
+    {
+      "id": "typeandsummon",
+      "repository": "KOSEIHAMAYA2077/TypeAndSummon",
+      "sha": "a57dcc84dd21898e8d0cc535fecf537fb0366385",
+      "authorDate": "2026-07-29T13:25:57Z",
+      "committerDate": "2026-07-29T13:25:57Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/TypeAndSummon/commits/a57dcc84dd21898e8d0cc535fecf537fb0366385",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/commit/a57dcc84dd21898e8d0cc535fecf537fb0366385"
+    },
+    {
+      "id": "one-board-incremental",
+      "repository": "KOSEIHAMAYA2077/one-board-incremental",
+      "sha": "04960064cc29b4224d7f0af21984ecc334dc091a",
+      "authorDate": "2026-09-06T12:54:00Z",
+      "committerDate": "2026-09-06T12:54:00Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/one-board-incremental/commits/04960064cc29b4224d7f0af21984ecc334dc091a",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/commit/04960064cc29b4224d7f0af21984ecc334dc091a"
+    },
+    {
+      "id": "pong-study-raylib",
+      "repository": "KOSEIHAMAYA2077/pong-study-raylib",
+      "sha": "14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a",
+      "authorDate": "2026-07-29T13:40:16Z",
+      "committerDate": "2026-07-29T13:40:16Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/pong-study-raylib/commits/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/commit/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a"
+    },
+    {
+      "id": "de10-nano-voice-changer",
+      "repository": "KOSEIHAMAYA2077/de10-nano-voice-changer",
+      "sha": "0403392c2c2d0162771f2b12de758fbc7dcd6d7e",
+      "authorDate": "2026-07-31T23:33:33Z",
+      "committerDate": "2026-07-31T23:33:33Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/de10-nano-voice-changer/commits/0403392c2c2d0162771f2b12de758fbc7dcd6d7e",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/commit/0403392c2c2d0162771f2b12de758fbc7dcd6d7e"
+    },
+    {
+      "id": "de10-nano-riscv-invader",
+      "repository": "KOSEIHAMAYA2077/de10-nano-riscv-invader",
+      "sha": "8832abb74ae0d352553fbb94259bcdddc3b55ca5",
+      "authorDate": "2026-07-29T13:10:58Z",
+      "committerDate": "2026-07-29T13:10:58Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/de10-nano-riscv-invader/commits/8832abb74ae0d352553fbb94259bcdddc3b55ca5",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/commit/8832abb74ae0d352553fbb94259bcdddc3b55ca5"
+    },
+    {
+      "id": "game-ai-search-puzzles",
+      "repository": "KOSEIHAMAYA2077/game-ai-search-puzzles",
+      "sha": "e1b71894ea178984099871096552c0a13ad9d588",
+      "authorDate": "2026-08-01T20:52:37Z",
+      "committerDate": "2026-08-01T20:52:37Z",
+      "sourceURL": "https://api.github.com/repos/KOSEIHAMAYA2077/game-ai-search-puzzles/commits/e1b71894ea178984099871096552c0a13ad9d588",
+      "commitURL": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/commit/e1b71894ea178984099871096552c0a13ad9d588"
+    }
+  ]
+}

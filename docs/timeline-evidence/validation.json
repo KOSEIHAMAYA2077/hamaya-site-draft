@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-04",
+  "baseCommit": "c0f2075df7cfb0e7fac2b78e1d0d947e9139d695",
+  "lint": { "errors": 0, "warnings": 0, "hints": 0 },
+  "builds": [
+    {
+      "configuration": "root",
+      "environment": {},
+      "pages": 5,
+      "tests": 159,
+      "passed": 159,
+      "failed": 0
+    },
+    {
+      "configuration": "base",
+      "environment": {
+        "BASE_PATH": "/hamaya-site-draft"
+      },
+      "pages": 5,
+      "tests": 159,
+      "passed": 159,
+      "failed": 0
+    },
+    {
+      "configuration": "all-local",
+      "environment": {
+        "BASE_PATH": "/hamaya-site-draft",
+        "LOCAL_TIMELINE": "1",
+        "LOCAL_COMPARISON": "1",
+        "LOCAL_EXPERIMENTS": "1",
+        "LOCAL_CANDIDATES": "1"
+      },
+      "pages": 18,
+      "tests": 159,
+      "passed": 159,
+      "failed": 0
+    }
+  ],
+  "timelineOnlyPreview": {
+    "url": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/",
+    "pages": 14,
+    "environment": {
+      "LOCAL_TIMELINE": "1",
+      "BASE_PATH": "/hamaya-site-draft"
+    },
+    "testsPassed": 159
+  },
+  "sourceDatesMatched": 9,
+  "sourceDateField": "commit.committer.date",
+  "displayTimezone": "UTC",
+  "ownerCreationDates": {},
+  "otherWorktreesUnchangedAndClean": {
+    "site-draft": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80",
+    "site-audit": "10f6781bc7d8ea4930081e6e913b274e27c67855",
+    "site-comparison-guide": "06701a71141958751b7ffc4903445a054ed23b96",
+    "site-experiments": "83377a0e5c26fb6408e165ccbd7500e0cf357630",
+    "site-quiet-use": "739bcdbcabaa2ef3dcda077ced41e2821634efd8",
+    "site-work-candidates": "386ba0208fc89181f20a2a1103f95e0f3cc9d40c",
+    "site-maker-bridge": "c0f2075df7cfb0e7fac2b78e1d0d947e9139d695"
+  },
+  "privateRepositoryVerified": true,
+  "published": false,
+  "browser": {
+    "version": "153.0.8010.12",
+    "checksPassed": 12,
+    "errors": [],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "externalRequests": [],
+    "evidence": "browser-evidence.json",
+    "followup": "viewport-followup-evidence.json"
+  }
+}

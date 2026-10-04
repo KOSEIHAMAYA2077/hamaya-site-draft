@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TimelineStudy from '../../components/TimelineStudy.astro';
+import candidates from '../../data/work-candidates.json';
+import creationDates from '../../data/creation-dates.json';
+import { timelineStudy } from '../../lib/timeline-study.mjs';
+
+const entries = timelineStudy(candidates, creationDates);
+---
+
+<Layout
+  title="制作を、時間でたどる。・非公開比較"
+  description="確認した公開リポジトリの記録を日付順に開き、前後の記録をたどる比較案。"
+  section={null}
+>
+  <TimelineStudy entries={entries} />
+</Layout>

@@ -12,6 +12,7 @@ const enabled = localBuildEnabled(
     LOCAL_COMPARISON: import.meta.env.LOCAL_COMPARISON,
     LOCAL_EXPERIMENTS: import.meta.env.LOCAL_EXPERIMENTS,
     LOCAL_CANDIDATES: import.meta.env.LOCAL_CANDIDATES,
+    LOCAL_TIMELINE: import.meta.env.LOCAL_TIMELINE,
   },
   import.meta.env.DEV,
 );
@@ -62,6 +63,20 @@ const enabled = localBuildEnabled(
         hidden
       >
         作品候補を見る <span aria-hidden="true">↗</span>
+      </a>
+    )}
+
+    {import.meta.env.LOCAL_TIMELINE === '1' && (
+      <a
+        class="local-write-link"
+        href={path('compare/timeline/')}
+        target="_blank"
+        rel="noopener"
+        data-local-tool
+        data-timeline-entry
+        hidden
+      >
+        時間で見返す（別タブ）
       </a>
     )}
 

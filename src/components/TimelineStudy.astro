@@ -1,0 +1,683 @@
+---
+import { path } from '../lib/paths';
+import { timelineMonths, timelineNeighbours } from '../lib/timeline-study.mjs';
+
+interface Entry {
+  id: string;
+  title: string;
+  summary: string;
+  repository: string;
+  publicRecord: {
+    date: string;
+    at: string;
+    commit: string;
+    url: string;
+    verifiedAt: string;
+  };
+  creationDate: string | null;
+}
+interface Props {
+  entries: Entry[];
+}
+const { entries } = Astro.props;
+const months: { month: string; entries: Entry[] }[] = timelineMonths(entries);
+const displayDate = (date: string) => date.replaceAll('-', '.');
+const displayMonth = (month: string) => {
+  const [year, number] = month.split('-');
+  return `${year}年${Number(number)}月`;
+};
+---
+
+<div class="timeline-study shell" data-timeline-study>
+  <header class="timeline-heading">
+    <h1>制作を、時間でたどる。</h1>
+    <p class="timeline-lede">確認した公開記録を、日付順に並べました。</p>
+    <p class="timeline-context">公開リポジトリから各1件・非公開の比較案</p>
+  </header>
+
+  {entries.length ? (
+    <div class="timeline-layout">
+      <aside class="timeline-index">
+        <details class="timeline-picker" data-timeline-picker open>
+          <summary>
+            日付順の記録を選ぶ
+            <span class="timeline-picker-mark" aria-hidden="true">
+              ＋
+            </span>
+          </summary>
+          <div class="timeline-index-body">
+            <p class="timeline-index-caption">
+              コミット日時（UTC）の日付順
+              <span class="timeline-scroll-hint">
+                索引は上下にスクロールできます。
+              </span>
+            </p>
+            <div class="timeline-index-scroll" data-timeline-scroll>
+              <nav class="timeline-months" aria-label="日付順の公開記録">
+                <svg
+                  class="timeline-arc"
+                  viewBox="0 0 42 600"
+                  preserveAspectRatio="none"
+                  fill="none"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <defs>
+                    <linearGradient
+                      id="timeline-silver"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="0"
+                    >
+                      <stop stop-color="#8c9b99" />
+                      <stop offset=".36" stop-color="#fdfef9" />
+                      <stop offset=".7" stop-color="#d6ded7" />
+                      <stop offset="1" stop-color="#a1b0aa" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M35 4C3 145 3 455 35 596"
+                    stroke="#40574e"
+                    stroke-opacity=".08"
+                    stroke-width="10"
+                  />
+                  <path
+                    d="M30 4C-2 145-2 455 30 596"
+                    stroke="url(#timeline-silver)"
+                    stroke-width="6"
+                  />
+                  <path
+                    d="M27 4C-5 145-5 455 27 596"
+                    stroke="#ffffff"
+                    stroke-opacity=".8"
+                    stroke-width="1"
+                  />
+                </svg>
+                {months.map((group) => (
+                  <section
+                    class="timeline-month"
+                    aria-labelledby={`month-${group.month}`}
+                  >
+                    <h2 id={`month-${group.month}`}>
+                      {displayMonth(group.month)}
+                    </h2>
+                    <ol>
+                      {group.entries.map((entry) => (
+                        <li>
+                          <a
+                            href={`#record-${entry.id}`}
+                            data-timeline-choice={entry.id}
+                            data-timeline-index
+                            aria-controls={`record-${entry.id}`}
+                          >
+                            <span
+                              class="timeline-index-dot"
+                              aria-hidden="true"
+                            ></span>
+                            <time datetime={entry.publicRecord.at}>
+                              {displayDate(entry.publicRecord.date)}
+                            </time>
+                            <span class="timeline-index-title">
+                              {entry.title}
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                ))}
+              </nav>
+            </div>
+            <p class="timeline-order-note">
+              同じ日の記録は固定順です。制作順は表していません。
+              弧の太さや間隔は、期間や作業量を表すものではありません。
+            </p>
+          </div>
+        </details>
+      </aside>
+
+      <div class="timeline-reader">
+        {entries.map((entry) => {
+          const { previous, next } = timelineNeighbours(entries, entry.id);
+          return (
+            <article
+              id={`record-${entry.id}`}
+              class="timeline-record"
+              data-timeline-panel={entry.id}
+              tabindex="-1"
+              aria-labelledby={`timeline-title-${entry.id}`}
+            >
+              <header class="timeline-record-heading">
+                <p class="timeline-kicker">いま開いている記録</p>
+                <h2 id={`timeline-title-${entry.id}`}>
+                  {entry.title
+                    .split(/(?<=[a-z])(?=[A-Z])/u)
+                    .map((part, index) => (
+                      <>
+                        {index > 0 && <wbr />}
+                        {part}
+                      </>
+                    ))}
+                </h2>
+              </header>
+              <p class="timeline-summary">{entry.summary}</p>
+              <dl class="timeline-dates">
+                <div>
+                  <dt>コミット日時（UTC）</dt>
+                  <dd>
+                    <time datetime={entry.publicRecord.at}>
+                      {displayDate(entry.publicRecord.date)}
+                      <span class="timeline-clock">
+                        {entry.publicRecord.at.slice(11, 19)}
+                      </span>
+                    </time>
+                  </dd>
+                </div>
+                <div>
+                  <dt>制作日（本人入力）</dt>
+                  <dd>
+                    {entry.creationDate ? (
+                      <time datetime={entry.creationDate}>
+                        {displayDate(entry.creationDate)}
+                      </time>
+                    ) : (
+                      <span class="timeline-date-empty">未入力</span>
+                    )}
+                  </dd>
+                </div>
+              </dl>
+              <p class="timeline-date-note">
+                コミット日時は公開開始日や制作開始日ではありません。制作日を入力しても、記録の並び順は変わりません。
+              </p>
+              <div class="timeline-record-actions">
+                <a
+                  class="timeline-primary"
+                  href={entry.publicRecord.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>GitHubでこの記録を開く</span>
+                  <span class="timeline-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                  <span class="sr-only">（別タブ）</span>
+                </a>
+                <a
+                  class="timeline-repository"
+                  href={entry.repository}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  リポジトリを見る ↗<span class="sr-only">（別タブ）</span>
+                </a>
+              </div>
+              <nav
+                class="timeline-neighbours"
+                aria-label={`${entry.title}の前後の記録`}
+              >
+                {previous ? (
+                  <a
+                    class="timeline-previous"
+                    href={`#record-${previous.id}`}
+                    data-timeline-choice={previous.id}
+                  >
+                    <span class="timeline-neighbour-label">← 前の記録</span>
+                    <time datetime={previous.publicRecord.at}>
+                      {displayDate(previous.publicRecord.date)}
+                    </time>
+                    <span>{previous.title}</span>
+                  </a>
+                ) : (
+                  <p class="timeline-edge">この比較の最初の記録です。</p>
+                )}
+                {next ? (
+                  <a
+                    class="timeline-next"
+                    href={`#record-${next.id}`}
+                    data-timeline-choice={next.id}
+                  >
+                    <span class="timeline-neighbour-label">次の記録 →</span>
+                    <time datetime={next.publicRecord.at}>
+                      {displayDate(next.publicRecord.date)}
+                    </time>
+                    <span>{next.title}</span>
+                  </a>
+                ) : (
+                  <p class="timeline-edge">この比較の最後の記録です。</p>
+                )}
+              </nav>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  ) : (
+    <section class="timeline-empty" aria-labelledby="timeline-empty-title">
+      <h2 id="timeline-empty-title">ここに並べる記録は、まだありません。</h2>
+      <p>記録を残したら、また見返せる場所に。</p>
+      <div>
+        <a href={path()}>ホームへ</a>
+        <a href={path('write/')}>下書きを書く ↗</a>
+      </div>
+    </section>
+  )}
+  <p class="sr-only" role="status" data-timeline-status></p>
+  <footer class="timeline-footer">
+    <a href={path()}>現在のホームへ ↗</a>
+    <a href={path('write/')}>記録を書く ↗</a>
+  </footer>
+</div>
+
+<style>
+  .timeline-study {
+    max-width: 1120px;
+    padding-block: 2.8rem 2rem;
+  }
+  .timeline-heading {
+    margin-bottom: 2.2rem;
+  }
+  .timeline-heading h1 {
+    font-size: clamp(26px, 3.5vw, 42px);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .timeline-lede {
+    margin-top: 0.65rem;
+    font-size: 14px;
+  }
+  .timeline-context {
+    margin-top: 0.65rem;
+    color: var(--muted);
+    font-size: 10px;
+  }
+  .timeline-layout {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .timeline-index,
+  .timeline-reader {
+    min-width: 0;
+  }
+  .timeline-picker {
+    border-top: 1px solid var(--line);
+  }
+  .timeline-picker summary {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    font-size: 13px;
+    list-style: none;
+  }
+  .timeline-picker summary::-webkit-details-marker {
+    display: none;
+  }
+  .timeline-picker-mark {
+    font-size: 22px;
+    font-weight: 300;
+  }
+  .timeline-picker[open] .timeline-picker-mark {
+    transform: rotate(45deg);
+  }
+  .timeline-index-caption,
+  .timeline-order-note {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+  .timeline-index-caption {
+    margin-block: 0.3rem 1.3rem;
+  }
+  .timeline-scroll-hint {
+    display: none;
+  }
+  [data-timeline-enhanced] .timeline-scroll-hint {
+    display: block;
+  }
+  [data-timeline-enhanced] .timeline-index-scroll {
+    max-height: clamp(13rem, calc(100svh - 28rem), 26rem);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-inline: 4px 10px;
+  }
+  .timeline-months {
+    position: relative;
+    padding-left: 46px;
+  }
+  .timeline-arc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 100%;
+    pointer-events: none;
+  }
+  .timeline-month + .timeline-month {
+    margin-top: 1.65rem;
+  }
+  .timeline-month h2 {
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .timeline-month ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .timeline-month li + li {
+    border-top: 1px solid #dfe1d8;
+  }
+  .timeline-month a {
+    position: relative;
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.7rem 0.3rem 0.7rem 0;
+    min-height: 56px;
+    text-decoration: none;
+  }
+  .timeline-month time {
+    font-size: 12px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline-index-title {
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+  .timeline-index-dot {
+    position: absolute;
+    left: -20px;
+    top: 1.15rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid #8a9e94;
+    background: var(--paper);
+  }
+  .timeline-month a[aria-current] .timeline-index-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px #48685e15;
+  }
+  .timeline-month a[aria-current] .timeline-index-title {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .timeline-month a:hover .timeline-index-title {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .timeline-order-note {
+    margin-top: 1.5rem;
+  }
+  .timeline-record {
+    min-width: 0;
+    border-top: 1px solid var(--line);
+    padding-block: 1.4rem 2rem;
+    scroll-margin-top: 1.2rem;
+  }
+  .timeline-record + .timeline-record {
+    margin-top: 2rem;
+  }
+  [data-timeline-enhanced] .timeline-record {
+    margin-top: 0;
+  }
+  .timeline-kicker {
+    font-size: 11px;
+    color: var(--accent);
+  }
+  .timeline-record h2 {
+    margin-top: 0.6rem;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.4;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .timeline-summary {
+    margin-top: 1rem;
+    font-size: 14px;
+    line-height: 1.95;
+  }
+  .timeline-dates {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.6rem;
+    padding: 1.1rem 1.25rem;
+    background: #fafaf5;
+    border: 1px solid #d4d9cf;
+    border-radius: 18px 4px 18px 4px;
+  }
+  .timeline-dates > div {
+    min-width: 0;
+  }
+  .timeline-dates dt {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .timeline-dates dd {
+    margin-top: 0.35rem;
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline-clock {
+    display: inline-block;
+    margin-left: 0.6rem;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .timeline-date-empty {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .timeline-date-note {
+    margin-top: 0.7rem;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.9;
+  }
+  .timeline-record-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1.5rem;
+    margin-top: 1.3rem;
+  }
+  .timeline-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 48px;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .timeline-arrow {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #dae5cf;
+    color: var(--accent);
+    font-size: 24px;
+  }
+  .timeline-primary:hover > span:first-child {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+  .timeline-repository {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .timeline-neighbours {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.6rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+  }
+  .timeline-neighbours a {
+    display: grid;
+    align-content: start;
+    gap: 0.3rem;
+    min-width: 0;
+    min-height: 44px;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+  }
+  .timeline-neighbour-label {
+    color: var(--accent);
+    font-size: 11px;
+  }
+  .timeline-neighbours time {
+    color: var(--muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline-neighbours a:hover > span:last-child {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .timeline-edge {
+    color: var(--muted);
+    font-size: 11px;
+    padding-block: 0.25rem;
+  }
+  .timeline-empty {
+    border-block: 1px solid var(--line);
+    padding-block: 2rem;
+  }
+  .timeline-empty h2 {
+    font-size: 22px;
+  }
+  .timeline-empty p {
+    margin-top: 0.75rem;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .timeline-empty > div,
+  .timeline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+  .timeline-empty > div {
+    margin-top: 1rem;
+    font-size: 13px;
+  }
+  .timeline-footer {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .timeline-footer a,
+  .timeline-empty a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  @media (max-width: 950px) {
+    .timeline-layout {
+      grid-template-columns: 245px minmax(0, 1fr);
+      gap: 2rem;
+    }
+    .timeline-dates {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+  }
+  @media (max-width: 899px) {
+    .timeline-study {
+      padding-block: 1.4rem 1rem;
+    }
+    .timeline-heading {
+      margin-bottom: 1.3rem;
+    }
+    .timeline-heading h1 {
+      font-size: clamp(24px, 6.8vw, 30px);
+    }
+    .timeline-lede {
+      font-size: 12px;
+      margin-top: 0.5rem;
+    }
+    .timeline-context {
+      font-size: 9px;
+      margin-top: 0.45rem;
+    }
+    .timeline-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.8rem;
+    }
+    .timeline-picker summary {
+      min-height: 46px;
+      font-size: 12px;
+    }
+    .timeline-index-body {
+      padding-bottom: 1rem;
+    }
+    .timeline-months {
+      padding-left: 42px;
+    }
+    .timeline-record {
+      padding-top: 1rem;
+    }
+    .timeline-record h2 {
+      font-size: 25px;
+      margin-top: 0.4rem;
+    }
+    .timeline-summary {
+      font-size: 13px;
+      margin-top: 0.8rem;
+    }
+    .timeline-dates {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.8rem;
+      margin-top: 1.1rem;
+      padding: 0.9rem 1rem;
+    }
+    .timeline-dates dt {
+      font-size: 10px;
+    }
+    .timeline-dates dd {
+      font-size: 15px;
+      margin-top: 0.15rem;
+    }
+    .timeline-record-actions {
+      margin-top: 0.8rem;
+      gap: 0.15rem 1rem;
+    }
+    .timeline-neighbours {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.9rem;
+      margin-top: 1.1rem;
+    }
+    .timeline-neighbours a {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .timeline-footer {
+      margin-top: 1rem;
+    }
+  }
+</style>
+
+<script>
+  import '../timeline/controller.mjs';
+</script>

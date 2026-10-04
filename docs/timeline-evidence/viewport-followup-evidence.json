@@ -1,0 +1,140 @@
+{
+  "browser": "153.0.8010.12",
+  "scope": "Final scroll hint and viewport-height CSS only. Prior date, empty, history and no-JS results are retained.",
+  "checks": [
+    {
+      "name": "normal-motion-preference-still-has-no-idle-animation"
+    },
+    {
+      "name": "final-viewport-1280x900",
+      "initialPageScrollY": 0,
+      "activeIndexVisible": true,
+      "keyboardWorks": true,
+      "noHorizontalOverflow": true,
+      "geometry": {
+        "id": "glyph-matter",
+        "pageScrollY": 0,
+        "indexHeight": 416,
+        "rowTop": 778.328125,
+        "rowBottom": 848.171875,
+        "indexTop": 431.75,
+        "indexBottom": 847.75,
+        "viewportHeight": 900
+      }
+    },
+    {
+      "name": "final-viewport-1280x768",
+      "initialPageScrollY": 0,
+      "activeIndexVisible": true,
+      "keyboardWorks": true,
+      "noHorizontalOverflow": true,
+      "geometry": {
+        "id": "glyph-matter",
+        "pageScrollY": 0,
+        "indexHeight": 320,
+        "rowTop": 682.328125,
+        "rowBottom": 752.171875,
+        "indexTop": 431.75,
+        "indexBottom": 751.75,
+        "viewportHeight": 768
+      }
+    },
+    {
+      "name": "final-viewport-375x812",
+      "initialPageScrollY": 0,
+      "activeIndexVisible": true,
+      "keyboardWorks": true,
+      "noHorizontalOverflow": true,
+      "geometry": {
+        "id": "glyph-matter",
+        "pageScrollY": 0,
+        "indexHeight": 364,
+        "rowTop": 671.90625,
+        "rowBottom": 741.75,
+        "indexTop": 377.609375,
+        "indexBottom": 741.609375,
+        "viewportHeight": 812
+      }
+    },
+    {
+      "name": "final-viewport-320x640",
+      "initialPageScrollY": 0,
+      "activeIndexVisible": true,
+      "keyboardWorks": true,
+      "noHorizontalOverflow": true,
+      "geometry": {
+        "id": "glyph-matter",
+        "pageScrollY": 0,
+        "indexHeight": 208,
+        "rowTop": 513.9375,
+        "rowBottom": 583.78125,
+        "indexTop": 375.359375,
+        "indexBottom": 583.359375,
+        "viewportHeight": 640
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "failedRequests": [],
+  "externalRequests": [],
+  "dialogs": [],
+  "captures": [
+    {
+      "file": "timeline-final-1280x900-initial.png",
+      "width": 1280,
+      "height": 900,
+      "state": "initial",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    },
+    {
+      "file": "timeline-final-1280x900-index.png",
+      "width": 1280,
+      "height": 900,
+      "state": "index-open",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    },
+    {
+      "file": "timeline-final-1280x768-initial.png",
+      "width": 1280,
+      "height": 768,
+      "state": "initial",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    },
+    {
+      "file": "timeline-final-1280x768-index.png",
+      "width": 1280,
+      "height": 768,
+      "state": "index-open",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    },
+    {
+      "file": "timeline-final-375x812-initial.png",
+      "width": 375,
+      "height": 812,
+      "state": "initial",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    },
+    {
+      "file": "timeline-final-375x812-index.png",
+      "width": 375,
+      "height": 812,
+      "state": "index-open",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    },
+    {
+      "file": "timeline-final-320x640-initial.png",
+      "width": 320,
+      "height": 640,
+      "state": "initial",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    },
+    {
+      "file": "timeline-final-320x640-index.png",
+      "width": 320,
+      "height": 640,
+      "state": "index-open",
+      "source": "http://127.0.0.1:4355/hamaya-site-draft/compare/timeline/"
+    }
+  ]
+}

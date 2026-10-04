@@ -94,6 +94,16 @@ export default defineConfig({
                 new URL('./src/local-pages/candidates.astro', import.meta.url),
               ),
             });
+          if (process.env.LOCAL_TIMELINE === '1')
+            injectRoute({
+              pattern: '/compare/timeline',
+              entrypoint: fileURLToPath(
+                new URL(
+                  './src/local-pages/compare/timeline.astro',
+                  import.meta.url,
+                ),
+              ),
+            });
           if (process.env.LOCAL_EXPERIMENTS === '1')
             injectRoute({
               pattern: '/compare/experiments',
