@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "guide": "node scripts/serve-comparison-guide.mjs",
     "dev": "astro dev --host 127.0.0.1 --port 4321",
     "build": "astro build",
     "build:local": "LOCAL_STUDIO=1 astro build",

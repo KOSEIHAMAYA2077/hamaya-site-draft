@@ -1,0 +1,111 @@
+{
+  "title": "サイト案を見比べる",
+  "draft": true,
+  "checkedAt": "2026-10-04",
+  "toolConnection": {
+    "status": "received-unconnected",
+    "libraryFileId": "libfile_caabd1ee7a5c8191b8303e1b05a5ae81",
+    "localPath": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-6/maker-field-release-20261004",
+    "url": null
+  },
+  "views": [
+    {
+      "id": "home",
+      "group": "home",
+      "name": "ホーム",
+      "subtitle": "今の構成",
+      "url": "http://127.0.0.1:4321/",
+      "difference": "大きな導入から、作品・学びと雑記・自己紹介へ進む。",
+      "effect": "いまのページ構成を基準に、内容を足していく。",
+      "content": "公開作品0件・記事0件。自己紹介は未入力。画面の案内文は仮のUI文。",
+      "unverified": "本人の文章と作品を入れたときの密度、毎日の使いやすさ。",
+      "try": "作品・学びと雑記・自己紹介を一度ずつ開く。",
+      "branch": "experience-next",
+      "commit": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80"
+    },
+    {
+      "id": "signal",
+      "group": "home",
+      "name": "光の制作室",
+      "subtitle": "signal",
+      "url": "http://127.0.0.1:4321/directions/signal/",
+      "difference": "ホームの構成に、銀色と光の線を切り替える立体表現を加える。",
+      "effect": "情報の流れを保ち、入口の質感と動きを変える。",
+      "content": "ホームと同じ0件の状態。立体はUI用の図形で、本人の制作物ではない。",
+      "unverified": "動きの好み、長く使ったときの落ち着き。",
+      "try": "「銀色」と「光の線」を切り替え、文字の読みやすさを見る。",
+      "branch": "experience-next",
+      "commit": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80"
+    },
+    {
+      "id": "desk",
+      "group": "home",
+      "name": "分類を開く制作机",
+      "subtitle": "desk",
+      "url": "http://127.0.0.1:4321/directions/desk/",
+      "difference": "作品・学びと雑記・自己紹介を、同じ場所で切り替えて読む。",
+      "effect": "ホームの中心を、分類を選んで開く画面へ変える。",
+      "content": "作品・記事は0件、自己紹介は未入力。UI用の立体と仮の案内文。",
+      "unverified": "実際の作品や長文を入れた状態での読みやすさ。",
+      "try": "3つの分類を順に選び、一覧へ進む操作も試す。",
+      "branch": "experience-next",
+      "commit": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80"
+    },
+    {
+      "id": "collection",
+      "group": "reading",
+      "name": "制作の棚",
+      "subtitle": "collection",
+      "url": "http://127.0.0.1:4334/compare/collection/",
+      "difference": "作品名を並べた棚から選び、説明と記録への入口を開く。",
+      "effect": "作品名を並べた棚から、説明を切り替えて読む入口にする。",
+      "content": "公開GitHub由来の6件・説明5件。関連記録は未設定。掲載は本人確認待ち。",
+      "unverified": "本人の記事を作品に結び付けたときの体験。",
+      "try": "別の作品を選び、「もうひとつ開く」で移る。",
+      "branch": "experience-next",
+      "commit": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80"
+    },
+    {
+      "id": "focus",
+      "group": "reading",
+      "name": "ひとつ開く",
+      "subtitle": "focus",
+      "url": "http://127.0.0.1:4338/compare/focus/",
+      "difference": "選択肢を普段は閉じ、開いた1件の説明を大きく読む。",
+      "effect": "作品の閲覧を1件ずつにし、選び直すときだけ一覧を開く。",
+      "content": "制作の棚と同じGitHub由来の6件・説明5件。合成の検証用記事は含まない。",
+      "unverified": "本人の長文での読み心地、棚と比べた探しやすさ。",
+      "try": "「他の制作を選ぶ」を開き、選択後に閉じる動きを試す。",
+      "branch": "experience-next",
+      "commit": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80"
+    },
+    {
+      "id": "experiments",
+      "group": "review",
+      "name": "実験を見る",
+      "subtitle": "追加するか考える",
+      "url": "http://127.0.0.1:4345/hamaya-site-draft/compare/experiments/",
+      "difference": "動きの反応と、移動に連動する時間を触って比べる。",
+      "effect": "ホームの案とは別に、短い試作を試す入口を追加する。",
+      "content": "シドの試作（AI）2件。静止模式図から任意に起動。本人の作品として未採用。",
+      "unverified": "本人が置いておきたいか、面白さや伝わりやすさ。",
+      "try": "1件だけ開き、条件を変えて同じ入力を再生する。",
+      "branch": "experiment-study",
+      "commit": "83377a0e5c26fb6408e165ccbd7500e0cf357630"
+    },
+    {
+      "id": "candidates",
+      "group": "review",
+      "name": "作品候補を選ぶ",
+      "subtitle": "掲載内容を決める道具",
+      "url": "http://127.0.0.1:4346/hamaya-site-draft/compare/candidates/",
+      "difference": "公開GitHub9件の説明・根拠・未確認点を読み、候補を選ぶ。",
+      "effect": "載せる内容を相談するために使う。公開ページへの追加は行わない。",
+      "content": "既存6件＋追加3件、根拠99件。全件draft。コードは実行していない。",
+      "unverified": "本人の担当・制作期間・掲載意図、授業と素材の利用条件。",
+      "try": "気になる候補にチェックし、候補一覧をコピーする。",
+      "branch": "work-candidates",
+      "commit": "386ba0208fc89181f20a2a1103f95e0f3cc9d40c"
+    }
+  ]
+}

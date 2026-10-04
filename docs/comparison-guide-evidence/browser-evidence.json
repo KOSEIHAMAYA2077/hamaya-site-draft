@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-04",
+  "browser": "153.0.8010.12",
+  "url": "http://127.0.0.1:4347/",
+  "results": [
+    {
+      "name": "7案の実画像・内容区別・制作道具の未接続を表示",
+      "status": "passed"
+    },
+    {
+      "name": "7試用リンクは別タブ・HTTP 200、画像を開いてガイドを維持",
+      "status": "passed"
+    },
+    {
+      "name": "相談用選択をキーボードで変更しコピー、永続保存・公開処理なし",
+      "status": "passed"
+    },
+    {
+      "name": "コピー拒否時の代替表示・リセット・再読込",
+      "status": "passed"
+    },
+    {
+      "name": "390px・320px、reduced-motion、スキップリンク",
+      "status": "passed"
+    },
+    {
+      "name": "JavaScript無効でも7案・実画像・試用リンクを読める",
+      "status": "passed"
+    },
+    {
+      "name": "許可した静的ファイルだけ配信し、入力やソースを受け取らない",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "automaticExternalRequests": 0,
+  "clipboard": "成功・拒否は隔離したAPIで確認。OSクリップボードへの書込みなし。",
+  "tool": "制作道具の実アプリは未操作。別コピーの4187へリンクしない。"
+}

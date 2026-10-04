@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-04",
+  "lint": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "builds": [
+    {
+      "configuration": "root",
+      "pages": 5,
+      "tests": 107,
+      "fail": 0
+    },
+    {
+      "configuration": "base",
+      "pages": 5,
+      "tests": 107,
+      "fail": 0
+    }
+  ],
+  "publicDistribution": "guide routes, text, scripts and screenshots excluded",
+  "sourceBranches": "original branches unchanged; independent comparison-guide branch",
+  "library": [
+    {
+      "file": "hamaya-site-comparison-guide.pdf",
+      "id": "libfile_8ac961bfbe948191bdd3a08e37e049a4",
+      "sha256": "152b6f022f937746726a009cf2f82f88be0cf9d189821f5249ecba0bc9b6a67f"
+    },
+    {
+      "file": "hamaya-site-seven-views.png",
+      "id": "libfile_0c55251955448191916c0a73b22f54b6",
+      "sha256": "08c5d99b5d6e481e186f308aa38503107fb9867650e409cfa8dc15d7cee5059f"
+    }
+  ]
+}

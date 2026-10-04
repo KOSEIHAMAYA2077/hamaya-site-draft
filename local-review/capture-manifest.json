@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-04",
+  "source": "稼働中の保存済みlocalhostプレビュー",
+  "views": [
+    {
+      "id": "home",
+      "url": "http://127.0.0.1:4321/",
+      "status": 200,
+      "title": "濱谷康生 — 制作と記録",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": true,
+      "sha256": "a390258efa3f2da82ccb1e07bf9009178a9ebd9eda105fafc8023017dc4280d5"
+    },
+    {
+      "id": "signal",
+      "url": "http://127.0.0.1:4321/directions/signal/",
+      "status": 200,
+      "title": "方向性 signal | 濱谷康生",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": true,
+      "sha256": "dea4230c7769cd41a8d5c0e351e6ddfb39b055229ae6d4196872d770f0e20970"
+    },
+    {
+      "id": "desk",
+      "url": "http://127.0.0.1:4321/directions/desk/",
+      "status": 200,
+      "title": "分類を開く制作机 | 濱谷康生",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": true,
+      "sha256": "6b0a6ae1cc5b3270e1cb6f581d94854efedff43dc2298b23c21ef4de5c7b7047"
+    },
+    {
+      "id": "collection",
+      "url": "http://127.0.0.1:4334/compare/collection/",
+      "status": 200,
+      "title": "制作の棚・非公開比較 | 濱谷康生",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": true,
+      "sha256": "d5c5559e5fd053c32cb2df7c3aa980fc12d6048c72a9dbe0bffb20bc95d71d86"
+    },
+    {
+      "id": "focus",
+      "url": "http://127.0.0.1:4338/compare/focus/",
+      "status": 200,
+      "title": "ひとつ、開く・非公開比較 | 濱谷康生",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": true,
+      "sha256": "fdb32b2b2910478e215b0c9450c92d81448da79cbc6563d26d041bca225e1a7e"
+    },
+    {
+      "id": "experiments",
+      "url": "http://127.0.0.1:4345/hamaya-site-draft/compare/experiments/",
+      "status": 200,
+      "title": "実験を見る・非公開比較 | 濱谷康生",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": true,
+      "sha256": "f4d88d5d46e23010b877d2d007683f5bc860d0192396d51719dd53a4bb95a6f1"
+    },
+    {
+      "id": "candidates",
+      "url": "http://127.0.0.1:4346/hamaya-site-draft/compare/candidates/",
+      "status": 200,
+      "title": "作品候補を選ぶ・非公開調査 | 濱谷康生",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": true,
+      "sha256": "fe3479d0b322c1b27a9a3515e172e3b6e8f429a74b8e039d7a53aa90e69827a5"
+    }
+  ]
+}

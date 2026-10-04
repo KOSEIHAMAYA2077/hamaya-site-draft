@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>サイト案を見比べる</title>
+    <link rel="stylesheet" href="guide.css" />
+    <script type="module" src="guide.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">本文へ移動</a>
+    <main id="main" tabindex="-1">
+      <header class="intro">
+        <p class="eyebrow">濱谷康生のサイト · 非公開の試用ガイド</p>
+        <h1>サイト案を見比べる</h1>
+        <p class="lead">入口の見せ方を選び、読む流れと載せる内容を考える。</p>
+        <p>
+          7案は役割が違います。ホームの3案から入り、作品の開き方を2案で比べ、実験と作品候補は別に見てください。
+        </p>
+        <div class="capture-note">
+          2026年10月4日の実画面 · 1280 × 900 · 動きを減らす設定で撮影
+        </div>
+      </header>
+      <nav class="jump" aria-label="比較ガイド内">
+        <a href="#home">01 ホーム</a><a href="#reading">02 作品の開き方</a
+        ><a href="#review">03 内容と実験</a
+        ><a href="#decision">選んだ案を残す</a>
+      </nav>
+      <div data-guide-cards><!-- GUIDE_CARDS --></div>
+      <section id="decision" class="decision">
+        <div>
+          <p class="eyebrow">見てから選ぶ</p>
+          <h2>今の希望を持ち帰る</h2>
+          <p>
+            全部決めなくても大丈夫です。選択は相談用で、実装への反映・ブランチの統合・公開は行いません。
+          </p>
+        </div>
+        <div class="print-choices">
+          <p>ホーム　□ ホーム　□ 光の制作室　□ 制作机　□ 保留</p>
+          <p>作品　□ いまの一覧　□ 制作の棚　□ ひとつ開く　□ 保留</p>
+          <p>実験　□ 追加を考えたい　□ 今回は置かない　□ 保留</p>
+          <p>
+            気になったこと：________________________________________________
+          </p>
+        </div>
+        <form data-choice-form hidden autocomplete="off">
+          <fieldset>
+            <legend>ホーム</legend>
+            <label
+              ><input
+                type="radio"
+                name="home"
+                value="保留"
+                checked
+              />保留</label
+            ><label
+              ><input type="radio" name="home" value="ホーム" />ホーム</label
+            ><label
+              ><input
+                type="radio"
+                name="home"
+                value="光の制作室（signal）"
+              />光の制作室</label
+            ><label
+              ><input
+                type="radio"
+                name="home"
+                value="制作机（desk）"
+              />制作机</label
+            >
+          </fieldset>
+          <fieldset>
+            <legend>作品の開き方</legend>
+            <label
+              ><input
+                type="radio"
+                name="reading"
+                value="保留"
+                checked
+              />保留</label
+            ><label
+              ><input
+                type="radio"
+                name="reading"
+                value="いまの一覧を基準にする"
+              />いまの一覧</label
+            ><label
+              ><input
+                type="radio"
+                name="reading"
+                value="制作の棚（collection）"
+              />制作の棚</label
+            ><label
+              ><input
+                type="radio"
+                name="reading"
+                value="ひとつ開く（focus）"
+              />ひとつ開く</label
+            >
+          </fieldset>
+          <fieldset>
+            <legend>実験を見る入口</legend>
+            <label
+              ><input
+                type="radio"
+                name="experiments"
+                value="保留"
+                checked
+              />保留</label
+            ><label
+              ><input
+                type="radio"
+                name="experiments"
+                value="追加を考えたい"
+              />追加を考えたい</label
+            ><label
+              ><input
+                type="radio"
+                name="experiments"
+                value="今回は置かない"
+              />今回は置かない</label
+            >
+          </fieldset>
+          <label class="note-label" for="choice-note"
+            >気になったこと <span>任意・200字まで</span></label
+          ><textarea
+            id="choice-note"
+            maxlength="200"
+            rows="3"
+            placeholder="例：制作机の切り替えは好き。文章はもう少し大きく。"
+          ></textarea>
+          <div class="actions">
+            <button type="button" data-copy>選んだ案をコピー</button
+            ><button type="reset" class="secondary">選択を戻す</button>
+            <p role="status" data-copy-status>
+              この画面を再読み込みすると選択は消えます。
+            </p>
+          </div>
+          <div data-copy-fallback hidden>
+            <label for="copy-text">コピー用の一覧</label
+            ><textarea id="copy-text" readonly rows="7"></textarea>
+          </div>
+        </form>
+        <noscript
+          ><p>
+            試用リンクと比較内容は読めます。希望する案の名前をメモしてお知らせください。
+          </p></noscript
+        >
+        <p class="decision-note">
+          作品ごとの採否は「作品候補を選ぶ」で確認できます。選んだ組み合わせの統合表示はまだ作っていません。
+        </p>
+      </section>
+      <aside class="tool-connection" id="maker-field">
+        <h2>制作の手元 MAKER FIELD</h2>
+        <p>
+          制作ログ、画像の比較、アイデアを残す独立した道具です。サイトへの自動取り込みは未接続。初期記録は架空サンプルです。
+        </p>
+        <span>配布版を受領・未接続</span>
+        <div class="tool-details">
+          <p>
+            専用JSONの入出力と端末内保存を備えています。配布側は37テスト成功を報告していますが、実ブラウザでのダウンロード・復元・小画面は未確認です。
+          </p>
+          <details>
+            <summary>配布版の場所と起動手順</summary>
+            <p>
+              Library内の
+              <strong>MAKER-FIELD-20261004.zip</strong> が配布版です。保存ID:
+              <code>libfile_caabd1ee7a5c8191b8303e1b05a5ae81</code>
+            </p>
+            <p>
+              このMacでは
+              <code>task-6/maker-field-release-20261004/</code>
+              にあります。既定の4187は別コピーが使用中なので、配布版へのリンクにはしていません。
+            </p>
+            <p>
+              配布フォルダを開き、4188が空いていることを確認して
+              <code>PORT=4188 node server.cjs</code>。起動後に
+              <code>http://127.0.0.1:4188/</code>
+              を開きます。これは起動例で、今このポートでの稼働確認はしていません。
+            </p>
+            <p>
+              保存はブラウザとポートごとに別です。別コピーのデータを自動共有せず、専用JSONもそのままサイト記事にはなりません。詳しい保存先と形式の違いは
+              <code>docs/COMPARISON_GUIDE.md</code> にあります。
+            </p>
+          </details>
+        </div>
+      </aside>
+      <footer>
+        <p>
+          参照コードの最新版と保存済み画面の一致は、候補画面を除き未照合です。
+        </p>
+        <p>
+          画像は稼働中の保存済みプレビューです。主案に入っていない下書きや、合成の検証用記事を公開した状態にはしていません。画面の案内文・図形はUIの試案で、本人の文章や実績として確定したものではありません。
+        </p>
+        <details>
+          <summary>表示の確認範囲と起動について</summary>
+          <p>
+            7案のリンクはこのMacのlocalhostです。撮影時はすべてHTTP
+            200。保存済み表示と最新ブランチの全ファイル一致は、候補画面を除き今回照合していません。最新の参照HEADは各カードに記録しています。
+          </p>
+          <p>
+            ブラウザで表示を確認しましたが、本人が使った評価はこれからです。スクリーンショットは静止状態です。制作物の実行成功・作者・制作期間の証明には使いません。
+          </p>
+          <p>
+            ガイドの起動は専用コピーで
+            <code>npm run guide</code
+            >。各プレビューが停止した場合の手順は同じコピーの
+            <code>docs/COMPARISON_GUIDE.md</code>
+            にあります。開いた別タブは確認後に閉じて、このガイドへ戻れます。
+          </p>
+        </details>
+        <p class="small">
+          このガイド・画像・操作コードは通常のサイトbuildへ含めません。Library版のlocalhostリンクも同じMacでのみ開けます。
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

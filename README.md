@@ -126,3 +126,5 @@ git remote remove origin
 配布前の安全性修復は別ブランチ `audit-static-safety` で進めています。制作道具を採用する際の受け渡し条件は [docs/TOOL_CONNECTION.md](docs/TOOL_CONNECTION.md) にあります。
 
 公開GitHubの9件を本人が選ぶための [作品候補の調査と比較画面](docs/WORK_CANDIDATES.md) を、privateブランチ `work-candidates` に追加しています。全件下書き・採否未定で、`LOCAL_CANDIDATES=1` のローカル比較にだけ表示します。
+
+7案を実画像で見比べる独立ガイドは `npm run guide` で開きます。通常サイトbuildへは含めません。[比較ガイドと起動手順](docs/COMPARISON_GUIDE.md) を参照してください。
