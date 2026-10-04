@@ -85,3 +85,34 @@ Chromium 153.0.8010.12で本筋19群、設定保存失敗2群、修正後の限�
 - [原寸の画面・報告・再実行スクリプト](integrated-evidence/README.md)
 
 本人確認として残っているのは、focusを採るか、掲載する作品・記事、自己紹介と写真、制作日、AtCoder URLです。機能面で保存を妨げる未解決の問題はありません。未保存確認のブラウザ依存性と、自動保存を行わない制約は引き続きあります。
+
+## QAサーバーの整理
+
+横断検証の完了後、本人からの整理指示に従い、この制作作業で起動した旧QAサーバーだけを終了しました。PID・コマンド・配信元を照合し、SIGTERM後に待受がなくなったことを確認しています。ソース、配信済みの静的ファイル、画像、検証結果は削除していません。
+
+- 停止: collection 4334、focus 4338、監査版4344、実験4345、作品候補4346、使い心地4351、Maker4354、時系列4355、日本語UIの変更前4357・変更後4358。
+- 維持: 統合候補4360。元のプレビュー4321、別タスクや所有不明のプロセスは操作していません。
+- 比較ガイド4347は、この統合ブランチのガイドへ再起動しました。古い画像は保持し、試用リンクは4360の対応画面を開きます。
+- 今回のQA専用Playwright runtime/profileに該当する残存ブラウザプロセスはありませんでした。本人のブラウザやタブは操作していません。
+
+具体的なPIDと配信元は [runtime-cleanup.json](integrated-evidence/runtime-cleanup.json) に保存しています。メモリ圧力・CPU・swapや整理による削減量は測定しておらず、負荷の診断はしていません。
+
+ガイド更新後、ガイドのテスト4件と全体175件が合格しました。実ブラウザでは統合候補へ進む9リンクのHTTP 200、1280・375・320pxでの表示、ページエラー0を確認しています。[追加確認の記録](integrated-evidence/guide-current-evidence.json) と [現在のガイド画面](integrated-evidence/guide-current-1280.png) も保存しました。検証後の専用ブラウザは閉じています。
+
+現在の統合プレビューが終了した場合は、未使用ポートであることを確認したうえで、タスクの作業フォルダから保存済みの静的ファイルを配信できます。
+
+```sh
+cd /Users/hamayakousei/Documents/Codex/2026-10-04/task-3
+python3 -m http.server 4360 --bind 127.0.0.1 --directory .dot/integrated-qa/preview
+```
+
+画像比較ガイドだけを再開する場合:
+
+```sh
+cd /Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-integrated
+npm run guide
+```
+
+以後編集する場合は前述の `dev:workroom` を使用できます。静的ファイルが手元にない別端末では、このprivateブランチを取得して依存を導入し、`ASTRO_TELEMETRY_DISABLED=1 BASE_PATH=/hamaya-site-draft npm run dev:workroom` を実行してください。
+
+横断QAの再実行でだけ必要な旧focus比較元4358は、タスクの作業フォルダから `python3 -m http.server 4358 --bind 127.0.0.1 --directory .dot/ui-copy-qa/after` で再開できます。通常の利用には不要です。ほかの旧版もJSONに残した配信元から必要なものだけを起動し、既存のdistやbranchを上書きしないでください。

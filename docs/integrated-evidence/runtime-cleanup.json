@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-04",
+  "reason": "Consolidate completed QA previews after the integrated workroom was verified",
+  "stoppedServers": [
+    {
+      "purpose": "collection",
+      "pid": 58820,
+      "port": 4334,
+      "sourceDirectory": "/private/tmp/hamaya-collection-qa-20261003/root-comparison",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "focus",
+      "pid": 79030,
+      "port": 4338,
+      "sourceDirectory": "/tmp/hamaya-focus-qa-20261004/preview",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "audit",
+      "pid": 91950,
+      "port": 4344,
+      "sourceDirectory": "/tmp/hamaya-audit-preview-20261004",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "experiments",
+      "pid": 99545,
+      "port": 4345,
+      "sourceDirectory": "/tmp/hamaya-experiment-preview-20261004",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "candidates",
+      "pid": 4586,
+      "port": 4346,
+      "sourceDirectory": "/tmp/hamaya-candidates-preview-20261004",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "quiet-use",
+      "pid": 19033,
+      "port": 4351,
+      "sourceDirectory": "/tmp/hamaya-quiet-use-20261004/after",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "Maker handoff",
+      "pid": 36715,
+      "port": 4354,
+      "sourceDirectory": "/tmp/hamaya-maker-handoff-20261004",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "timeline",
+      "pid": 46449,
+      "port": 4355,
+      "sourceDirectory": "/tmp/hamaya-timeline-preview-20261004",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "Japanese UI before",
+      "pid": 55602,
+      "port": 4357,
+      "sourceDirectory": ".dot/ui-copy-qa/before",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    },
+    {
+      "purpose": "Japanese UI after / QA baseline",
+      "pid": 57659,
+      "port": 4358,
+      "sourceDirectory": ".dot/ui-copy-qa/after",
+      "action": "SIGTERM",
+      "listeningAfter": false,
+      "sourceDeleted": false
+    }
+  ],
+  "keptIntegrated": {
+    "port": 4360,
+    "pid": 65012,
+    "url": "http://127.0.0.1:4360/hamaya-site-draft/",
+    "listening": true
+  },
+  "keptOriginal": {
+    "port": 4321,
+    "pid": 80079,
+    "action": "untouched"
+  },
+  "unknownOrOtherTaskPortsUntouched": [4187, 4249, 4250, 4252],
+  "qaBrowserResidual": "No process matching the dedicated Playwright runtime/profile was present before cleanup. User browser tabs were not inspected or changed.",
+  "resourceClaim": "No memory pressure, CPU, swap, or memory saving conclusion was measured here.",
+  "comparisonGuide": {
+    "port": 4347,
+    "previousPid": 14028,
+    "previousDirectory": ".dot/site-comparison-guide",
+    "previousAction": "SIGTERM after command/cwd verification",
+    "newDirectory": ".dot/site-integrated",
+    "reason": "Preserve screenshot identities and point trial links to integrated preview",
+    "newPid": 71564,
+    "listeningAfter": true,
+    "checkedLinks": 9,
+    "checkedWidths": [1280, 375, 320]
+  }
+}

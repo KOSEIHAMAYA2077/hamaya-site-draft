@@ -33,6 +33,35 @@ test('比較ガイドは7案の実画像とlocalhost入口だけを提供し、�
   assert.match(html, /合成の検証用記事/);
 });
 
+test('試用先は現在の統合候補へ接続し、画像撮影元の記録と分けて表示する', async () => {
+  const html = await renderGuide();
+  const base = 'http://127.0.0.1:4360/hamaya-site-draft/';
+  const routes = {
+    home: 'room/archive/',
+    signal: 'directions/signal/',
+    desk: 'directions/desk/',
+    collection: 'compare/collection/',
+    focus: 'compare/focus/',
+    experiments: 'compare/experiments/',
+    candidates: 'compare/candidates/',
+  };
+  const links = [...html.matchAll(/data-preview="([^"]+)" href="([^"]+)"/g)];
+  assert.deepEqual(
+    links.map(([, id, href]) => [id, href]),
+    Object.entries(routes).map(([id, route]) => [id, base + route]),
+  );
+  assert.ok(html.includes(`href="${base}"`));
+  assert.ok(html.includes(`href="${base}room/compare/"`));
+  assert.match(html, /旧試用サーバーは停止/);
+  assert.match(html, /以下は保存時の画像と説明/);
+  assert.equal((html.match(/画像撮影元の参照コード/g) || []).length, 7);
+  const guide = await loadGuide();
+  for (const view of guide.views) {
+    assert.ok(html.includes(`${view.branch} · ${view.commit.slice(0, 8)}`));
+    assert.equal(html.includes(`href="${view.url}"`), false);
+  }
+});
+
 test('通常サイト配布物に比較ガイド・スクリーンショット・判断UIを含めない', async () => {
   const distRoot = new URL('../dist', import.meta.url).pathname;
   async function scan(dir) {

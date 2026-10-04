@@ -98,5 +98,12 @@
   },
   "privateOnly": true,
   "deployed": false,
-  "ownerAdoptionConfirmed": false
+  "ownerAdoptionConfirmed": false,
+  "followupGuide": {
+    "testsPassed": 4,
+    "finalFullSuitePassed": 175,
+    "browserLinksHTTP200": 9,
+    "browserWidths": [1280, 375, 320],
+    "pageErrors": 0
+  }
 }

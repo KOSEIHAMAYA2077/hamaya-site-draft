@@ -1,5 +1,15 @@
 import { readFile } from 'node:fs/promises';
 const root = new URL('../local-review/', import.meta.url);
+const currentPreview = 'http://127.0.0.1:4360/hamaya-site-draft/';
+const currentRoutes = Object.freeze({
+  home: 'room/archive/',
+  signal: 'directions/signal/',
+  desk: 'directions/desk/',
+  collection: 'compare/collection/',
+  focus: 'compare/focus/',
+  experiments: 'compare/experiments/',
+  candidates: 'compare/candidates/',
+});
 const groupInfo = [
   ['home', '01 ホームの見せ方', '3案から、戻ってきたい入口を選ぶ。'],
   ['reading', '02 作品の開き方', '同じ6件を使った、読み方の比較。'],
@@ -70,7 +80,7 @@ export async function loadGuide() {
 export async function renderGuide() {
   const guide = await loadGuide();
   const card = (view) =>
-    `<article class="card" id="view-${escape(view.id)}" data-view="${escape(view.id)}"><a class="card-image" href="images/${escape(view.id)}.png" target="_blank" rel="noopener noreferrer" aria-label="${escape(view.name)}の実画面を大きく見る"><img src="images/${escape(view.id)}.png" width="1280" height="900" alt="${escape(view.name)}の実際のプレビュー画面" loading="lazy"></a><div class="card-body"><p class="card-kicker"><span class="card-id">${escape(view.id)}</span><span>${escape(view.subtitle)}</span></p><h3>${escape(view.name)}</h3><p class="difference">${escape(view.difference)}</p><dl><div><dt>${view.id === 'candidates' ? 'この道具でできること' : '採用すると'}</dt><dd>${escape(view.effect)}</dd></div><div><dt>いま表示している内容</dt><dd>${escape(view.content)}</dd></div><div><dt>まだ確かめていないこと</dt><dd>${escape(view.unverified)}</dd></div></dl><p class="try"><strong>ここを試す</strong>${escape(view.try)}</p><div class="card-actions"><a class="try-link" data-preview="${escape(view.id)}" href="${escape(view.url)}" target="_blank" rel="noopener noreferrer">実際に開く ↗</a><a class="image-link" href="images/${escape(view.id)}.png" target="_blank" rel="noopener noreferrer">画像を大きく ↗</a></div><p class="source">参照コード ${escape(view.branch)} · ${escape(view.commit.slice(0, 8))}</p></div></article>`;
+    `<article class="card" id="view-${escape(view.id)}" data-view="${escape(view.id)}"><a class="card-image" href="images/${escape(view.id)}.png" target="_blank" rel="noopener noreferrer" aria-label="${escape(view.name)}の実画面を大きく見る"><img src="images/${escape(view.id)}.png" width="1280" height="900" alt="${escape(view.name)}の実際のプレビュー画面" loading="lazy"></a><div class="card-body"><p class="card-kicker"><span class="card-id">${escape(view.id)}</span><span>${escape(view.subtitle)}</span></p><h3>${escape(view.name)}</h3><p class="difference">${escape(view.difference)}</p><dl><div><dt>${view.id === 'candidates' ? 'この道具でできること' : '採用すると'}</dt><dd>${escape(view.effect)}</dd></div><div><dt>保存時の表示内容</dt><dd>${escape(view.content)}</dd></div><div><dt>まだ確かめていないこと</dt><dd>${escape(view.unverified)}</dd></div></dl><p class="try"><strong>ここを試す</strong>${escape(view.try)}</p><div class="card-actions"><a class="try-link" data-preview="${escape(view.id)}" href="${escape(currentPreview + currentRoutes[view.id])}" target="_blank" rel="noopener noreferrer">実際に開く ↗</a><a class="image-link" href="images/${escape(view.id)}.png" target="_blank" rel="noopener noreferrer">画像を大きく ↗</a></div><p class="source">画像撮影元の参照コード ${escape(view.branch)} · ${escape(view.commit.slice(0, 8))}</p></div></article>`;
   const groups = groupInfo
     .map(
       ([id, title, description]) =>
