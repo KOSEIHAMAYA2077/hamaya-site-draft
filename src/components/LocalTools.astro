@@ -10,6 +10,7 @@ const enabled = localBuildEnabled(
   {
     LOCAL_STUDIO: import.meta.env.LOCAL_STUDIO,
     LOCAL_COMPARISON: import.meta.env.LOCAL_COMPARISON,
+    LOCAL_EXPERIMENTS: import.meta.env.LOCAL_EXPERIMENTS,
   },
   import.meta.env.DEV,
 );
@@ -26,6 +27,18 @@ const enabled = localBuildEnabled(
       {label}
       <span aria-hidden="true">↗</span>
     </a>
+
+    {import.meta.env.LOCAL_EXPERIMENTS === '1' && (
+      <a
+        class="local-write-link"
+        href={path('compare/experiments/')}
+        data-local-tool
+        data-experiment-entry
+        hidden
+      >
+        実験を見る <span aria-hidden="true">↗</span>
+      </a>
+    )}
 
     <script is:inline>
       // This is a display hint for the local writing tool, not access control.

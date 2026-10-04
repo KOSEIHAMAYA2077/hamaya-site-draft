@@ -3,3 +3,4 @@ dist/
 .astro/
 package-lock.json
 screenshots/
+src/experiments/vendor/

@@ -1,0 +1,31 @@
+{
+  "sourceRepository": "game-kernel-lab",
+  "sourceCommit": "5817d62483371c810bff7546b8277e7f2f806ce0",
+  "label": "シドの試作（AI）",
+  "use": "Authorized private local comparison copy; owner selection pending.",
+  "license": "No repository-wide open-source license declared. No public redistribution permission is inferred.",
+  "thirdPartyRuntimeDependencies": [],
+  "scope": "Byte-exact model and model-test files only. Original interface, research documents, and assets are excluded.",
+  "files": [
+    {
+      "source": "experiments/action-clock/model.mjs",
+      "copy": "vendor/action-clock/model.mjs",
+      "sha256": "ad925963b3b96a9c8a52f1d1aeeecae4de8cc2e37f3da707b7a67dc89b14f5d2"
+    },
+    {
+      "source": "experiments/action-clock/model.test.mjs",
+      "copy": "vendor/action-clock/model.test.mjs",
+      "sha256": "8767b6cad708957fb2b9d1697572a964e9e54c23653dcf21e83dc057b093a2dd"
+    },
+    {
+      "source": "experiments/motion-reaction/model.mjs",
+      "copy": "vendor/motion-reaction/model.mjs",
+      "sha256": "e553ae563820b92b654ce0bb26472d083bd863654bb4bba8e0e27d9c4dabd043"
+    },
+    {
+      "source": "experiments/motion-reaction/model.test.mjs",
+      "copy": "vendor/motion-reaction/model.test.mjs",
+      "sha256": "839b301948ecb5fcfab905be2424ae2b57ff9037c855550672dad00bd317d8f1"
+    }
+  ]
+}

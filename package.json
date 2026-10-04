@@ -8,6 +8,7 @@
     "build": "astro build",
     "build:local": "LOCAL_STUDIO=1 astro build",
     "build:compare": "LOCAL_COMPARISON=1 astro build",
+    "build:experiments": "LOCAL_EXPERIMENTS=1 astro build",
     "preview": "astro preview --host 127.0.0.1 --port 4321",
     "lint": "prettier --check . && astro check",
     "format": "prettier --write .",

@@ -1,0 +1,787 @@
+---
+interface Props {
+  documents: { motion: string; clock: string };
+}
+const { documents } = Astro.props;
+const entries = [
+  {
+    id: 'motion',
+    index: '01',
+    kind: '動きと反応',
+    title: '止まっても、少し遅れる。',
+    summary: '同じ移動に、体の傾きと荷物の揺れを重ねる。',
+    change: '「反応あり」と「固定」を切り替える。',
+    result: '移動は同じまま、体の傾きと荷物の遅れが変わる。',
+    try: '右へ動いて、左へ切り返す。「同じ入力を再生」でも比べられます。',
+    note: '荷物は表示だけです。運搬や落下の遊びはありません。',
+    document: documents.motion,
+  },
+  {
+    id: 'clock',
+    index: '02',
+    kind: '移動と時間',
+    title: '立ち止まると、世界も止まる。',
+    summary: '進んだ距離を、障害物の時計へつなぐ。',
+    change: '時計を「移動量」と「連続時間」で切り替える。',
+    result: '手を離したとき、障害物が止まるか動き続けるかが変わる。',
+    try: '右へ壁まで進んで、手を離す。再生中の停止を3秒にして「同じ入力を再生」でも比べられます。',
+    note: '接触してもやり直しにはなりません。時計の違いを観察する試作です。',
+    document: documents.clock,
+  },
+];
+---
+
+<div class="experiment-study shell" data-experiment-study>
+  <header class="experiment-heading">
+    <div class="experiment-context">
+      <span class="eyebrow">実験の机</span>
+      <span class="local-mark">ローカル限定・掲載未定</span>
+    </div>
+    <h1>実験を見る</h1>
+    <p class="experiment-lead">少し変えて、反応を比べる。</p>
+    <p class="experiment-intro">
+      ゲームの小さな仕組みを、2つ置いています。
+      <br />
+      気になったものだけ、開いて触れます。
+    </p>
+    <div class="experiment-provenance">
+      <span class="byline-mark" aria-hidden="true">
+        S
+      </span>
+      <p>
+        <strong>シドの試作（AI）</strong>
+        <span>
+          依頼に沿って作った試作です。本人の作品としての採用・公開は未確定です。
+        </span>
+      </p>
+    </div>
+    <nav class="experiment-jump" aria-label="実験を選ぶ">
+      {entries.map((entry) => (
+        <a href={`#experiment-${entry.id}`}>
+          <span>{entry.index}</span>
+          {entry.kind}
+          <span aria-hidden="true">↓</span>
+        </a>
+      ))}
+    </nav>
+  </header>
+
+  <div class="experiment-list">
+    {entries.map((entry) => (
+      <article
+        id={`experiment-${entry.id}`}
+        class={`experiment-card experiment-${entry.id}`}
+        data-experiment={entry.id}
+      >
+        <div class="experiment-copy">
+          <div class="experiment-kicker">
+            <span>{entry.index} / 02</span>
+            <span>{entry.kind}</span>
+          </div>
+          <h2>{entry.title}</h2>
+          <p class="experiment-summary">{entry.summary}</p>
+          <dl class="experiment-cause">
+            <div>
+              <dt>変えること</dt>
+              <dd>{entry.change}</dd>
+            </div>
+            <div>
+              <dt>起こること</dt>
+              <dd>{entry.result}</dd>
+            </div>
+          </dl>
+          <p class="experiment-try">{entry.try}</p>
+          <p class="experiment-note">{entry.note}</p>
+        </div>
+        <div class="experiment-preview" data-preview>
+          {entry.id === 'motion' ? (
+            <svg
+              viewBox="0 0 640 270"
+              role="img"
+              aria-label="静止した模式図。走る四角い体が傾き、荷物が少し遅れてついてくる。"
+            >
+              <defs>
+                <pattern
+                  id="motion-grid"
+                  width="32"
+                  height="32"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M32 0H0V32"
+                    fill="none"
+                    stroke="#deddd4"
+                    stroke-width=".6"
+                  />
+                </pattern>
+              </defs>
+              <rect width="640" height="270" fill="#eeede5" />
+              <rect
+                x="30"
+                y="24"
+                width="580"
+                height="210"
+                fill="url(#motion-grid)"
+              />
+              <path d="M40 211H600" stroke="#727975" />
+              <g opacity=".17" transform="translate(190 210)">
+                <path d="M-17 0L-20-65H20L17 0" fill="#465957" />
+                <rect x="-48" y="-93" width="37" height="28" fill="#bc773f" />
+              </g>
+              <path
+                d="M224 187H296M274 179L298 187L274 195"
+                fill="none"
+                stroke="#727975"
+                stroke-width="1.5"
+              />
+              <g transform="translate(361 210) rotate(-12)">
+                <rect
+                  x="-25"
+                  y="-81"
+                  width="50"
+                  height="81"
+                  rx="10"
+                  fill="#3f5652"
+                />
+                <circle cy="-103" r="18" fill="#3f5652" />
+                <path
+                  d="M-12-35H-49"
+                  stroke="#3f5652"
+                  stroke-width="9"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="-69"
+                  y="-63"
+                  width="38"
+                  height="30"
+                  rx="3"
+                  fill="#bc773f"
+                />
+              </g>
+              <path
+                d="M385 99Q422 106 426 142"
+                stroke="#bc773f"
+                fill="none"
+                stroke-dasharray="3 5"
+              />
+              <circle cx="426" cy="142" r="3" fill="#bc773f" />
+              <text
+                x="44"
+                y="51"
+                font-size="10"
+                fill="#63706b"
+                letter-spacing="2"
+              >
+                MOTION → REACTION
+              </text>
+            </svg>
+          ) : (
+            <svg
+              viewBox="0 0 640 270"
+              role="img"
+              aria-label="静止した模式図。動く円と往復する障害物。移動量に応じて時計が進む。"
+            >
+              <defs>
+                <pattern
+                  id="clock-grid"
+                  width="32"
+                  height="32"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M32 0H0V32"
+                    fill="none"
+                    stroke="#dcdedb"
+                    stroke-width=".6"
+                  />
+                </pattern>
+              </defs>
+              <rect width="640" height="270" fill="#e9eeeb" />
+              <rect
+                x="30"
+                y="24"
+                width="580"
+                height="210"
+                fill="url(#clock-grid)"
+              />
+              <rect
+                x="72"
+                y="75"
+                width="422"
+                height="149"
+                rx="3"
+                fill="#f8f8f3"
+                stroke="#929d96"
+              />
+              <path
+                d="M131 177H215V109H324"
+                fill="none"
+                stroke="#6d8e7f"
+                stroke-dasharray="4 5"
+              />
+              <rect x="220" y="140" width="46" height="83" fill="#c7cec8" />
+              <circle cx="131" cy="177" r="14" fill="#3f6658" />
+              <circle cx="339" cy="111" r="12" fill="#b9814d" />
+              <circle cx="412" cy="195" r="12" fill="#b9814d" />
+              <path
+                d="M339 92V207M412 94V208"
+                stroke="#b9814d"
+                opacity=".4"
+                stroke-dasharray="2 5"
+              />
+              <circle
+                cx="539"
+                cy="110"
+                r="34"
+                stroke="#6e8078"
+                fill="#f6f7f1"
+              />
+              <path
+                d="M539 84V110L557 122"
+                fill="none"
+                stroke="#3f6658"
+                stroke-width="2"
+              />
+              <text
+                x="44"
+                y="51"
+                font-size="10"
+                fill="#63706b"
+                letter-spacing="2"
+              >
+                MOVEMENT → TIME
+              </text>
+            </svg>
+          )}
+          <span class="still-label">模式図・静止表示</span>
+        </div>
+        <div class="experiment-actions">
+          <button
+            type="button"
+            data-open
+            aria-expanded="false"
+            aria-controls={`trial-${entry.id}`}
+            disabled
+          >
+            試してみる <span aria-hidden="true">↗</span>
+          </button>
+          <button type="button" data-pause hidden>
+            動きを止める
+          </button>
+          <span class="experiment-status" data-status role="status">
+            開くまで動きません。
+          </span>
+        </div>
+        <div
+          class="experiment-trial"
+          id={`trial-${entry.id}`}
+          data-trial
+          data-document={entry.document}
+          hidden
+        ></div>
+        <noscript>
+          <p class="experiment-note">
+            試用にはJavaScriptが必要です。上の模式図と説明はそのまま読めます。
+          </p>
+        </noscript>
+        <footer class="experiment-source">
+          <span>
+            出典：game-kernel-lab / {entry.id === 'motion' ? 'E' : 'G'}
+          </span>
+          <span>シドの試作・本人の採否待ち</span>
+        </footer>
+      </article>
+    ))}
+  </div>
+  <footer class="experiment-ending">
+    <span class="eyebrow">この場所について</span>
+    <p>
+      手を動かして、違いが気になったら。
+      <br />
+      次に試したいことを考えるための入口です。
+    </p>
+    <small>
+      原本を保った独立コピーです。面白さや理解しやすさの本人評価は、これからです。
+    </small>
+  </footer>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-experiment-study]');
+  if (root) {
+    const cards = [...root.querySelectorAll<HTMLElement>('[data-experiment]')];
+    const frames = new Map<HTMLElement, HTMLIFrameElement>();
+    const status = (card: HTMLElement, text: string) => {
+      card.querySelector<HTMLElement>('[data-status]')!.textContent = text;
+    };
+    const pause = (card: HTMLElement, message: string) => {
+      const frame = frames.get(card);
+      if (!frame) return;
+      frame.contentWindow?.postMessage({ type: 'experiment:pause' }, '*');
+      status(card, message);
+    };
+    function close(card: HTMLElement) {
+      frames.get(card)?.remove();
+      frames.delete(card);
+      card.querySelector<HTMLElement>('[data-trial]')!.hidden = true;
+      card.querySelector<HTMLElement>('[data-preview]')!.hidden = false;
+      card.querySelector<HTMLElement>('[data-pause]')!.hidden = true;
+      const button = card.querySelector<HTMLButtonElement>('[data-open]')!;
+      button.textContent = '試してみる ↗';
+      button.setAttribute('aria-expanded', 'false');
+      status(card, '閉じました。もう一度開くと初めからです。');
+    }
+    for (const card of cards) {
+      const button = card.querySelector<HTMLButtonElement>('[data-open]')!;
+      button.disabled = false;
+      button.addEventListener('click', () => {
+        if (frames.has(card)) {
+          close(card);
+          return;
+        }
+        for (const other of frames.keys()) close(other);
+        const trial = card.querySelector<HTMLElement>('[data-trial]')!;
+        const frame = document.createElement('iframe');
+        frame.title = `${card.dataset.experiment === 'motion' ? '動きと反応' : '移動と時間'}を試す・シドの試作`;
+        frame.setAttribute('sandbox', 'allow-scripts');
+        frame.setAttribute(
+          'allow',
+          "camera 'none'; microphone 'none'; geolocation 'none'",
+        );
+        frame.referrerPolicy = 'no-referrer';
+        frame.srcdoc = trial.dataset.document || '';
+        frames.set(card, frame);
+        trial.append(frame);
+        trial.hidden = false;
+        card.querySelector<HTMLElement>('[data-preview]')!.hidden = true;
+        card.querySelector<HTMLElement>('[data-pause]')!.hidden = false;
+        button.textContent = '試用を閉じる ×';
+        button.setAttribute('aria-expanded', 'true');
+        status(card, '準備中です。');
+        frame.addEventListener('load', () => {
+          if (
+            document.hidden ||
+            trial.getBoundingClientRect().bottom < 0 ||
+            trial.getBoundingClientRect().top >= innerHeight
+          )
+            pause(card, '試用の画面で操作すると動きます。');
+        });
+      });
+      card
+        .querySelector<HTMLButtonElement>('[data-pause]')!
+        .addEventListener('click', () =>
+          pause(card, '停止しました。試用の画面で操作すると再開できます。'),
+        );
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries)
+          if (!entry.isIntersecting) {
+            const card = entry.target.closest<HTMLElement>('[data-experiment]');
+            if (card)
+              pause(
+                card,
+                '画面の外に出たため停止しました。戻って操作すると再開できます。',
+              );
+          }
+      },
+      { threshold: 0 },
+    );
+    for (const card of cards)
+      observer.observe(card.querySelector('[data-trial]')!);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden)
+        for (const card of frames.keys())
+          pause(card, '画面を離れたため停止しました。');
+    });
+    window.addEventListener('pagehide', () => {
+      for (const card of frames.keys()) pause(card, '停止しました。');
+    });
+    window.addEventListener('message', (event) => {
+      const match = [...frames].find(
+        ([, frame]) => frame.contentWindow === event.source,
+      );
+      if (
+        !match ||
+        !event.data ||
+        event.data.id !== match[0].dataset.experiment
+      )
+        return;
+      const [card, frame] = match;
+      if (event.data.type === 'experiment:ready')
+        status(card, '準備できました。試用の画面で操作できます。');
+      if (event.data.type === 'experiment:running')
+        status(card, '試用中です。動きを止めるボタンで停止できます。');
+      if (event.data.type === 'experiment:paused')
+        status(card, '停止中です。試用の画面で操作すると再開できます。');
+      if (
+        event.data.type === 'experiment:resize' &&
+        Number.isFinite(event.data.height)
+      )
+        frame.style.height = `${Math.min(1100, Math.max(360, event.data.height))}px`;
+    });
+  }
+</script>
+
+<style>
+  .experiment-study {
+    max-width: 1120px;
+    padding-block: 64px 80px;
+  }
+  .experiment-heading {
+    max-width: 840px;
+    margin-bottom: 62px;
+  }
+  .experiment-context {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .experiment-context .eyebrow {
+    margin: 0;
+  }
+  .local-mark {
+    font-size: 11px;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    padding: 6px 12px;
+  }
+  .experiment-heading h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+  }
+  .experiment-lead {
+    font-size: clamp(20px, 3vw, 27px);
+    margin-top: 14px;
+  }
+  .experiment-intro {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 2;
+    margin-top: 20px;
+  }
+  .experiment-provenance {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 26px;
+  }
+  .byline-mark {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    font:
+      12px ui-monospace,
+      monospace;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--muted);
+  }
+  .experiment-provenance p {
+    display: grid;
+    gap: 4px;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .experiment-provenance strong {
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .experiment-provenance p span {
+    color: var(--muted);
+  }
+  .experiment-jump {
+    display: flex;
+    gap: 28px;
+    border-top: 1px solid var(--line);
+    margin-top: 32px;
+    padding-top: 18px;
+  }
+  .experiment-jump a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    font-size: 13px;
+    min-height: 44px;
+  }
+  .experiment-jump a span {
+    font:
+      10px ui-monospace,
+      monospace;
+    color: var(--muted);
+  }
+  .experiment-list {
+    display: grid;
+    gap: 60px;
+  }
+  .experiment-card {
+    border-top: 1px solid var(--line);
+    padding-top: 30px;
+    scroll-margin-top: 24px;
+  }
+  .experiment-copy {
+    max-width: 800px;
+  }
+  .experiment-kicker {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .experiment-kicker span:first-child {
+    font:
+      10px ui-monospace,
+      monospace;
+    letter-spacing: 0.08em;
+  }
+  .experiment-card h2 {
+    font-size: clamp(23px, 3.4vw, 34px);
+    font-weight: 500;
+    line-height: 1.55;
+    text-wrap: balance;
+  }
+  .experiment-summary {
+    font-size: 14px;
+    line-height: 1.9;
+    margin-top: 8px;
+    color: var(--muted);
+  }
+  .experiment-cause {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 26px 0 20px;
+  }
+  .experiment-cause > div {
+    border-left: 2px solid #b2c0b9;
+    padding-left: 14px;
+  }
+  .experiment-cause dt {
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 7px;
+  }
+  .experiment-cause dd {
+    font-size: 14px;
+    line-height: 1.85;
+    margin: 0;
+  }
+  .experiment-try {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .experiment-note {
+    font-size: 11px;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .experiment-preview {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-top: 28px;
+  }
+  .experiment-preview svg {
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    display: block;
+    background: #eeede5;
+  }
+  .experiment-clock .experiment-preview svg {
+    background: #e9eeeb;
+  }
+  .still-label {
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    font-size: 10px;
+    color: #54625b;
+    background: #f5f6efda;
+    padding: 4px 8px;
+    border-radius: 3px;
+  }
+  .experiment-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin: 20px 0;
+  }
+  .experiment-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    min-height: 48px;
+    border: 1px solid var(--ink);
+    border-radius: 50px;
+    padding: 10px 23px;
+    background: var(--ink);
+    color: var(--white);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .experiment-actions button[data-pause] {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+    gap: 12px;
+  }
+  .experiment-actions button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  .experiment-status {
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--muted);
+    flex: 1;
+    min-width: 180px;
+  }
+  .experiment-trial {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f7f1;
+  }
+  .experiment-trial :global(iframe) {
+    display: block;
+    width: 100%;
+    height: 630px;
+    border: 0;
+  }
+  .experiment-source {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    font-size: 10px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+  .experiment-ending {
+    border-top: 1px solid var(--line);
+    margin-top: 68px;
+    padding-top: 32px;
+  }
+  .experiment-ending p {
+    font-size: 21px;
+    line-height: 1.8;
+    margin-block: 16px;
+  }
+  .experiment-ending small {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+  }
+  @media (min-width: 960px) {
+    .experiment-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 38px;
+    }
+    .experiment-copy {
+      grid-column: 1;
+      grid-row: 1 / span 3;
+    }
+    .experiment-preview {
+      grid-column: 2;
+      margin-top: 0;
+      align-self: start;
+    }
+    .experiment-preview svg {
+      min-height: 265px;
+    }
+    .experiment-actions {
+      grid-column: 2;
+      align-self: start;
+    }
+    .experiment-trial {
+      grid-column: 1 / -1;
+      margin-top: 16px;
+    }
+    .experiment-source {
+      grid-column: 1 / -1;
+    }
+    .experiment-cause {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .experiment-note {
+      max-width: 440px;
+    }
+  }
+  @media (max-width: 600px) {
+    .experiment-study {
+      padding-block: 32px 48px;
+    }
+    .experiment-context {
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .local-mark {
+      font-size: 10px;
+      padding: 5px 8px;
+    }
+    .experiment-heading {
+      margin-bottom: 38px;
+    }
+    .experiment-jump {
+      gap: 22px;
+    }
+    .experiment-jump a {
+      gap: 10px;
+      font-size: 12px;
+    }
+    .experiment-cause {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 21px;
+    }
+    .experiment-list {
+      gap: 42px;
+    }
+    .experiment-preview {
+      margin-top: 22px;
+    }
+    .experiment-actions {
+      gap: 12px;
+    }
+    .experiment-status {
+      flex-basis: 100%;
+    }
+    .experiment-source {
+      flex-direction: column;
+      gap: 3px;
+    }
+    .experiment-ending p {
+      font-size: 19px;
+    }
+    .experiment-trial {
+      border-radius: 8px;
+    }
+    .experiment-actions button {
+      padding: 10px 18px;
+      gap: 18px;
+    }
+  }
+</style>

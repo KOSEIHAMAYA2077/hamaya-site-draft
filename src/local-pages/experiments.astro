@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ExperimentStudy from '../components/ExperimentStudy.astro';
+import { experimentDocuments } from '../experiments/documents.mjs';
+const documents = await experimentDocuments();
+---
+
+<Layout
+  title="実験を見る・非公開比較"
+  description="操作を少し変えて、姿勢と時間の反応を比べる。シドの試作を眺めるローカル限定の入口。"
+  section={null}
+>
+  <ExperimentStudy documents={documents} />
+</Layout>

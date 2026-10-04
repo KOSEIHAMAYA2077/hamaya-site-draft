@@ -216,7 +216,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
         const content = await readFile(filename, 'utf8');
         assert.doesNotMatch(
           content,
-          /draft-writer|data-focus-study|data-collection-study|data-desk-surface|LOCAL_COMPARISON|DESIGN STUDIES/,
+          /draft-writer|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|LOCAL_COMPARISON|DESIGN STUDIES/,
         );
         for (const prefix of privateRoutePrefixes)
           assert.ok(
@@ -225,6 +225,34 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
           );
       }
     }
+  }
+});
+
+test('実験は明示したローカルbuildにだけ含め、原本や研究資料を配布しない', async () => {
+  const enabled = process.env.LOCAL_EXPERIMENTS === '1';
+  const filename = path.join(dist, 'compare/experiments/index.html');
+  assert.equal(await exists(filename), enabled);
+  assert.equal(
+    pages.get(path.join(dist, 'index.html')).includes('data-experiment-entry'),
+    enabled,
+  );
+  for (const file of builtFiles) {
+    assert.doesNotMatch(
+      path.relative(dist, file),
+      /(?:vendor|BRIEF|PROGRESS|RESEARCH|\.pdf|model\.test)/,
+    );
+    if (!enabled && /\.(?:html|js|json|css)$/.test(file))
+      assert.doesNotMatch(
+        await readFile(file, 'utf8'),
+        /data-experiment-study|experiment:pause|peakDisplayedCargo/,
+      );
+  }
+  if (enabled) {
+    const html = pages.get(filename);
+    assert.match(html, /シドの試作（AI）/);
+    assert.match(html, /本人の作品としての採用・公開は未確定/);
+    assert.equal((html.match(/data-document=/g) || []).length, 2);
+    assert.equal((html.match(/<iframe\b/g) || []).length, 0);
   }
 });
 

@@ -6,6 +6,8 @@
 
 入力と通常配布の修復は独立ブランチ `audit-static-safety` にあります。[公開前監査](docs/SECURITY_AUDIT.md) と [制作道具の接続仕様](docs/TOOL_CONNECTION.md) を参照してください。`experience-next` の制作案は保持しています。
 
+この `experiment-study` には、シドの小試作を眺める独立した [「実験を見る」](docs/EXPERIMENT_STUDY.md) を追加しています。`LOCAL_EXPERIMENTS=1 npm run dev` または `npm run build:experiments` でのみ使えます。本人の作品としての採否は未確定で、通常buildには含めません。
+
 ## ローカルで見る
 
 Node.js 24以上を使います。実装はAstro 7の静的サイトです。

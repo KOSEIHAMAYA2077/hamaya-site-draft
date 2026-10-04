@@ -72,6 +72,13 @@ export default defineConfig({
                 ),
               ),
             });
+          if (process.env.LOCAL_EXPERIMENTS === '1')
+            injectRoute({
+              pattern: '/compare/experiments',
+              entrypoint: fileURLToPath(
+                new URL('./src/local-pages/experiments.astro', import.meta.url),
+              ),
+            });
         },
       },
     },
