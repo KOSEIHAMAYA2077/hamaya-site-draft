@@ -1,0 +1,13 @@
+{
+  "repository": "nanaism/yomiyasu",
+  "ref": "1890e67c497bf3b13df853719d7ca9af4ea37710",
+  "retrieved": "2026-10-04",
+  "files": {
+    "LICENSE": "f0d06f87f9b209d47c7f7963321ff71bab68c1e8",
+    "references/domains/business.md": "a4a0c492d95df742a275202ac80148c6b08abe0b",
+    "scripts/yomiyasu_lint.py": "fa1deb296885d5295706e1345c73fb23ab95cf10",
+    "scripts/yomiyasu_diff.py": "399dd89ad04253e288a602b91d0d21c6644bffa4"
+  },
+  "hash_type": "Git blob SHA-1",
+  "byte_exact_verified": true
+}

@@ -1,0 +1,1492 @@
+{
+  "scope": "UI-label/action correspondence with synthetic data only; not a human comprehension study.",
+  "checks": [
+    {
+      "name": "before: writer confirmation shows preview without download"
+    },
+    {
+      "name": "before: maker confirmation has separate download action"
+    },
+    {
+      "name": "before: initial candidate/writer/maker views fit 375px"
+    },
+    {
+      "name": "before: initial candidate/writer/maker views fit 320px"
+    },
+    {
+      "name": "after: writer confirmation shows preview without download"
+    },
+    {
+      "name": "after: maker confirmation has separate download action"
+    },
+    {
+      "name": "after: initial candidate/writer/maker views fit 375px"
+    },
+    {
+      "name": "after: initial candidate/writer/maker views fit 320px"
+    },
+    {
+      "name": "candidate copy contains exactly repository, title and URL; selection remains temporary"
+    },
+    {
+      "name": "candidate deselect and reload clear checkboxes; empty chosen-filter is explained"
+    },
+    {
+      "name": "candidate technical detail opens with Enter and closes with Space; pending scope remains outside"
+    },
+    {
+      "name": "writer confirmation does not save; download yields draft:true with original input"
+    },
+    {
+      "name": "writer import awaits replace decision; cancel preserves all edited fields"
+    },
+    {
+      "name": "writer explicit replace imports source; draft:false is converted to true and reload clears unsaved form"
+    },
+    {
+      "name": "Maker choose JSON shows counts before opening; choose one record restores only its own edits and sample notice"
+    },
+    {
+      "name": "Maker pending cancel and malformed JSON preserve current and other-record inputs"
+    },
+    {
+      "name": "Maker preview performs no download; separate download yields one draft:true file and reveals next step"
+    },
+    {
+      "name": "Maker next opens a blank writer tab; explicit imported download round-trips byte-for-byte"
+    },
+    {
+      "name": "Maker opening another JSON and explicit reset clear prior per-record input"
+    },
+    {
+      "name": "Maker empty JSON has explicit empty state and no enabled record action"
+    },
+    {
+      "name": "experiment motion: open starts stopped; replay starts, stop preserves, continue resumes, close removes frame"
+    },
+    {
+      "name": "experiment clock: open starts stopped; replay starts, stop preserves, continue resumes, close removes frame"
+    },
+    {
+      "name": "after: 1280px navigation, expanded details and populated preview fit viewport under reduced motion"
+    },
+    {
+      "name": "after: 375px navigation, expanded details and populated preview fit viewport under reduced motion"
+    },
+    {
+      "name": "after: 320px navigation, expanded details and populated preview fit viewport under reduced motion"
+    },
+    {
+      "name": "without JavaScript: candidate source details stay readable; disabled writer/Maker controls explain requirement"
+    },
+    {
+      "name": "no JavaScript errors, remote requests, posts, storage writes or source fixture mutation"
+    }
+  ],
+  "screenshots": [
+    "before-candidates-1280.png",
+    "before-writer-1280.png",
+    "before-maker-1280.png",
+    "before-writer-confirm-1280.png",
+    "before-maker-record-1280.png",
+    "before-maker-confirm-1280.png",
+    "before-candidates-375.png",
+    "before-writer-375.png",
+    "before-maker-375.png",
+    "before-candidates-320.png",
+    "before-writer-320.png",
+    "before-maker-320.png",
+    "after-candidates-1280.png",
+    "after-writer-1280.png",
+    "after-maker-1280.png",
+    "after-writer-confirm-1280.png",
+    "after-maker-record-1280.png",
+    "after-maker-confirm-1280.png",
+    "after-candidates-375.png",
+    "after-writer-375.png",
+    "after-maker-375.png",
+    "after-candidates-320.png",
+    "after-writer-320.png",
+    "after-maker-320.png",
+    "after-maker-empty-1280.png"
+  ],
+  "labels": {
+    "before": {
+      "candidates": "公開GitHubから・本人の確認待ち\n\n作品候補を選ぶ\n\n既存の本人文を変えず、公開GitHubの9件を下書きにまとめています。\n\nコードは実行していません。担当範囲・制作期間・掲載の採否は、本人の確認待ちです。\n\n表示する候補\n全9件\n追加で見つけた3件\n既存下書きの6件\n選んだ候補\n\nまだ選んでいません。\n\n選んだ候補をコピー\n選択を消す\n\nチェックはこの画面だけの仮選択です。公開やファイル変更は行いません。再読み込みで消えます。\n\n追加で確認\n文字・表現\n下書き・採否未定\n\nglyph-matter\n\nGlyph Matter — 文字のかたち\n候補に残す\n\n入力した文字で球や鳥などの立体を描き、表面を流れる様子を眺めるブラウザ向けの試作。\n\nコード・資料で確認できること\n入力した文章を文字の材料として追加し、対応する語から形・色・流れ・個数を切り替える処理がある。\n60形のカタログと、表面の座標・文字の向き・色を更新するThree.js描画を確認した。\n停止・形の選択・追加入力の操作が実装されている。専用執筆欄と日記保存はREADMEに説明がある。\nTypeScript\nThree.js / WebGL2\nVite\nVitest\nONNX Runtime Web・Transformers.js（比較版の依存）\nまだ確認していないこと\n今回は読み取りのみ。公開デモ・ビルド・実行速度・ブラウザ保存の動作は再検証していない。\n既定の公開版はルールと用意した形による版と記されている。任意の3D生成を達成した作品とは扱わない。\nmainと公開デモの配布元は別。WEB_DEMOとworkflowは公開元を67f7a30e2e01a142ba092b4cd2e756bcf3d5757fのタグに固定しているが、配信中のversion.jsonは今回取得していない。\n本人の担当範囲・制作期間・紹介文・掲載する版は未確認。commit日時を制作期間に読み替えない。\n全アプリ入力との連動はREADMEで未実装と明記されている。\n見る入口\nブラウザ版（README記載・未試用）\n↗\n公開版と操作の説明\n↗\n確認したコード\n↗\n出典・利用条件を読む\n追加で確認\n文字・表現\n下書き・採否未定\n\nsemantic-glyph-lab\n\nSemantic Glyph Lab — 言葉と立体の比較\n候補に残す\n\n文章から立体を選ぶ方法や生成する方法を比べ、その表面に文字を流す研究用の試作。\n\nコード・資料で確認できること\n画面には意味検索・明示語・素材候補・部品合成・生成方式の切替があり、入力文を文字の材料へ加える処理がある。\n24種の形を扱う解釈APIと、モデルが利用できない時の明示語によるブラウザ側の処理を確認した。\n文字の密度・流れ・形の揺らぎ、面の表示方式、停止、画像書き出しの操作が実装されている。\nTypeScript\nThree.js / WebGL\nVite\nPython\nONNX Runtime・tokenizers・NumPy（ローカル意味API）\nVitest / Playwright（テスト構成）\nまだ確認していないこと\n今回は読み取りのみ。ローカルAPI・モデル・各生成方式を起動せず、テスト結果や処理時間を再測定していない。\n公開デモのURLは確認できない。READMEの127.0.0.1の入口は読者の端末上で起動する手順であり、公開リンクにはしない。\nREADME記載の処理秒数や画面評価はリポジトリ側の報告。任意の文章を正しい形にできるとは説明しない。\n他端末への一括導入はREADMEで未検証とされている。モデル取得と追加のローカルサービスが必要な方式がある。\n本人の担当範囲・制作期間・掲載する画像や方式は未確認。\n見る入口\n操作とローカル起動の説明\n↗\n意味モデルの準備手順\n↗\n確認したコード\n↗\n出典・利用条件を読む\n追加で確認\n設計資料\n下書き・採否未定\n\nmining-forge\n\nMining Forge — 採取ゲームの設計\n候補に残す\n\n強さを一手ずつ加減して採るゲームの設計記録。確認したmainには実行できるゲームはない。\n\nコード・資料で確認できること\nP0仕様には3部位のゲージと打撃・強打・削る操作の案がある。実装ではなく仮のルールとして記されている。\n結晶・遺物・魔力を持ち帰り、道具や技につなげる循環と、プレイ記録・修正手順を文書化している。\nmainのツリーはREADMEと設計文書・GitHubテンプレートが中心で、gameディレクトリやUnityプロジェクトは確認できない。\nMarkdown（設計文書）\nUnity（計画のみ・導入未確認）\nまだ確認していないこと\n今回確認した既定ブランチには実行コード・プレイ結果がなく、遊べる作品や動作デモとしては紹介できない。\n公開repo descriptionは試作・素材・記録の保存と棚上げを記すが、固定したmainは企画段階。別ブランチや未公開資料の進捗を推定しない。\nREADMEとSTATUSの『非公開』表記は、今回のAPI private:falseと食い違う。本人の公開意図・紹介する範囲を確認する。\nDQ11への言及がrepo descriptionにある。参考元の名称・画面・素材の使用可否と、本人が紹介したい文脈は確認待ち。\n本人の担当範囲・制作期間・コード作者・AI支援の範囲は確認できない。\n見る入口\n企画の説明\n↗\n最初の試作仕様\n↗\n確認したファイル一覧\n↗\n出典・利用条件を読む\n既存の下書きあり\nゲーム\n下書き・採否未定\n\none-board-incremental\n\n反射する弾の盤面試作\n候補に残す\n\n射撃・反射・強化を試すUnityのゲーム。READMEは開発休止中の試作と説明し、ブラウザ版とWindows版への入口を案内しています。\n\nコード・資料で確認できること\nmainのコード確認：弾と壁・Collectorの接触判定、Gold獲得、10 Goldで最初の強化を買うPrototype 0がある。\nfeat/portrait-stage（778d892e）のコード確認：4種類の銃、弾数・速度・威力の違い、分裂、Goldでの強化、容量20ptの装備構成がある。\nREADME掲載のブラウザ入口はHTTP 200とHTMLタイトルを確認した。ゲームや配布バイナリは実行していない。\nC#\nUnity 6000.3.18f1\nUnity Web / WebGL（別ブランチのWeb版）\nUnity Test Framework\nuGUI\nまだ確認していないこと\n本人の担当範囲、AIとの分担、制作期間、本人サイトに載せる意図と採否は未確認。\n実行・ビルド・ゲーム操作・保存・音声の検証は行っていない。ブラウザ入口のHTTP応答確認は実動作確認を意味しない。\nmainはPrototype 0を保持し、READMEの最新試作は別ブランチ。mainのコードだけから4銃等を説明しない。\nプロジェクト全体のライセンスと各生成物の再配布条件は未確認。スマートフォンはREADMEで操作未対応とされる。\n見る入口\n公開ブラウザ版の入口（PC向け・未試遊）\n↗\n版の違いと操作を読む\n↗\nWindows版のRelease案内\n↗\n案内先試作の固定コード\n↗\n出典・利用条件を読む\n既存の下書きあり\nゲーム\n下書き・採否未定\n\npong-study-raylib\n\nPongの学習と追加実装\n候補に残す\n\nC++とraylibによるCPU対戦Pong。教材を進めた保存版と、難易度選択・加速などを加えた版を比較できます。\n\nコード・資料で確認できること\nコード確認：上下キーでパドルを動かし、CPU追従・壁とパドルの反射・得点表示を処理する。\nコード確認：1/2/3キーでCPU速度を選び、パドルとの衝突4回ごとにボールの速度を増やす。\nコード確認：5点でタイトルに戻る処理がある。新しい試合の得点リセットはコード上になく、READMEでも今後の課題とされる。\nC++\nraylib（READMEでは6.0）\nMinGW / GCC\nMake / Visual Studio Code設定\nまだ確認していないこと\n動画ファイルの存在とREADMEからのリンクを確認したが、動画再生・ゲーム実行・ビルドはしていない。\nREADMEの追加実装説明は自己記載。本人の担当範囲や制作期間は確認していない。\n授業課題かどうか、サイト掲載の採否、配布物に含むDLL等の許諾整理は未確認。\n見る入口\nリポジトリ内の動作動画\n↗\n概要と操作を読む\n↗\n現在版のコード\n↗\n教材時点の保存版\n↗\n出典・利用条件を読む\n既存の下書きあり\nゲーム\n下書き・採否未定\n\nTypeAndSummon\n\nタイピングで対戦・協力\n候補に残す\n\n単語入力で攻撃と回復を行うJavaのゲーム。1対1と2人協力ボス戦のコードがあり、READMEでは課題の保管用と説明されています。\n\nコード・資料で確認できること\nコード確認：入力の正誤をサーバーで判定し、正解時に相手のHPを減らし自分を回復する。\nコード確認：HTTPで部屋を作成・参加し、TCPで入力や対戦状態を送受信する。\nコード確認：協力モードの接続処理とLv1〜5のボス定義がある。今回の調査では対戦・描画・音声を実行していない。\nJava（READMEの必要環境は17以上）\nSwing\nHTTP / TCPソケット\nSQLite / sqlite-jdbc\nJLayer 1.0.1（MP3再生）\nまだ確認していないこと\n授業・課題としてのサイト掲載可否、本人の担当範囲、制作期間、掲載したい意図は未確認。\n実行や通信検証はしていない。常設デモの入口は今回読んだ公開情報では確認できない。\n画像・効果音・BGM・同梱JARのサイトへの再配布条件は未確認。素材をコピーしない。\n見る入口\n概要と操作を読む\n↗\n対戦判定のコード\n↗\n公開リポジトリ\n↗\n出典・利用条件を読む\n既存の下書きあり\n機器・回路\n下書き・採否未定\n\nde10-nano-riscv-invader\n\nDE10-Nano / RISC-V インベーダー風ゲーム\n候補に残す\n\n簡易RV32I CPUのゲームプログラムと、FPGAの映像回路をつなぐ構成。キー入力、自機と弾、敵の状態、スコアをMMIOで受け渡す。\n\nコード・資料で確認できること\nアセンブリに自機移動、自動発射、5行×11列の敵管理、当たり判定、ゲームオーバーとスコア更新がある。\ngame_socはCPU・プログラムメモリ・キー入力・ゲーム用レジスタを接続する。\nREADMEは320×180のフレームバッファを6倍に拡大し、HDMIへスプライトを合成する構成と説明。QSFに該当回路が登録されている。\nVerilog / 簡易RV32I / MMIO\nRISC-Vアセンブリ\nPython 3製の部分RV32Iアセンブラ\nDE10-Nano / Quartus / HDMI\nまだ確認していないこと\n読み取りのみ。Quartusビルド、CPU・HDMI回路のシミュレーション、実機操作は検証していない。\nREADMEの動画リンクとファイルの存在を確認したが、動画・発表資料の内容は未視聴・未読。\n公開時に置き換えたCPU・アセンブラと、発表資料・実機動画の構成が完全に同じかは確認していない。\n本人の担当範囲・AI利用・授業での公開条件はREADMEの自己申告以上に確認できていない。制作期間とサイト採否も未確認。\n見る入口\n概要と制作範囲を読む\n↗\n成果物の入口を見る（動画リンクあり）\n↗\nゲーム処理を読む\n↗\n出典・利用条件を読む\n既存の下書きあり\n機器・回路\n下書き・採否未定\n\nde10-nano-voice-changer\n\nDE10-Nano 音声送信・ボイスチェンジャー\n候補に残す\n\nPCで録音した音声をDE10-Nanoへ送り、再生時に声の高さやエコーを切り替える構成。Python、Linux側のC、FPGA側のVerilogをつなぐ。\n\nコード・資料で確認できること\nPC側にモノラルPCMの録音・SCP転送処理がある。\nCの再生コマンドは16bit PCMを8bitへ変換し、/dev/audio_coreへの書き込みとioctlで再生を制御する。\nFPGA側はスイッチで原音・高音化・低音化・エコーを選び、PWM出力する。ピッチ処理に256点FFT/IFFTと周波数ビンの移し替えがある。\nVerilog / Intel FFT IP\nC / Linuxカーネルモジュール・ioctl\nPython 3 / NumPy / sounddevice\nDE10-Nano / Quartus / ARM Linux\nまだ確認していないこと\n読み取りのみ。コンパイル、FPGAへの書き込み、音声品質・遅延・4モードの実機動作は検証していない。\nREADMEの確認済み範囲はAnalysis & Synthesisまでで、Fitter以降の成功を今回確認していない。\nQuartusプロジェクトに14.1、FFTラッパーにACDS 25.1の記録があり、現在の再現環境は未確認。\n授業の公開条件、各ファイルの本人の担当範囲、制作期間、サイトへの掲載採否は未確認。\n見る入口\n概要と操作を読む\n↗\n音声モードの実装を見る\n↗\n出典・利用条件を読む\n既存の下書きあり\n探索\n下書き・採否未定\n\ngame-ai-search-puzzles\n\n8パズル・15パズルの探索比較\n候補に残す\n\n8パズルをIDSと3種類のA*で探索し、解の深さ・展開ノード数・時間をCSVへ出すCプログラム。15パズルの発展版も別ファイルで収録。\n\nコード・資料で確認できること\n8パズルは乱数シード・試行数・IDSの最大深さを受け取り、到達可能な盤面にIDSとA*を適用する。\nA*の評価は0、位置の異なるタイル数、マンハッタン距離の3種類。CSVへfound・depth・expanded_nodes・time_msを出力する。\n15パズルには配列ベースの版と、64bit盤面表現・線形衝突・IDA*・ノード数上限を用いる版がある。\nC11 / Clang・GCC / Make\nIDS / A* / IDA*\nヒューリスティック / CSV実験記録\nまだ確認していないこと\n読み取りのみ。コンパイル、探索結果の再現、最短性、ヒューリスティックの妥当性、速度比較は検証していない。\n保存CSVの先頭行は確認したが、図・PDFレポートは未読で、記載結果を実験の再検証とは扱わない。\nREADMEによる8パズル自力実装と15パズルでのAI支援の説明は自己申告。作者・担当範囲を独立には確認していない。\n授業の公開条件、制作期間、サイトへの採否は未確認。\n見る入口\n比較内容とAI利用の説明を読む\n↗\n8パズルの実装を見る\n↗\n保存されたCSVを見る\n↗\n出典・利用条件を読む\n\n本人が選んだ後で、本人の言葉と掲載できる素材を足します。\n\n公開repoであることと、教材・素材・授業成果をこのサイトへ転載できることは別に確認します。",
+      "writer": "下書きの道具\n\n書いて、残しておく。\n\nこの画面で書いて、Markdownで持ち帰れます。自動保存はしません。\n\n制作ログを下書きに（別タブで開く）\n\n題\n必須\n本文\n必須\n書く\n読む\n\nMarkdownで書けます。読む表示では画像を省き、HTMLを文字として表示します。\n\n書き出しの設定 要約・日付・ファイル名など\nMarkdownを取り込む\n書き出しを確認\n下書きをダウンロード\n↓\n\n書き出しは draft: true。画面を閉じる前にダウンロードしてください。",
+      "maker": "下書きの道具\n\n制作ログを、下書きに。\n\nMaker Fieldで書き出したJSONから、残したい1件を選びます。\n\nこのブラウザ内で読み込みます。元のJSONはそのまま残り、画像本体は下書きに含みません。 ページを閉じると、ここでの入力は消えます。\n\n01\nJSONを選ぶ\nMaker FieldのJSON\n\nMaker Fieldの「データを持ち出す・戻す」→「JSONを書き出す」で用意できます。 8 MiBまで・5,000件まで。開く前に、件数を確認できます。\n\n別のJSONを開くと、今の選択と入力を置き換えます。取り消した場合や読み込みに失敗した場合は、そのまま残ります。"
+    },
+    "after": {
+      "candidates": "公開GitHubから・本人の確認待ち\n\n作品候補を選ぶ\n\n公開GitHubの9件を、作品候補の下書きにまとめています。既存の本人文は変更していません。\n\nコードは実行していません。担当範囲・制作期間・掲載するかどうかは、本人の確認待ちです。\n\n表示する候補\n全9件\n追加で見つけた3件\n既存下書きの6件\n選んだ候補\n\nまだ候補を選んでいません。\n\n選んだ候補の情報をコピー\n選択を解除\n\n選択はこのタブ内だけで有効です。保存・公開やファイルの変更は行わず、再読み込みすると解除されます。 選んだ候補のリポジトリ名・作品名・URLをまとめてコピーできます。\n\n追加で見つけた候補\n文字・表現\n下書き・採否未定\n\nglyph-matter\n\nGlyph Matter — 文字のかたち\n候補を選ぶ\n\n入力した文字で球や鳥などの立体を描き、表面を流れる様子を眺めるブラウザ向けの試作。\n\nコード・資料の詳細と、未確認の点\n関連リンク\nブラウザ版（README記載・未試用）\n↗\n公開版と操作の説明\n↗\n確認したコード\n↗\n出典・利用条件を読む\n追加で見つけた候補\n文字・表現\n下書き・採否未定\n\nsemantic-glyph-lab\n\nSemantic Glyph Lab — 言葉と立体の比較\n候補を選ぶ\n\n文章から立体を選ぶ方法や生成する方法を比べ、その表面に文字を流す研究用の試作。\n\nコード・資料の詳細と、未確認の点\n関連リンク\n操作とローカル起動の説明\n↗\n意味モデルの準備手順\n↗\n確認したコード\n↗\n出典・利用条件を読む\n追加で見つけた候補\n設計資料\n下書き・採否未定\n\nmining-forge\n\nMining Forge — 採取ゲームの設計\n候補を選ぶ\n\n強さを一手ずつ加減して採るゲームの設計記録。確認したmainには実行できるゲームはない。\n\nコード・資料の詳細と、未確認の点\n関連リンク\n企画の説明\n↗\n最初の試作仕様\n↗\n確認したファイル一覧\n↗\n出典・利用条件を読む\n既存の下書きあり\nゲーム\n下書き・採否未定\n\none-board-incremental\n\n反射する弾の盤面試作\n候補を選ぶ\n\n射撃・反射・強化を試すUnityのゲーム。READMEは開発休止中の試作と説明し、ブラウザ版とWindows版への入口を案内しています。\n\nコード・資料の詳細と、未確認の点\n関連リンク\n公開ブラウザ版の入口（PC向け・未試遊）\n↗\n版の違いと操作を読む\n↗\nWindows版のRelease案内\n↗\n案内先試作の固定コード\n↗\n出典・利用条件を読む\n既存の下書きあり\nゲーム\n下書き・採否未定\n\npong-study-raylib\n\nPongの学習と追加実装\n候補を選ぶ\n\nC++とraylibによるCPU対戦Pong。教材を進めた保存版と、難易度選択・加速などを加えた版を比較できます。\n\nコード・資料の詳細と、未確認の点\n関連リンク\nリポジトリ内の動作動画\n↗\n概要と操作を読む\n↗\n現在版のコード\n↗\n教材時点の保存版\n↗\n出典・利用条件を読む\n既存の下書きあり\nゲーム\n下書き・採否未定\n\nTypeAndSummon\n\nタイピングで対戦・協力\n候補を選ぶ\n\n単語入力で攻撃と回復を行うJavaのゲーム。1対1と2人協力ボス戦のコードがあり、READMEでは課題の保管用と説明されています。\n\nコード・資料の詳細と、未確認の点\n関連リンク\n概要と操作を読む\n↗\n対戦判定のコード\n↗\n公開リポジトリ\n↗\n出典・利用条件を読む\n既存の下書きあり\n機器・回路\n下書き・採否未定\n\nde10-nano-riscv-invader\n\nDE10-Nano / RISC-V インベーダー風ゲーム\n候補を選ぶ\n\n簡易RV32I CPUのゲームプログラムと、FPGAの映像回路をつなぐ構成。キー入力、自機と弾、敵の状態、スコアをMMIOで受け渡す。\n\nコード・資料の詳細と、未確認の点\n関連リンク\n概要と制作範囲を読む\n↗\n成果物の入口を見る（動画リンクあり）\n↗\nゲーム処理を読む\n↗\n出典・利用条件を読む\n既存の下書きあり\n機器・回路\n下書き・採否未定\n\nde10-nano-voice-changer\n\nDE10-Nano 音声送信・ボイスチェンジャー\n候補を選ぶ\n\nPCで録音した音声をDE10-Nanoへ送り、再生時に声の高さやエコーを切り替える構成。Python、Linux側のC、FPGA側のVerilogをつなぐ。\n\nコード・資料の詳細と、未確認の点\n関連リンク\n概要と操作を読む\n↗\n音声モードの実装を見る\n↗\n出典・利用条件を読む\n既存の下書きあり\n探索\n下書き・採否未定\n\ngame-ai-search-puzzles\n\n8パズル・15パズルの探索比較\n候補を選ぶ\n\n8パズルをIDSと3種類のA*で探索し、解の深さ・展開ノード数・時間をCSVへ出すCプログラム。15パズルの発展版も別ファイルで収録。\n\nコード・資料の詳細と、未確認の点\n関連リンク\n比較内容とAI利用の説明を読む\n↗\n8パズルの実装を見る\n↗\n保存されたCSVを見る\n↗\n出典・利用条件を読む\n\n本人が候補を選んだ後で、本人の言葉と掲載できる素材を加えます。\n\n公開リポジトリであっても、教材・素材・授業成果をこのサイトへ転載できるかは、別途確認します。",
+      "writer": "下書きの道具\n\n下書きを書く\n\nMarkdownの下書きをダウンロードできます。入力は自動保存されません。\n\n制作ログを下書きに（別タブで開く）\n\n題\n必須\n本文\n必須\n書く\n読む\n\nMarkdownで書けます。「読む」では画像を省き、HTMLを文字として表示します。\n\n書き出しの設定 要約・日付・ファイル名など\nMarkdownを取り込む\n下書きを確認\n下書きをダウンロード\n↓\n\n下書き（draft: true）として書き出し、公開はしません。画面を閉じる前にダウンロードしてください。",
+      "maker": "下書きの道具\n\n制作ログを下書きに\n\nMaker Fieldで書き出したJSONから、残したい1件を選びます。\n\nこのブラウザ内で読み込みます。元のJSONは変更せず、画像本体は下書きに含めません。 入力は自動保存されず、ページを閉じると消えます。\n\n01\nJSONを選ぶ\nMaker FieldのJSON\n\nMaker Fieldの「データを持ち出す・戻す」→「JSONを書き出す」で用意できます。 8 MiBまで・5,000件まで。開く前に、件数を確認できます。\n\n別のJSONを開くと、今の選択を解除し、各記録に入力した要約・記事の種類・ファイル名を消去します。読み込みを取り消した場合や失敗した場合は、今の記録と入力が残ります。"
+    }
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "blockedRequests": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/candidates.AJAgYxlA.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.Czb7wsWH.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.nDGRLLcq.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.Czb7wsWH.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.nDGRLLcq.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/candidates.AJAgYxlA.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.Czb7wsWH.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.nDGRLLcq.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/candidates.AJAgYxlA.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.Czb7wsWH.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.nDGRLLcq.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4357/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/experiments/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/experiments.CFgjZP1d.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/ExperimentStudy.astro_astro_type_script_index_0_lang.4FIPGlRd.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/works/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/notes/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/index.astro_astro_type_script_index_0_lang.6C8yousH.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/note-query.2YBnpPax.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/about/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/directions/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/directions/desk/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/desk.D64Xuzrt.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/collection/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/collection.L3uJgldz.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/focus/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/focus.CkiZmwLn.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/timeline/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/timeline.D6egFwT9.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/experiments/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/experiments.CFgjZP1d.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/ExperimentStudy.astro_astro_type_script_index_0_lang.4FIPGlRd.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/works/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/notes/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/index.astro_astro_type_script_index_0_lang.6C8yousH.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/note-query.2YBnpPax.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/about/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/directions/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/directions/desk/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/desk.D64Xuzrt.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/collection/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/collection.L3uJgldz.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/focus/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/focus.CkiZmwLn.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/timeline/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/timeline.D6egFwT9.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/experiments/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/experiments.CFgjZP1d.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/ExperimentStudy.astro_astro_type_script_index_0_lang.4FIPGlRd.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/works/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/notes/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/index.astro_astro_type_script_index_0_lang.6C8yousH.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/note-query.2YBnpPax.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/about/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/directions/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/directions/desk/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/desk.D64Xuzrt.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/collection/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/collection.L3uJgldz.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/focus/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/focus.CkiZmwLn.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/timeline/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/timeline.D6egFwT9.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/experiments/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/experiments.CFgjZP1d.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/ExperimentStudy.astro_astro_type_script_index_0_lang.4FIPGlRd.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.astro_astro_type_script_index_0_lang.0zC7Dn7x.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.astro_astro_type_script_index_0_lang.DmQJgbB3.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/preload-helper.bq5ga0i7.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/draft-import.pna-WlRt.js",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/compare/candidates/",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/candidates.BsReYui6.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+      "method": "GET",
+      "hasSyntheticData": false
+    }
+  ],
+  "downloads": [
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "name": "synthetic-ui-copy-writer.md"
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/",
+      "name": "replacement.md"
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/maker-field/",
+      "name": "synthetic-ui-copy-a.md"
+    },
+    {
+      "url": "http://127.0.0.1:4358/hamaya-site-draft/write/#write-import",
+      "name": "synthetic-ui-copy-a.md"
+    }
+  ],
+  "storageWrites": [],
+  "dialogs": [],
+  "failure": null,
+  "browser": "153.0.8010.12"
+}

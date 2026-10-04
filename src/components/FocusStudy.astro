@@ -156,18 +156,18 @@ const { entries } = Astro.props;
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    GitHubのコード ↗
+                    GitHubでコードを開く ↗
                   </a>
                 )}
                 <a href={path('write/?kind=note')}>記録を書く ＋</a>
-                <a href={path('notes/')}>学び・雑記へ ↗</a>
+                <a href={path('notes/')}>学び・雑記の一覧へ ↗</a>
               </div>
               <a
                 class="focus-next"
                 href={`#piece-${next.id}`}
                 data-focus-choice={next.id}
               >
-                <span>もうひとつ開く</span>
+                <span>次の作品を開く</span>
                 <span>
                   {next.title} <span aria-hidden="true">→</span>
                 </span>

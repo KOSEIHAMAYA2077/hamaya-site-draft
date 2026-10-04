@@ -28,7 +28,7 @@ const { entries } = Astro.props;
 
   <div class="collection-scene">
     <nav class="collection-shelf" aria-label="掲載候補の作品を選ぶ">
-      <p class="shelf-caption">どれを開きますか</p>
+      <p class="shelf-caption">作品を選ぶ</p>
       <div class="shelf-object" aria-hidden="true">
         <svg viewBox="0 0 500 500" focusable="false">
           <defs>
@@ -149,7 +149,7 @@ const { entries } = Astro.props;
               )}
               <div class="record-actions">
                 <a href={path('notes/')}>
-                  学び・雑記を開く <span aria-hidden="true">↗</span>
+                  学び・雑記の一覧へ <span aria-hidden="true">↗</span>
                 </a>
                 <a href={path('write/?kind=note')}>
                   記録を書く <span aria-hidden="true">＋</span>
@@ -159,7 +159,7 @@ const { entries } = Astro.props;
             <section class="piece-next" aria-labelledby={`next-${entry.id}`}>
               <div class="next-heading">
                 <span aria-hidden="true">↗</span>
-                <h3 id={`next-${entry.id}`}>次に触るもの</h3>
+                <h3 id={`next-${entry.id}`}>コード・ほかの作品</h3>
               </div>
               <a
                 class="next-code"
@@ -175,7 +175,7 @@ const { entries } = Astro.props;
                 href={`#piece-${next.id}`}
                 data-piece-choice={next.id}
               >
-                <span>もうひとつ開く</span>
+                <span>次の作品を開く</span>
                 <span>
                   {next.title} <span aria-hidden="true">→</span>
                 </span>

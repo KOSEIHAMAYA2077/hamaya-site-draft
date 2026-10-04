@@ -49,7 +49,7 @@ const displayMonth = (month: string) => {
             <p class="timeline-index-caption">
               コミット日時（UTC）の日付順
               <span class="timeline-scroll-hint">
-                索引は上下にスクロールできます。
+                一覧は上下にスクロールできます。
               </span>
             </p>
             <div class="timeline-index-scroll" data-timeline-scroll>
@@ -197,7 +197,7 @@ const displayMonth = (month: string) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span>GitHubでこの記録を開く</span>
+                  <span>GitHubで変更内容を見る</span>
                   <span class="timeline-arrow" aria-hidden="true">
                     ↗
                   </span>
@@ -209,7 +209,8 @@ const displayMonth = (month: string) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  リポジトリを見る ↗<span class="sr-only">（別タブ）</span>
+                  GitHubでコード・資料を見る ↗
+                  <span class="sr-only">（別タブ）</span>
                 </a>
               </div>
               <nav
@@ -229,7 +230,7 @@ const displayMonth = (month: string) => {
                     <span>{previous.title}</span>
                   </a>
                 ) : (
-                  <p class="timeline-edge">この比較の最初の記録です。</p>
+                  <p class="timeline-edge">一覧の最初の記録です。</p>
                 )}
                 {next ? (
                   <a
@@ -244,7 +245,7 @@ const displayMonth = (month: string) => {
                     <span>{next.title}</span>
                   </a>
                 ) : (
-                  <p class="timeline-edge">この比較の最後の記録です。</p>
+                  <p class="timeline-edge">一覧の最後の記録です。</p>
                 )}
               </nav>
             </article>

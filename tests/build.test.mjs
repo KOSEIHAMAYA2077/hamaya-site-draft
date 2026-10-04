@@ -293,7 +293,8 @@ test('実験は明示したローカルbuildにだけ含め、原本や研究資
   if (enabled) {
     const html = pages.get(filename);
     assert.match(html, /シドの試作（AI）/);
-    assert.match(html, /本人の作品としての採用・公開は未確定/);
+    assert.match(html, /本人の制作実績ではありません/);
+    assert.match(html, /掲載するかどうかは未定です/);
     assert.equal((html.match(/data-document=/g) || []).length, 2);
     assert.equal((html.match(/<iframe\b/g) || []).length, 0);
   }

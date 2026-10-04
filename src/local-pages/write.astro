@@ -6,14 +6,14 @@ const today = new Date().toISOString().slice(0, 10);
 
 <Layout
   title="下書きを書く"
-  description="記事や作品を書いて、Markdownの下書きとして残す道具。"
+  description="記事や作品を書き、Markdownの下書きをダウンロードする道具。"
   section={null}
 >
   <div class="shell inner-page writer-page">
     <header class="page-heading">
       <p class="eyebrow">下書きの道具</p>
-      <h1>書いて、残しておく。</h1>
-      <p>この画面で書いて、Markdownで持ち帰れます。自動保存はしません。</p>
+      <h1>下書きを書く</h1>
+      <p>Markdownの下書きをダウンロードできます。入力は自動保存されません。</p>
       <p>
         <a
           href={path('write/maker-field/')}
@@ -72,7 +72,7 @@ const today = new Date().toISOString().slice(0, 10);
           aria-describedby="body-hint error-body"
         ></textarea>
         <p class="field-hint" id="reader-hint" data-reader-hint hidden>
-          本文の表示確認用です。リンクはここでは開きません。
+          本文の見え方を確認できます。ここではリンクは開きません。
         </p>
         <div
           class="reader-panel"
@@ -84,7 +84,7 @@ const today = new Date().toISOString().slice(0, 10);
           tabindex="0"
         ></div>
         <p class="field-hint" id="body-hint">
-          Markdownで書けます。読む表示では画像を省き、HTMLを文字として表示します。
+          Markdownで書けます。「読む」では画像を省き、HTMLを文字として表示します。
         </p>
         <p class="field-error" id="error-body" data-error="body" hidden></p>
       </div>
@@ -96,7 +96,7 @@ const today = new Date().toISOString().slice(0, 10);
         <div class="writer-fields">
           <div class="writer-field">
             <label for="write-kind">
-              残すもの <span>必須</span>
+              下書きの種類 <span>必須</span>
             </label>
             <select id="write-kind" required aria-describedby="error-kind">
               <option value="note">記事</option>
@@ -117,7 +117,7 @@ const today = new Date().toISOString().slice(0, 10);
               aria-describedby="date-hint error-date"
             />
             <p class="field-hint" id="date-hint">
-              最初はUTCの今日です。記録したい日に変えられます。
+              最初はUTCでの今日の日付です。記録したい日に変えられます。
             </p>
             <p class="field-error" id="error-date" data-error="date" hidden></p>
           </div>
@@ -133,7 +133,7 @@ const today = new Date().toISOString().slice(0, 10);
               aria-describedby="description-hint error-description"
             ></textarea>
             <p class="field-hint" id="description-hint">
-              一覧に出す説明を、自分の言葉で書きます。
+              一覧に表示する説明を、自分の言葉で書きます。
             </p>
             <p
               class="field-error"
@@ -157,7 +157,7 @@ const today = new Date().toISOString().slice(0, 10);
               aria-describedby="slug-hint error-slug"
             />
             <p class="field-hint" id="slug-hint">
-              半角の小文字・数字・ハイフン。拡張子は不要です。
+              半角英小文字・数字・ハイフンを使います。拡張子は不要です。
             </p>
             <p class="field-error" id="error-slug" data-error="slug" hidden></p>
           </div>
@@ -214,7 +214,7 @@ const today = new Date().toISOString().slice(0, 10);
               aria-describedby="tags-hint error-tags"
             ></textarea>
             <p class="field-hint" id="tags-hint">
-              新しく書くときはカンマか改行で区切ります。取り込んだタグは編集するまでそのまま保ちます。
+              新しく入力するタグはカンマか改行で区切ります。取り込んだタグは、編集するまで元の内容を保ちます。
             </p>
             <p class="field-error" id="error-tags" data-error="tags" hidden></p>
           </div>
@@ -230,7 +230,7 @@ const today = new Date().toISOString().slice(0, 10);
               aria-describedby="url-hint error-url"
             />
             <p class="field-hint" id="url-hint">
-              掲載してよいHTTPSのURLがあるときに。
+              掲載してよいHTTPSのURLを入力します。
             </p>
             <p class="field-error" id="error-url" data-error="url" hidden></p>
           </div>
@@ -254,7 +254,7 @@ const today = new Date().toISOString().slice(0, 10);
           </div>
           <div class="writer-field" data-work-field hidden>
             <label for="write-coverSrc">
-              表紙のファイル <span>任意</span>
+              表紙画像のパス <span>任意</span>
             </label>
             <input
               id="write-coverSrc"
@@ -264,7 +264,8 @@ const today = new Date().toISOString().slice(0, 10);
               aria-describedby="cover-hint error-coverSrc"
             />
             <p class="field-hint" id="cover-hint">
-              images/ 配下の掲載してよい画像。ここでは画像を読み込みません。
+              images/
+              配下の、掲載してよい画像のパスを入力します。ここでは画像を読み込みません。
             </p>
             <p
               class="field-error"
@@ -297,7 +298,7 @@ const today = new Date().toISOString().slice(0, 10);
       <details class="writer-import">
         <summary>Markdownを取り込む</summary>
         <label for="write-import" class="field-hint">
-          記事・作品の .md を1つ選びます（1
+          記事か作品のMarkdownファイル（.md）を1つ選びます（1
           MiBまで）。入力がある場合は置き換える前に確認します。
         </label>
         <input
@@ -334,7 +335,7 @@ const today = new Date().toISOString().slice(0, 10);
           data-preview-button
           disabled
         >
-          書き出しを確認
+          下書きを確認
         </button>
         <button
           type="button"
@@ -352,7 +353,8 @@ const today = new Date().toISOString().slice(0, 10);
         aria-live="polite"
         aria-atomic="true"
       >
-        書き出しは draft: true。画面を閉じる前にダウンロードしてください。
+        下書き（draft:
+        true）として書き出し、公開はしません。画面を閉じる前にダウンロードしてください。
       </p>
       <section
         class="writer-preview"
@@ -361,12 +363,12 @@ const today = new Date().toISOString().slice(0, 10);
         aria-labelledby="preview-heading"
       >
         <div class="preview-heading">
-          <h2 id="preview-heading">書き出すファイル</h2>
+          <h2 id="preview-heading">ダウンロードするファイル</h2>
           <span class="preview-draft">下書き</span>
         </div>
         <p class="preview-destination" data-destination></p>
         <p class="field-hint">
-          ダウンロード後、自分でこのフォルダへ追加します。同じ名前がある場合は、別のファイル名で書き出してから追加してください。
+          ダウンロードしたファイルは、表示されたフォルダへ自分で追加します。同じ名前のファイルがある場合は、別の名前で書き出してから追加してください。
         </p>
         <details>
           <summary>Markdownと設定を見る</summary>
@@ -571,7 +573,7 @@ const today = new Date().toISOString().slice(0, 10);
         panel.hidden = false;
         needsConfirmation = true;
         feedback.textContent =
-          '書き出す内容を確認できます。入力はまだ保存されていません。';
+          '下書きの内容を確認できます。確認だけでは保存されません。「下書きをダウンロード」で保存してください。';
         return draft;
       } catch (error) {
         panel.hidden = true;
@@ -607,7 +609,8 @@ const today = new Date().toISOString().slice(0, 10);
       preview.value = '';
       destination.textContent = '';
       if (needsConfirmation)
-        feedback.textContent = '入力を変更しました。もう一度確認できます。';
+        feedback.textContent =
+          '入力を変更しました。「下書きを確認」で内容を確認できます。';
       needsConfirmation = false;
       clearErrors();
     }
@@ -655,7 +658,7 @@ const today = new Date().toISOString().slice(0, 10);
       invalidate();
       showMode(false);
       importConfirm.hidden = true;
-      importStatus.textContent = `${next.filename} を取り込みました。${next.input.kind === 'note' ? '記事' : '作品'} / ${next.fields.join('、')}。${next.originalDraft === false ? '元は draft: false です。書き出しは draft: true に戻します。' : '書き出しは draft: true です。'} 種類は取り込んだまま保ちます。`;
+      importStatus.textContent = `${next.filename} を取り込みました。${next.input.kind === 'note' ? '記事' : '作品'} / 設定項目：${next.fields.join('、')}。${next.originalDraft === false ? '元の設定は draft: false ですが、書き出すファイルは下書き（draft: true）になります。' : '書き出すファイルは下書き（draft: true）になります。'} 記事・作品の種類は変更できません。`;
       feedback.textContent =
         '取り込んだ文章と設定を確認できます。元ファイルは変更していません。';
       fields.title.focus();
@@ -680,7 +683,7 @@ const today = new Date().toISOString().slice(0, 10);
         if (hasInput()) {
           pending = next;
           importStatus.textContent = `${file.name} を確認しました。入力はまだ置き換えていません。`;
-          importConfirmMessage.textContent = `${file.name} で、いまの題・本文・設定を置き換えます。未ダウンロードの入力は失われます。`;
+          importConfirmMessage.textContent = `${file.name} で、いまの題・本文・設定を置き換えます。ダウンロードしていない入力は失われます。`;
           importConfirm.hidden = false;
           replaceButton.focus();
         } else applyImport(next);

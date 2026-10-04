@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-04",
+  "baseline": "5ec128d361835eef225799d426510039cc141f46",
+  "lint": {
+    "prettier": "pass",
+    "astro": {
+      "files": 100,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    }
+  },
+  "buildAndTests": {
+    "root": {
+      "tests": 159,
+      "passed": 159,
+      "failed": 0,
+      "pages": 5,
+      "base": "/",
+      "flags": []
+    },
+    "base": {
+      "tests": 159,
+      "passed": 159,
+      "failed": 0,
+      "pages": 5,
+      "base": "/hamaya-site-draft",
+      "flags": []
+    },
+    "local": {
+      "tests": 159,
+      "passed": 159,
+      "failed": 0,
+      "pages": 18,
+      "base": "/hamaya-site-draft",
+      "flags": [
+        "LOCAL_TIMELINE",
+        "LOCAL_COMPARISON",
+        "LOCAL_EXPERIMENTS",
+        "LOCAL_CANDIDATES"
+      ]
+    }
+  },
+  "browser": {
+    "version": "153.0.8010.12",
+    "passedGroups": 27,
+    "failure": null
+  },
+  "ownerPreference": "unconfirmed",
+  "published": false,
+  "libraryImage": "libfile_029836454e848191804bd607e2e72311"
+}

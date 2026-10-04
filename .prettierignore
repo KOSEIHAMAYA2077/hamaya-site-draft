@@ -4,3 +4,5 @@ dist/
 package-lock.json
 screenshots/
 src/experiments/vendor/
+# Preserve the original lint/diff inputs and machine output as captured.
+docs/ui-copy-evidence/copy-audit/

@@ -1,0 +1,21 @@
+{
+  "score": 95,
+  "is_clean": false,
+  "metrics": {
+    "char_count": 818,
+    "total_lines": 48,
+    "list_lines": 0,
+    "list_ratio": 0.0,
+    "bold_count": 0,
+    "bold_per_1000": 0.0
+  },
+  "findings": [
+    {
+      "rule": "sentence_end_repetition",
+      "line": 18,
+      "severity": "warn",
+      "message": "同一文末「ます」が3回以上連続しています。文末のリズムを調整してください。",
+      "snippet": "取り消した場合や読み込みに失敗した場合は、そのまま残ります。"
+    }
+  ]
+}

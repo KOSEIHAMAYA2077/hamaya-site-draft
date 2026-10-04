@@ -21,7 +21,7 @@ const kinds = {
 
 <Layout
   title="作品候補を選ぶ・非公開調査"
-  description="公開GitHubを読んで整理した、採否を決める前の作品候補。動作と出典、未確認の点を見比べる。"
+  description="公開GitHubから整理した、掲載を決める前の作品候補。コード・資料で確認できることと、未確認の点を見比べる。"
   section={null}
 >
   <div class="candidate-study shell" data-candidate-study>
@@ -30,10 +30,10 @@ const kinds = {
       <h1>作品候補を選ぶ</h1>
 
       <p class="intro">
-        既存の本人文を変えず、公開GitHubの9件を下書きにまとめています。
+        公開GitHubの9件を、作品候補の下書きにまとめています。既存の本人文は変更していません。
       </p>
       <p class="reading-boundary">
-        コードは実行していません。担当範囲・制作期間・掲載の採否は、本人の確認待ちです。
+        コードは実行していません。担当範囲・制作期間・掲載するかどうかは、本人の確認待ちです。
       </p>
     </header>
     <div class="candidate-tools" data-tools hidden>
@@ -58,26 +58,27 @@ const kinds = {
       </fieldset>
       <div class="selection-bar">
         <p data-selection-status role="status">
-          まだ選んでいません。
+          まだ候補を選んでいません。
         </p>
         <button type="button" data-copy disabled>
-          選んだ候補をコピー
+          選んだ候補の情報をコピー
         </button>
         <button type="button" data-clear disabled>
-          選択を消す
+          選択を解除
         </button>
       </div>
       <p class="selection-hint">
-        チェックはこの画面だけの仮選択です。公開やファイル変更は行いません。再読み込みで消えます。
+        選択はこのタブ内だけで有効です。保存・公開やファイルの変更は行わず、再読み込みすると解除されます。
+        選んだ候補のリポジトリ名・作品名・URLをまとめてコピーできます。
       </p>
       <div data-copy-fallback hidden>
-        <label for="candidate-copy-text">コピー用の一覧</label>
+        <label for="candidate-copy-text">コピー用の候補一覧</label>
         <textarea id="candidate-copy-text" readonly rows="6"></textarea>
-        <p>コピーできない場合は、この一覧を選んでコピーしてください。</p>
+        <p>この一覧を選択して、手動でコピーしてください。</p>
       </div>
     </div>
     <p class="candidate-empty" data-empty hidden>
-      この条件の候補はありません。
+      この条件に合う候補はありません。
     </p>
     <div class="candidate-list">
       {entries.map((entry) => (
@@ -92,7 +93,7 @@ const kinds = {
         >
           <div class="card-index">
             <span class:list={['origin-tag', { new: !entry.existingDraft }]}>
-              {entry.existingDraft ? '既存の下書きあり' : '追加で確認'}
+              {entry.existingDraft ? '既存の下書きあり' : '追加で見つけた候補'}
             </span>
             <span>{kinds[entry.kind]}</span>
             <span>下書き・採否未定</span>
@@ -106,37 +107,40 @@ const kinds = {
               <input
                 type="checkbox"
                 data-select
-                aria-label={`${entry.title}を候補に残す`}
+                aria-label={`${entry.title}を候補として選ぶ`}
               />
-              <span>候補に残す</span>
+              <span>候補を選ぶ</span>
             </label>
           </header>
           <p class="card-summary">{entry.summary}</p>
-          <div class="card-columns">
-            <div>
-              <h3>コード・資料で確認できること</h3>
-              <ul>
-                {entry.behavior.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-              <div class="technology-list" aria-label="確認した技術">
-                {entry.technologies.map((item) => (
-                  <span>{item}</span>
-                ))}
+          <details class="candidate-details">
+            <summary>コード・資料の詳細と、未確認の点</summary>
+            <div class="card-columns">
+              <div>
+                <h3>コード・資料で確認できること</h3>
+                <ul>
+                  {entry.behavior.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                <div class="technology-list" aria-label="確認した技術">
+                  {entry.technologies.map((item) => (
+                    <span>{item}</span>
+                  ))}
+                </div>
+              </div>
+              <div class="unknown-panel">
+                <h3>まだ確認していないこと</h3>
+                <ul>
+                  {entry.unknowns.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <div class="unknown-panel">
-              <h3>まだ確認していないこと</h3>
-              <ul>
-                {entry.unknowns.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          </details>
           <div class="candidate-entrances">
-            <span>見る入口</span>
+            <span>関連リンク</span>
             {entry.entrances.map((item) => (
               <a href={item.url} target="_blank" rel="noopener noreferrer">
                 {item.label}
@@ -152,7 +156,7 @@ const kinds = {
                 <dd>{entry.attribution.note}</dd>
               </div>
               <div>
-                <dt>forkと教材・第三者由来</dt>
+                <dt>fork・教材などの第三者由来</dt>
                 <dd>
                   {entry.fork
                     ? 'GitHub APIでforkと確認。'
@@ -172,7 +176,7 @@ const kinds = {
               </div>
             </dl>
             <p class="commit-note">
-              確認日 {entry.verifiedAt} · 既定ブランチの確認commit{' '}
+              確認日 {entry.verifiedAt} · 確認した既定ブランチのコミット{' '}
               <a
                 href={`${entry.repositoryUrl}/commit/${entry.commit}`}
                 target="_blank"
@@ -201,9 +205,9 @@ const kinds = {
       ))}
     </div>
     <footer class="candidate-ending">
-      <p>本人が選んだ後で、本人の言葉と掲載できる素材を足します。</p>
+      <p>本人が候補を選んだ後で、本人の言葉と掲載できる素材を加えます。</p>
       <small>
-        公開repoであることと、教材・素材・授業成果をこのサイトへ転載できることは別に確認します。
+        公開リポジトリであっても、教材・素材・授業成果をこのサイトへ転載できるかは、別途確認します。
       </small>
     </footer>
   </div>
@@ -256,8 +260,8 @@ const kinds = {
       );
       copy.disabled = clear.disabled = ids.length === 0;
       status.textContent = ids.length
-        ? `${ids.length}件を仮選択しています。`
-        : 'まだ選んでいません。';
+        ? `${ids.length}件を選んでいます。`
+        : 'まだ候補を選んでいません。';
     };
     for (const check of checks) check.addEventListener('change', update);
     for (const radio of root.querySelectorAll('input[name=scope]'))
@@ -278,14 +282,15 @@ const kinds = {
         await navigator.clipboard.writeText(text);
         if (version === current)
           status.textContent =
-            '選んだ候補をコピーしました。公開設定は変わりません。';
+            '選んだ候補の情報をコピーしました。公開設定は変わりません。';
       } catch {
         if (version !== current) return;
         fallback.hidden = false;
         textarea.value = text;
         textarea.focus();
         textarea.select();
-        status.textContent = '一覧を選択しました。コピーして持ち帰れます。';
+        status.textContent =
+          'コピー用の一覧を選択しました。手動でコピーしてください。';
       }
     });
     root.querySelector<HTMLElement>('[data-tools]')!.hidden = false;
@@ -472,6 +477,15 @@ const kinds = {
     line-height: 1.9;
     margin-top: 16px;
     max-width: 850px;
+  }
+  .candidate-details {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .candidate-details summary {
+    cursor: pointer;
+    min-height: 32px;
   }
   .card-columns {
     display: grid;

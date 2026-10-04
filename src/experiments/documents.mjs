@@ -53,7 +53,7 @@ function documentFor(id, script) {
     ? '<option value="movement">移動量で進む</option><option value="realtime">連続時間で進む</option>'
     : '<option value="generated">反応あり</option><option value="rigid">反応を固定</option>';
   const preset = clock
-    ? '<label>再生中の停止<select id="preset"><option value="short">1秒</option><option value="long">3秒</option></select></label>'
+    ? '<label>再生中の停止時間<select id="preset"><option value="short">1秒</option><option value="long">3秒</option></select></label>'
     : '';
   const directionButtons = (
     clock ? ['up', 'left', 'down', 'right'] : ['left', 'right']
@@ -65,11 +65,11 @@ function documentFor(id, script) {
         down: ['↓', '下'],
         right: ['→', '右'],
       };
-      return `<button type="button" data-direction="${direction}" aria-label="${labels[direction][1]}へ（押し続ける）">${labels[direction][0]}</button>`;
+      return `<button type="button" data-direction="${direction}" aria-label="${labels[direction][1]}へ移動（押し続ける）">${labels[direction][0]}</button>`;
     })
     .join('');
   const policy = `default-src 'none'; script-src 'sha256-${digest(script)}'; style-src 'sha256-${digest(css)}'; connect-src 'none'; img-src 'none'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'`;
-  return `<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="${policy}"><title>${clock ? '動いた分だけ、時間に' : '動きから、傾きと遅れ'} — ローカル試作</title><style>${css}</style></head><body data-experiment="${id}" data-running="false" data-frame-count="0"><header><span>シドの試作（AI）</span><span>${clock ? 'action-clock' : 'motion-reaction'}</span></header><div class="settings"><label>${clock ? '時計' : '表示'}<select id="mode">${mode}</select></label>${preset}</div><canvas width="700" height="${clock ? '410' : '290'}" tabindex="0" role="img" aria-label="${clock ? '移動する円、壁と往復する障害の盤面。方向キーまたは下の方向ボタンで操作。' : '左右に動く図形と荷物。左右キーまたは下の方向ボタンで操作。'}"></canvas><p id="stats"></p><p id="status" role="status"></p><div class="actions"><button type="button" id="replay">同じ入力を再生</button><button type="button" id="pause">続ける</button><button type="button" id="step">再生を1コマ</button><button type="button" id="reset">初期位置へ</button></div><div class="directions ${clock ? 'clock' : ''}" role="group" aria-label="方向を押し続けて動く">${directionButtons}</div><p class="input-hint">${clock ? '矢印 / WASD' : '← → / A D'}・方向ボタンは長押し・Escで停止</p><pre id="experiment-state" hidden></pre><script>${script}</script></body></html>`;
+  return `<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="${policy}"><title>${clock ? '移動と時間を試す' : '動きと反応を試す'} — ローカル試作</title><style>${css}</style></head><body data-experiment="${id}" data-running="false" data-frame-count="0"><header><span>シドの試作（AI）</span><span>${clock ? 'action-clock' : 'motion-reaction'}</span></header><div class="settings"><label>${clock ? '時計' : '表示'}<select id="mode">${mode}</select></label>${preset}</div><canvas width="700" height="${clock ? '410' : '290'}" tabindex="0" role="img" aria-label="${clock ? '操作する円、壁、往復する障害物。方向キーまたは下の方向ボタンで操作できます。' : '左右に動く図形と荷物。左右キーまたは下の方向ボタンで操作できます。'}"></canvas><p id="stats"></p><p id="status" role="status"></p><div class="actions"><button type="button" id="replay">同じ入力を再生</button><button type="button" id="pause">続ける</button><button type="button" id="step">再生を1コマ進める</button><button type="button" id="reset">初期位置に戻す</button></div><div class="directions ${clock ? 'clock' : ''}" role="group" aria-label="方向ボタンを押し続けて移動">${directionButtons}</div><p class="input-hint">${clock ? '矢印キー / WASDキー' : '左右キー / A・Dキー'}で移動。方向ボタンは長押し、Escキーで停止。</p><pre id="experiment-state" hidden></pre><script>${script}</script></body></html>`;
 }
 
 /** Build isolated, offline srcdoc documents; called only by the local experiment route. */

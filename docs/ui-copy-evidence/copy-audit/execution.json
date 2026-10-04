@@ -1,0 +1,53 @@
+{
+  "round": 1,
+  "pairs": 48,
+  "source_ref": "1890e67c497bf3b13df853719d7ca9af4ea37710",
+  "scripts_match_pinned_source": true,
+  "stance": "説明",
+  "inputs_sha256": {
+    "pairs.json": "44aee8245c669221d6961ea2f908482d4b47bd091a9133bd69c441d227b1a609",
+    "before-ui.txt": "44225f0dbcbd1fdce2484867da178eb2f24944403dc93c174f3bbcbadb2503c3",
+    "after-ui.txt": "fbe1d4fb65a578b592cd05ede1a7c956ea0a14a650004ebb370ad3a34c4c8970"
+  },
+  "runs": [
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-I",
+        "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/ui-copy-yomiyasu/scripts/yomiyasu_lint.py",
+        "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/ui-copy-qa/copy-audit/before-ui.txt",
+        "--json"
+      ],
+      "output": "lint-before.json",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-I",
+        "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/ui-copy-yomiyasu/scripts/yomiyasu_lint.py",
+        "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/ui-copy-qa/copy-audit/after-ui.txt",
+        "--json"
+      ],
+      "output": "lint-after.json",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-I",
+        "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/ui-copy-yomiyasu/scripts/yomiyasu_diff.py",
+        "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/ui-copy-qa/copy-audit/before-ui.txt",
+        "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/ui-copy-qa/copy-audit/after-ui.txt",
+        "--stance=説明",
+        "--json"
+      ],
+      "output": "diff.json",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ],
+  "meaning_preservation_is_not_proven_by_static_results": true
+}

@@ -41,14 +41,15 @@ function initializeExperiment() {
     ['s', 'down'],
   ]);
   const reasons = {
-    initial: '停止中。入力または再生で始まります。',
-    pause: '停止中。状態を保っています。',
+    initial:
+      '停止中です。方向キーや方向ボタン、または「同じ入力を再生」で始められます。',
+    pause: '停止中です。止めたときの状態を保っています。',
     parent: 'ページ側から停止しました。',
     hidden: '非表示になったため停止しました。',
     blur: '操作画面を離れたため停止しました。',
-    limit: '12秒で停止しました。続ける操作で再開できます。',
-    complete: '再生完了。結果を保っています。',
-    idle: '動きが止まりました。入力で再開できます。',
+    limit: '12秒経ったため停止しました。「続ける」を押すと再開できます。',
+    complete: '再生が終わりました。結果を表示しています。',
+    idle: '動きが止まりました。方向キーや方向ボタンで再開できます。',
     reset: '初期位置へ戻しました。停止中です。',
     step: '1コマ進めました。停止中です。',
   };
@@ -286,13 +287,13 @@ function initializeExperiment() {
     const status = running
       ? state.replay.status === 'running'
         ? state.replay.label
-        : '操作中。12秒でいったん停止します。'
+        : '操作中です。12秒でいったん停止します。'
       : reasons[reason];
     setText(statusElement, status);
     setText(
       statsElement,
       isClock
-        ? `世界 ${state.worldTime.toFixed(2)}秒　移動 ${state.distance.toFixed(2)}　接触 ${state.contactCount}回`
+        ? `世界の時間 ${state.worldTime.toFixed(2)}秒　移動距離 ${state.distance.toFixed(2)}　接触 ${state.contactCount}回`
         : `位置 ${state.player.x.toFixed(2)}　速度 ${state.player.velocity.toFixed(2)}　傾き ${((state.displayed.angle * 180) / Math.PI).toFixed(1)}°`,
     );
     setText(

@@ -4,20 +4,20 @@ import { path } from '../lib/paths';
 ---
 
 <Layout
-  title="制作ログを、下書きに。"
-  description="Maker FieldのJSONから1件を選び、Markdownの下書きとして持ち帰る道具。"
+  title="制作ログを下書きに"
+  description="Maker FieldのJSONから1件を選び、Markdownの下書きをダウンロードする道具。"
   section={null}
 >
   <div class="maker-page shell">
     <header class="maker-heading">
       <p class="maker-eyebrow">下書きの道具</p>
-      <h1>制作ログを、下書きに。</h1>
+      <h1>制作ログを下書きに</h1>
       <p class="maker-lede">
         Maker Fieldで書き出したJSONから、残したい1件を選びます。
       </p>
       <p class="maker-hint">
-        このブラウザ内で読み込みます。元のJSONはそのまま残り、画像本体は下書きに含みません。
-        ページを閉じると、ここでの入力は消えます。
+        このブラウザ内で読み込みます。元のJSONは変更せず、画像本体は下書きに含めません。
+        入力は自動保存されず、ページを閉じると消えます。
       </p>
     </header>
 
@@ -58,7 +58,7 @@ import { path } from '../lib/paths';
             8 MiBまで・5,000件まで。開く前に、件数を確認できます。
           </p>
           <p class="maker-hint">
-            別のJSONを開くと、今の選択と入力を置き換えます。取り消した場合や読み込みに失敗した場合は、そのまま残ります。
+            別のJSONを開くと、今の選択を解除し、各記録に入力した要約・記事の種類・ファイル名を消去します。読み込みを取り消した場合や失敗した場合は、今の記録と入力が残ります。
           </p>
           <p id="maker-file-status" class="maker-status" role="status"></p>
 
@@ -69,7 +69,7 @@ import { path } from '../lib/paths';
                 このJSONを開く
               </button>
               <button id="maker-cancel" class="maker-quiet" type="button">
-                やめる
+                開くのをやめる
               </button>
             </div>
           </div>
@@ -91,7 +91,7 @@ import { path } from '../lib/paths';
         <div class="maker-step-content">
           <p id="maker-count" class="maker-hint"></p>
           <label class="maker-label" for="maker-choice">
-            制作ログ
+            記録
           </label>
           <select
             id="maker-choice"
@@ -101,11 +101,11 @@ import { path } from '../lib/paths';
           </select>
           <p id="maker-selection-status" class="maker-status" role="status"></p>
           <p class="maker-hint">
-            記録を選び直しても、入力した要約と設定はこのページを開いている間は残ります。
-            別のJSONを開くか、読み込みをやめると消えます。
+            記録を選び直しても、要約・記事の種類・ファイル名は記録ごとに残ります。
+            別のJSONを開くか「記録を閉じて入力を消す」を押すと消えます。
           </p>
           <button id="maker-reset" class="maker-quiet" type="button">
-            読み込みをやめる
+            記録を閉じて入力を消す
           </button>
 
           <section
@@ -114,7 +114,7 @@ import { path } from '../lib/paths';
             aria-labelledby="maker-title"
             hidden
           >
-            <p class="maker-eyebrow">選んだログの内容</p>
+            <p class="maker-eyebrow">選んだ記録の内容</p>
             <h3 id="maker-title"></h3>
             <p id="maker-meta" class="maker-hint"></p>
             <dl id="maker-fields"></dl>
@@ -135,9 +135,7 @@ import { path } from '../lib/paths';
           <h2 id="maker-step-output">下書きを整える</h2>
         </header>
         <div class="maker-step-content">
-          <p class="maker-hint">
-            短い要約と分類、保存するファイル名を決めます。
-          </p>
+          <p class="maker-hint">短い要約と記事の種類、ファイル名を決めます。</p>
           <div class="maker-field">
             <label class="maker-label" for="maker-description">
               短い要約 <span class="maker-required">必須</span>
@@ -149,12 +147,12 @@ import { path } from '../lib/paths';
               aria-describedby="maker-description-hint"
             ></textarea>
             <p id="maker-description-hint" class="maker-hint">
-              このログに何を残したか、ひとこと添えてください。
+              この記録の内容を短く説明してください。
             </p>
           </div>
           <div class="maker-field">
             <label class="maker-label" for="maker-category">
-              分類 <span class="maker-required">必須</span>
+              記事の種類 <span class="maker-required">必須</span>
             </label>
             <select id="maker-category" required>
               <option value="">選んでください</option>
@@ -177,12 +175,16 @@ import { path } from '../lib/paths';
               aria-describedby="maker-slug-hint"
             />
             <p id="maker-slug-hint" class="maker-hint">
-              半角英小文字・数字・ハイフンで64文字まで。例：maker-note-01
+              半角英小文字・数字・ハイフンで64文字まで。拡張子は不要です。例：maker-note-01
             </p>
           </div>
           <button id="maker-prepare" class="maker-primary" type="button">
             下書きを確認
           </button>
+          <p class="maker-hint">
+            確認だけでは保存されません。ダウンロードするファイルは下書き（draft:
+            true）で、公開はしません。
+          </p>
           <p id="maker-error" class="maker-error" role="alert" hidden></p>
 
           <div id="maker-result" class="maker-result" hidden>
@@ -211,7 +213,7 @@ import { path } from '../lib/paths';
                 rel="noopener"
                 hidden
               >
-                書く画面で確認する（別タブ）
+                書く画面を開く（別タブ）
               </a>
             </div>
             <p class="maker-hint">

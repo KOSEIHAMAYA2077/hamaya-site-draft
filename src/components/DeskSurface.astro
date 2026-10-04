@@ -52,11 +52,7 @@ const categories = [
     <div class="desk-stage" data-desk-stage>
       <div class="desk-selector">
         <p class="desk-selector-caption">何を見ますか</p>
-        <div
-          class="desk-choices"
-          role="group"
-          aria-label="この制作机で開く分類"
-        >
+        <div class="desk-choices" role="group" aria-label="表示する内容を選ぶ">
           {categories.map((category) => (
             <div class="desk-choice">
               <a class="desk-fallback" href={path(`${category.id}/`)}>

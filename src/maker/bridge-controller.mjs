@@ -79,7 +79,7 @@ if (root) {
     description.value = '';
     category.value = '';
     slug.value = '';
-    setStatus(selectionStatus, '残したい1件を選んでください。');
+    setStatus(selectionStatus, '下書きにする記録を1件選んでください。');
   }
   function renderSelection() {
     if (selected)
@@ -144,8 +144,8 @@ if (root) {
     setStatus(
       selectionStatus,
       saved
-        ? 'この記録の要約・分類・ファイル名を戻しました。内容を確認できます。'
-        : 'この1件だけを下書きにします。要約・分類・ファイル名を入力してください。',
+        ? 'この記録に入力した要約・記事の種類・ファイル名を表示しました。内容を確認できます。'
+        : 'この1件だけを下書きにします。要約・記事の種類・ファイル名を入力してください。',
     );
   }
   function applyPending() {
@@ -225,7 +225,7 @@ if (root) {
         .join('・');
       setStatus(
         pendingInfo,
-        `${file.name} / ${counts}${active ? '。このJSONを開くと、いまの選択・要約・設定を置き換えます。' : '。元のJSONは変更しません。'}`,
+        `${file.name} / ${counts}${active ? '。このJSONを開くと、いまの選択を解除し、各記録に入力した要約・記事の種類・ファイル名を消去します。' : '。元のJSONは変更しません。'}`,
       );
       loadButton.disabled = false;
       setStatus(
@@ -257,7 +257,7 @@ if (root) {
       if (!description.value.trim())
         invalid(description, '短い要約を入力してください。');
       if (!['学び', '雑記'].includes(category.value))
-        invalid(category, '分類を選んでください。');
+        invalid(category, '記事の種類を選んでください。');
       if (
         !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug.value) ||
         slug.value.length > 64
@@ -295,7 +295,7 @@ if (root) {
       );
       setStatus(
         downloadStatus,
-        '内容を確認して、Markdownの下書きを持ち帰れます。',
+        '内容を確認し、「下書きをダウンロード」で保存してください。',
       );
       downloadButton.disabled = false;
       downloadButton.focus();
@@ -383,7 +383,7 @@ if (root) {
       fileInput.value = '';
       setStatus(
         fileStatus,
-        '読み込んだ記録を閉じました。元のファイルはそのままです。',
+        '記録を閉じ、この画面で入力した要約・記事の種類・ファイル名を消去しました。元のJSONは変更していません。',
       );
       fileInput.focus();
     });

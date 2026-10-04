@@ -17,9 +17,9 @@ const entries = [
     kind: '動きと反応',
     title: '止まっても、少し遅れる。',
     summary: '同じ移動に、体の傾きと荷物の揺れを重ねる。',
-    change: '「反応あり」と「固定」を切り替える。',
+    change: '表示を「反応あり」と「反応を固定」で切り替える。',
     result: '移動は同じまま、体の傾きと荷物の遅れが変わる。',
-    try: '右へ動いて、左へ切り返す。「同じ入力を再生」でも比べられます。',
+    try: '右へ動いて、左へ切り返してみてください。「同じ入力を再生」では、決まった操作を繰り返して比べられます。',
     note: '荷物は表示だけです。運搬や落下の遊びはありません。',
     document: documents.motion,
   },
@@ -28,10 +28,10 @@ const entries = [
     index: '02',
     kind: '移動と時間',
     title: '立ち止まると、世界も止まる。',
-    summary: '進んだ距離を、障害物の時計へつなぐ。',
-    change: '時計を「移動量」と「連続時間」で切り替える。',
+    summary: '進んだ距離に応じて、障害物の時間が進む。',
+    change: '時計を「移動量で進む」と「連続時間で進む」で切り替える。',
     result: '手を離したとき、障害物が止まるか動き続けるかが変わる。',
-    try: '右へ壁まで進んで、手を離す。再生中の停止を3秒にして「同じ入力を再生」でも比べられます。',
+    try: '右へ壁まで進み、手を離してみてください。「再生中の停止時間」を3秒にして「同じ入力を再生」を押すと、決まった操作で比べられます。',
     note: '接触してもやり直しにはなりません。時計の違いを観察する試作です。',
     document: documents.clock,
   },
@@ -52,9 +52,9 @@ const entries = [
     <h1>実験を見る</h1>
     <p class="experiment-lead">少し変えて、反応を比べる。</p>
     <p class="experiment-intro">
-      ゲームの小さな仕組みを、2つ置いています。
+      ゲームの小さな仕組みを、2つ試せます。
       <br />
-      気になったものだけ、開いて触れます。
+      気になった実験を開いて、操作してみてください。
     </p>
     <div class="experiment-provenance">
       <span class="byline-mark" aria-hidden="true">
@@ -63,7 +63,7 @@ const entries = [
       <p>
         <strong>シドの試作（AI）</strong>
         <span>
-          依頼に沿って作った試作です。本人の作品としての採用・公開は未確定です。
+          依頼に沿ってAIが作った試作です。本人の制作実績ではありません。掲載するかどうかは未定です。
         </span>
       </p>
     </div>
@@ -276,13 +276,13 @@ const entries = [
             aria-controls={`trial-${entry.id}`}
             disabled
           >
-            試してみる <span aria-hidden="true">↗</span>
+            実験を開く <span aria-hidden="true">＋</span>
           </button>
           <button type="button" data-pause hidden>
             動きを止める
           </button>
           <span class="experiment-status" data-status role="status">
-            開くまで動きません。
+            開いてから、操作すると動きます。
           </span>
         </div>
         <div
@@ -294,14 +294,14 @@ const entries = [
         ></div>
         <noscript>
           <p class="experiment-note">
-            試用にはJavaScriptが必要です。上の模式図と説明はそのまま読めます。
+            実験を操作するにはJavaScriptが必要です。上の模式図と説明はそのまま読めます。
           </p>
         </noscript>
         <footer class="experiment-source">
           <span>
             出典：game-kernel-lab / {entry.id === 'motion' ? 'E' : 'G'}
           </span>
-          <span>シドの試作・本人の採否待ち</span>
+          <span>シド（AI）の試作・本人の掲載判断待ち</span>
         </footer>
       </article>
     ))}
@@ -314,7 +314,7 @@ const entries = [
       次に試したいことを考えるための入口です。
     </p>
     <small>
-      原本を保った独立コピーです。面白さや理解しやすさの本人評価は、これからです。
+      原本を保った独立コピーです。面白さや分かりやすさについて、本人の評価はこれからです。
     </small>
   </footer>
 </div>
@@ -394,7 +394,7 @@ const entries = [
     };
     function close(
       card: HTMLElement,
-      message = '閉じました。もう一度開くと初めからです。',
+      message = '実験を閉じました。もう一度開くと初めからになります。',
     ) {
       clearTimeoutFor(card);
       frames.get(card)?.remove();
@@ -404,7 +404,7 @@ const entries = [
       card.querySelector<HTMLElement>('[data-preview]')!.hidden = false;
       card.querySelector<HTMLElement>('[data-pause]')!.hidden = true;
       const button = card.querySelector<HTMLButtonElement>('[data-open]')!;
-      button.textContent = '試してみる ↗';
+      button.textContent = '実験を開く ＋';
       button.setAttribute('aria-expanded', 'false');
       status(card, message);
     }
@@ -412,10 +412,10 @@ const entries = [
       if (frame && frames.get(card) !== frame) return;
       close(
         card,
-        '試用を開けませんでした。静止図を表示しています。もう一度試せます。',
+        '実験を開けませんでした。静止図を表示しています。もう一度試してください。',
       );
       card.querySelector<HTMLButtonElement>('[data-open]')!.textContent =
-        'もう一度試す ↗';
+        'もう一度開く ＋';
     }
     for (const card of cards) {
       const button = card.querySelector<HTMLButtonElement>('[data-open]')!;
@@ -435,7 +435,7 @@ const entries = [
           return;
         }
         const frame = document.createElement('iframe');
-        frame.title = `${card.dataset.experiment === 'motion' ? '動きと反応' : '移動と時間'}を試す・シドの試作`;
+        frame.title = `${card.dataset.experiment === 'motion' ? '動きと反応' : '移動と時間'}を試す・シド（AI）の試作`;
         frame.setAttribute('sandbox', 'allow-scripts');
         frame.setAttribute(
           'allow',
@@ -451,7 +451,7 @@ const entries = [
         frame.addEventListener('error', () => fail(card, frame));
         trial.append(frame);
         // Keep the static drawing until the isolated runtime confirms initialization.
-        button.textContent = '準備をやめる ×';
+        button.textContent = '準備を中止する ×';
         button.setAttribute('aria-expanded', 'true');
         status(card, '準備中です。');
         frame.addEventListener('load', () => {
@@ -461,7 +461,10 @@ const entries = [
       card
         .querySelector<HTMLButtonElement>('[data-pause]')!
         .addEventListener('click', () =>
-          pause(card, '停止しました。試用の画面で操作すると再開できます。'),
+          pause(
+            card,
+            '停止しました。実験画面の「続ける」を押すか、方向キーなどで操作すると再開できます。',
+          ),
         );
     }
     const observer = new IntersectionObserver(
@@ -508,8 +511,8 @@ const entries = [
         card.querySelector<HTMLElement>('[data-preview]')!.hidden = true;
         card.querySelector<HTMLElement>('[data-pause]')!.hidden = false;
         card.querySelector<HTMLButtonElement>('[data-open]')!.textContent =
-          '試用を閉じる ×';
-        status(card, '準備できました。試用の画面で操作できます。');
+          '実験を閉じる ×';
+        status(card, '実験を開きました。画面内で操作できます。');
         syncAvailability(card);
       }
       if (event.data.type === 'experiment:availability-request')
@@ -519,12 +522,15 @@ const entries = [
         status(
           card,
           available
-            ? '試用中です。動きを止めるボタンで停止できます。'
-            : '停止中です。画面に戻って操作すると再開できます。',
+            ? '実験が動いています。「動きを止める」で停止できます。'
+            : '停止中です。実験画面に戻って操作すると再開できます。',
         );
       }
       if (event.data.type === 'experiment:paused')
-        status(card, '停止中です。試用の画面で操作すると再開できます。');
+        status(
+          card,
+          '停止中です。実験画面の「続ける」を押すか、方向キーなどで操作すると再開できます。',
+        );
       if (
         event.data.type === 'experiment:resize' &&
         Number.isFinite(event.data.height)

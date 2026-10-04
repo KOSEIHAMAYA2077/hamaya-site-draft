@@ -1,0 +1,246 @@
+{
+  "scope": "Selected changed generated UI labels/instructions only; not authored articles or profile. Source presence checked against HEAD and worktree.",
+  "base": "5ec128d361835eef225799d426510039cc141f46",
+  "pairs": [
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "既存の本人文を変えず、公開GitHubの9件を下書きにまとめています。",
+      "after": "公開GitHubの9件を、作品候補の下書きにまとめています。既存の本人文は変更していません。"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "コードは実行していません。担当範囲・制作期間・掲載の採否は、本人の確認待ちです。",
+      "after": "コードは実行していません。担当範囲・制作期間・掲載するかどうかは、本人の確認待ちです。"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "選んだ候補をコピー",
+      "after": "選んだ候補の情報をコピー"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "選択を消す",
+      "after": "選択を解除"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "チェックはこの画面だけの仮選択です。公開やファイル変更は行いません。再読み込みで消えます。",
+      "after": "選択はこのタブ内だけで有効です。保存・公開やファイルの変更は行わず、再読み込みすると解除されます。 選んだ候補のリポジトリ名・作品名・URLをまとめてコピーできます。"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "候補に残す",
+      "after": "候補を選ぶ"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "見る入口",
+      "after": "関連リンク"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "公開repoであることと、教材・素材・授業成果をこのサイトへ転載できることは別に確認します。",
+      "after": "公開リポジトリであっても、教材・素材・授業成果をこのサイトへ転載できるかは、別途確認します。"
+    },
+    {
+      "file": "src/local-pages/candidates.astro",
+      "before": "一覧を選択しました。コピーして持ち帰れます。",
+      "after": "コピー用の一覧を選択しました。手動でコピーしてください。"
+    },
+    {
+      "file": "src/local-pages/write.astro",
+      "before": "書いて、残しておく。",
+      "after": "下書きを書く"
+    },
+    {
+      "file": "src/local-pages/write.astro",
+      "before": "この画面で書いて、Markdownで持ち帰れます。自動保存はしません。",
+      "after": "Markdownの下書きをダウンロードできます。入力は自動保存されません。"
+    },
+    {
+      "file": "src/local-pages/write.astro",
+      "before": "残すもの",
+      "after": "下書きの種類"
+    },
+    {
+      "file": "src/local-pages/write.astro",
+      "before": "表紙のファイル",
+      "after": "表紙画像のパス"
+    },
+    {
+      "file": "src/local-pages/write.astro",
+      "before": "書き出しを確認",
+      "after": "下書きを確認"
+    },
+    {
+      "file": "src/local-pages/write.astro",
+      "before": "書き出す内容を確認できます。入力はまだ保存されていません。",
+      "after": "下書きの内容を確認できます。確認だけでは保存されません。「下書きをダウンロード」で保存してください。"
+    },
+    {
+      "file": "src/local-pages/write.astro",
+      "before": "書き出すファイル",
+      "after": "ダウンロードするファイル"
+    },
+    {
+      "file": "src/local-pages/maker-field.astro",
+      "before": "このブラウザ内で読み込みます。元のJSONはそのまま残り、画像本体は下書きに含みません。 ページを閉じると、ここでの入力は消えます。",
+      "after": "このブラウザ内で読み込みます。元のJSONは変更せず、画像本体は下書きに含めません。 入力は自動保存されず、ページを閉じると消えます。"
+    },
+    {
+      "file": "src/local-pages/maker-field.astro",
+      "before": "別のJSONを開くと、今の選択と入力を置き換えます。取り消した場合や読み込みに失敗した場合は、そのまま残ります。",
+      "after": "別のJSONを開くと、今の選択を解除し、各記録に入力した要約・記事の種類・ファイル名を消去します。読み込みを取り消した場合や失敗した場合は、今の記録と入力が残ります。"
+    },
+    {
+      "file": "src/local-pages/maker-field.astro",
+      "before": "やめる",
+      "after": "開くのをやめる"
+    },
+    {
+      "file": "src/local-pages/maker-field.astro",
+      "before": "読み込みをやめる",
+      "after": "記録を閉じて入力を消す"
+    },
+    {
+      "file": "src/local-pages/maker-field.astro",
+      "before": "分類",
+      "after": "記事の種類"
+    },
+    {
+      "file": "src/local-pages/maker-field.astro",
+      "before": "書く画面で確認する（別タブ）",
+      "after": "書く画面を開く（別タブ）"
+    },
+    {
+      "file": "src/maker/bridge-controller.mjs",
+      "before": "残したい1件を選んでください。",
+      "after": "下書きにする記録を1件選んでください。"
+    },
+    {
+      "file": "src/maker/bridge-controller.mjs",
+      "before": "この記録の要約・分類・ファイル名を戻しました。内容を確認できます。",
+      "after": "この記録に入力した要約・記事の種類・ファイル名を表示しました。内容を確認できます。"
+    },
+    {
+      "file": "src/maker/bridge-controller.mjs",
+      "before": "読み込んだ記録を閉じました。元のファイルはそのままです。",
+      "after": "記録を閉じ、この画面で入力した要約・記事の種類・ファイル名を消去しました。元のJSONは変更していません。"
+    },
+    {
+      "file": "src/components/HomeSurface.astro",
+      "before": "作品を見にいく",
+      "after": "作品の一覧へ"
+    },
+    {
+      "file": "src/components/CollectionStudy.astro",
+      "before": "どれを開きますか",
+      "after": "作品を選ぶ"
+    },
+    {
+      "file": "src/components/CollectionStudy.astro",
+      "before": "次に触るもの",
+      "after": "コード・ほかの作品"
+    },
+    {
+      "file": "src/components/CollectionStudy.astro",
+      "before": "もうひとつ開く",
+      "after": "次の作品を開く"
+    },
+    {
+      "file": "src/components/DeskSurface.astro",
+      "before": "この制作机で開く分類",
+      "after": "表示する内容を選ぶ"
+    },
+    {
+      "file": "src/components/FocusStudy.astro",
+      "before": "GitHubのコード",
+      "after": "GitHubでコードを開く"
+    },
+    {
+      "file": "src/components/FocusStudy.astro",
+      "before": "学び・雑記へ",
+      "after": "学び・雑記の一覧へ"
+    },
+    {
+      "file": "src/components/TimelineStudy.astro",
+      "before": "索引は上下にスクロールできます。",
+      "after": "一覧は上下にスクロールできます。"
+    },
+    {
+      "file": "src/components/TimelineStudy.astro",
+      "before": "GitHubでこの記録を開く",
+      "after": "GitHubで変更内容を見る"
+    },
+    {
+      "file": "src/components/TimelineStudy.astro",
+      "before": "リポジトリを見る",
+      "after": "GitHubでコード・資料を見る"
+    },
+    {
+      "file": "src/local-pages/directions/index.astro",
+      "before": "DESIGN STUDIES / LOCAL DRAFT",
+      "after": "デザインの比較 / 非公開の下書き"
+    },
+    {
+      "file": "src/local-pages/directions/index.astro",
+      "before": "動く下書きを開く",
+      "after": "このデザインを開く"
+    },
+    {
+      "file": "src/pages/notes/index.astro",
+      "before": "条件をリセット",
+      "after": "すべての記録を表示"
+    },
+    {
+      "file": "src/components/ExperimentStudy.astro",
+      "before": "依頼に沿って作った試作です。本人の作品としての採用・公開は未確定です。",
+      "after": "依頼に沿ってAIが作った試作です。本人の制作実績ではありません。掲載するかどうかは未定です。"
+    },
+    {
+      "file": "src/components/ExperimentStudy.astro",
+      "before": "進んだ距離を、障害物の時計へつなぐ。",
+      "after": "進んだ距離に応じて、障害物の時間が進む。"
+    },
+    {
+      "file": "src/components/ExperimentStudy.astro",
+      "before": "試してみる",
+      "after": "実験を開く"
+    },
+    {
+      "file": "src/components/ExperimentStudy.astro",
+      "before": "開くまで動きません。",
+      "after": "開いてから、操作すると動きます。"
+    },
+    {
+      "file": "src/components/ExperimentStudy.astro",
+      "before": "停止しました。試用の画面で操作すると再開できます。",
+      "after": "停止しました。実験画面の「続ける」を押すか、方向キーなどで操作すると再開できます。"
+    },
+    {
+      "file": "src/experiments/documents.mjs",
+      "before": "再生中の停止",
+      "after": "再生中の停止時間"
+    },
+    {
+      "file": "src/experiments/documents.mjs",
+      "before": "再生を1コマ",
+      "after": "再生を1コマ進める"
+    },
+    {
+      "file": "src/experiments/documents.mjs",
+      "before": "初期位置へ",
+      "after": "初期位置に戻す"
+    },
+    {
+      "file": "src/experiments/runtime.mjs",
+      "before": "停止中。入力または再生で始まります。",
+      "after": "停止中です。方向キーや方向ボタン、または「同じ入力を再生」で始められます。"
+    },
+    {
+      "file": "src/experiments/runtime.mjs",
+      "before": "12秒で停止しました。続ける操作で再開できます。",
+      "after": "12秒経ったため停止しました。「続ける」を押すと再開できます。"
+    }
+  ]
+}
