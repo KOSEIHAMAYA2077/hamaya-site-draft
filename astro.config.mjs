@@ -40,7 +40,11 @@ export default defineConfig({
     {
       name: 'local-studio-boundary',
       hooks: {
-        'astro:config:setup': async ({ injectRoute, command }) => {
+        'astro:config:setup': async ({
+          injectRoute,
+          injectScript,
+          command,
+        }) => {
           // Fail before loaders: malformed draft data must not become an empty success.
           parseWorkCandidates(
             JSON.parse(
@@ -112,7 +116,14 @@ export default defineConfig({
                 new URL('./src/local-pages/experiments.astro', import.meta.url),
               ),
             });
-          if (features.workroom)
+          if (features.workroom) {
+            // A render condition alone still lets Astro discover and emit a
+            // component script. Inject this client entry only in the explicit
+            // private build, keeping its IDs and shared chunks out of ordinary output.
+            injectScript(
+              'page',
+              `import { setupReturnEntry } from ${JSON.stringify(fileURLToPath(new URL('./src/workroom/return-controller.mjs', import.meta.url)))}; setupReturnEntry(import.meta.env.BASE_URL);`,
+            );
             for (const [pattern, entrypoint] of [
               ['/room/notes', './src/local-pages/room/notes/index.astro'],
               ['/room/notes/[id]', './src/local-pages/room/notes/[id].astro'],
@@ -124,6 +135,7 @@ export default defineConfig({
                 pattern,
                 entrypoint: fileURLToPath(new URL(entrypoint, import.meta.url)),
               });
+          }
         },
       },
     },

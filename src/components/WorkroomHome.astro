@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import FocusStudy from './FocusStudy.astro';
+import ReturnEntry from './ReturnEntry.astro';
 import { focusStudy } from '../lib/focus-study.mjs';
 import { path } from '../lib/paths';
 
@@ -13,6 +14,7 @@ const { entries, notes } = Astro.props;
 const record = notes[0];
 ---
 
+<ReturnEntry entries={entries} notes={notes} />
 <FocusStudy entries={entries} integrated />
 
 <section class="workroom-record shell" aria-labelledby="workroom-record-title">

@@ -22,7 +22,7 @@ const { Content, headings } = await render(entry);
   type="article"
   canonical={false}
 >
-  <article class="shell article-page">
+  <article class="shell article-page" data-return-note-id={entry.id}>
     <a class="back-link" href={path('room/notes/')} data-note-back>
       ← 記録の一覧へ
     </a>

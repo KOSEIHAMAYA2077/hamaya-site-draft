@@ -1,0 +1,176 @@
+---
+import { path } from '../lib/paths';
+
+interface Props {
+  entries: { id: string; title: string }[];
+  notes: { id: string; data: { title: string } }[];
+}
+
+const { entries, notes } = Astro.props;
+const catalog = JSON.stringify({
+  work: entries.map(({ id, title }) => ({ id, title })),
+  note: notes.map(({ id, data }) => ({ id, title: data.title })),
+}).replaceAll('<', '\\u003c');
+---
+
+<details class="return-entry shell" data-return-panel open>
+  <summary>
+    <h2>すぐに始める</h2>
+    <span class="return-fold" aria-hidden="true"></span>
+  </summary>
+  <div class="return-content">
+    <div class="return-history">
+      <p class="return-off" data-return-off hidden>
+        <span data-return-off-message>前回の場所は保存していません。</span>
+        <a href={path('room/settings/#return-setting')}>保存について</a>
+      </p>
+      <noscript>
+        <p class="return-empty">
+          前回の場所の表示にはJavaScriptが必要です。下の制作や記録はそのまま開けます。
+        </p>
+      </noscript>
+      <div class="return-saved" data-return-enabled hidden>
+        <div>
+          <p class="return-label">前回開いた記録</p>
+          <p class="return-empty" data-return-note-empty>
+            記録を開くと、ここに残ります。
+          </p>
+          <a class="return-saved-link" data-return-note-link hidden></a>
+        </div>
+        <div>
+          <p class="return-label">前回選んだ制作</p>
+          <p class="return-empty" data-return-work-empty>
+            制作を選ぶと、ここに残ります。
+          </p>
+          <a class="return-saved-link" data-return-work-link hidden></a>
+        </div>
+      </div>
+    </div>
+    <nav class="return-actions" aria-label="すぐに始める操作">
+      <a href={path('write/?kind=note')}>
+        記録を書く <span aria-hidden="true">＋</span>
+      </a>
+      <a href={path('compare/experiments/')} data-return-experiment>
+        実験を選ぶ <span aria-hidden="true">→</span>
+      </a>
+    </nav>
+  </div>
+  <script type="application/json" data-return-catalog set:html={catalog} />
+</details>
+
+<style>
+  .return-entry {
+    margin-top: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .return-entry > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 44px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .return-entry > summary::-webkit-details-marker {
+    display: none;
+  }
+  .return-entry h2 {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  .return-fold::before {
+    content: '＋';
+    color: var(--muted);
+    font-size: 16px;
+  }
+  .return-entry[open] .return-fold::before {
+    content: '−';
+  }
+  .return-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.6rem 2rem;
+    padding-bottom: 0.9rem;
+    min-height: 55px;
+  }
+  .return-off {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1rem;
+    align-items: center;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .return-off > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+  }
+  .return-saved {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem 2rem;
+  }
+  .return-label {
+    color: var(--muted);
+    font-size: 10px;
+  }
+  .return-empty {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 0.3rem;
+  }
+  .return-saved-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+  .return-saved-link:hover {
+    text-decoration: underline;
+  }
+  .return-actions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .return-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    font-size: 13px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .return-actions a:hover {
+    text-decoration: underline;
+  }
+  .return-actions a > span {
+    color: var(--muted);
+  }
+  @media (max-width: 900px) {
+    .return-content {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+    .return-actions {
+      grid-row: 1;
+      gap: 1.5rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .return-saved {
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+    }
+    .return-off {
+      gap: 0 0.75rem;
+    }
+  }
+</style>

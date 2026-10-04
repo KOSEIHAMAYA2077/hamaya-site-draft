@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-04",
+  "branch": "return-entry",
+  "base": "ac5bea09ff16ca4a9720b5977731404bb1d1a0e7",
+  "lint": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 1,
+    "hint": "Inherited beforeunload returnValue compatibility API"
+  },
+  "buildMatrix": [
+    {
+      "mode": "root",
+      "env": {},
+      "pages": 5,
+      "passed": 192
+    },
+    {
+      "mode": "base",
+      "env": {
+        "BASE_PATH": "/hamaya-site-draft"
+      },
+      "pages": 5,
+      "passed": 192
+    },
+    {
+      "mode": "comparison",
+      "env": {
+        "BASE_PATH": "/hamaya-site-draft",
+        "LOCAL_COMPARISON": "1",
+        "LOCAL_CANDIDATES": "1",
+        "LOCAL_EXPERIMENTS": "1",
+        "LOCAL_TIMELINE": "1"
+      },
+      "pages": 18,
+      "passed": 192
+    },
+    {
+      "mode": "workroom",
+      "env": {
+        "BASE_PATH": "/hamaya-site-draft",
+        "LOCAL_WORKROOM": "1"
+      },
+      "pages": 23,
+      "passed": 192
+    }
+  ],
+  "browser": {
+    "mainGroups": 17,
+    "finalGroups": 4,
+    "version": "153.0.8010.12",
+    "actualBackNavigation": true,
+    "nativeBfcacheRestorationClaimed": false,
+    "persistedPageshowSimulated": true,
+    "dedicatedBrowsersClosed": true
+  },
+  "protectedContentFilesUnchanged": 15,
+  "existingCleanWorktreesUnchanged": 10,
+  "published": false,
+  "privateBranchOnly": true,
+  "adoptionConfirmed": false
+}

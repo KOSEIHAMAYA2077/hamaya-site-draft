@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 import { decodeHTMLAttribute } from 'entities';
 import { comparisonSources } from '../src/lib/collection-study.mjs';
+import { WORKROOM_NOTE_IDS } from '../src/lib/workroom-notes.mjs';
 import {
   localBuildEnabled,
   localFeatures,
@@ -534,6 +535,78 @@ test('確認待ちの全下書きは詳細ルートと一覧リンクに混入�
   }
 });
 
+const returnIds = new Set([
+  ...comparisonSources.map(({ id }) => id),
+  ...WORKROOM_NOTE_IDS,
+]);
+
+function withoutReturnIdLiterals(content, filename, enabled = workroomOn) {
+  if (
+    !enabled ||
+    !/[\\/]_astro[\\/]page\.[a-zA-Z0-9_-]+\.js$/.test(filename) ||
+    !content.includes('hamaya-workroom-return-v1') ||
+    !content.includes('[data-return-error]')
+  )
+    return content;
+  // A verified work's slug can be part of its allowed ID. Exempt only a whole
+  // quoted ID literal in this explicit local bridge, never title/description
+  // substrings, unknown IDs, other chunks, or the ordinary distribution.
+  return content.replace(
+    /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`/g,
+    (literal) =>
+      returnIds.has(literal.slice(1, -1))
+        ? `${literal[0]}${literal[0]}`
+        : literal,
+  );
+}
+
+test('再開専用page entryの題名検査は完全一致する既知IDだけを除外する', () => {
+  const filename = path.join(dist, '_astro/page.example.js');
+  const id = 'import-de10-nano-riscv-invader';
+  const title = 'de10-nano-riscv-invader';
+  const entryMarker =
+    'const key="hamaya-workroom-return-v1";document.querySelector("[data-return-error]");';
+  const fixture = `${entryMarker}const ids=["${id}",'legacy-cyberpunk2077-1'];const title="${title}";const unknown="${id}-unknown";const description="説明 ${id} 続き";const escaped="\\u0069mport-de10-nano-riscv-invader";`;
+  const expected = `${entryMarker}const ids=["",''];const title="${title}";const unknown="${id}-unknown";const description="説明 ${id} 続き";const escaped="\\u0069mport-de10-nano-riscv-invader";`;
+  assert.equal(withoutReturnIdLiterals(fixture, filename, true), expected);
+  assert.equal(
+    withoutReturnIdLiterals(entryMarker + '`' + id + '`', filename, true),
+    entryMarker + '``',
+  );
+  const interpolated = entryMarker + '`' + id + '${value}`';
+  assert.equal(
+    withoutReturnIdLiterals(interpolated, filename, true),
+    interpolated,
+  );
+  const unrelatedPage = fixture.replace(entryMarker, '');
+  assert.equal(
+    withoutReturnIdLiterals(unrelatedPage, filename, true),
+    unrelatedPage,
+  );
+  const missingKey = fixture.replace(
+    'hamaya-workroom-return-v1',
+    'other-page-key',
+  );
+  assert.equal(withoutReturnIdLiterals(missingKey, filename, true), missingKey);
+  const missingBridge = fixture.replace(
+    '[data-return-error]',
+    '[data-other-page]',
+  );
+  assert.equal(
+    withoutReturnIdLiterals(missingBridge, filename, true),
+    missingBridge,
+  );
+  assert.equal(withoutReturnIdLiterals(fixture, filename, false), fixture);
+  assert.equal(
+    withoutReturnIdLiterals(fixture, path.join(dist, '_astro/other.js'), true),
+    fixture,
+  );
+  assert.equal(
+    withoutReturnIdLiterals(fixture, path.join(dist, 'index.html'), true),
+    fixture,
+  );
+});
+
 test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時の専用HTMLだけに限定する', async () => {
   const output = await Promise.all(
     builtFiles
@@ -578,8 +651,9 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時�
           title === workroomNoteTitle)
       )
         continue;
+      const checkedContent = withoutReturnIdLiterals(content, filename);
       assert.ok(
-        !content.includes(title) && !content.includes(escaped),
+        !checkedContent.includes(title) && !checkedContent.includes(escaped),
         `下書きの題が出力されています: ${title}`,
       );
     }

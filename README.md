@@ -2,11 +2,13 @@
 
 制作物、学んだこと、日々の雑記を置いていく個人サイトです。明るい白と薄灰を中心に、黒い文字と細い線で整えています。プロフィールや作品の中身は、本人の文章と公開判断を待っています。
 
+現在の `return-entry` は、統合候補を保持して作った [「すぐに始める」入口の比較案](docs/RETURN_ENTRY.md) です。ローカルの [比較版4362](http://127.0.0.1:4362/hamaya-site-draft/) と [元の統合版4360](http://127.0.0.1:4360/hamaya-site-draft/) を並べて確認できます。再開先の保存は初期OFFで、ONにした場合も制作と記録のIDを各1件だけ残します。採用は未確定です。
+
 この作業領域と専用リポジトリは非公開の下書きです。GitHub Pagesの有効化、公開用workflow、外部へのデプロイは行っていません。生成ページには `noindex` を付けています。`noindex` はアクセス制限ではないため、非公開の情報は本文やリポジトリに入れないでください。
 
 入力と通常配布の修復は独立ブランチ `audit-static-safety` にあります。[公開前監査](docs/SECURITY_AUDIT.md) と [制作道具の接続仕様](docs/TOOL_CONNECTION.md) を参照してください。`experience-next` の制作案は保持しています。
 
-この `experiment-study` には、シドの小試作を眺める独立した [「実験を見る」](docs/EXPERIMENT_STUDY.md) を追加しています。`LOCAL_EXPERIMENTS=1 npm run dev` または `npm run build:experiments` でのみ使えます。本人の作品としての採否は未確定で、通常buildには含めません。
+`experiment-study` で加えた、シドの小試作を眺める [「実験を見る」](docs/EXPERIMENT_STUDY.md) も保持しています。実験単独の比較は `LOCAL_EXPERIMENTS=1 npm run dev` または `npm run build:experiments` で開けます。今回の統合比較では「実験を選ぶ」から開けます。本人の作品としての採否は未確定で、通常buildには含めません。
 
 ## ローカルで見る
 

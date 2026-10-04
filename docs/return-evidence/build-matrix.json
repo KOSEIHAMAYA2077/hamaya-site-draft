@@ -1,0 +1,37 @@
+[
+  {
+    "mode": "root",
+    "env": {},
+    "pages": 5,
+    "passed": 192
+  },
+  {
+    "mode": "base",
+    "env": {
+      "BASE_PATH": "/hamaya-site-draft"
+    },
+    "pages": 5,
+    "passed": 192
+  },
+  {
+    "mode": "comparison",
+    "env": {
+      "BASE_PATH": "/hamaya-site-draft",
+      "LOCAL_COMPARISON": "1",
+      "LOCAL_CANDIDATES": "1",
+      "LOCAL_EXPERIMENTS": "1",
+      "LOCAL_TIMELINE": "1"
+    },
+    "pages": 18,
+    "passed": 192
+  },
+  {
+    "mode": "workroom",
+    "env": {
+      "BASE_PATH": "/hamaya-site-draft",
+      "LOCAL_WORKROOM": "1"
+    },
+    "pages": 23,
+    "passed": 192
+  }
+]

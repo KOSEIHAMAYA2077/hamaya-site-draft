@@ -4,6 +4,7 @@ import { path } from '../lib/paths';
 import '../styles/global.css';
 import LocalTools from '../components/LocalTools.astro';
 import WorkroomNav from '../components/WorkroomNav.astro';
+import ReturnBridge from '../components/ReturnBridge.astro';
 import { workroomEnabled } from '../lib/build-mode.mjs';
 const integrated = workroomEnabled(import.meta.env.LOCAL_WORKROOM);
 interface Props {
@@ -102,6 +103,7 @@ const links = [
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
+    {integrated && <ReturnBridge />}
     <footer class="site-footer shell">
       <p>
         {site.name}
