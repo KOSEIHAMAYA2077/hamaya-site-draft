@@ -84,7 +84,10 @@ test('公開リンクの危険scheme・entity偽装・認証情報・外部相�
 test('Markdown画像はpublic/imagesのrasterだけにし、参照記法も相対importや外部取得を許さない', async () => {
   for (const source of [
     '![検証](../../private.png)',
-    '![検証](images/local.png)',
+    '![検証](./other/local.png)',
+    '![検証](./images/../private.png)',
+    '![検証](images/%2e%2e/private.png)',
+    '![検証](images//local.png)',
     '![検証](file:///tmp/private.png)',
     '![検証](https://example.invalid/image.png)',
     '![検証](/images/../private.png)',
@@ -105,6 +108,77 @@ test('Markdown画像はpublic/imagesのrasterだけにし、参照記法も相�
   assert.match(result.code, /src="\/qa-site\/images\/figure.webp"/);
   assert.deepEqual(result.metadata.localImagePaths, []);
   assert.deepEqual(result.metadata.remoteImagePaths, []);
+});
+
+test('持出し画像は原文を保ちpublicへ解決し、baseを変えてもsource importを発生させない', async () => {
+  const source =
+    '![直書き](./images/synthetic.png)\n\n![参照][photo]\n\n[photo]: images/synthetic.png';
+  for (const base of ['/', '/old-place/', '/moved/nested/']) {
+    const renderer = await createSatteriMarkdownProcessor({
+      syntaxHighlight: false,
+      mdastPlugins: [
+        markdownSafety({ base, approvedAssets: ['images/synthetic.png'] }),
+      ],
+      hastPlugins: [
+        markdownUrlSafety({ base, approvedAssets: ['images/synthetic.png'] }),
+        markdownBase({ base }),
+      ],
+    });
+    const result = await renderer.render(source);
+    const images = [...result.code.matchAll(/src="([^"]+)"/g)].map(
+      (match) => match[1],
+    );
+    assert.deepEqual(images, [
+      `${base}images/synthetic.png`,
+      `${base}images/synthetic.png`,
+    ]);
+    assert.deepEqual(result.metadata.localImagePaths, []);
+    assert.deepEqual(result.metadata.remoteImagePaths, []);
+    assert.match(source, /\.\/images\/synthetic.png/);
+    for (const invalid of [
+      'images/missing.png',
+      './images/missing.png',
+      '/previous-base/images/synthetic.png',
+    ]) {
+      await assert.rejects(
+        renderer.render(`![未採用](${invalid})`),
+        /未採用|base/,
+      );
+      await assert.rejects(
+        renderer.render(`![未採用][pic]\n\n[pic]: ${invalid}`),
+        /未採用|base/,
+      );
+    }
+  }
+});
+
+test('preflightは本文・作品coverの未採用画像を黙って欠落させず停止する', async () => {
+  const root = await mkdtemp(path.join(tmpdir(), 'hamaya-portable-assets-'));
+  try {
+    await mkdir(path.join(root, 'notes'));
+    await mkdir(path.join(root, 'works'));
+    const file = path.join(root, 'works/synthetic.md');
+    const source = (src, body) =>
+      `---\ntitle: Synthetic\ndescription: 検証専用\ndate: "2026-10-04"\ntags: []\ndraft: true\nstatus: 記録\ncover:\n  src: ${src}\n  alt: 合成画像\n---\n\n${body}`;
+    await writeFile(
+      file,
+      source('images/cover.png', '![図](./images/body.png)'),
+    );
+    await assert.rejects(checkMarkdownContent({ root }), /作品の画像が未採用/);
+    await assert.rejects(
+      checkMarkdownContent({ root, approvedAssets: ['images/cover.png'] }),
+      /body.png/,
+    );
+    assert.deepEqual(
+      await checkMarkdownContent({
+        root,
+        approvedAssets: ['images/cover.png', 'images/body.png'],
+      }),
+      { checked: 1 },
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 });
 
 test('schemaと書き出し共通のHTTPS・画像境界はcredentials/制御文字/SVGを許さない', () => {

@@ -17,7 +17,7 @@ const workroom = import.meta.env.LOCAL_WORKROOM === '1';
         Maker Fieldで書き出したJSONから、残したい1件を選びます。
       </p>
       <p class="maker-hint">
-        このブラウザ内で読み込みます。元のJSONは変更せず、画像本体は下書きに含めません。
+        このブラウザ内で読み込みます。元のJSONは変更しません。Markdownだけ、または画像も含めたZIPで持ち出せます。
         入力は自動保存されず、ページを閉じると消えます。
       </p>
       {workroom && (
@@ -213,6 +213,15 @@ const workroom = import.meta.env.LOCAL_WORKROOM === '1';
               >
                 下書きをダウンロード
               </button>
+              <button
+                id="maker-package"
+                class="maker-quiet"
+                type="button"
+                aria-describedby="maker-package-hint"
+                disabled
+              >
+                画像と一緒に持ち出す（ZIP）
+              </button>
               <a
                 id="maker-next"
                 href={path('write/#write-import')}
@@ -224,7 +233,13 @@ const workroom = import.meta.env.LOCAL_WORKROOM === '1';
               </a>
             </div>
             <p class="maker-hint">
-              書く画面で、ダウンロードしたMarkdownを読み込みます。
+              Markdownだけの出力では画像を省略します。書く画面ではMarkdownを選びます。
+            </p>
+            <p id="maker-package-hint" class="maker-hint">
+              ZIPには選んだ1件のMarkdown・画像・変換記録（report.json）が入ります。
+              展開後もMarkdownとimagesフォルダーを一緒に移してください。
+              PNG・JPEG・WebPを確認し、読めない画像があればZIP出力を止めます。
+              元JSON全体のバックアップではないため、元のJSONも別に残してください。
             </p>
             <p
               id="maker-download-status"

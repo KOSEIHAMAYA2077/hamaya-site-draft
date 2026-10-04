@@ -56,6 +56,13 @@
     "status": "元配布LICENSE記載なし",
     "note": "参照したアダプター配下にLICENSE/NOTICEは確認できなかった。新ライセンス付与なし。出典記録は再配布許諾を表すものではない。ユーザー依頼の非公開接続として独立実装した。"
   },
+  "portableExtension": {
+    "date": "2026-10-04",
+    "scope": "User-requested private portability comparison: one selected draft, up to two original raster image byte arrays, and a conversion report in a STORE ZIP.",
+    "implementation": "New local code in portable.mjs and stored-zip.mjs; optional image handoff in the independent adapter. The default Markdown conversion and historical source hashes above remain unchanged.",
+    "validation": "Declared PNG/JPEG/WebP signature and browser decoding before download; original image bytes retained; relative ASCII paths; bounded archive; no automatic inclusion of unselected records or original JSON.",
+    "license": "Existing source attribution and absence of a supplied LICENSE remain unchanged. No new license or redistribution permission is inferred."
+  },
   "thirdPartyRuntimeCopies": [],
   "newRuntimeDependencies": []
 }

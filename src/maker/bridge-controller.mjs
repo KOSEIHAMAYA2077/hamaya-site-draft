@@ -27,6 +27,7 @@ if (root) {
   const errorPanel = get('error');
   const resultPanel = get('result');
   const downloadButton = get('download');
+  const packageButton = get('package');
   const downloadStatus = get('download-status');
   const nextLink = get('next');
   const kinds = {
@@ -84,6 +85,7 @@ if (root) {
     result = undefined;
     resultPanel.hidden = true;
     downloadButton.disabled = true;
+    packageButton.disabled = true;
     nextLink.hidden = true;
     errorPanel.hidden = true;
     for (const input of [description, category, slug])
@@ -136,7 +138,7 @@ if (root) {
       const value = record[key];
       if (['beforeImage', 'afterImage'].includes(key) && value) {
         detail.textContent =
-          '画像あり。画像本体は下書きに含めず、省略したことを記録します。';
+          '画像あり。Markdownだけの出力では省略します。画像も残す場合は、確認後に「画像と一緒に持ち出す（ZIP）」を選べます。';
       } else {
         const text =
           typeof value === 'string' ? value : JSON.stringify(value, null, 2);
@@ -312,21 +314,32 @@ if (root) {
       if (imported.originalDraft !== true)
         throw new Error('下書き形式を確認できませんでした。');
       if (version !== editVersion) return;
-      result = converted;
+      result = {
+        ...converted,
+        settings: options,
+        sourceBytes: active.bytes,
+        handoffKey: JSON.stringify(selected),
+        handoffSnapshot: inputSnapshot(currentInputs()),
+      };
       resultPanel.hidden = false;
       setStatus(
         get('output-summary'),
-        `${converted.filename} / ${new TextEncoder().encode(converted.markdown).length.toLocaleString('ja-JP')} bytes / 記事1件・draft: true${converted.report.omittedImages.length ? ` / 画像${converted.report.omittedImages.length}件の省略を記録` : ''}`,
+        `Markdownだけの出力：${converted.filename} / ${new TextEncoder().encode(converted.markdown).length.toLocaleString('ja-JP')} bytes / 記事1件・draft: true${converted.report.omittedImages.length ? ` / 画像${converted.report.omittedImages.length}件の省略を記録` : ''}`,
       );
       setStatus(
         get('output-preview'),
         shortPreview(converted.markdown, previewLimit).text,
       );
+      downloadButton.disabled = false;
+      packageButton.disabled = downloadedNames.has(
+        converted.filename.replace(/\.md$/, '.zip'),
+      );
       setStatus(
         downloadStatus,
-        '内容を確認し、「下書きをダウンロード」で保存してください。',
+        packageButton.disabled
+          ? 'この名前のZIPはダウンロード済みです。画像と一緒に保存し直す場合は、ファイル名を変えてください。Markdownだけの保存は引き続き使えます。'
+          : '内容を確認し、Markdownだけか画像付きZIPを選んで保存してください。',
       );
-      downloadButton.disabled = false;
       downloadButton.focus();
     } catch (error) {
       if (version === editVersion)
@@ -337,6 +350,78 @@ if (root) {
         );
     } finally {
       if (version === editVersion) prepareButton.disabled = !selected;
+    }
+  }
+  async function downloadPackage() {
+    const prepared = result;
+    if (!prepared) return;
+    const filename = prepared.filename.replace(/\.md$/, '.zip');
+    if (downloadedNames.has(filename)) {
+      setStatus(
+        downloadStatus,
+        'このZIPはダウンロード済みです。ファイル名を変えて保存できます。',
+      );
+      return;
+    }
+    const version = editVersion;
+    packageButton.disabled = true;
+    errorPanel.hidden = true;
+    setStatus(
+      downloadStatus,
+      '画像をこのブラウザ内で確認し、ZIPを用意しています。',
+    );
+    try {
+      const { createMakerPortablePackage } = await import('./portable.mjs');
+      const portable = await createMakerPortablePackage(
+        prepared.sourceBytes,
+        prepared.settings,
+      );
+      // Check the exact packaged Markdown with the same import contract as the
+      // ordinary handoff. No archive is downloaded if an image or draft fails.
+      const { importDraft } = await import('../lib/draft-import.mjs');
+      const imported = importDraft(
+        portable.markdown,
+        portable.markdownFilename,
+      );
+      if (imported.originalDraft !== true)
+        throw new Error('下書き形式を確認できませんでした。');
+      if (version !== editVersion || result !== prepared) return;
+      const url = URL.createObjectURL(
+        new Blob([portable.bytes], { type: 'application/zip' }),
+      );
+      objectURLs.add(url);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = portable.filename;
+      link.hidden = true;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      downloadedNames.add(portable.filename);
+      handoffs.handoff(prepared.handoffKey, prepared.handoffSnapshot);
+      unsavedGuard.refresh();
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+        objectURLs.delete(url);
+      }, 10000);
+      setStatus(
+        downloadStatus,
+        `${portable.filename} のダウンロードを開始しました。展開するとMarkdown1件・画像${portable.report.exportedImages.length}件・report.jsonがあります。書く画面にはMarkdownを選びます。画像はimagesフォルダーと一緒に保管し、元のJSONも別に残してください。`,
+      );
+      nextLink.hidden = false;
+    } catch (error) {
+      if (version === editVersion && result === prepared) {
+        showError(
+          `ZIPを書き出せませんでした。${error instanceof Error ? error.message : '画像と入力を確認してください。'} 元のJSONと入力は残っています。`,
+        );
+        setStatus(
+          downloadStatus,
+          'ZIPはダウンロードしていません。入力を確認して、もう一度試せます。',
+        );
+      }
+    } finally {
+      if (version === editVersion && result === prepared)
+        packageButton.disabled = downloadedNames.has(filename);
     }
   }
   function download() {
@@ -404,6 +489,7 @@ if (root) {
     }
     prepareButton.addEventListener('click', prepare);
     downloadButton.addEventListener('click', download);
+    packageButton.addEventListener('click', downloadPackage);
     get('reset').addEventListener('click', () => {
       loadVersion += 1;
       active = undefined;

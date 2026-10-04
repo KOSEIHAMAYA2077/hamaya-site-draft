@@ -107,6 +107,20 @@ test('書く画面のJSON変換入口はbase付き別タブで、既存の明示
   assert.match(writer, /\bdata-import-cancel(?:[\s=>])/);
 });
 
+test('画像付きZIPはMaker画面だけの明示操作で、元JSONの保存を案内する', () => {
+  if (!localOn) return;
+  const maker = pages.get(makerPage);
+  assert.ok(maker);
+  assert.match(maker, /id="maker-package"/);
+  assert.match(maker, /画像と一緒に持ち出す（ZIP）/);
+  assert.match(maker, /report\.json/);
+  assert.match(maker, /元のJSONも別に残してください/);
+  for (const [filename, html] of pages) {
+    if (filename !== makerPage)
+      assert.doesNotMatch(html, /id="maker-package"/, filename);
+  }
+});
+
 test('通常配布の全生成物に変換画面・専用コード・取り込み用parserを混ぜない', () => {
   if (localOn) return;
   for (const [filename, source] of textFiles) {
@@ -118,7 +132,7 @@ test('通常配布の全生成物に変換画面・専用コード・取り込�
     );
     assert.doesNotMatch(
       text,
-      /maker[-_]field|Maker Field|data-maker-|制作ログを下書きに/i,
+      /maker[-_]field|Maker Field|data-maker-|制作ログを下書きに|portablePackageVersion|画像と一緒に持ち出す/i,
       filename,
     );
     // YAML is an existing writer dependency. The new bridge must not pull that

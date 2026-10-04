@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "base": "/portable-first",
+      "route": "notes/portable-writer-note/",
+      "images": 1,
+      "decoded": true,
+      "links": "HTTP 200; in base"
+    },
+    {
+      "base": "/portable-first",
+      "route": "works/portable-writer-work/",
+      "images": 2,
+      "decoded": true,
+      "links": "HTTP 200; in base"
+    },
+    {
+      "base": "/portable-first",
+      "route": "notes/portable-maker-note/",
+      "images": 1,
+      "decoded": true,
+      "links": "HTTP 200; in base"
+    },
+    {
+      "base": "/moved/nested",
+      "route": "notes/portable-writer-note/",
+      "images": 1,
+      "decoded": true,
+      "links": "HTTP 200; in base"
+    },
+    {
+      "base": "/moved/nested",
+      "route": "works/portable-writer-work/",
+      "images": 2,
+      "decoded": true,
+      "links": "HTTP 200; in base"
+    },
+    {
+      "base": "/moved/nested",
+      "route": "notes/portable-maker-note/",
+      "images": 1,
+      "decoded": true,
+      "links": "HTTP 200; in base"
+    },
+    {
+      "mobile": 375,
+      "keyboardSkip": true,
+      "reducedMotion": true,
+      "noOverflow": true
+    }
+  ],
+  "checkedLinks": [
+    "http://127.0.0.1:4365/portable-first/notes/portable-writer-note/",
+    "http://127.0.0.1:4365/portable-first/",
+    "http://127.0.0.1:4365/portable-first/works/",
+    "http://127.0.0.1:4365/portable-first/notes/",
+    "http://127.0.0.1:4365/portable-first/about/",
+    "http://127.0.0.1:4365/portable-first/works/portable-writer-work/",
+    "http://127.0.0.1:4365/portable-first/notes/portable-maker-note/",
+    "http://127.0.0.1:4365/moved/nested/notes/portable-writer-note/",
+    "http://127.0.0.1:4365/moved/nested/",
+    "http://127.0.0.1:4365/moved/nested/works/",
+    "http://127.0.0.1:4365/moved/nested/notes/",
+    "http://127.0.0.1:4365/moved/nested/about/",
+    "http://127.0.0.1:4365/moved/nested/works/portable-writer-work/",
+    "http://127.0.0.1:4365/moved/nested/notes/portable-maker-note/"
+  ],
+  "external": [],
+  "errors": [],
+  "broken": []
+}

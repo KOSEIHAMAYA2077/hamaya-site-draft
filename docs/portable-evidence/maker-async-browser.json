@@ -1,0 +1,335 @@
+{
+  "scope": "Synthetic Maker ZIP async cancellation and native unsaved-navigation checks only.",
+  "base": "http://127.0.0.1:4364/portable-origin/",
+  "checks": [
+    {
+      "name": "Changing input during real image decoding suppresses the stale ZIP and keeps the new unsaved input.",
+      "downloads": 0,
+      "nativeDismissPreservedInput": true
+    },
+    {
+      "name": "Switching records during decoding suppresses the old ZIP and retains both records' separate inputs.",
+      "downloads": 0,
+      "retainedRecordInputs": 2,
+      "nativeDismissPreservedInput": true
+    },
+    {
+      "name": "A successful ZIP handoff allows real navigation without an unsaved-input dialog.",
+      "downloads": 1,
+      "nativeDialogs": 0
+    },
+    {
+      "name": "Editing after ZIP handoff restores the native warning; cancel keeps input and accept leaves.",
+      "downloads": 1,
+      "nativeDialogs": 2,
+      "actions": ["dismiss", "accept"]
+    }
+  ],
+  "dialogs": [
+    {
+      "case": "decode-edit",
+      "type": "beforeunload",
+      "action": "dismiss"
+    },
+    {
+      "case": "decode-switch",
+      "type": "beforeunload",
+      "action": "dismiss"
+    },
+    {
+      "case": "saved-edited",
+      "type": "beforeunload",
+      "action": "dismiss"
+    },
+    {
+      "case": "saved-edited",
+      "type": "beforeunload",
+      "action": "accept"
+    }
+  ],
+  "downloads": [
+    {
+      "case": "saved-clean",
+      "filename": "synthetic-saved-clean.zip"
+    },
+    {
+      "case": "saved-edited",
+      "filename": "synthetic-saved-edited.zip"
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/write/maker-field/",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.astro_astro_type_script_index_0_lang.BfD_8Mh7.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-edit",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/portable.CsjQMYlp.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/write/maker-field/",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.astro_astro_type_script_index_0_lang.BfD_8Mh7.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET"
+    },
+    {
+      "case": "decode-switch",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/portable.CsjQMYlp.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/write/maker-field/",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.astro_astro_type_script_index_0_lang.BfD_8Mh7.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/portable.CsjQMYlp.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/room/notes/",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/index.astro_astro_type_script_index_0_lang.6C8yousH.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-clean",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/note-query.2YBnpPax.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/write/maker-field/",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.Bm1f-zuo.css",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/maker-field.astro_astro_type_script_index_0_lang.BfD_8Mh7.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/portable.CsjQMYlp.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/room/notes/",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/index.astro_astro_type_script_index_0_lang.6C8yousH.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET"
+    },
+    {
+      "case": "saved-edited",
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/note-query.2YBnpPax.js",
+      "method": "GET"
+    }
+  ],
+  "failure": null,
+  "browserClosed": true
+}

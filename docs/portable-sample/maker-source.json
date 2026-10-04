@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "logs": [],
+  "experiments": [
+    {
+      "id": "portable-experiment",
+      "title": "持ち運びの検証用：Makerの記録",
+      "date": "2026-10-04",
+      "body": "これは本人の制作物ではない合成記録です。\r\n日本語と絵文字 🧪、記号を残します。\r\n![これは文字](./literal.png)",
+      "tags": [
+        "合成",
+        " 空白 ",
+        "合成",
+        "カンマ,タグ"
+      ],
+      "hypothesis": "画像と文章を一緒に移動できる。",
+      "change": "置き場所のbase URLを変更する。",
+      "observation": "検証結果は別の記録に残す。",
+      "next": "元JSONも別に保管する。",
+      "related": [
+        "synthetic-unresolved-id"
+      ],
+      "beforeImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAACgCAIAAAC9uXYyAAACcElEQVR4nO3SsW3DABAEQZbkBpS4JyUuSplzd+BKFDJ3ESbAxWGALeD/MMd5vqWZjtsvkC4MaE0FtKYCWlMBramA1lRAayqgNRXQmgpoTQW0pgJaUwGtqYDWVEBrKqA1FdCaCmhNBbSm+hfoj8dnsAvXef68gl344O/3VzCggQYaaKCBBroQ0EADDTTQQANdCGiggQY6FNBAAw000EADXQhooIEGGmiggS4ENNBAAx0KaKCBBhpooIEuBDTQQAMNNNBAFwIaaKCBDgU00EADDTTQQBcCGmiggQYaaKALAQ000ECHAhpooIEGGmigCwENNNBAAw000IWABhpooEMBDTTQQAMNNNCFgAYaaKCBBhroQkADDTTQoYAGGmiggQYa6EJAAw000EADDXQhoIEGGuhQQAMNNNBAAw10IaCBBhpooIEGuhDQQAMNdCiggQYaaKCBBroQ0EADDTTQQANdCGiggQY6FNBAAw000EADXQhooIEGGmiggS4ENNBAAx0KaKCBBhpooIEuBDTQQAMNNNBAFwIaaKCBDgU00EADDTTQQBcCGmiggQYaaKALAQ000ECHAhpooIEGGmigCwENNNBAAw000IWABhpooEMBDTTQQAMNNNCFgAYaaKCBBhroQkADDTTQoYAGGmiggQYa6EJAAw000EADDXQhoIEGGuhQQAMNNNBAAw10IaCBBhpooIEGuhDQQAMNdCiggQYaaKCBBroQ0EADDTTQQANdCGiggQY61G2gpVpAayqgNRXQmgpoTQW0pgJaUwGtqYDWVEBrKqA1FdCaCmhNBbSmAlpTAa2pgNZUQGsqoDUV0JrqD6EtT1RfjP7zAAAAAElFTkSuQmCC",
+      "afterImage": "",
+      "sample": true
+    }
+  ],
+  "ideas": []
+}

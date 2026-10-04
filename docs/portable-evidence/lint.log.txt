@@ -1,0 +1,22 @@
+
+> hamaya-site-draft@0.1.0 lint
+> prettier --check . && astro check
+
+Checking formatting...
+All matched files use Prettier code style!
+14:25:39 [content] Syncing content
+14:25:39 [content] Astro config changed
+14:25:39 [content] Clearing content store
+14:25:39 [content] Synced content
+14:25:39 [types] Generated 280ms
+14:25:39 [check] Getting diagnostics for Astro files in /Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-portable...
+[96msrc/lib/unsaved-draft.mjs[0m:[93m45[0m:[93m11[0m - [93mwarning[0m[90m ts(6385): [0m'returnValue' is deprecated.
+
+[7m45[0m     event.returnValue = 'unsaved';
+[7m  [0m [93m          ~~~~~~~~~~~[0m
+
+Result (131 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+

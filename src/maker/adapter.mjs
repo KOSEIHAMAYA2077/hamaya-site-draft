@@ -316,6 +316,24 @@ function literalBlock(value) {
 
 /** Produce exactly one draft in memory. No filesystem, storage or network API. */
 export async function convertMakerField(bytes, options) {
+  return convert(bytes, options);
+}
+
+/**
+ * Internal image handoff used by portable.mjs. The callback must validate the
+ * decoded raster before accepting its bytes. Ordinary Markdown stays unchanged.
+ */
+export async function convertMakerFieldWithImages(
+  bytes,
+  options,
+  imageHandoff,
+) {
+  if (typeof imageHandoff !== 'function')
+    fail('画像を確認する処理が必要です。通常の下書き出力は引き続き使えます。');
+  return convert(bytes, options, imageHandoff);
+}
+
+async function convert(bytes, options, imageHandoff) {
   if (!options || typeof options !== 'object' || Array.isArray(options))
     fail('変換する記録を指定してください。');
   const optionKeys = ['collection', 'id', 'slug', 'description', 'category'];
@@ -361,12 +379,15 @@ export async function convertMakerField(bytes, options) {
     normalizations: [],
     omittedImages: [],
     limitations: [
-      '画像のバイト列は含みません。元のMaker Field JSONを保管してください。',
+      imageHandoff
+        ? '画像はimagesフォルダーに元のバイト列のまま含めます。Markdownと一緒に移してください。元のMaker Field JSONも別に保管してください。'
+        : '画像のバイト列は含みません。元のMaker Field JSONを保管してください。',
       '関連IDは文字として保持し、サイトの作品・記事やURLへ自動対応させません。',
       '元の文章はコード枠内の文字です。Markdown記法やHTMLとして解釈しません。',
       'この出力は選択した1件の下書きであり、Maker Field全体のバックアップではありません。',
     ],
   };
+  if (imageHandoff) report.exportedImages = [];
   if (
     sourceBytes.length >= 3 &&
     sourceBytes[0] === 0xef &&
@@ -417,6 +438,32 @@ export async function convertMakerField(bytes, options) {
         sha256: await hash(decoded),
         reason: 'Image bytes excluded from Markdown',
       };
+      if (imageHandoff) {
+        const format = value.slice('data:image/'.length, value.indexOf(';'));
+        const extension = format === 'jpeg' ? 'jpg' : format;
+        const filename = `images/${settings.slug}-${key === 'beforeImage' ? 'before' : 'after'}.${extension}`;
+        const dimensions = await imageHandoff({
+          field: key,
+          path: filename,
+          mime: `image/${format}`,
+          bytes: decoded,
+          sha256: image.sha256,
+        });
+        report.exportedImages.push({
+          field: key,
+          path: filename,
+          mime: `image/${format}`,
+          decodedBytes: image.decodedBytes,
+          sha256: image.sha256,
+          width: dimensions.width,
+          height: dimensions.height,
+        });
+        report.mappings.push({ field: key, target: 'body.relative-image' });
+        sections.push(
+          `![${LABELS[key]}](./${filename})\n\n${decoded.byteLength} bytes / SHA-256: ${image.sha256}`,
+        );
+        continue;
+      }
       report.omittedImages.push(image);
       report.mappings.push({
         field: key,

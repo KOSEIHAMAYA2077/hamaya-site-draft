@@ -1,0 +1,275 @@
+{
+  "startedAtUtc": "2026-10-04T05:26:47.469235+00:00",
+  "baselineCommit": "55fa283d5f65501e14563796d2d717f8e784e6d5",
+  "worktree": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-portable",
+  "lint": {
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 1,
+    "inheritedHint": "src/lib/unsaved-draft.mjs:45 beforeunload returnValue compatibility API",
+    "log": "lint.log"
+  },
+  "matrix": [
+    {
+      "mode": "root",
+      "env": {},
+      "expectedPages": 5,
+      "build": {
+        "exitCode": 0,
+        "seconds": 1.282,
+        "log": "root-build.log"
+      },
+      "tests": {
+        "exitCode": 0,
+        "seconds": 1.467,
+        "log": "root-tests.log",
+        "tests": 206,
+        "pass": 206,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "pages": 5,
+      "routes": [
+        "404.html",
+        "about/index.html",
+        "index.html",
+        "notes/index.html",
+        "works/index.html"
+      ],
+      "pageCountMatches": true,
+      "files": 13
+    },
+    {
+      "mode": "base",
+      "env": {
+        "BASE_PATH": "/portable-origin"
+      },
+      "expectedPages": 5,
+      "build": {
+        "exitCode": 0,
+        "seconds": 0.845,
+        "log": "base-build.log"
+      },
+      "tests": {
+        "exitCode": 0,
+        "seconds": 1.162,
+        "log": "base-tests.log",
+        "tests": 206,
+        "pass": 206,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "pages": 5,
+      "routes": [
+        "404.html",
+        "about/index.html",
+        "index.html",
+        "notes/index.html",
+        "works/index.html"
+      ],
+      "pageCountMatches": true,
+      "files": 13
+    },
+    {
+      "mode": "comparison",
+      "env": {
+        "LOCAL_COMPARISON": "1",
+        "BASE_PATH": "/portable-origin"
+      },
+      "expectedPages": 15,
+      "build": {
+        "exitCode": 0,
+        "seconds": 0.916,
+        "log": "comparison-build.log"
+      },
+      "tests": {
+        "exitCode": 0,
+        "seconds": 1.222,
+        "log": "comparison-tests.log",
+        "tests": 206,
+        "pass": 206,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "pages": 15,
+      "routes": [
+        "404.html",
+        "about/index.html",
+        "compare/collection/index.html",
+        "compare/focus/index.html",
+        "directions/desk/index.html",
+        "directions/field/index.html",
+        "directions/index.html",
+        "directions/orbit/index.html",
+        "directions/paper/index.html",
+        "directions/signal/index.html",
+        "index.html",
+        "notes/index.html",
+        "works/index.html",
+        "write/index.html",
+        "write/maker-field/index.html"
+      ],
+      "pageCountMatches": true,
+      "files": 32
+    },
+    {
+      "mode": "workroom",
+      "env": {
+        "LOCAL_WORKROOM": "1",
+        "BASE_PATH": "/portable-origin"
+      },
+      "expectedPages": 23,
+      "build": {
+        "exitCode": 0,
+        "seconds": 0.936,
+        "log": "workroom-build.log"
+      },
+      "tests": {
+        "exitCode": 0,
+        "seconds": 1.17,
+        "log": "workroom-tests.log",
+        "tests": 206,
+        "pass": 206,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "pages": 23,
+      "routes": [
+        "404.html",
+        "about/index.html",
+        "compare/candidates/index.html",
+        "compare/collection/index.html",
+        "compare/experiments/index.html",
+        "compare/focus/index.html",
+        "compare/timeline/index.html",
+        "directions/desk/index.html",
+        "directions/field/index.html",
+        "directions/index.html",
+        "directions/orbit/index.html",
+        "directions/paper/index.html",
+        "directions/signal/index.html",
+        "index.html",
+        "notes/index.html",
+        "room/archive/index.html",
+        "room/compare/index.html",
+        "room/notes/index.html",
+        "room/notes/legacy-cyberpunk2077-1/index.html",
+        "room/settings/index.html",
+        "works/index.html",
+        "write/index.html",
+        "write/maker-field/index.html"
+      ],
+      "pageCountMatches": true,
+      "files": 50
+    }
+  ],
+  "buildsSequential": true,
+  "commands": ["npm run build", "npm test"],
+  "sourceEditsByQa": false,
+  "preservation": {
+    "protectedFileCount": 15,
+    "protectedSha256Unchanged": true,
+    "mainHead": "10b287071ba8f4212de4cd80f76581ae1e9c2f1a",
+    "existingWorktrees": [
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-draft",
+        "branch": "refs/heads/experience-next",
+        "head": "edfd8a2ae43c8bcef0fe8b764b387f3aab023f80",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-audit",
+        "branch": "refs/heads/audit-static-safety",
+        "head": "10f6781bc7d8ea4930081e6e913b274e27c67855",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-comparison-guide",
+        "branch": "refs/heads/comparison-guide",
+        "head": "06701a71141958751b7ffc4903445a054ed23b96",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-copy-review",
+        "branch": "refs/heads/japanese-ui-copy",
+        "head": "c0a25809d229c18c6bad88e7c5d0cfbc6fa51195",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-experiments",
+        "branch": "refs/heads/experiment-study",
+        "head": "83377a0e5c26fb6408e165ccbd7500e0cf357630",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-integrated",
+        "branch": "refs/heads/integrated-workroom",
+        "head": "ac5bea09ff16ca4a9720b5977731404bb1d1a0e7",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-maker-bridge",
+        "branch": "refs/heads/maker-field-handoff",
+        "head": "c0f2075df7cfb0e7fac2b78e1d0d947e9139d695",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-quiet-use",
+        "branch": "refs/heads/quiet-use-quality",
+        "head": "739bcdbcabaa2ef3dcda077ced41e2821634efd8",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-return",
+        "branch": "refs/heads/return-entry",
+        "head": "55fa283d5f65501e14563796d2d717f8e784e6d5",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-timeline",
+        "branch": "refs/heads/timeline-study",
+        "head": "5ec128d361835eef225799d426510039cc141f46",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      },
+      {
+        "path": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-work-candidates",
+        "branch": "refs/heads/work-candidates",
+        "head": "386ba0208fc89181f20a2a1103f95e0f3cc9d40c",
+        "headUnchanged": true,
+        "statusPorcelain": "",
+        "statusUnchanged": true
+      }
+    ],
+    "mainUnchanged": true,
+    "existingWorktreeCount": 11,
+    "allExistingWorktreesUnchanged": true
+  },
+  "finalDistMode": "LOCAL_WORKROOM=1 BASE_PATH=/portable-origin",
+  "finishedAtUtc": "2026-10-04T05:26:56.733263+00:00",
+  "success": true
+}

@@ -1,0 +1,27 @@
+{
+  "hashes": {
+    "portable-writer-note.md": "2509761aab21962763cfda4ea258fbe50ddcf6c620692c0fdf2c4ce98800b9fc",
+    "portable-writer-work.md": "03416169f421e3f78e008e36aa7e4f42307956fbdc38831c3287a15c85e118a9",
+    "portable-maker-note.md": "3c22e5d5256ef5f8784fff50b3927784518d5c6b18299a19b10dfd8da5dc6b40",
+    "images/synthetic.png": "f1b9a9c682f50295a0cfa4dcf94977c34301efc76b13548a61336bcf458de58e",
+    "images/portable-maker-note-before.png": "f1b9a9c682f50295a0cfa4dcf94977c34301efc76b13548a61336bcf458de58e"
+  },
+  "checks": [
+    {
+      "base": "/portable-first",
+      "pages": 8,
+      "sampleBytesUnchanged": true,
+      "imageBytesUnchanged": true
+    },
+    {
+      "base": "/moved/nested",
+      "pages": 8,
+      "sampleBytesUnchanged": true,
+      "imageBytesUnchanged": true
+    },
+    {
+      "missingImageBuildStopped": true
+    }
+  ],
+  "scope": "Only disposable synthetic files switch draft:false for local distribution-route QA. Downloaded source files remain draft:true."
+}

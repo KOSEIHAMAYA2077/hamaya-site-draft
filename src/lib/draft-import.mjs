@@ -6,6 +6,19 @@ const MAX_FRONTMATTER_CHARACTERS = 64 * 1024;
 const shared = ['title', 'description', 'date', 'tags', 'draft'];
 const workFields = ['status', 'url', 'repository', 'cover'];
 
+/** @param {unknown} value */
+function hasYamlComment(value) {
+  return (
+    value !== null &&
+    typeof value === 'object' &&
+    (('comment' in value && typeof value.comment === 'string') ||
+      ('commentBefore' in value && typeof value.commentBefore === 'string'))
+  );
+}
+
+const commentLossMessage =
+  '設定内のコメントは書き出し時に保てないため、取り込みを止めました。元の .md を残し、必要なメモは本文へ移してから取り込んでください。';
+
 export class DraftImportError extends Error {
   /** @param {string} message */
   constructor(message) {
@@ -62,6 +75,7 @@ export function importDraft(source, filename) {
     throw new DraftImportError(
       'YAML の設定を読めません。重複したキー・タグ・記法を確認してください。',
     );
+  if (hasYamlComment(document)) throw new DraftImportError(commentLossMessage);
   if (!isMap(document.contents))
     throw new DraftImportError('設定はキーと値の組で書いてください。');
   if (
@@ -79,6 +93,9 @@ export function importDraft(source, filename) {
     const item = nodes.pop();
     if (!item) break;
     const { node, depth } = item;
+    // Use YAML's parsed comments, not a # search: quoted values and block
+    // scalars may contain literal # characters that must remain valid data.
+    if (hasYamlComment(node)) throw new DraftImportError(commentLossMessage);
     if (++count > 10_000 || depth > 32)
       throw new DraftImportError(
         'YAML の設定が複雑すぎます。値を簡潔に書いてください。',
@@ -91,6 +108,7 @@ export function importDraft(source, filename) {
       for (const pair of node.items) {
         if (!isScalar(pair.key) || typeof pair.key.value !== 'string')
           throw new DraftImportError('設定のキーは文字列で書いてください。');
+        nodes.push({ node: pair.key, depth: depth + 1 });
         nodes.push({ node: pair.value, depth: depth + 1 });
       }
     } else if (isSeq(node)) {

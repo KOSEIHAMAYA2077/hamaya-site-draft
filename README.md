@@ -2,7 +2,9 @@
 
 制作物、学んだこと、日々の雑記を置いていく個人サイトです。明るい白と薄灰を中心に、黒い文字と細い線で整えています。プロフィールや作品の中身は、本人の文章と公開判断を待っています。
 
-現在の `return-entry` は、統合候補を保持して作った [「すぐに始める」入口の比較案](docs/RETURN_ENTRY.md) です。ローカルの [比較版4362](http://127.0.0.1:4362/hamaya-site-draft/) と [元の統合版4360](http://127.0.0.1:4360/hamaya-site-draft/) を並べて確認できます。再開先の保存は初期OFFで、ONにした場合も制作と記録のIDを各1件だけ残します。採用は未確定です。
+現在の `portable-markdown` は、`return-entry` から作った独立コピーです。[Markdownと画像を持ち運ぶ手順](docs/PORTABILITY.md) と [小さな合成サンプル](docs/portable-sample/README.md) を追加しています。元のmain・統合版・return-entryは保持しています。
+
+引き継いだ [「すぐに始める」入口](docs/RETURN_ENTRY.md) は、再開先の保存が初期OFFです。ONにした場合も制作と記録のIDを各1件だけ残します。採用は未確定です。
 
 この作業領域と専用リポジトリは非公開の下書きです。GitHub Pagesの有効化、公開用workflow、外部へのデプロイは行っていません。生成ページには `noindex` を付けています。`noindex` はアクセス制限ではないため、非公開の情報は本文やリポジトリに入れないでください。
 
@@ -40,7 +42,7 @@ npm run new -- work first-work --title "制作の記録"
 
 本文のraw HTMLはbuildで拒否し、HTMLコメントは生成ページから除去します。元のMarkdownは変更しません。外部リンクはログイン情報・制御文字・バックスラッシュを含まないHTTPSにし、本文ではサイト内のパスも使えます。
 
-画像は掲載を決めたPNG・JPEG・WebP・GIF・AVIFを `public/images/` に置き、`src/data/public-assets.json` に `images/foo.webp` の形で明示します。本文では `![説明](/images/foo.webp)` と書きます。未採用のファイルを `public/` に置くとbuild前の確認で止まります。画像は記事のdraft設定に関係なくコピーされるため、未採用画像は `public/` に置かないでください。詳しい手順と画像検査の範囲は [docs/CONTENT.md](docs/CONTENT.md) にあります。
+画像は掲載を決めたPNG・JPEG・WebP・GIF・AVIFを `public/images/` に置き、`src/data/public-assets.json` に `images/foo.webp` の形で明示します。持ち運ぶ本文では `![説明](./images/foo.webp)` と書けます。未採用・不足画像があるとbuild前の確認で止まります。画像は記事のdraft設定に関係なくコピーされるため、未採用画像は `public/` に置かないでください。詳しい手順と画像検査の範囲は [docs/PORTABILITY.md](docs/PORTABILITY.md) にあります。
 
 プロフィール、リンク、画像の差し替え方と未入力項目は [docs/CONTENT.md](docs/CONTENT.md) にまとめています。既存記事1件と公開GitHub作品6件の下書き、出典と除外した対象は [docs/MIGRATION.md](docs/MIGRATION.md) にあります。設計の意図は [docs/DESIGN.md](docs/DESIGN.md)、実読した参考資料とライセンスは [docs/REFERENCES.md](docs/REFERENCES.md) を参照してください。
 

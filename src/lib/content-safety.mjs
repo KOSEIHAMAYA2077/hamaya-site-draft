@@ -56,13 +56,27 @@ export function validMarkdownLink(value) {
   }
 }
 
+/**
+ * Resolve a portable images/ reference to the public asset namespace, never to
+ * a source file. The source Markdown remains unchanged. Parent paths, escaped
+ * separators, remote URLs and a previous site's base are deliberately rejected.
+ * @param {unknown} value @param {string} [base]
+ * @returns {string | undefined}
+ */
+export function markdownImagePath(value, base = '/') {
+  if (typeof value !== 'string') return undefined;
+  const prefix = `/${base.replace(/^\/+|\/+$/g, '')}`;
+  const relative = value.startsWith('./')
+    ? value.slice(2)
+    : prefix !== '/' && value.startsWith(`${prefix}/`)
+      ? value.slice(prefix.length + 1)
+      : value.startsWith('/')
+        ? value.slice(1)
+        : value;
+  return validImagePath(relative) ? relative : undefined;
+}
+
 /** @param {unknown} value @param {string} [base] */
 export function validMarkdownImage(value, base = '/') {
-  if (typeof value !== 'string' || !value.startsWith('/')) return false;
-  const prefix = `/${base.replace(/^\/+|\/+$/g, '')}`;
-  const relative =
-    prefix !== '/' && value.startsWith(`${prefix}/`)
-      ? value.slice(prefix.length + 1)
-      : value.slice(1);
-  return validImagePath(relative);
+  return markdownImagePath(value, base) !== undefined;
 }

@@ -17,6 +17,12 @@ import { parseWorkCandidates } from './src/lib/work-candidates.mjs';
 // Set BASE_PATH=/repository-name for a GitHub Pages project site.
 const siteOrigin = process.env.SITE_ORIGIN;
 const features = localFeatures(process.env);
+const approvedAssets = JSON.parse(
+  await readFile(
+    new URL('./src/data/public-assets.json', import.meta.url),
+    'utf8',
+  ),
+);
 if (siteOrigin) {
   const url = new URL(siteOrigin);
   if (
@@ -54,15 +60,13 @@ export default defineConfig({
               ),
             ),
           );
-          await checkMarkdownContent({ base: process.env.BASE_PATH || '/' });
+          await checkMarkdownContent({
+            base: process.env.BASE_PATH || '/',
+            approvedAssets,
+          });
           await checkPublicAssets({
             publicDir: fileURLToPath(new URL('./public/', import.meta.url)),
-            approvedAssets: JSON.parse(
-              await readFile(
-                new URL('./src/data/public-assets.json', import.meta.url),
-                'utf8',
-              ),
-            ),
+            approvedAssets,
           });
           if (localBuildEnabled(process.env, command === 'dev')) {
             for (const [pattern, entrypoint] of [
@@ -143,9 +147,14 @@ export default defineConfig({
   vite: { build: { sourcemap: false } },
   markdown: {
     processor: satteri({
-      mdastPlugins: [markdownSafety({ base: process.env.BASE_PATH || '/' })],
+      mdastPlugins: [
+        markdownSafety({ base: process.env.BASE_PATH || '/', approvedAssets }),
+      ],
       hastPlugins: [
-        markdownUrlSafety({ base: process.env.BASE_PATH || '/' }),
+        markdownUrlSafety({
+          base: process.env.BASE_PATH || '/',
+          approvedAssets,
+        }),
         markdownBase({
           base: process.env.BASE_PATH || '/',
           imageMetadata: await loadPublicImageMetadata(),

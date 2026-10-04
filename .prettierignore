@@ -6,3 +6,6 @@ screenshots/
 src/experiments/vendor/
 # Preserve the original lint/diff inputs and machine output as captured.
 docs/ui-copy-evidence/copy-audit/
+# Portable samples are real browser downloads; keep their exact source bytes.
+docs/portable-sample/*.md
+docs/portable-sample/*.json

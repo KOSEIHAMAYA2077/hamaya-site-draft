@@ -1,0 +1,114 @@
+{
+  "adapterVersion": 1,
+  "draft": true,
+  "source": {
+    "collection": "experiments",
+    "id": "portable-experiment",
+    "version": 1,
+    "inputSha256": "707b8297abc2d3e4515cc8a227abbe41048c7bf0528eb3fa7683012da3a38a26",
+    "sample": true
+  },
+  "selection": {
+    "exportedRecords": 1,
+    "inputCounts": {
+      "logs": 0,
+      "experiments": 1,
+      "ideas": 0
+    }
+  },
+  "mappings": [
+    {
+      "field": "title",
+      "target": "frontmatter.title"
+    },
+    {
+      "field": "date",
+      "target": "frontmatter.date"
+    },
+    {
+      "field": "tags",
+      "target": "frontmatter.tags"
+    },
+    {
+      "field": "id",
+      "target": "body.literal"
+    },
+    {
+      "field": "body",
+      "target": "body.literal"
+    },
+    {
+      "field": "related",
+      "target": "body.literal"
+    },
+    {
+      "field": "hypothesis",
+      "target": "body.literal"
+    },
+    {
+      "field": "change",
+      "target": "body.literal"
+    },
+    {
+      "field": "observation",
+      "target": "body.literal"
+    },
+    {
+      "field": "next",
+      "target": "body.literal"
+    },
+    {
+      "field": "beforeImage",
+      "target": "body.relative-image"
+    },
+    {
+      "field": "afterImage",
+      "target": "body.literal"
+    },
+    {
+      "field": "sample",
+      "target": "body.literal"
+    }
+  ],
+  "normalizations": [
+    {
+      "field": "body",
+      "action": "CRLF/CR converted to LF"
+    }
+  ],
+  "omittedImages": [],
+  "limitations": [
+    "画像はimagesフォルダーに元のバイト列のまま含めます。Markdownと一緒に移してください。元のMaker Field JSONも別に保管してください。",
+    "関連IDは文字として保持し、サイトの作品・記事やURLへ自動対応させません。",
+    "元の文章はコード枠内の文字です。Markdown記法やHTMLとして解釈しません。",
+    "この出力は選択した1件の下書きであり、Maker Field全体のバックアップではありません。"
+  ],
+  "exportedImages": [
+    {
+      "field": "beforeImage",
+      "path": "images/portable-maker-note-before.png",
+      "mime": "image/png",
+      "decodedBytes": 681,
+      "sha256": "f1b9a9c682f50295a0cfa4dcf94977c34301efc76b13548a61336bcf458de58e",
+      "width": 240,
+      "height": 160
+    }
+  ],
+  "output": {
+    "filename": "portable-maker-note.md",
+    "bytes": 1338,
+    "sha256": "3c22e5d5256ef5f8784fff50b3927784518d5c6b18299a19b10dfd8da5dc6b40",
+    "frontmatterDraft": true
+  },
+  "portablePackageVersion": 1,
+  "package": {
+    "filename": "portable-maker-note.zip",
+    "markdown": "portable-maker-note.md",
+    "report": "report.json",
+    "images": [
+      "images/portable-maker-note-before.png"
+    ],
+    "originalJsonIncluded": false,
+    "selectedRecords": 1
+  }
+}

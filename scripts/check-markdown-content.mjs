@@ -14,19 +14,20 @@ import {
  * Run outside that loader so unsafe source makes the command fail reliably.
  * Inspect every Markdown file, including drafts: a draft's image imports must
  * not read files before publication filtering. Never alter the author's file.
- * @param {{root?: string, base?: string}} [options]
+ * @param {{root?: string, base?: string, approvedAssets?: readonly string[]}} [options]
  */
 export async function checkMarkdownContent({
   root = fileURLToPath(new URL('../src/content/', import.meta.url)),
   base = '/',
+  approvedAssets = [],
 } = {}) {
   const rootInfo = await lstat(root);
   if (!rootInfo.isDirectory() || rootInfo.isSymbolicLink())
     throw new Error('Markdownの保存先にsymlinkは使えません。');
   const renderer = await createSatteriMarkdownProcessor({
     syntaxHighlight: false,
-    mdastPlugins: [markdownSafety({ base })],
-    hastPlugins: [markdownUrlSafety({ base })],
+    mdastPlugins: [markdownSafety({ base, approvedAssets })],
+    hastPlugins: [markdownUrlSafety({ base, approvedAssets })],
   });
   let checked = 0;
   /** @param {string} directory @param {'note' | 'work'} kind */
@@ -54,6 +55,11 @@ export async function checkMarkdownContent({
         const parsed = importDraft(source, entry.name);
         if (parsed.input.kind !== kind)
           throw new Error('保存先とfrontmatterの記事・作品の種類が違います。');
+        if (
+          parsed.input.cover &&
+          !approvedAssets.includes(parsed.input.cover.src)
+        )
+          throw new Error(`作品の画像が未採用です: ${parsed.input.cover.src}`);
         await renderer.render(parsed.input.body, {
           frontmatter: {},
         });
@@ -77,6 +83,12 @@ if (
   try {
     const result = await checkMarkdownContent({
       base: process.env.BASE_PATH || '/',
+      approvedAssets: JSON.parse(
+        await readFile(
+          new URL('../src/data/public-assets.json', import.meta.url),
+          'utf8',
+        ),
+      ),
     });
     console.log(`Markdownの安全性を確認しました: ${result.checked}件`);
   } catch (error) {

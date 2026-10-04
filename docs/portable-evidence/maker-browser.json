@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "Keyboard-activated ZIP download; independent Python CRC/path check; original image bytes identical; selected one record only.",
+    "375px no horizontal overflow; reduced-motion enabled; keyboard package operation.",
+    "Maker package Markdown -> writer import -> download preserved every byte.",
+    "Invalid PNG stops the package without download or input loss.",
+    "Valid PNG signature but truncated body fails the real browser decoder before download.",
+    "Unknown Maker setting stops import and retains current input.",
+    "No external requests, uploads or page errors observed."
+  ],
+  "requestCount": 19,
+  "errors": [],
+  "archiveSha256": "ac771803c811ace30610528c32444164f78b51e636406afc7e79411cdc4e33bf",
+  "markdownSha256": "3c22e5d5256ef5f8784fff50b3927784518d5c6b18299a19b10dfd8da5dc6b40",
+  "imageSha256": "f1b9a9c682f50295a0cfa4dcf94977c34301efc76b13548a61336bcf458de58e"
+}

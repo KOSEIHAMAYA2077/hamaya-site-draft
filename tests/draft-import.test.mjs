@@ -88,6 +88,35 @@ test('不明な設定名を示して取り込みを止め、黙って省かな�
   reject(note('__proto__: "value"\n'), /__proto__/);
 });
 
+test('設定内のコメントは位置を問わず明示停止し、元ファイルとメモの救済方法を示す', () => {
+  const sources = [
+    note('# 残したい設定メモ\n'),
+    note('#\n'),
+    note().replace('title: "題"', '# 題の前のメモ\ntitle: "題"'),
+    note().replace('title: "題"', 'title: "題" # 題のメモ'),
+    note().replace('tags: []', 'tags: ["タグ"] # タグのメモ'),
+    note().replace('tags: []', 'tags: ["タグ", # 配列中のメモ\n "別タグ"]'),
+    note().replace('tags: []', 'tags: # 値の前のメモ\n  - "タグ"'),
+    `---\n${shared}status: 記録\ncover:\n  src: images/a.png\n  alt: 表紙 # 画像のメモ\n---\n\n本文`,
+    `---\n${shared}status: 記録\ncover: # 画像のメモ\n  src: images/a.png\n  alt: 表紙\n---\n\n本文`,
+  ];
+  for (const source of sources)
+    reject(source, /コメント.*取り込みを止め.*元の \.md.*本文へ/);
+});
+
+test('引用・複数行スカラー・本文中の#はコメントと誤認せず原文の値を保つ', () => {
+  const source = `---\ntitle: '題 # 値の一部'\ndescription: |\n  # スカラー内の文字\n  行末 # 文字列\ndate: 2026-10-04\ntags: ["#tag", "a#b", "文字 # 文字"]\ndraft: true\ncategory: 雑記\n---\n\n# 本文の見出し\r\n\r\n<!-- 元のメモ -->\r\n![図](./images/check.png)\r\n`;
+  const imported = importDraft(source, 'literal-hash.md');
+  const output = unpack(exportDraft(imported.input).markdown);
+  assert.equal(output.data.title, '題 # 値の一部');
+  assert.equal(output.data.description, '# スカラー内の文字\n行末 # 文字列\n');
+  assert.deepEqual(output.data.tags, ['#tag', 'a#b', '文字 # 文字']);
+  assert.equal(
+    output.body,
+    '# 本文の見出し\r\n\r\n<!-- 元のメモ -->\r\n![図](./images/check.png)\r\n',
+  );
+});
+
 test('壊れたYAML・重複キー・配列・エイリアス・独自タグは受け入れない', () => {
   for (const source of [
     note('title: "重複"\n'),

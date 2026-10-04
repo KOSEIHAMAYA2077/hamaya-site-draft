@@ -1,0 +1,323 @@
+{
+  "scope": "Writer browser verification with synthetic fixtures only; no owner content or public release.",
+  "checks": [
+    {
+      "name": "Write, keyboard-confirm and download a note with Japanese, code, emoji, tags and relative image source",
+      "filename": "portable-writer-note.md",
+      "bytes": 533,
+      "sha256": "2509761aab21962763cfda4ea258fbe50ddcf6c620692c0fdf2c4ce98800b9fc",
+      "fixture": true,
+      "location": "site-portable/docs/portable-sample/portable-writer-note.md"
+    },
+    {
+      "name": "Rejected YAML comments and unknown settings preserve every existing input and downloaded preview"
+    },
+    {
+      "name": "Write and download a work with cover metadata and body image; no invented external work link",
+      "filename": "portable-writer-work.md",
+      "bytes": 612,
+      "sha256": "03416169f421e3f78e008e36aa7e4f42307956fbdc38831c3287a15c85e118a9",
+      "fixture": true,
+      "location": "site-portable/docs/portable-sample/portable-writer-work.md"
+    },
+    {
+      "name": "Import/read/export preserves CRLF body, final newline state and YAML values including duplicate or comma-bearing tags",
+      "bodyBytes": 164,
+      "bodySha256": "9927c7b8e8442d0b213089f991759189d24bc6ad6eb1f471df0ea32e923ff998",
+      "fullFileByteEqualityClaimed": false
+    },
+    {
+      "name": "After a valid import, rejected files leave form data and byte-identical exported output intact"
+    },
+    {
+      "name": "Imported draft:false is explicitly explained and downloaded as draft:true without changing its body"
+    },
+    {
+      "name": "375px mobile, reduced motion and keyboard editor/preview/import controls work without overflow",
+      "viewport": 375,
+      "html": 375,
+      "body": 375
+    },
+    {
+      "name": "No external requests, input transmission, browser storage writes or console/page errors; source fixtures unchanged",
+      "requestCount": 44,
+      "storageWrites": 0
+    }
+  ],
+  "downloads": [
+    {
+      "filename": "portable-writer-note.md",
+      "bytes": 533,
+      "sha256": "2509761aab21962763cfda4ea258fbe50ddcf6c620692c0fdf2c4ce98800b9fc",
+      "fixture": true,
+      "location": "site-portable/docs/portable-sample/portable-writer-note.md"
+    },
+    {
+      "filename": "portable-writer-work.md",
+      "bytes": 612,
+      "sha256": "03416169f421e3f78e008e36aa7e4f42307956fbdc38831c3287a15c85e118a9",
+      "fixture": true,
+      "location": "site-portable/docs/portable-sample/portable-writer-work.md"
+    },
+    {
+      "filename": "portable-roundtrip-source.md",
+      "bytes": 347,
+      "sha256": "d20cf58b9b041a4adf04eb956f68b13b051a39ca1cbb091aa7b82fbe11267575",
+      "fixture": true,
+      "location": "portable-qa/writer-downloads/portable-roundtrip-source.md"
+    },
+    {
+      "filename": "portable-roundtrip-source.md",
+      "bytes": 347,
+      "sha256": "d20cf58b9b041a4adf04eb956f68b13b051a39ca1cbb091aa7b82fbe11267575",
+      "fixture": true,
+      "location": "portable-qa/writer-downloads/portable-roundtrip-source.md"
+    },
+    {
+      "filename": "portable-published-source.md",
+      "bytes": 347,
+      "sha256": "d20cf58b9b041a4adf04eb956f68b13b051a39ca1cbb091aa7b82fbe11267575",
+      "fixture": true,
+      "location": "portable-qa/writer-downloads/portable-published-source.md"
+    }
+  ],
+  "screenshots": [
+    "writer-note-desktop.png",
+    "writer-work-desktop.png",
+    "writer-mobile-375.png"
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/write/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.astro_astro_type_script_index_0_lang.B-Ba1Wa6.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/write/?kind=work",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.astro_astro_type_script_index_0_lang.B-Ba1Wa6.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/write/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.astro_astro_type_script_index_0_lang.B-Ba1Wa6.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/write/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.astro_astro_type_script_index_0_lang.B-Ba1Wa6.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/write/",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.CPk8GM55.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/Layout.B3HuBlBT.css",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/page.BxV2FqHj.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/write.astro_astro_type_script_index_0_lang.B-Ba1Wa6.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/preload-helper.C79FlVgu.js",
+      "method": "GET",
+      "containsFixture": false
+    },
+    {
+      "url": "http://127.0.0.1:4364/portable-origin/_astro/draft-import.CPTVdROY.js",
+      "method": "GET",
+      "containsFixture": false
+    }
+  ],
+  "blockedRequests": [],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "storageWrites": [],
+  "fixtureHashes": {
+    "portable-roundtrip-source.md": "76bdd41bc1dd943056e7efc9d49ffde02dfa828efab7d19c0ea609d1b9cb27a3",
+    "portable-published-source.md": "c9171bf578dc1dd44c5f1f2d357affdc639766900c7c763c59d44446d165c850",
+    "comment.md": "0ff6f6689e0f27e2426298010b21fd4ffafbfae1261d0ab5e91251076a7fd708",
+    "unknown.md": "03018185d00eae97ca80ae3dc1a649cdb44b5111d06c437e5b9595d3b0d9d7c8"
+  },
+  "failure": null,
+  "browser": "153.0.8010.12"
+}

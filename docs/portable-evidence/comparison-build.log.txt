@@ -1,0 +1,38 @@
+
+> hamaya-site-draft@0.1.0 build
+> astro build
+
+14:26:52 [content] Syncing content
+14:26:52 [content] Synced content
+14:26:52 [types] Generated 232ms
+14:26:52 [build] output: "static"
+14:26:52 [build] mode: "static"
+14:26:52 [build] directory: /Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-portable/dist/
+14:26:52 [build] Collecting build info...
+14:26:52 [build] ✓ Completed in 257ms.
+14:26:52 [build] Building static entrypoints...
+14:26:53 [vite] ✓ built in 112ms
+14:26:53 [vite] ✓ built in 33ms
+14:26:53 [build] Rearranging server assets...
+
+ generating static routes 
+14:26:53   ├─ /404.html (+5ms) 
+14:26:53   ├─ /about/index.html (+2ms) 
+14:26:53   ├─ /compare/collection/index.html (+2ms) 
+14:26:53   ├─ /compare/focus/index.html (+2ms) 
+14:26:53   ├─ /directions/desk/index.html (+2ms) 
+14:26:53   ├─ /directions/orbit/index.html (+2ms) 
+14:26:53   ├─ /directions/paper/index.html (+1ms) 
+14:26:53   ├─ /directions/field/index.html (+1ms) 
+14:26:53   ├─ /directions/signal/index.html (+1ms) 
+14:26:53   ├─ /directions/index.html (+1ms) 
+14:26:53   ├─ /notes/index.html (+1ms) 
+14:26:53   ├─ /works/index.html (+1ms) 
+14:26:53   ├─ /write/maker-field/index.html (+2ms) 
+14:26:53   ├─ /write/index.html (+2ms) 
+14:26:53   ├─ /index.html (+5ms) 
+14:26:53 ✓ Completed in 44ms.
+
+14:26:53 [build] ✓ Completed in 207ms.
+14:26:53 [build] 15 page(s) built in 466ms
+14:26:53 [build] Complete!

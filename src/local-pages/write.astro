@@ -96,6 +96,7 @@ const workroom = import.meta.env.LOCAL_WORKROOM === '1';
         ></div>
         <p class="field-hint" id="body-hint">
           Markdownで書けます。「読む」では画像を省き、HTMLを文字として表示します。
+          本文の画像には images/name.png または ./images/name.png を使えます。
         </p>
         <p class="field-error" id="error-body" data-error="body" hidden></p>
       </div>
@@ -311,6 +312,7 @@ const workroom = import.meta.env.LOCAL_WORKROOM === '1';
         <label for="write-import" class="field-hint">
           記事か作品のMarkdownファイル（.md）を1つ選びます（1
           MiBまで）。入力がある場合は置き換える前に確認します。
+          設定内のコメントが失われるファイルは、取り込みを止めます。
         </label>
         <input
           id="write-import"
@@ -380,6 +382,11 @@ const workroom = import.meta.env.LOCAL_WORKROOM === '1';
         <p class="preview-destination" data-destination></p>
         <p class="field-hint">
           ダウンロードしたファイルは、表示されたフォルダへ自分で追加します。同じ名前のファイルがある場合は、別の名前で書き出してから追加してください。
+        </p>
+        <p class="field-hint" data-image-handoff-hint>
+          .md に画像本体は入りません。画像を images/
+          に別途保存し、Markdownと同じ階層で一緒に移してください。旧URLのパスや
+          ../ を含む画像パスは自動で直しません。
         </p>
         <details>
           <summary>Markdownと設定を見る</summary>

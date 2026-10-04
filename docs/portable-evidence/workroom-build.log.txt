@@ -1,0 +1,46 @@
+
+> hamaya-site-draft@0.1.0 build
+> astro build
+
+14:26:55 [content] Syncing content
+14:26:55 [content] Synced content
+14:26:55 [types] Generated 227ms
+14:26:55 [build] output: "static"
+14:26:55 [build] mode: "static"
+14:26:55 [build] directory: /Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-portable/dist/
+14:26:55 [build] Collecting build info...
+14:26:55 [build] ✓ Completed in 251ms.
+14:26:55 [build] Building static entrypoints...
+14:26:55 [vite] ✓ built in 133ms
+14:26:55 [vite] ✓ built in 37ms
+14:26:55 [build] Rearranging server assets...
+
+ generating static routes 
+14:26:55   ├─ /404.html (+6ms) 
+14:26:55   ├─ /about/index.html (+1ms) 
+14:26:55   ├─ /compare/candidates/index.html (+2ms) 
+14:26:55   ├─ /compare/collection/index.html (+2ms) 
+14:26:55   ├─ /compare/experiments/index.html (+12ms) 
+14:26:55   ├─ /compare/focus/index.html (+3ms) 
+14:26:55   ├─ /compare/timeline/index.html (+5ms) 
+14:26:55   ├─ /directions/desk/index.html (+2ms) 
+14:26:55   ├─ /directions/orbit/index.html (+2ms) 
+14:26:55   ├─ /directions/paper/index.html (+1ms) 
+14:26:55   ├─ /directions/field/index.html (+1ms) 
+14:26:55   ├─ /directions/signal/index.html (+1ms) 
+14:26:55   ├─ /directions/index.html (+1ms) 
+14:26:55   ├─ /notes/index.html (+1ms) 
+14:26:55   ├─ /room/archive/index.html (+1ms) 
+14:26:55   ├─ /room/compare/index.html (+1ms) 
+14:26:55   ├─ /room/notes/legacy-cyberpunk2077-1/index.html (+1ms) 
+14:26:55   ├─ /room/notes/index.html (+1ms) 
+14:26:55   ├─ /room/settings/index.html (+1ms) 
+14:26:55   ├─ /works/index.html (+1ms) 
+14:26:55   ├─ /write/maker-field/index.html (+1ms) 
+14:26:55   ├─ /write/index.html (+4ms) 
+14:26:55   ├─ /index.html (+2ms) 
+14:26:55 ✓ Completed in 69ms.
+
+14:26:55 [build] ✓ Completed in 255ms.
+14:26:55 [build] 23 page(s) built in 510ms
+14:26:55 [build] Complete!
