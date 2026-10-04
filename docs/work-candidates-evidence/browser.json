@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-04",
+  "browser": "153.0.8010.12",
+  "url": "http://127.0.0.1:4346/hamaya-site-draft/compare/candidates/",
+  "results": [
+    {
+      "name": "base付きホームから作品候補へ移動",
+      "status": "passed"
+    },
+    {
+      "name": "全9・追加3・既存6の絞り込みと空の選択状態",
+      "status": "passed"
+    },
+    {
+      "name": "キーボードで選択・コピー成功と選択の維持",
+      "status": "passed"
+    },
+    {
+      "name": "コピー拒否時の選択可能な一覧と解除後の空状態",
+      "status": "passed"
+    },
+    {
+      "name": "再読込時に仮選択を消し、URLや保存済み本文を変えない",
+      "status": "passed"
+    },
+    {
+      "name": "実リンク・出典・非埋め込み・動きを減らす設定",
+      "status": "passed"
+    },
+    {
+      "name": "390px・320pxモバイル、出典を開いても横にはみ出さない",
+      "status": "passed"
+    },
+    {
+      "name": "JavaScriptなしでも9カードと出典が読める",
+      "status": "passed"
+    },
+    {
+      "name": "外部自動通信・console error・404なし",
+      "status": "passed"
+    }
+  ],
+  "consoleErrors": [],
+  "failures": [],
+  "requestCount": 11,
+  "clipboard": "成功/拒否を隔離したAPIで検査。OSクリップボードや外部サイトは変更・実行していない。"
+}

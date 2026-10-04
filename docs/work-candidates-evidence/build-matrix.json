@@ -1,0 +1,59 @@
+[
+  {
+    "name": "normal-root",
+    "environment": {},
+    "pages": 5,
+    "tests": 104,
+    "fail": 0
+  },
+  {
+    "name": "normal-base",
+    "environment": {
+      "BASE_PATH": "/hamaya-site-draft",
+      "SITE_ORIGIN": "https://example.invalid"
+    },
+    "pages": 5,
+    "tests": 104,
+    "fail": 0
+  },
+  {
+    "name": "candidates-root",
+    "environment": {
+      "LOCAL_CANDIDATES": "1"
+    },
+    "pages": 13,
+    "tests": 104,
+    "fail": 0
+  },
+  {
+    "name": "studio-no-candidates",
+    "environment": {
+      "LOCAL_STUDIO": "1"
+    },
+    "pages": 12,
+    "tests": 104,
+    "fail": 0
+  },
+  {
+    "name": "all-local-base",
+    "environment": {
+      "LOCAL_COMPARISON": "1",
+      "LOCAL_EXPERIMENTS": "1",
+      "LOCAL_CANDIDATES": "1",
+      "BASE_PATH": "/hamaya-site-draft"
+    },
+    "pages": 16,
+    "tests": 104,
+    "fail": 0
+  },
+  {
+    "name": "candidate-base-final",
+    "environment": {
+      "LOCAL_CANDIDATES": "1",
+      "BASE_PATH": "/hamaya-site-draft"
+    },
+    "pages": 13,
+    "tests": 104,
+    "fail": 0
+  }
+]

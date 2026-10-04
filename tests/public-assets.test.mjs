@@ -19,14 +19,16 @@ async function fixture(t) {
 }
 
 test('local routes require an exact opt-in or the development server', () => {
-  for (const value of [undefined, '', '0', 'true', '01']) {
+  for (const value of [undefined, '', '0', 'true', '01', '1 ', ' 1', 1, true]) {
     assert.equal(localBuildEnabled({ LOCAL_STUDIO: value }), false);
     assert.equal(localBuildEnabled({ LOCAL_COMPARISON: value }), false);
     assert.equal(localBuildEnabled({ LOCAL_EXPERIMENTS: value }), false);
+    assert.equal(localBuildEnabled({ LOCAL_CANDIDATES: value }), false);
   }
   assert.equal(localBuildEnabled({ LOCAL_STUDIO: '1' }), true);
   assert.equal(localBuildEnabled({ LOCAL_COMPARISON: '1' }), true);
   assert.equal(localBuildEnabled({ LOCAL_EXPERIMENTS: '1' }), true);
+  assert.equal(localBuildEnabled({ LOCAL_CANDIDATES: '1' }), true);
   assert.equal(localBuildEnabled({}, true), true);
 });
 

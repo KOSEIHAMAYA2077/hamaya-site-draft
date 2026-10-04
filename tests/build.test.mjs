@@ -21,6 +21,27 @@ const origin = 'https://local-preview.invalid';
 const site = JSON.parse(
   await readFile(path.join(projectRoot, 'src/data/site.json'), 'utf8'),
 );
+const workCandidates = JSON.parse(
+  await readFile(
+    path.join(projectRoot, 'src/data/work-candidates.json'),
+    'utf8',
+  ),
+);
+const candidateOn = process.env.LOCAL_CANDIDATES === '1';
+const candidatePage = path.join(dist, 'compare/candidates/index.html');
+const candidateDraftTitles = new Set();
+const candidateLinks = (candidate) =>
+  new Set(
+    [
+      candidate.repositoryUrl,
+      `${candidate.repositoryUrl}/commit/${candidate.commit}`,
+      ...candidate.entrances.map((entry) => entry.url),
+      ...candidate.sources.map((source) => source.url),
+    ].map((url) => new URL(url).href),
+  );
+const candidateExternalLinks = new Set(
+  workCandidates.flatMap((candidate) => [...candidateLinks(candidate)]),
+);
 
 async function filesIn(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -82,6 +103,13 @@ for (const filename of contentFiles) {
   const data = parseYaml(header) || {};
   const entryId = path.basename(filename, '.md');
   if (
+    workCandidates.some(
+      (candidate) =>
+        candidate.existingDraft && candidate.repositoryUrl === data.repository,
+    )
+  )
+    candidateDraftTitles.add(data.title);
+  if (
     comparisonSources.some(
       (source) =>
         source.id === entryId && source.repository === data.repository,
@@ -137,7 +165,10 @@ async function checkLocalReference(reference, page, { anchor = false } = {}) {
         (approvedExternalLinks.has(resolved.href) ||
           (compareOn &&
             comparePages.has(page) &&
-            comparisonUrls.has(resolved.href))),
+            comparisonUrls.has(resolved.href)) ||
+          (candidateOn &&
+            page === candidatePage &&
+            candidateExternalLinks.has(resolved.href))),
       `未確認の外部URL: ${reference}`,
     );
     return;
@@ -216,7 +247,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
         const content = await readFile(filename, 'utf8');
         assert.doesNotMatch(
           content,
-          /draft-writer|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|LOCAL_COMPARISON|DESIGN STUDIES/,
+          /draft-writer|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|data-candidate-study|data-candidate-entry|LOCAL_CANDIDATES|LOCAL_COMPARISON|DESIGN STUDIES/,
         );
         for (const prefix of privateRoutePrefixes)
           assert.ok(
@@ -253,6 +284,163 @@ test('実験は明示したローカルbuildにだけ含め、原本や研究資
     assert.match(html, /本人の作品としての採用・公開は未確定/);
     assert.equal((html.match(/data-document=/g) || []).length, 2);
     assert.equal((html.match(/<iframe\b/g) || []).length, 0);
+  }
+});
+
+test('作品候補9件は全て確認待ちの下書きで、既存6件と追加3件を分ける', () => {
+  assert.equal(workCandidates.length, 9);
+  assert.equal(new Set(workCandidates.map((entry) => entry.id)).size, 9);
+  assert.equal(
+    new Set(workCandidates.map((entry) => entry.repository)).size,
+    9,
+  );
+  assert.equal(workCandidates.filter((entry) => entry.existingDraft).length, 6);
+  assert.equal(
+    workCandidates.filter((entry) => !entry.existingDraft).length,
+    3,
+  );
+  for (const candidate of workCandidates) {
+    assert.equal(candidate.draft, true, candidate.id);
+    assert.equal(candidate.decision, 'pending', candidate.id);
+    assert.equal(candidate.visibility, 'public', candidate.id);
+    assert.equal(candidate.codeExecution, 'not-run', candidate.id);
+    assert.equal(
+      candidate.repositoryUrl,
+      `https://github.com/${candidate.repository}`,
+      candidate.id,
+    );
+  }
+});
+
+test('作品候補の本文と専用JSは明示した候補ページだけに限定する', async () => {
+  assert.equal(await exists(candidatePage), candidateOn);
+  const dedicatedScripts = new Set();
+  for (const filename of builtFiles) {
+    if (!/\.(?:html|js|css|json|txt)$/.test(filename)) continue;
+    const raw = await readFile(filename, 'utf8');
+    // Compare both HTML entities and common JS/JSON character escapes as text.
+    const content = decodeHTMLAttribute(raw).replace(
+      /\\u([a-f0-9]{4})|\\x([a-f0-9]{2})/gi,
+      (_, unicode, ascii) =>
+        String.fromCharCode(parseInt(unicode || ascii, 16)),
+    );
+    if (!candidateOn)
+      assert.doesNotMatch(
+        content,
+        /data-candidate-study|data-candidate-entry|data-copy-fallback|candidateSelection|\/compare\/candidates\//,
+        filename,
+      );
+    if (filename.endsWith('.js') && content.includes('data-candidate-study'))
+      dedicatedScripts.add(filename);
+    if (candidateOn && filename === candidatePage) continue;
+    for (const candidate of workCandidates) {
+      for (const field of ['title', 'summary']) {
+        const value = candidate[field];
+        // Older explicit comparison pages retain their six verified repo names.
+        // Only the exact old title is exempt; a new candidate summary is never exempt.
+        if (
+          field === 'title' &&
+          compareOn &&
+          comparePages.has(filename) &&
+          comparisonTitles.has(value)
+        )
+          continue;
+        assert.ok(
+          !content.includes(value),
+          `${path.relative(dist, filename)}: 候補の${field}が専用HTML外にあります (${candidate.id})`,
+        );
+      }
+    }
+  }
+  if (candidateOn) {
+    const inlineCandidateScript = [
+      ...pages
+        .get(candidatePage)
+        .matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g),
+    ].some(([, body]) => body.includes('data-candidate-study'));
+    assert.ok(
+      dedicatedScripts.size > 0 || inlineCandidateScript,
+      '候補操作のJSがありません。',
+    );
+  }
+  for (const [filename, html] of pages) {
+    if (filename === candidatePage) continue;
+    assert.doesNotMatch(html, /data-candidate-study|data-candidate=/, filename);
+    for (const script of html.matchAll(/<script\b[^>]*>/g)) {
+      const src = attributes(script[0]).src;
+      if (!src) continue;
+      const relative = path.relative(dist, filename).split(path.sep).join('/');
+      const resolved = new URL(src, `${origin}${base}/${relative}`);
+      if (resolved.origin !== origin) continue;
+      const target = path.resolve(
+        dist,
+        `.${decodeURIComponent(resolved.pathname.slice(base.length))}`,
+      );
+      assert.ok(
+        !dedicatedScripts.has(target),
+        `候補JSを別ページが読んでいます: ${relative}`,
+      );
+    }
+  }
+  assert.equal(
+    pages.get(path.join(dist, 'index.html')).includes('data-candidate-entry'),
+    candidateOn,
+  );
+});
+
+test('候補ページの9カードと外部リンクは確認済みデータに一致する', () => {
+  if (!candidateOn) return;
+  const html = pages.get(candidatePage);
+  assert.match(html, /コードは実行していません/);
+  assert.match(html, /下書き・採否未定/);
+  const cards = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)]
+    .map(([card]) => ({
+      html: card,
+      attrs: attributes(card.match(/^<article\b[^>]*>/)[0]),
+    }))
+    .filter(({ attrs }) => Object.hasOwn(attrs, 'data-candidate'));
+  assert.equal(cards.length, 9);
+  assert.deepEqual(
+    cards.map(({ attrs }) => attrs['data-candidate']).sort(),
+    workCandidates.map((entry) => entry.id).sort(),
+  );
+  for (const candidate of workCandidates) {
+    const card = cards.find(
+      ({ attrs }) => attrs['data-candidate'] === candidate.id,
+    );
+    assert.equal(card.attrs['data-title'], candidate.title);
+    assert.equal(card.attrs['data-repository'], candidate.repository);
+    assert.equal(card.attrs['data-url'], candidate.repositoryUrl);
+    assert.equal(card.attrs['data-existing'], String(candidate.existingDraft));
+    assert.ok(
+      decodeHTMLAttribute(card.html).includes(candidate.summary),
+      candidate.id,
+    );
+    const allowed = candidateLinks(candidate);
+    const present = new Set();
+    for (const link of card.html.matchAll(/<a\b[^>]*>/g)) {
+      const attrs = attributes(link[0]);
+      const url = new URL(attrs.href);
+      assert.equal(url.protocol, 'https:', candidate.id);
+      assert.ok(
+        allowed.has(url.href),
+        `${candidate.id}: 未確認リンク ${url.href}`,
+      );
+      present.add(url.href);
+      if (attrs.target === '_blank') {
+        const rel = new Set((attrs.rel || '').split(/\s+/));
+        assert.ok(rel.has('noopener') && rel.has('noreferrer'), candidate.id);
+      }
+    }
+    for (const url of [
+      `${candidate.repositoryUrl}/commit/${candidate.commit}`,
+      ...candidate.entrances.map((entry) => entry.url),
+      ...candidate.sources.map((source) => source.url),
+    ])
+      assert.ok(
+        present.has(new URL(url).href),
+        `${candidate.id}: 出典リンクがありません ${url}`,
+      );
   }
 });
 
@@ -333,9 +521,12 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時�
       .replaceAll('"', '&quot;');
     for (const { filename, content } of output) {
       if (
-        compareOn &&
-        comparePages.has(filename) &&
-        comparisonTitles.has(title)
+        (compareOn &&
+          comparePages.has(filename) &&
+          comparisonTitles.has(title)) ||
+        (candidateOn &&
+          filename === candidatePage &&
+          candidateDraftTitles.has(title))
       )
         continue;
       assert.ok(

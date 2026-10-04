@@ -1,0 +1,1533 @@
+[
+  {
+    "id": "glyph-matter",
+    "repository": "KOSEIHAMAYA2077/glyph-matter",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/glyph-matter",
+    "title": "Glyph Matter — 文字のかたち",
+    "summary": "入力した文字で球や鳥などの立体を描き、表面を流れる様子を眺めるブラウザ向けの試作。",
+    "kind": "visual",
+    "existingDraft": false,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "9d238cc7aa408dd74d839f05ad64a334a31b93a4",
+    "commitDate": "2026-10-03T10:23:41Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "入力した文章を文字の材料として追加し、対応する語から形・色・流れ・個数を切り替える処理がある。",
+      "60形のカタログと、表面の座標・文字の向き・色を更新するThree.js描画を確認した。",
+      "停止・形の選択・追加入力の操作が実装されている。専用執筆欄と日記保存はREADMEに説明がある。"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Three.js / WebGL2",
+      "Vite",
+      "Vitest",
+      "ONNX Runtime Web・Transformers.js（比較版の依存）"
+    ],
+    "entrances": [
+      {
+        "label": "ブラウザ版（README記載・未試用）",
+        "url": "https://koseihamaya2077.github.io/glyph-matter/",
+        "kind": "declared-demo"
+      },
+      {
+        "label": "公開版と操作の説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/docs/WEB_DEMO.md",
+        "kind": "documentation"
+      },
+      {
+        "label": "確認したコード",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/tree/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature",
+        "kind": "code"
+      }
+    ],
+    "unknowns": [
+      "今回は読み取りのみ。公開デモ・ビルド・実行速度・ブラウザ保存の動作は再検証していない。",
+      "既定の公開版はルールと用意した形による版と記されている。任意の3D生成を達成した作品とは扱わない。",
+      "mainと公開デモの配布元は別。WEB_DEMOとworkflowは公開元を67f7a30e2e01a142ba092b4cd2e756bcf3d5757fのタグに固定しているが、配信中のversion.jsonは今回取得していない。",
+      "本人の担当範囲・制作期間・紹介文・掲載する版は未確認。commit日時を制作期間に読み替えない。",
+      "全アプリ入力との連動はREADMEで未実装と明記されている。"
+    ],
+    "attribution": {
+      "status": "documented-ai-assistance",
+      "note": "READMEはCodexのサブエージェントで調査・実装・検算を分担したと記す。これはリポジトリの説明であり、個々のコードの人間／AI作者や本人の担当範囲は判定していない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/README.md#L3-L7"
+      ]
+    },
+    "rights": {
+      "license": "リポジトリ全体のライセンスは未確認（GitHub API license:null、固定したroot treeにLICENSEなし）。",
+      "thirdParty": "Three.jsのMIT許諾文を同梱。 筆画7文字のKanjiVGデータとその改変表現はCC BY-SA 3.0とNOTICEに記載。 WordNet由来の語彙は日本語・Princetonの個別許諾文を保持する構成。 比較版の学習モデル・ランタイムにも個別の利用条件があり、全てをこのカードで監査したわけではない。",
+      "note": "今回は説明と根拠URLのみ作成。ソース、筆画、画像、モデル重みをサイトへ転載していない。全体をMIT作品等とは表示しない。"
+    },
+    "course": {
+      "status": "unconfirmed",
+      "note": "今回読んだ公開READMEと主要ファイルから授業課題とは確認できない。授業由来・共同制作の有無と掲載可否は本人確認待ち。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "目的・入口・AI支援の記載",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/README.md#L1-L7",
+        "scope": "README・文書の記載",
+        "observations": [
+          "ブラウザ版と小窓のURLを明示。",
+          "Codexの分担を記すが、本人の実装割合は示さない。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "公開版と操作",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/docs/WEB_DEMO.md#L1-L23",
+        "scope": "README・文書の記載",
+        "observations": [
+          "Enter入力と形・色・停止の操作説明。",
+          "配布元SHAと、モデル推論を使わない60形版であることを明記。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "入力から表示への接続",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/src/main.ts#L117-L158",
+        "scope": "コードの読み取り",
+        "observations": [
+          "addTextが語の解釈・文字追加・scene同期を行う。",
+          "フォーム送信、形ボタン、停止ボタンのイベントを確認。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "形・色・流れの解釈",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/src/language.ts#L90-L117",
+        "scope": "コードの読み取り",
+        "observations": [
+          "SHAPESと色一覧、対応語からSceneSpecを更新するinterpret関数を確認。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "追加の形カタログ",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/src/shape-catalog.ts#L1-L20",
+        "scope": "コードの読み取り",
+        "observations": ["基本22形に加える38の識別子と別名を列挙。"],
+        "id": "source-5"
+      },
+      {
+        "label": "文字の表面描画",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/src/scene.ts#L270-L300",
+        "scope": "コードの読み取り",
+        "observations": [
+          "Three.jsを利用。文字atlas、座標と向きの更新処理を確認。"
+        ],
+        "id": "source-6"
+      },
+      {
+        "label": "技術と依存",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/package.json#L6-L24",
+        "scope": "設定の読み取り",
+        "observations": [
+          "Three.js、TypeScript、Vite、Vitest等の依存とbuild/testコマンドを確認。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "配布元の指定",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/.github/workflows/playable-pages.yml#L16-L37",
+        "scope": "設定の読み取り",
+        "observations": [
+          "既定mainの一括配布ではなく、PLAYABLE_REF等の複数タグをcheckoutする構成。"
+        ],
+        "id": "source-8"
+      },
+      {
+        "label": "Three.jsの許諾",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/public/THIRD_PARTY_NOTICES.txt#L1-L23",
+        "scope": "利用条件の記載",
+        "observations": ["Three.jsのMIT本文と著作権表示を確認。"],
+        "id": "source-9"
+      },
+      {
+        "label": "筆画の出所",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/public/strokes/NOTICE.md#L3-L15",
+        "scope": "利用条件の記載",
+        "observations": ["KanjiVGの取得SHA、7文字、CC BY-SA 3.0を記載。"],
+        "id": "source-10"
+      },
+      {
+        "label": "辞書の出所",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/blob/9d238cc7aa408dd74d839f05ad64a334a31b93a4/prototypes/glyph-creature/public/licenses/wordnet-NOTICE.md#L3-L23",
+        "scope": "利用条件の記載",
+        "observations": ["WordNetの選択語彙と個別許諾文を保持する旨を確認。"],
+        "id": "source-11"
+      },
+      {
+        "label": "既定ブランチの確認点",
+        "url": "https://github.com/KOSEIHAMAYA2077/glyph-matter/commit/9d238cc7aa408dd74d839f05ad64a334a31b93a4",
+        "scope": "commit情報の読み取り",
+        "observations": [
+          "main先頭は専用モデル比較の公開設定と資料の追加。公開デモ全体の実行成功をこのcommitから推定しない。"
+        ],
+        "id": "source-12"
+      }
+    ]
+  },
+  {
+    "id": "semantic-glyph-lab",
+    "repository": "KOSEIHAMAYA2077/semantic-glyph-lab",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab",
+    "title": "Semantic Glyph Lab — 言葉と立体の比較",
+    "summary": "文章から立体を選ぶ方法や生成する方法を比べ、その表面に文字を流す研究用の試作。",
+    "kind": "visual",
+    "existingDraft": false,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "2bbb550eb549f8c991eac155b5fb8b2b89758ada",
+    "commitDate": "2026-09-30T08:00:03Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "画面には意味検索・明示語・素材候補・部品合成・生成方式の切替があり、入力文を文字の材料へ加える処理がある。",
+      "24種の形を扱う解釈APIと、モデルが利用できない時の明示語によるブラウザ側の処理を確認した。",
+      "文字の密度・流れ・形の揺らぎ、面の表示方式、停止、画像書き出しの操作が実装されている。"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Three.js / WebGL",
+      "Vite",
+      "Python",
+      "ONNX Runtime・tokenizers・NumPy（ローカル意味API）",
+      "Vitest / Playwright（テスト構成）"
+    ],
+    "entrances": [
+      {
+        "label": "操作とローカル起動の説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/README.md",
+        "kind": "documentation"
+      },
+      {
+        "label": "意味モデルの準備手順",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/server/README.md",
+        "kind": "documentation"
+      },
+      {
+        "label": "確認したコード",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/tree/2bbb550eb549f8c991eac155b5fb8b2b89758ada/src",
+        "kind": "code"
+      }
+    ],
+    "unknowns": [
+      "今回は読み取りのみ。ローカルAPI・モデル・各生成方式を起動せず、テスト結果や処理時間を再測定していない。",
+      "公開デモのURLは確認できない。READMEの127.0.0.1の入口は読者の端末上で起動する手順であり、公開リンクにはしない。",
+      "README記載の処理秒数や画面評価はリポジトリ側の報告。任意の文章を正しい形にできるとは説明しない。",
+      "他端末への一括導入はREADMEで未検証とされている。モデル取得と追加のローカルサービスが必要な方式がある。",
+      "本人の担当範囲・制作期間・掲載する画像や方式は未確認。"
+    ],
+    "attribution": {
+      "status": "documented-agent-evaluation",
+      "note": "READMEは視覚・語義の判定を担当エージェントが行い、人による評価は未実施と記している。コードの作者やAI支援の範囲全体は確定できず、本人単独制作ともAI単独制作とも記さない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/README.md#L41-L45"
+      ]
+    },
+    "rights": {
+      "license": "リポジトリ全体のライセンスは未確認（GitHub API license:null、固定したroot treeにLICENSEなし）。",
+      "thirdParty": "Kenney Nature Kitの3メッシュにCC0の同梱許諾文がある。 Poly Haven由来の3メッシュをCC0-1.0と記すmanifestがある。バルクのAPIメタデータはCC0扱いしない旨もある。 Shap-EとTripoSRのMIT許諾文を確認。 SDXL TurboにはStability AI Community LicenseとNOTICEがあり、MITやCC0とは別条件。 意味モデルのMiniLMはserver READMEでApache-2.0と記載。依存・全モデルの完全な権利監査は未実施。",
+      "note": "今回のサイト候補は説明と出典URLのみ。素材・生成画像・GLB・モデル重みは取り込まない。画像を後で選ぶ時は使用方式と各素材の条件を個別確認する。"
+    },
+    "course": {
+      "status": "unconfirmed",
+      "note": "今回読んだ公開READMEと主要ファイルから授業課題とは確認できない。授業由来・共同制作の有無と掲載可否は本人確認待ち。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "操作・入口・限界",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/README.md#L9-L39",
+        "scope": "README・文書の記載",
+        "observations": [
+          "ローカル起動、解釈方式の比較、方式ごとの制限を説明。",
+          "公開デモは示さず、モデルの別途取得と他Macへの導入未検証を記す。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "評価主体の記載",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/README.md#L41-L45",
+        "scope": "README・文書の記載",
+        "observations": [
+          "画面・語義評価は担当エージェントによる確認と記し、人の参加者による評価と区別。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "入力と比較UI",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/src/main.ts#L87-L101",
+        "scope": "コードの読み取り",
+        "observations": [
+          "方式選択のUIを定義し、APIまたはlocalInterpretの結果をsceneへ渡す。",
+          "密度・流れ・表示方式・停止・PNG書き出しのイベントがある。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "描画とモデル読込",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/src/scene.ts#L1-L35",
+        "scope": "コードの読み取り",
+        "observations": [
+          "Three.js、OBJLoader、GLTFLoaderと文字表面の処理を確認。",
+          "texture/advection/fluidの描画切替がある。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "ローカル解釈API",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/server/app.py#L74-L110",
+        "scope": "コードの読み取り",
+        "observations": [
+          "/interpretからInterpreterを呼び、127.0.0.1へbindする。",
+          "HostとOriginの制限を実装。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "意味検索の範囲",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/server/README.md#L37-L62",
+        "scope": "README・文書の記載",
+        "observations": [
+          "固定24物体と72説明の検索、属性はルール処理と明記。",
+          "MiniLM固定revisionとローカルCPU処理を説明。"
+        ],
+        "id": "source-6"
+      },
+      {
+        "label": "Web側の技術",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/package.json#L6-L21",
+        "scope": "設定の読み取り",
+        "observations": [
+          "Three.jsとTypeScript/Vite/Vitest/Playwrightの設定を確認。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "Python側の依存",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/server/requirements.txt#L1-L3",
+        "scope": "設定の読み取り",
+        "observations": ["NumPy、ONNX Runtime、tokenizersを列挙。"],
+        "id": "source-8"
+      },
+      {
+        "label": "既存メッシュの出所",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/research/mesh-assets.md#L3-L30",
+        "scope": "provenance-read",
+        "observations": ["24の手続き形状とKenneyの3OBJを区別。"],
+        "id": "source-9"
+      },
+      {
+        "label": "Kenney素材の許諾",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/public/models/kenney/License.txt#L3-L14",
+        "scope": "利用条件の記載",
+        "observations": ["Nature Kit 2.1のCC0同梱表記を確認。"],
+        "id": "source-10"
+      },
+      {
+        "label": "素材検索の出所",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/public/retrieval-models/manifest.json",
+        "scope": "provenance-read",
+        "observations": [
+          "Poly Havenの3メッシュのURL・著者・CC0表記を記録。",
+          "生成3Dではなく既存メッシュの検索と明記。"
+        ],
+        "id": "source-11"
+      },
+      {
+        "label": "Shap-Eの許諾",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/experiments/shap-e/LICENSE-shap-e.txt#L1-L13",
+        "scope": "利用条件の記載",
+        "observations": ["MIT本文とOpenAIの著作権表示を確認。"],
+        "id": "source-12"
+      },
+      {
+        "label": "TripoSRの許諾",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/experiments/triposr/UPSTREAM_LICENSE#L1-L13",
+        "scope": "利用条件の記載",
+        "observations": [
+          "MIT本文とTripo AI / Stability AIの著作権表示を確認。"
+        ],
+        "id": "source-13"
+      },
+      {
+        "label": "画像生成方式の出所",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/experiments/text-image/NOTICE#L1-L5",
+        "scope": "利用条件の記載",
+        "observations": [
+          "SDXL Turbo使用と未改変の重み、別コードである旨を記載。"
+        ],
+        "id": "source-14"
+      },
+      {
+        "label": "画像生成モデルの条件",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/blob/2bbb550eb549f8c991eac155b5fb8b2b89758ada/experiments/text-image/SDXL_TURBO_LICENSE.md#L13-L30",
+        "scope": "利用条件の記載",
+        "observations": [
+          "Stability AI Community Licenseを同梱。MITやCC0とは異なる利用・表示条件の条項がある。"
+        ],
+        "id": "source-15"
+      },
+      {
+        "label": "既定ブランチの確認点",
+        "url": "https://github.com/KOSEIHAMAYA2077/semantic-glyph-lab/commit/2bbb550eb549f8c991eac155b5fb8b2b89758ada",
+        "scope": "commit情報の読み取り",
+        "observations": [
+          "main先頭のコミットはv0.5の言葉から形・連続入力の統合。commit日時を制作期間とは扱わない。"
+        ],
+        "id": "source-16"
+      }
+    ]
+  },
+  {
+    "id": "mining-forge",
+    "repository": "KOSEIHAMAYA2077/mining-forge",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/mining-forge",
+    "title": "Mining Forge — 採取ゲームの設計",
+    "summary": "強さを一手ずつ加減して採るゲームの設計記録。確認したmainには実行できるゲームはない。",
+    "kind": "design",
+    "existingDraft": false,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "6983e8032585ba7781a2c2e7dcf937ee71129d96",
+    "commitDate": "2026-09-06T12:27:08Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "P0仕様には3部位のゲージと打撃・強打・削る操作の案がある。実装ではなく仮のルールとして記されている。",
+      "結晶・遺物・魔力を持ち帰り、道具や技につなげる循環と、プレイ記録・修正手順を文書化している。",
+      "mainのツリーはREADMEと設計文書・GitHubテンプレートが中心で、gameディレクトリやUnityプロジェクトは確認できない。"
+    ],
+    "technologies": ["Markdown（設計文書）", "Unity（計画のみ・導入未確認）"],
+    "entrances": [
+      {
+        "label": "企画の説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/blob/6983e8032585ba7781a2c2e7dcf937ee71129d96/README.md",
+        "kind": "documentation"
+      },
+      {
+        "label": "最初の試作仕様",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/blob/6983e8032585ba7781a2c2e7dcf937ee71129d96/docs/PROTOTYPE_0.md",
+        "kind": "design"
+      },
+      {
+        "label": "確認したファイル一覧",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/tree/6983e8032585ba7781a2c2e7dcf937ee71129d96",
+        "kind": "repository"
+      }
+    ],
+    "unknowns": [
+      "今回確認した既定ブランチには実行コード・プレイ結果がなく、遊べる作品や動作デモとしては紹介できない。",
+      "公開repo descriptionは試作・素材・記録の保存と棚上げを記すが、固定したmainは企画段階。別ブランチや未公開資料の進捗を推定しない。",
+      "READMEとSTATUSの『非公開』表記は、今回のAPI private:falseと食い違う。本人の公開意図・紹介する範囲を確認する。",
+      "DQ11への言及がrepo descriptionにある。参考元の名称・画面・素材の使用可否と、本人が紹介したい文脈は確認待ち。",
+      "本人の担当範囲・制作期間・コード作者・AI支援の範囲は確認できない。"
+    ],
+    "attribution": {
+      "status": "unconfirmed",
+      "note": "公開アカウント配下でforkではないことは確認したが、文書の具体的な作者や本人／AIの分担は今回の根拠から確定しない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/mining-forge/blob/6983e8032585ba7781a2c2e7dcf937ee71129d96/README.md#L1-L7"
+      ]
+    },
+    "rights": {
+      "license": "リポジトリ全体のライセンスは未確認（GitHub API license:null、固定したroot treeにLICENSEなし）。",
+      "thirdParty": "docs/ASSETS.mdはKenney各素材を導入候補として列挙するが、導入済みではないと明記。 確認したmainには素材本体なし。別ブランチ・別試作の素材所有や利用条件は未確認。",
+      "note": "ゲーム画面、他者の画像・音・モデル、会員PDF、素材ファイルを今回コピーしていない。参照作品と第三者assetを本人の制作物に帰属させない。"
+    },
+    "course": {
+      "status": "unconfirmed",
+      "note": "今回読んだ公開READMEと主要ファイルから授業課題とは確認できない。授業由来・共同制作の有無と掲載可否は本人確認待ち。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "企画段階の説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/blob/6983e8032585ba7781a2c2e7dcf937ee71129d96/README.md#L1-L7",
+        "scope": "README・文書の記載",
+        "observations": [
+          "Unityプロジェクト、実行可能なゲーム、プレイ検証なしと明記。",
+          "将来のgameディレクトリも未作成と記載。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "仮の試作仕様",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/blob/6983e8032585ba7781a2c2e7dcf937ee71129d96/docs/PROTOTYPE_0.md#L1-L40",
+        "scope": "design-read",
+        "observations": [
+          "実装用の提案であり、数値は初期仮説と明記。",
+          "3部位・技・品質・回収条件の案を読むことができる。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "未着手範囲",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/blob/6983e8032585ba7781a2c2e7dcf937ee71129d96/docs/STATUS.md#L5-L24",
+        "scope": "README・文書の記載",
+        "observations": [
+          "企画と保存基盤は整備済み、ゲーム実装・Unity初期化・build・playは未着手と記載。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "素材の採用状況",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/blob/6983e8032585ba7781a2c2e7dcf937ee71129d96/docs/ASSETS.md#L1-L23",
+        "scope": "provenance-read",
+        "observations": [
+          "導入済み素材はなく、Kenneyの各候補の採用時に条件を再確認する方針。",
+          "参考作品から画像・音・UIを抜き出さないと記す。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "固定したmainの全体",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/tree/6983e8032585ba7781a2c2e7dcf937ee71129d96",
+        "scope": "tree-read",
+        "observations": [
+          "recursive treeは37項目でtruncated:false。ルートはREADME/.github/docs等で実行コードやgameディレクトリを含まない。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "既定ブランチの確認点",
+        "url": "https://github.com/KOSEIHAMAYA2077/mining-forge/commit/6983e8032585ba7781a2c2e7dcf937ee71129d96",
+        "scope": "commit情報の読み取り",
+        "observations": [
+          "main先頭のコミットはプレイ記録・設計改訂の受渡し文書の追加。"
+        ],
+        "id": "source-6"
+      }
+    ]
+  },
+  {
+    "id": "typeandsummon",
+    "repository": "KOSEIHAMAYA2077/TypeAndSummon",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+    "title": "タイピングで対戦・協力",
+    "summary": "単語入力で攻撃と回復を行うJavaのゲーム。1対1と2人協力ボス戦のコードがあり、READMEでは課題の保管用と説明されています。",
+    "kind": "game",
+    "existingDraft": true,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "a57dcc84dd21898e8d0cc535fecf537fb0366385",
+    "commitDate": "2026-07-29T13:25:57Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "コード確認：入力の正誤をサーバーで判定し、正解時に相手のHPを減らし自分を回復する。",
+      "コード確認：HTTPで部屋を作成・参加し、TCPで入力や対戦状態を送受信する。",
+      "コード確認：協力モードの接続処理とLv1〜5のボス定義がある。今回の調査では対戦・描画・音声を実行していない。"
+    ],
+    "technologies": [
+      "Java（READMEの必要環境は17以上）",
+      "Swing",
+      "HTTP / TCPソケット",
+      "SQLite / sqlite-jdbc",
+      "JLayer 1.0.1（MP3再生）"
+    ],
+    "entrances": [
+      {
+        "label": "概要と操作を読む",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/README.md",
+        "kind": "readme"
+      },
+      {
+        "label": "対戦判定のコード",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/server/src/server/BattleStateManager.java",
+        "kind": "code"
+      },
+      {
+        "label": "公開リポジトリ",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+        "kind": "repository"
+      }
+    ],
+    "unknowns": [
+      "授業・課題としてのサイト掲載可否、本人の担当範囲、制作期間、掲載したい意図は未確認。",
+      "実行や通信検証はしていない。常設デモの入口は今回読んだ公開情報では確認できない。",
+      "画像・効果音・BGM・同梱JARのサイトへの再配布条件は未確認。素材をコピーしない。"
+    ],
+    "attribution": {
+      "status": "READMEの自己記載あり・担当未確認",
+      "note": "READMEは設計検討、コード生成・修正、デバッグ、文書に生成AIを多く使用したと記載。BGMは本人がSunoで制作したとの記載。調査から個々のコードの作者や寄与割合は判断しない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/README.md",
+        "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/client/assets/audio/README.md"
+      ]
+    },
+    "rights": {
+      "license": "確認したツリーにプロジェクト全体のLICENSEは見当たらず、GitHub APIのlicenseもnull。",
+      "thirdParty": "READMEはモンスター画像に『モンスター素材屋さん』をクレジット。 BGMのSuno利用はREADMEの自己記載。効果音のファイル用途はあるが出典・許諾は確認できない。 JLayer 1.0.1とsqlite-jdbcのJARが同梱される。各JARの許諾内容は今回未監査。",
+      "note": "紹介文と確認済みリンクのみを候補にする。公開済みであることから画像・音声・コードの再利用許諾は推定しない。"
+    },
+    "course": {
+      "status": "課題制作とREADMEに明記",
+      "note": "課題の整理・保管用アーカイブとの自己説明。授業名、共同制作の分担、課題規定やサイトへの再掲載許可は未確認。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "公開状態・fork情報",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/TypeAndSummon",
+        "scope": "repository-metadata",
+        "observations": [
+          "private:false、visibility:public、fork:false、default_branch:main。",
+          "GitHubのforkフラグは素材やコード全体の独自性を証明しない。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "確認したmainコミット",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/commit/a57dcc84dd21898e8d0cc535fecf537fb0366385",
+        "scope": "commit",
+        "observations": [
+          "main の参照先を a57dcc84dd21898e8d0cc535fecf537fb0366385 に固定して読み取り。コミット日時 2026-07-29T13:25:57Z は制作期間を表さない。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/README.md",
+        "scope": "readme",
+        "observations": [
+          "課題アーカイブ、1対1・2人協力、必要環境、AI利用、素材クレジットを確認。",
+          "説明は実行確認と区別する。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "GUIの入口",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/client/src/ui/SushiBattleGUI.java",
+        "scope": "code",
+        "observations": [
+          "JFrameを継承しmainでSwingUtilities.invokeLaterからGUIを表示する。",
+          "部屋作成・参加、TCPへtyping updateを送る処理がある。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "対戦状態",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/server/src/server/BattleStateManager.java",
+        "scope": "code",
+        "observations": [
+          "制限時間180秒、2人接続条件、入力一致と接頭辞による正誤判定、攻撃・回復・HP勝敗判定を確認。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "通信サーバー",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/server/src/server/GameServer.java",
+        "scope": "code",
+        "observations": [
+          "HTTP用とTCP用のServerSocket、対戦と協力サービスの構成を確認。"
+        ],
+        "id": "source-6"
+      },
+      {
+        "label": "協力モード接続",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/client/src/ui/CooperativeModeLauncher.java",
+        "scope": "code",
+        "observations": [
+          "HTTP部屋作成/参加後にTCP認証、協力セッション有効化、画面切替を行う。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "協力ボス定義",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/server/src/server/coop/CooperativeBossProfile.java",
+        "scope": "code",
+        "observations": ["Lv1〜5のHP・攻撃・特殊ルールの定義を確認。"],
+        "id": "source-8"
+      },
+      {
+        "label": "音声の説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/client/assets/audio/README.md",
+        "scope": "rights",
+        "observations": [
+          "BGM2曲のSuno利用を自己記載。効果音一覧は用途を列記している。"
+        ],
+        "id": "source-9"
+      },
+      {
+        "label": "クライアント依存",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/client/lib/README.md",
+        "scope": "dependency",
+        "observations": ["JLayer 1.0.1がMP3再生に使われるとの説明。"],
+        "id": "source-10"
+      },
+      {
+        "label": "サーバー起動コード",
+        "url": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon/blob/a57dcc84dd21898e8d0cc535fecf537fb0366385/server/src/Main.java",
+        "scope": "code",
+        "observations": [
+          "SQLiteのDAOとDatabaseManagerを組み立て、GameServerを起動する。"
+        ],
+        "id": "source-11"
+      }
+    ]
+  },
+  {
+    "id": "one-board-incremental",
+    "repository": "KOSEIHAMAYA2077/one-board-incremental",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/one-board-incremental",
+    "title": "反射する弾の盤面試作",
+    "summary": "射撃・反射・強化を試すUnityのゲーム。READMEは開発休止中の試作と説明し、ブラウザ版とWindows版への入口を案内しています。",
+    "kind": "game",
+    "existingDraft": true,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "04960064cc29b4224d7f0af21984ecc334dc091a",
+    "commitDate": "2026-09-06T12:54:00Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "mainのコード確認：弾と壁・Collectorの接触判定、Gold獲得、10 Goldで最初の強化を買うPrototype 0がある。",
+      "feat/portrait-stage（778d892e）のコード確認：4種類の銃、弾数・速度・威力の違い、分裂、Goldでの強化、容量20ptの装備構成がある。",
+      "README掲載のブラウザ入口はHTTP 200とHTMLタイトルを確認した。ゲームや配布バイナリは実行していない。"
+    ],
+    "technologies": [
+      "C#",
+      "Unity 6000.3.18f1",
+      "Unity Web / WebGL（別ブランチのWeb版）",
+      "Unity Test Framework",
+      "uGUI"
+    ],
+    "entrances": [
+      {
+        "label": "公開ブラウザ版の入口（PC向け・未試遊）",
+        "url": "https://koseihamaya2077.github.io/one-board-incremental/",
+        "kind": "demo"
+      },
+      {
+        "label": "版の違いと操作を読む",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/04960064cc29b4224d7f0af21984ecc334dc091a/README.md",
+        "kind": "readme"
+      },
+      {
+        "label": "Windows版のRelease案内",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/releases/tag/v0.6.1-drag",
+        "kind": "release"
+      },
+      {
+        "label": "案内先試作の固定コード",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/tree/778d892ede598c49f38145394de342ddcec91aaa",
+        "kind": "code"
+      }
+    ],
+    "unknowns": [
+      "本人の担当範囲、AIとの分担、制作期間、本人サイトに載せる意図と採否は未確認。",
+      "実行・ビルド・ゲーム操作・保存・音声の検証は行っていない。ブラウザ入口のHTTP応答確認は実動作確認を意味しない。",
+      "mainはPrototype 0を保持し、READMEの最新試作は別ブランチ。mainのコードだけから4銃等を説明しない。",
+      "プロジェクト全体のライセンスと各生成物の再配布条件は未確認。スマートフォンはREADMEで操作未対応とされる。"
+    ],
+    "attribution": {
+      "status": "READMEの自己記載あり・担当未確認",
+      "note": "READMEはAI駆動で射撃・反射・分裂・強化を試作したと説明している。コード各部の作者やAIの寄与割合は確認していない。READMEにある中断理由も本人の新しいサイト用文として採用せず、出典付きの状況説明として扱う。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/04960064cc29b4224d7f0af21984ecc334dc091a/README.md"
+      ]
+    },
+    "rights": {
+      "license": "main・案内先ブランチの確認範囲でプロジェクト全体のLICENSEは見当たらず、GitHub APIのlicenseもnull。",
+      "thirdParty": "Unityとパッケージへの依存をmanifestで確認。配布物・Unity自体の許諾整理は今回未監査。 試作ブランチにNotoSansCJKjp-Regular.otfがあり、Web説明にNoto Sans CJK JP RegularのSIL OFL 1.1利用を明記。WebGLTemplates/Momentum/OFL.txtの許諾文を確認。",
+      "note": "候補は説明と公開済み入口のリンク。ゲームコード、フォント、結晶アセット、配布物はサイトへコピーしない。"
+    },
+    "course": {
+      "status": "未確認",
+      "note": "読んだREADME・主要コード・設定から授業課題との記載は確認していない。授業外作品とも断定しない。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "公開状態・fork情報",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/one-board-incremental",
+        "scope": "repository-metadata",
+        "observations": [
+          "private:false、visibility:public、fork:false、default_branch:main、has_pages:true。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "確認したmainコミット",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/commit/04960064cc29b4224d7f0af21984ecc334dc091a",
+        "scope": "commit",
+        "observations": [
+          "main の参照先を 04960064cc29b4224d7f0af21984ecc334dc091a に固定して読み取り。コミット日時 2026-09-06T12:54:00Z は制作期間を表さない。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "main README",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/04960064cc29b4224d7f0af21984ecc334dc091a/README.md",
+        "scope": "readme",
+        "observations": [
+          "開発休止中の試作との説明、AI駆動の自己記載、ブラウザとWindows Release入口を確認。",
+          "mainはPrototype 0を維持し、最新試作は別ブランチと明記。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "mainの経済処理",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/04960064cc29b4224d7f0af21984ecc334dc091a/Assets/_Project/Core/GameEconomy.cs",
+        "scope": "code",
+        "observations": [
+          "Collector命中でGoldとHitCountを加算し、10 Goldで初回強化を購入する。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "mainの弾シミュレーション",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/04960064cc29b4224d7f0af21984ecc334dc091a/Assets/_Project/Core/ProjectileSimulation.cs",
+        "scope": "code",
+        "observations": [
+          "CircleCastで壁・Collector等との接触を扱う処理を確認。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "Unityバージョン",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/04960064cc29b4224d7f0af21984ecc334dc091a/ProjectSettings/ProjectVersion.txt",
+        "scope": "config",
+        "observations": ["m_EditorVersionは6000.3.18f1。"],
+        "id": "source-6"
+      },
+      {
+        "label": "案内先の固定コミット",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/commit/778d892ede598c49f38145394de342ddcec91aaa",
+        "scope": "commit",
+        "observations": [
+          "feat/portrait-stage の参照先を固定。コミット日時2026-09-06T12:55:37Z。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "案内先の射撃・進行処理",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/778d892ede598c49f38145394de342ddcec91aaa/Assets/_Project/Core/MomentumChallenge.cs",
+        "scope": "code",
+        "observations": [
+          "4銃の名称、弾数・速度・威力の定義、マガジン発射条件、命中・報酬・分裂処理を確認。"
+        ],
+        "id": "source-8"
+      },
+      {
+        "label": "案内先の装備と強化",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/778d892ede598c49f38145394de342ddcec91aaa/Assets/_Project/Core/MomentumProgress.cs",
+        "scope": "code",
+        "observations": [
+          "容量20pt、Goldで銃・強化購入、3段階のstage解放、装備presetの処理を確認。"
+        ],
+        "id": "source-9"
+      },
+      {
+        "label": "案内先の依存設定",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/778d892ede598c49f38145394de342ddcec91aaa/Packages/manifest.json",
+        "scope": "config",
+        "observations": [
+          "Unity Test Framework、uGUI、Audio、Physics2D、JSON等のパッケージを確認。"
+        ],
+        "id": "source-10"
+      },
+      {
+        "label": "Web版の説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/778d892ede598c49f38145394de342ddcec91aaa/docs/WEB_DEMO.md",
+        "scope": "readme",
+        "observations": [
+          "PC向け、ブラウザ保存、Unity Webビルド、Notoフォント利用とOFLを説明。",
+          "記載されたテスト結果はリポジトリ側の報告であり今回の検証ではない。"
+        ],
+        "id": "source-11"
+      },
+      {
+        "label": "フォントの許諾文",
+        "url": "https://github.com/KOSEIHAMAYA2077/one-board-incremental/blob/778d892ede598c49f38145394de342ddcec91aaa/Assets/WebGLTemplates/Momentum/OFL.txt",
+        "scope": "rights",
+        "observations": [
+          "SIL Open Font License 1.1の本文を確認。プロジェクト全体のライセンスとは区別する。"
+        ],
+        "id": "source-12"
+      },
+      {
+        "label": "公開ブラウザ入口",
+        "url": "https://koseihamaya2077.github.io/one-board-incremental/",
+        "scope": "link-check",
+        "observations": [
+          "2026-10-04に通常HTTP GETで200、text/html、タイトル『Momentum Lab — 遊べる試作』を確認。JavaScriptは実行していない。"
+        ],
+        "id": "source-13"
+      },
+      {
+        "label": "Windows Releaseのメタデータ",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/one-board-incremental/releases/tags/v0.6.1-drag",
+        "scope": "release",
+        "observations": [
+          "draft:false、prerelease:true。Windows-x64 ZIPとsha256ファイルの公開assetを確認。取得・実行はしていない。"
+        ],
+        "id": "source-14"
+      }
+    ]
+  },
+  {
+    "id": "pong-study-raylib",
+    "repository": "KOSEIHAMAYA2077/pong-study-raylib",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib",
+    "title": "Pongの学習と追加実装",
+    "summary": "C++とraylibによるCPU対戦Pong。教材を進めた保存版と、難易度選択・加速などを加えた版を比較できます。",
+    "kind": "game",
+    "existingDraft": true,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a",
+    "commitDate": "2026-07-29T13:40:16Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "コード確認：上下キーでパドルを動かし、CPU追従・壁とパドルの反射・得点表示を処理する。",
+      "コード確認：1/2/3キーでCPU速度を選び、パドルとの衝突4回ごとにボールの速度を増やす。",
+      "コード確認：5点でタイトルに戻る処理がある。新しい試合の得点リセットはコード上になく、READMEでも今後の課題とされる。"
+    ],
+    "technologies": [
+      "C++",
+      "raylib（READMEでは6.0）",
+      "MinGW / GCC",
+      "Make / Visual Studio Code設定"
+    ],
+    "entrances": [
+      {
+        "label": "リポジトリ内の動作動画",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/pong%E5%8B%95%E4%BD%9C.mp4",
+        "kind": "video"
+      },
+      {
+        "label": "概要と操作を読む",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/README.md",
+        "kind": "readme"
+      },
+      {
+        "label": "現在版のコード",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/main.cpp",
+        "kind": "code"
+      },
+      {
+        "label": "教材時点の保存版",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/archive/video-progress/main.cpp",
+        "kind": "code"
+      }
+    ],
+    "unknowns": [
+      "動画ファイルの存在とREADMEからのリンクを確認したが、動画再生・ゲーム実行・ビルドはしていない。",
+      "READMEの追加実装説明は自己記載。本人の担当範囲や制作期間は確認していない。",
+      "授業課題かどうか、サイト掲載の採否、配布物に含むDLL等の許諾整理は未確認。"
+    ],
+    "attribution": {
+      "status": "教材由来・READMEの自己記載あり",
+      "note": "READMEはProgramming With Nickの教材・スターターテンプレートを基にした学習用と説明。ゲーム制作に生成AIは使わず、READMEとGitHubへのアップロード等では利用したとの自己記載がある。寄与範囲を調査で確定したものではない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/README.md",
+        "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/archive/video-progress/README.md"
+      ]
+    },
+    "rights": {
+      "license": "LICENSE.txtはMIT。著作権表示は Copyright (c) [2023] [Nick Koumaris]。",
+      "thirdParty": "READMEはProgramming With NickのPong教材とRaylib C++ Starter Templateを明記。 raylibに依存し、ツリーにはlibgcc_s_dw2-1.dllとlibstdc++-6.dllも含まれる。各依存物の再配布条件は今回未監査。",
+      "note": "GitHub上のfork:falseと教材・テンプレート由来を区別する。サイトには紹介とリンクのみを候補化し、コードや動画・画像はコピーしない。"
+    },
+    "course": {
+      "status": "教材を使った学習とREADMEに明記",
+      "note": "チュートリアル由来は確認できる。正式な授業課題か、授業規定や再掲載許可が必要かは未確認。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "公開状態・fork情報",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/pong-study-raylib",
+        "scope": "repository-metadata",
+        "observations": [
+          "private:false、visibility:public、fork:false、default_branch:main。",
+          "fork:falseであってもREADMEは教材・テンプレート由来を明示している。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "確認したmainコミット",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/commit/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a",
+        "scope": "commit",
+        "observations": [
+          "main の参照先を 14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a に固定して読み取り。コミット日時 2026-07-29T13:40:16Z は制作期間を表さない。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/README.md",
+        "scope": "readme",
+        "observations": [
+          "学習用、参考教材、AI利用の自己記載、動画入口、追加機能、今後の修正点を確認。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "現在版のコード",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/main.cpp",
+        "scope": "code",
+        "observations": [
+          "入力、CPU追従、衝突・得点、CPU速度6/8/10、collision/4による加速、5点時のタイトル復帰を確認。",
+          "タイトル復帰時にスコアを0へ戻す処理はない。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "教材時点のコード",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/archive/video-progress/main.cpp",
+        "scope": "code",
+        "observations": [
+          "CPU速度が固定された保存版。現在版にあるタイトル切替、難易度選択、衝突数加速の処理はこの保存版にはない。",
+          "差分の存在は確認できるが作者の分担までは証明しない。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "MIT許諾文",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/LICENSE.txt",
+        "scope": "rights",
+        "observations": [
+          "MIT License本文とNick Koumaris名義の著作権表示を確認。"
+        ],
+        "id": "source-6"
+      },
+      {
+        "label": "ビルド設定",
+        "url": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib/blob/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a/.vscode/tasks.json",
+        "scope": "config",
+        "observations": [
+          "makeとMinGWを使うビルド設定。設定を読み取っただけで実行していない。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "ファイル一覧",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/pong-study-raylib/git/trees/14ea41698b4ac3081c8515d7c4e8a76f7cf8f81a?recursive=1",
+        "scope": "tree",
+        "observations": [
+          "動作動画、preview.jpg、教材時点コード、LICENSE.txt、2種類のDLLの存在を確認。"
+        ],
+        "id": "source-8"
+      }
+    ]
+  },
+  {
+    "id": "de10-nano-voice-changer",
+    "repository": "KOSEIHAMAYA2077/de10-nano-voice-changer",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer",
+    "title": "DE10-Nano 音声送信・ボイスチェンジャー",
+    "summary": "PCで録音した音声をDE10-Nanoへ送り、再生時に声の高さやエコーを切り替える構成。Python、Linux側のC、FPGA側のVerilogをつなぐ。",
+    "kind": "hardware",
+    "existingDraft": true,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "0403392c2c2d0162771f2b12de758fbc7dcd6d7e",
+    "commitDate": "2026-07-31T23:33:33Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "PC側にモノラルPCMの録音・SCP転送処理がある。",
+      "Cの再生コマンドは16bit PCMを8bitへ変換し、/dev/audio_coreへの書き込みとioctlで再生を制御する。",
+      "FPGA側はスイッチで原音・高音化・低音化・エコーを選び、PWM出力する。ピッチ処理に256点FFT/IFFTと周波数ビンの移し替えがある。"
+    ],
+    "technologies": [
+      "Verilog / Intel FFT IP",
+      "C / Linuxカーネルモジュール・ioctl",
+      "Python 3 / NumPy / sounddevice",
+      "DE10-Nano / Quartus / ARM Linux"
+    ],
+    "entrances": [
+      {
+        "label": "概要と操作を読む",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/README.md#L1-L43",
+        "kind": "readme"
+      },
+      {
+        "label": "音声モードの実装を見る",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/quartus_project/audio_core.v#L230-L277",
+        "kind": "source"
+      }
+    ],
+    "unknowns": [
+      "読み取りのみ。コンパイル、FPGAへの書き込み、音声品質・遅延・4モードの実機動作は検証していない。",
+      "READMEの確認済み範囲はAnalysis & Synthesisまでで、Fitter以降の成功を今回確認していない。",
+      "Quartusプロジェクトに14.1、FFTラッパーにACDS 25.1の記録があり、現在の再現環境は未確認。",
+      "授業の公開条件、各ファイルの本人の担当範囲、制作期間、サイトへの掲載採否は未確認。"
+    ],
+    "attribution": {
+      "status": "self-described-unverified",
+      "note": "READMEは授業制作で生成AIを使用せず、公開時のファイル整理とREADME編集に生成AIを使用したと説明している。これはリポジトリ内の自己申告で、コード作者や支援範囲を独立に確認したものではない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/README.md"
+      ]
+    },
+    "rights": {
+      "license": "リポジトリ全体は未指定。",
+      "thirdParty": "READMEにIntel FFT IP生成ファイルの同梱とQuartus/Intel FPGA IPの条件への従属が明記されている。 カーネルモジュール末尾にMODULE_LICENSE(\"GPL\")がある。これはリポジトリ全体のライセンス指定とは扱わない。 PC録音処理はNumPyとsounddeviceを読み込む。依存の版・個別ライセンスはこの調査では確認していない。",
+      "note": "READMEと主要実装へのリンク・説明だけを候補化。ソース、生成IP、バイナリ、発表資料はサイトへコピーしない。各素材の再配布条件は別途確認が必要。"
+    },
+    "course": {
+      "status": "course-related-per-readme",
+      "note": "READMEは大学のIoT関連授業の成果物と説明している。現在publicであることと、大学・授業・第三者の公開許可が確認済みであることは区別する。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "GitHubの公開状態",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/de10-nano-voice-changer",
+        "scope": "2026-10-04にリポジトリAPIのprivate/fork/default_branch/licenseを読み取り",
+        "observations": [
+          "private:false、fork:false、default_branch:main、license:null。公開状態の確認であり、サイトへの採用や転載の許可を示さない。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "確認したコミット",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/commit/0403392c2c2d0162771f2b12de758fbc7dcd6d7e",
+        "scope": "既定ブランチmainのHEADコミットメタデータ",
+        "observations": [
+          "確認時のHEADは0403392c2c2d0162771f2b12de758fbc7dcd6d7e。コミッター日時は2026-07-31T23:33:33Z。制作開始日・期間・作者の独立証明には用いない。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/README.md#L1-L20",
+        "scope": "README全177行を読了。ここでは概要・モード・AI利用説明。",
+        "observations": [
+          "録音音声の送信と再生、SW[1:0]の4モードを説明。",
+          "AI不使用／公開整理でAI使用の記載は自己申告。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "ビルドと権利の注意",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/README.md#L47-L60",
+        "scope": "README全体中、再構築の確認範囲およびL173-L177の権利注意を確認。",
+        "observations": [
+          "Analysis & Synthesisまでの確認とFitter以降の未実施・環境依存が記載される。",
+          "Intel FFT IPの生成物を含み、全体ライセンスは未指定と記載。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "音声モードとPWM",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/quartus_project/audio_core.v#L230-L277",
+        "scope": "audio_core.v全277行を読み取り。",
+        "observations": [
+          "SW分岐、PWM比較、pitch_shifterへの接続がある。",
+          "実機での効果の品質・正しさは読み取りだけでは判定しない。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "FFTの変換処理",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/quartus_project/pitch_shifter.v#L186-L245",
+        "scope": "pitch_shifter.vのL1-L155、L175-L247を読み取り。",
+        "observations": [
+          "256点FFT/IFFTと高音化・低音化のビン再配置、逆変換出力バッファへの格納がある。"
+        ],
+        "id": "source-6"
+      },
+      {
+        "label": "Linux側の再生",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/hps_program/device_driver/userspace/play_audio_driver.c#L153-L229",
+        "scope": "play_audio_driver.c全229行を読み取り。",
+        "observations": [
+          "PCM入力変換後、デバイスへ書き込み、PLAYとWAIT_IDLEのioctlを呼ぶ。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "録音処理",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/go_bat/record_send.py#L53-L93",
+        "scope": "record_send.pyのL1-L45、L49-L96、L155-L180、L250-L285を読み取り。",
+        "observations": [
+          "NumPyとsounddeviceによる録音、signed16 little-endianのPCM化がある。SCP実行関数と明示的な転送処理を確認。"
+        ],
+        "id": "source-8"
+      },
+      {
+        "label": "カーネルモジュールの注記",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/hps_program/device_driver/kernel_module/audio_core_drv.c#L302-L316",
+        "scope": "audio_core_drv.cのL1-L25、L265-L316を読み取り。",
+        "observations": [
+          "platform_driver登録とMODULE_LICENSE(\"GPL\")を確認。"
+        ],
+        "id": "source-9"
+      },
+      {
+        "label": "Quartusプロジェクト",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/quartus_project/DE10_NANO_SoC_GHRD.qpf#L1-L6",
+        "scope": "QPF全6行、kernel_module/userspaceのMakefile全体を読み取り。",
+        "observations": [
+          "QPFのQUARTUS_VERSIONは14.1。C側はARM向けクロスコンパイル設定を持つ。"
+        ],
+        "id": "source-10"
+      },
+      {
+        "label": "FFTラッパー",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer/blob/0403392c2c2d0162771f2b12de758fbc7dcd6d7e/quartus_project/myfft/synthesis/myfft.v#L1-L48",
+        "scope": "myfft.v全48行を読み取り。",
+        "observations": [
+          "ACDS 25.1の生成表示とFFT IPへの入出力接続を確認。サブモジュールの1ファイルはテキストとして読めず、内容・条件の確認済みとはしない。"
+        ],
+        "id": "source-11"
+      }
+    ]
+  },
+  {
+    "id": "de10-nano-riscv-invader",
+    "repository": "KOSEIHAMAYA2077/de10-nano-riscv-invader",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader",
+    "title": "DE10-Nano / RISC-V インベーダー風ゲーム",
+    "summary": "簡易RV32I CPUのゲームプログラムと、FPGAの映像回路をつなぐ構成。キー入力、自機と弾、敵の状態、スコアをMMIOで受け渡す。",
+    "kind": "hardware",
+    "existingDraft": true,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "8832abb74ae0d352553fbb94259bcdddc3b55ca5",
+    "commitDate": "2026-07-29T13:10:58Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "アセンブリに自機移動、自動発射、5行×11列の敵管理、当たり判定、ゲームオーバーとスコア更新がある。",
+      "game_socはCPU・プログラムメモリ・キー入力・ゲーム用レジスタを接続する。",
+      "READMEは320×180のフレームバッファを6倍に拡大し、HDMIへスプライトを合成する構成と説明。QSFに該当回路が登録されている。"
+    ],
+    "technologies": [
+      "Verilog / 簡易RV32I / MMIO",
+      "RISC-Vアセンブリ",
+      "Python 3製の部分RV32Iアセンブラ",
+      "DE10-Nano / Quartus / HDMI"
+    ],
+    "entrances": [
+      {
+        "label": "概要と制作範囲を読む",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/README.md#L1-L85",
+        "kind": "readme"
+      },
+      {
+        "label": "成果物の入口を見る（動画リンクあり）",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/README.md#L87-L96",
+        "kind": "artifact-index"
+      },
+      {
+        "label": "ゲーム処理を読む",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/memfile.s#L150-L200",
+        "kind": "source"
+      }
+    ],
+    "unknowns": [
+      "読み取りのみ。Quartusビルド、CPU・HDMI回路のシミュレーション、実機操作は検証していない。",
+      "READMEの動画リンクとファイルの存在を確認したが、動画・発表資料の内容は未視聴・未読。",
+      "公開時に置き換えたCPU・アセンブラと、発表資料・実機動画の構成が完全に同じかは確認していない。",
+      "本人の担当範囲・AI利用・授業での公開条件はREADMEの自己申告以上に確認できていない。制作期間とサイト採否も未確認。"
+    ],
+    "attribution": {
+      "status": "self-described-unverified",
+      "note": "READMEは本編をAIなしで制作し、READMEの整理にはAIを使ったと説明する。また制作部分・公式デモ由来部分・公開時のCPUとアセンブラの置換を区別している。担当範囲と作者の独立検証はしていないため、その説明を事実認定して転載しない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/README.md"
+      ]
+    },
+    "rights": {
+      "license": "リポジトリ全体にOSSライセンスなしとREADMEに明記。",
+      "thirdParty": "TerasicのHDMI公式デモ由来部分があり、実ファイル先頭に指定ボード向け合成利用等の制限を含む権利表示がある。 Altera / IntelのPLL・Quartus生成IPがあり、QPFと生成ファイルに別の利用条件が記載されている。 THIRD_PARTY_NOTICESは発表資料内の画像・動画・技術資料について個別出典の条件確認を求めている。",
+      "note": "公表済みソースの説明とリンクのみを候補化。第三者回路、画像、PDF、PPTX、動画はサイトへコピーしない。授業で確認済みとの記載はあるが、その許諾を独立に検証していない。"
+    },
+    "course": {
+      "status": "course-related-per-readme",
+      "note": "READMEは大学の授業・研究室での制作とし、公開時に教科書由来CPUと授業配布アセンブラを置換したと説明する。現在のpublic状態は確認済みだが、授業公開条件の充足や置換元との非同一性は独立未検証。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "GitHubの公開状態",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/de10-nano-riscv-invader",
+        "scope": "2026-10-04にリポジトリAPIのprivate/fork/default_branch/licenseを読み取り",
+        "observations": [
+          "private:false、fork:false、default_branch:main、license:null。公開状態の確認であり、サイトへの採用や転載の許可を示さない。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "確認したコミット",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/commit/8832abb74ae0d352553fbb94259bcdddc3b55ca5",
+        "scope": "既定ブランチmainのHEADコミットメタデータ",
+        "observations": [
+          "確認時のHEADは8832abb74ae0d352553fbb94259bcdddc3b55ca5。コミッター日時は2026-07-29T13:10:58Z。制作開始日・期間・作者の独立証明には用いない。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/README.md#L22-L85",
+        "scope": "README全139行を読了。",
+        "observations": [
+          "ゲーム機能、自己申告の制作範囲、公開時の置換、公式デモ由来範囲を分けて説明。",
+          "L98-L111は発表資料と公開CPUの差、L134-L139はライセンス未設定を説明。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "ゲームプログラム",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/memfile.s#L150-L200",
+        "scope": "memfile.sのL1-L100、L135-L200、L315-L385、L440-L490を読み取り。",
+        "observations": [
+          "自動発射、敵グリッドとの衝突計算、敵移動、敵弾との衝突、MMIOへの状態書き込み、BCDスコア出力を確認。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "CPUとゲーム状態の接続",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/cpu_source/top.v#L170-L223",
+        "scope": "top.vのL1-L125、L170-L225を読み取り。",
+        "observations": [
+          "キー同期、riscv接続、自機・弾・敵・スコア用レジスタを確認。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "公開用CPUの説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/cpu_source/README.md#L1-L25",
+        "scope": "CPU README全25行。riscv.vのL1-L35、L230-L257を読み取り。",
+        "observations": [
+          "単一サイクルの簡易RV32Iと、word幅メモリに応じた命令制約を説明。元教科書コードと独立であるとの記載は自己申告。"
+        ],
+        "id": "source-6"
+      },
+      {
+        "label": "アセンブラ",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/tools/assemble_rv32i.py#L269-L285",
+        "scope": "assemble_rv32i.pyのL1-L25、L247-L285を読み取り。",
+        "observations": [
+          "対応命令の分岐、未対応命令の拒否、32bitの16進ワードをdatへ書き出す入口がある。実行はしていない。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "Quartus登録回路",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/DE10_Nano_HDMI_TX.qsf#L487-L511",
+        "scope": "QSFのTOP_LEVEL_ENTITY、VERILOG_FILE、QIP_FILE行を確認。QPF全31行とBUILDING全51行を読了。",
+        "observations": [
+          "フレームバッファ、スプライト、CPU、PLLの回路ファイル登録を確認。ビルド・実機成功は未検証。"
+        ],
+        "id": "source-8"
+      },
+      {
+        "label": "第三者部分と授業資料の説明",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/THIRD_PARTY_NOTICES.md#L1-L36",
+        "scope": "全36行を読了。",
+        "observations": [
+          "Terasic、Altera / Intel、授業配布資料、発表資料の出典を区別する説明がある。"
+        ],
+        "id": "source-9"
+      },
+      {
+        "label": "Terasicの実ファイル表示",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/DE10_Nano_HDMI_TX.v#L1-L19",
+        "scope": "DE10_Nano_HDMI_TX.vのL1-L40を読み取り。",
+        "observations": [
+          "Terasicボード等への合成用途に関する許諾と、その他用途への制限を含む表示を確認。"
+        ],
+        "id": "source-10"
+      },
+      {
+        "label": "生成IPの実ファイル表示",
+        "url": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader/blob/8832abb74ae0d352553fbb94259bcdddc3b55ca5/pll/pll.v#L27-L41",
+        "scope": "pll.vのL1-L41とpll_0002.vのL1-L40を読み取り。",
+        "observations": [
+          "Altera MegaWizard生成表示と、Altera PLD用途に関する制限を含む権利表示を確認。"
+        ],
+        "id": "source-11"
+      }
+    ]
+  },
+  {
+    "id": "game-ai-search-puzzles",
+    "repository": "KOSEIHAMAYA2077/game-ai-search-puzzles",
+    "repositoryUrl": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles",
+    "title": "8パズル・15パズルの探索比較",
+    "summary": "8パズルをIDSと3種類のA*で探索し、解の深さ・展開ノード数・時間をCSVへ出すCプログラム。15パズルの発展版も別ファイルで収録。",
+    "kind": "algorithm",
+    "existingDraft": true,
+    "draft": true,
+    "decision": "pending",
+    "visibility": "public",
+    "verifiedAt": "2026-10-04",
+    "commit": "e1b71894ea178984099871096552c0a13ad9d588",
+    "commitDate": "2026-08-01T20:52:37Z",
+    "codeExecution": "not-run",
+    "behavior": [
+      "8パズルは乱数シード・試行数・IDSの最大深さを受け取り、到達可能な盤面にIDSとA*を適用する。",
+      "A*の評価は0、位置の異なるタイル数、マンハッタン距離の3種類。CSVへfound・depth・expanded_nodes・time_msを出力する。",
+      "15パズルには配列ベースの版と、64bit盤面表現・線形衝突・IDA*・ノード数上限を用いる版がある。"
+    ],
+    "technologies": [
+      "C11 / Clang・GCC / Make",
+      "IDS / A* / IDA*",
+      "ヒューリスティック / CSV実験記録"
+    ],
+    "entrances": [
+      {
+        "label": "比較内容とAI利用の説明を読む",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/README.md#L1-L33",
+        "kind": "readme"
+      },
+      {
+        "label": "8パズルの実装を見る",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/src/eight_puzzle_astar.c#L390-L468",
+        "kind": "source"
+      },
+      {
+        "label": "保存されたCSVを見る",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/results/8-puzzle/experiment.csv",
+        "kind": "data"
+      }
+    ],
+    "unknowns": [
+      "読み取りのみ。コンパイル、探索結果の再現、最短性、ヒューリスティックの妥当性、速度比較は検証していない。",
+      "保存CSVの先頭行は確認したが、図・PDFレポートは未読で、記載結果を実験の再検証とは扱わない。",
+      "READMEによる8パズル自力実装と15パズルでのAI支援の説明は自己申告。作者・担当範囲を独立には確認していない。",
+      "授業の公開条件、制作期間、サイトへの採否は未確認。"
+    ],
+    "attribution": {
+      "status": "self-described-unverified",
+      "note": "READMEは8パズルを自力実装、15パズルをコード作成・高速化・出力・レポートに生成AIを大幅利用した発展実験と説明する。ソースのコメントにも同区別があるが、独立した作者確認ではない。15パズルを全面的な本人単独実装として紹介しない。",
+      "sources": [
+        "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/README.md"
+      ]
+    },
+    "rights": {
+      "license": "未指定。READMEは法令上認められる範囲を超える複製・再利用を許諾しない旨を明記。",
+      "thirdParty": "読んだCソースのincludeは標準Cライブラリ。外部ライブラリ依存の宣言は読んだMakefileにない。 図と公開版PDFは存在を確認したが、内容・出典・利用条件は確認していない。",
+      "note": "説明と公開リポジトリへのリンクだけを候補化し、コード・図・PDFの再掲載はしない。授業課題への転用・再提出を意図しない旨の注意書きがある。"
+    },
+    "course": {
+      "status": "course-related-per-readme",
+      "note": "READMEには授業資料・問題文を収録しないこと、公開版レポートから提出用表紙を除いたこと、課題への転用を意図しないことが記載される。公開許可自体は独立未確認。"
+    },
+    "fork": false,
+    "parent": null,
+    "sources": [
+      {
+        "label": "GitHubの公開状態",
+        "url": "https://api.github.com/repos/KOSEIHAMAYA2077/game-ai-search-puzzles",
+        "scope": "2026-10-04にリポジトリAPIのprivate/fork/default_branch/licenseを読み取り",
+        "observations": [
+          "private:false、fork:false、default_branch:main、license:null。公開状態の確認であり、サイトへの採用や転載の許可を示さない。"
+        ],
+        "id": "source-1"
+      },
+      {
+        "label": "確認したコミット",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/commit/e1b71894ea178984099871096552c0a13ad9d588",
+        "scope": "既定ブランチmainのHEADコミットメタデータ",
+        "observations": [
+          "確認時のHEADはe1b71894ea178984099871096552c0a13ad9d588。コミッター日時は2026-08-01T20:52:37Z。制作開始日・期間・作者の独立証明には用いない。"
+        ],
+        "id": "source-2"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/README.md#L1-L33",
+        "scope": "README全88行を読了。",
+        "observations": [
+          "8パズルの探索比較と15パズル発展版を区別。AI利用範囲についての自己申告を確認。",
+          "L81-L88は授業資料・レポート・再利用に関する注意。"
+        ],
+        "id": "source-3"
+      },
+      {
+        "label": "ヒューリスティック",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/src/eight_puzzle_astar.c#L118-L168",
+        "scope": "eight_puzzle_astar.cのL1-L48、L100-L168、L196-L270、L291-L380、L390-L468を読み取り。",
+        "observations": [
+          "h0=0、h1=不一致タイル数、h2=マンハッタン距離の計算を確認。"
+        ],
+        "id": "source-4"
+      },
+      {
+        "label": "IDSとA*",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/src/eight_puzzle_astar.c#L229-L267",
+        "scope": "上記8パズルソースのIDS本体とL307-L380のA*本体を読み取り。",
+        "observations": [
+          "IDSの反復深化、A*のopen/closed配列、fによる次ノード選択、ノード上限がある。"
+        ],
+        "id": "source-5"
+      },
+      {
+        "label": "実験の入口とCSV",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/src/eight_puzzle_astar.c#L390-L468",
+        "scope": "8パズルの実験ループ・CSV出力・mainを読み取り。",
+        "observations": [
+          "シード・試行数・深さ上限を引数で設定し、4種類の探索結果をCSVで出力する実装。"
+        ],
+        "id": "source-6"
+      },
+      {
+        "label": "15パズルの発展実装",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/src/fifteen_puzzle_ai_assisted_idastar.c#L422-L481",
+        "scope": "fifteen_puzzle_ai_assisted_idastar.cのL1-L125、L260-L485、L510-L605を読み取り。",
+        "observations": [
+          "uint64_tの盤面、線形衝突を含む評価、fのしきい値とノード数上限を使うIDA*がある。AI利用の自己申告が冒頭にある。"
+        ],
+        "id": "source-7"
+      },
+      {
+        "label": "15パズル素朴版",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/src/fifteen_puzzle_naive.c#L1-L25",
+        "scope": "fifteen_puzzle_naive.cのL1-L50、L250-L420を読み取り。",
+        "observations": [
+          "4×4配列、IDS・A*と上限設定、AI利用の自己申告を確認。"
+        ],
+        "id": "source-8"
+      },
+      {
+        "label": "ビルド設定",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/Makefile#L1-L20",
+        "scope": "Makefile全23行を読了。",
+        "observations": [
+          "C11指定、3種類のCソースから3実行ファイルを作る設定。実行はしていない。"
+        ],
+        "id": "source-9"
+      },
+      {
+        "label": "保存済みの結果",
+        "url": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles/blob/e1b71894ea178984099871096552c0a13ad9d588/results/8-puzzle/experiment.csv#L1-L6",
+        "scope": "CSVの先頭6行のみを読み取り。",
+        "observations": [
+          "trial/algorithm/found/depth/expanded_nodes/time_msの列と保存値が存在する。値の再現性や一般的な性能の裏付けとはしない。"
+        ],
+        "id": "source-10"
+      }
+    ]
+  }
+]

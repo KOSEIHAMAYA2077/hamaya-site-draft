@@ -1,0 +1,644 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+const kindOrder = ['visual', 'design', 'game', 'hardware', 'algorithm'];
+const entries = (await getCollection('workCandidates'))
+  .map((entry) => entry.data)
+  .sort(
+    (a, b) =>
+      Number(a.existingDraft) - Number(b.existingDraft) ||
+      kindOrder.indexOf(a.kind) - kindOrder.indexOf(b.kind) ||
+      a.id.localeCompare(b.id),
+  );
+const kinds = {
+  game: 'ゲーム',
+  hardware: '機器・回路',
+  algorithm: '探索',
+  visual: '文字・表現',
+  design: '設計資料',
+};
+---
+
+<Layout
+  title="作品候補を選ぶ・非公開調査"
+  description="公開GitHubを読んで整理した、採否を決める前の作品候補。動作と出典、未確認の点を見比べる。"
+  section={null}
+>
+  <div class="candidate-study shell" data-candidate-study>
+    <header class="candidate-heading">
+      <p class="eyebrow">公開GitHubから・本人の確認待ち</p>
+      <h1>作品候補を選ぶ</h1>
+
+      <p class="intro">
+        既存の本人文を変えず、公開GitHubの9件を下書きにまとめています。
+      </p>
+      <p class="reading-boundary">
+        コードは実行していません。担当範囲・制作期間・掲載の採否は、本人の確認待ちです。
+      </p>
+    </header>
+    <div class="candidate-tools" data-tools hidden>
+      <fieldset class="candidate-filters">
+        <legend>表示する候補</legend>
+        <label>
+          <input type="radio" name="scope" value="all" checked />
+          全9件
+        </label>
+        <label>
+          <input type="radio" name="scope" value="new" />
+          追加で見つけた3件
+        </label>
+        <label>
+          <input type="radio" name="scope" value="existing" />
+          既存下書きの6件
+        </label>
+        <label>
+          <input type="radio" name="scope" value="selected" />
+          選んだ候補
+        </label>
+      </fieldset>
+      <div class="selection-bar">
+        <p data-selection-status role="status">
+          まだ選んでいません。
+        </p>
+        <button type="button" data-copy disabled>
+          選んだ候補をコピー
+        </button>
+        <button type="button" data-clear disabled>
+          選択を消す
+        </button>
+      </div>
+      <p class="selection-hint">
+        チェックはこの画面だけの仮選択です。公開やファイル変更は行いません。再読み込みで消えます。
+      </p>
+      <div data-copy-fallback hidden>
+        <label for="candidate-copy-text">コピー用の一覧</label>
+        <textarea id="candidate-copy-text" readonly rows="6"></textarea>
+        <p>コピーできない場合は、この一覧を選んでコピーしてください。</p>
+      </div>
+    </div>
+    <p class="candidate-empty" data-empty hidden>
+      この条件の候補はありません。
+    </p>
+    <div class="candidate-list">
+      {entries.map((entry) => (
+        <article
+          id={`candidate-${entry.id}`}
+          class="candidate-card"
+          data-candidate={entry.id}
+          data-existing={String(entry.existingDraft)}
+          data-title={entry.title}
+          data-repository={entry.repository}
+          data-url={entry.repositoryUrl}
+        >
+          <div class="card-index">
+            <span class:list={['origin-tag', { new: !entry.existingDraft }]}>
+              {entry.existingDraft ? '既存の下書きあり' : '追加で確認'}
+            </span>
+            <span>{kinds[entry.kind]}</span>
+            <span>下書き・採否未定</span>
+          </div>
+          <header class="card-heading">
+            <div>
+              <p class="repo-name">{entry.repository.split('/')[1]}</p>
+              <h2>{entry.title}</h2>
+            </div>
+            <label class="candidate-choice" data-choice hidden>
+              <input
+                type="checkbox"
+                data-select
+                aria-label={`${entry.title}を候補に残す`}
+              />
+              <span>候補に残す</span>
+            </label>
+          </header>
+          <p class="card-summary">{entry.summary}</p>
+          <div class="card-columns">
+            <div>
+              <h3>コード・資料で確認できること</h3>
+              <ul>
+                {entry.behavior.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <div class="technology-list" aria-label="確認した技術">
+                {entry.technologies.map((item) => (
+                  <span>{item}</span>
+                ))}
+              </div>
+            </div>
+            <div class="unknown-panel">
+              <h3>まだ確認していないこと</h3>
+              <ul>
+                {entry.unknowns.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div class="candidate-entrances">
+            <span>見る入口</span>
+            {entry.entrances.map((item) => (
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                {item.label}
+                <span aria-hidden="true"> ↗</span>
+              </a>
+            ))}
+          </div>
+          <details class="candidate-evidence">
+            <summary>出典・利用条件を読む</summary>
+            <dl>
+              <div>
+                <dt>作者・AI利用</dt>
+                <dd>{entry.attribution.note}</dd>
+              </div>
+              <div>
+                <dt>forkと教材・第三者由来</dt>
+                <dd>
+                  {entry.fork
+                    ? 'GitHub APIでforkと確認。'
+                    : 'GitHub APIのfork表示はfalse。'}{' '}
+                  {entry.rights.thirdParty}
+                </dd>
+              </div>
+              <div>
+                <dt>利用条件</dt>
+                <dd>
+                  {entry.rights.license} {entry.rights.note}
+                </dd>
+              </div>
+              <div>
+                <dt>授業・課題と掲載</dt>
+                <dd>{entry.course.note}</dd>
+              </div>
+            </dl>
+            <p class="commit-note">
+              確認日 {entry.verifiedAt} · 既定ブランチの確認commit{' '}
+              <a
+                href={`${entry.repositoryUrl}/commit/${entry.commit}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {entry.commit.slice(0, 8)}
+              </a>
+              （制作期間ではありません）
+            </p>
+            <ul class="source-list">
+              {entry.sources.map((source) => (
+                <li>
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {source.label} ↗
+                  </a>
+                  <span>{source.scope}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </article>
+      ))}
+    </div>
+    <footer class="candidate-ending">
+      <p>本人が選んだ後で、本人の言葉と掲載できる素材を足します。</p>
+      <small>
+        公開repoであることと、教材・素材・授業成果をこのサイトへ転載できることは別に確認します。
+      </small>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  import { candidateSelection } from '../lib/candidate-selection.mjs';
+  const root = document.querySelector<HTMLElement>('[data-candidate-study]');
+  if (root) {
+    const cards = [...root.querySelectorAll<HTMLElement>('[data-candidate]')];
+    const checks = cards.map((card) =>
+      card.querySelector<HTMLInputElement>('[data-select]')!,
+    );
+    const copy = root.querySelector<HTMLButtonElement>('[data-copy]')!;
+    const clear = root.querySelector<HTMLButtonElement>('[data-clear]')!;
+    const status = root.querySelector<HTMLElement>('[data-selection-status]')!;
+    const fallback = root.querySelector<HTMLElement>('[data-copy-fallback]')!;
+    const textarea = root.querySelector<HTMLTextAreaElement>('textarea')!;
+    let version = 0;
+    const selected = () =>
+      checks.flatMap((check, index) =>
+        check.checked ? [cards[index].dataset.candidate!] : [],
+      );
+    const entries = cards.map((card) => ({
+      id: card.dataset.candidate!,
+      repository: card.dataset.repository!,
+      title: card.dataset.title!,
+      repositoryUrl: card.dataset.url!,
+    }));
+    const update = () => {
+      version += 1;
+      fallback.hidden = true;
+      textarea.value = '';
+      const ids = selected();
+      const scope = root.querySelector<HTMLInputElement>(
+        'input[name=scope]:checked',
+      )!.value;
+      cards.forEach((card, index) => {
+        card.hidden =
+          scope === 'new'
+            ? card.dataset.existing !== 'false'
+            : scope === 'existing'
+              ? card.dataset.existing !== 'true'
+              : scope === 'selected'
+                ? !checks[index].checked
+                : false;
+      });
+      root.querySelector<HTMLElement>('[data-empty]')!.hidden = cards.some(
+        (card) => !card.hidden,
+      );
+      copy.disabled = clear.disabled = ids.length === 0;
+      status.textContent = ids.length
+        ? `${ids.length}件を仮選択しています。`
+        : 'まだ選んでいません。';
+    };
+    for (const check of checks) check.addEventListener('change', update);
+    for (const radio of root.querySelectorAll('input[name=scope]'))
+      radio.addEventListener('change', update);
+    clear.addEventListener('click', () => {
+      checks.forEach((check) => {
+        check.checked = false;
+      });
+      update();
+      root
+        .querySelector<HTMLInputElement>('input[name=scope]:checked')!
+        .focus();
+    });
+    copy.addEventListener('click', async () => {
+      const current = version;
+      const text = candidateSelection(entries, selected());
+      try {
+        await navigator.clipboard.writeText(text);
+        if (version === current)
+          status.textContent =
+            '選んだ候補をコピーしました。公開設定は変わりません。';
+      } catch {
+        if (version !== current) return;
+        fallback.hidden = false;
+        textarea.value = text;
+        textarea.focus();
+        textarea.select();
+        status.textContent = '一覧を選択しました。コピーして持ち帰れます。';
+      }
+    });
+    root.querySelector<HTMLElement>('[data-tools]')!.hidden = false;
+    for (const label of root.querySelectorAll<HTMLElement>('[data-choice]'))
+      label.hidden = false;
+  }
+</script>
+
+<style>
+  .candidate-study {
+    max-width: 1120px;
+    padding-block: 40px 80px;
+  }
+  .candidate-heading {
+    max-width: 800px;
+    margin-bottom: 32px;
+  }
+  .candidate-heading h1 {
+    font-size: clamp(32px, 4.8vw, 52px);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .lead {
+    font-size: clamp(18px, 2.5vw, 24px);
+    margin-top: 16px;
+  }
+  .intro {
+    font-size: 14px;
+    line-height: 2;
+    margin-top: 20px;
+    color: var(--muted);
+  }
+  .reading-boundary {
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--muted);
+    border-left: 2px solid var(--line);
+    padding-left: 16px;
+    margin-top: 16px;
+  }
+  .candidate-tools {
+    border-block: 1px solid var(--line);
+    padding-block: 22px;
+    margin-bottom: 38px;
+  }
+  .candidate-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .candidate-filters legend {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .candidate-filters label {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    font-size: 12px;
+    min-height: 36px;
+    cursor: pointer;
+  }
+  input {
+    accent-color: #496a5a;
+    min-width: 18px;
+    min-height: 18px;
+  }
+  .selection-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 12px;
+  }
+  .selection-bar p {
+    margin-right: auto;
+  }
+  .selection-bar button {
+    font: inherit;
+    min-height: 44px;
+    padding: 8px 18px;
+    border: 1px solid var(--line);
+    border-radius: 40px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .selection-bar button[data-copy] {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .selection-bar button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  .selection-hint {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 12px;
+  }
+  [data-copy-fallback] {
+    margin-top: 18px;
+    font-size: 12px;
+  }
+  [data-copy-fallback] textarea {
+    width: 100%;
+    font: inherit;
+    line-height: 1.8;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: var(--white);
+    color: var(--ink);
+    margin-top: 8px;
+  }
+  .candidate-list {
+    display: grid;
+    gap: 36px;
+  }
+  .candidate-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 30px;
+    background: #f7f6f0;
+    scroll-margin-top: 24px;
+  }
+  .card-index {
+    display: flex;
+    gap: 10px 18px;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.8;
+  }
+  .origin-tag {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 3px 10px;
+  }
+  .origin-tag.new {
+    color: #405e4f;
+    background: #e5ece3;
+    border-color: #c3d1c2;
+  }
+  .card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .repo-name {
+    font:
+      11px ui-monospace,
+      monospace;
+    overflow-wrap: anywhere;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .card-heading h2 {
+    font-weight: 500;
+    font-size: clamp(20px, 2.8vw, 27px);
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+  .candidate-choice {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+    font-size: 12px;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .card-summary {
+    font-size: 14px;
+    line-height: 1.9;
+    margin-top: 16px;
+    max-width: 850px;
+  }
+  .card-columns {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 30px;
+    margin-top: 24px;
+  }
+  .card-columns h3 {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .card-columns ul {
+    padding-left: 1.2em;
+    font-size: 13px;
+    line-height: 1.9;
+    margin: 0;
+  }
+  .card-columns li + li {
+    margin-top: 7px;
+  }
+  .unknown-panel {
+    border-left: 1px solid var(--line);
+    padding-left: 24px;
+  }
+  .technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .technology-list span {
+    font-size: 10px;
+    line-height: 1.7;
+    border: 1px solid var(--line);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .candidate-entrances {
+    display: flex;
+    gap: 12px 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    font-size: 12px;
+  }
+  .candidate-entrances > span {
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .candidate-entrances a {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    text-underline-offset: 4px;
+  }
+  .candidate-evidence {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .candidate-evidence summary {
+    cursor: pointer;
+    min-height: 32px;
+  }
+  .candidate-evidence dl {
+    margin-top: 14px;
+    display: grid;
+    gap: 12px;
+  }
+  .candidate-evidence dl > div {
+    display: grid;
+    grid-template-columns: 145px 1fr;
+    gap: 14px;
+  }
+  .candidate-evidence dt {
+    color: var(--muted);
+  }
+  .candidate-evidence dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  .commit-note {
+    font-size: 11px;
+    margin-top: 16px;
+    color: var(--muted);
+  }
+  .source-list {
+    padding-left: 1.2em;
+    margin-top: 12px;
+  }
+  .source-list span {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .source-list li + li {
+    margin-top: 10px;
+  }
+  .candidate-ending {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    margin-top: 40px;
+    line-height: 1.9;
+    font-size: 16px;
+  }
+  .candidate-ending small {
+    display: block;
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .candidate-empty {
+    padding: 24px;
+    font-size: 14px;
+  }
+  .candidate-study :is(button, a, input, summary, textarea):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  @media (max-width: 680px) {
+    .candidate-study {
+      padding-block: 30px 48px;
+    }
+    .candidate-card {
+      padding: 20px 16px;
+    }
+    .card-heading {
+      display: block;
+    }
+    .candidate-choice {
+      margin-top: 12px;
+      justify-content: flex-end;
+    }
+    .card-columns {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .unknown-panel {
+      padding: 18px 0 0;
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .candidate-evidence dl > div {
+      grid-template-columns: 1fr;
+      gap: 3px;
+    }
+    .selection-bar p {
+      flex-basis: 100%;
+    }
+    .candidate-list {
+      gap: 24px;
+    }
+    .candidate-filters {
+      gap: 8px 14px;
+    }
+    .card-summary {
+      font-size: 13px;
+    }
+    .card-columns ul {
+      font-size: 12px;
+    }
+    .candidate-entrances {
+      gap: 8px 16px;
+    }
+  }
+</style>

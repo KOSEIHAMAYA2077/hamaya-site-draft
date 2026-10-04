@@ -1,7 +1,9 @@
 import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { validHttpsUrl, validImagePath } from './lib/content-safety.mjs';
+
+import { workCandidateSchema } from './lib/work-candidates.mjs';
 
 const shared = z.object({
   title: z.string().min(1),
@@ -39,4 +41,9 @@ const notes = defineCollection({
   schema: shared.extend({ category: z.enum(['学び', '雑記']) }),
 });
 
-export const collections = { works, notes };
+const workCandidates = defineCollection({
+  loader: file('src/data/work-candidates.json'),
+  schema: workCandidateSchema,
+});
+
+export const collections = { works, notes, workCandidates };

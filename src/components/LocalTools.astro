@@ -11,6 +11,7 @@ const enabled = localBuildEnabled(
     LOCAL_STUDIO: import.meta.env.LOCAL_STUDIO,
     LOCAL_COMPARISON: import.meta.env.LOCAL_COMPARISON,
     LOCAL_EXPERIMENTS: import.meta.env.LOCAL_EXPERIMENTS,
+    LOCAL_CANDIDATES: import.meta.env.LOCAL_CANDIDATES,
   },
   import.meta.env.DEV,
 );
@@ -37,6 +38,18 @@ const enabled = localBuildEnabled(
         hidden
       >
         実験を見る <span aria-hidden="true">↗</span>
+      </a>
+    )}
+
+    {import.meta.env.LOCAL_CANDIDATES === '1' && (
+      <a
+        class="local-write-link"
+        href={path('compare/candidates/')}
+        data-local-tool
+        data-candidate-entry
+        hidden
+      >
+        作品候補を見る <span aria-hidden="true">↗</span>
       </a>
     )}
 

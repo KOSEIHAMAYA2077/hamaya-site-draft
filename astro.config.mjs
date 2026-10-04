@@ -11,6 +11,8 @@ import { localBuildEnabled } from './src/lib/build-mode.mjs';
 import { checkPublicAssets } from './scripts/check-public-assets.mjs';
 import { checkMarkdownContent } from './scripts/check-markdown-content.mjs';
 
+import { parseWorkCandidates } from './src/lib/work-candidates.mjs';
+
 // Set BASE_PATH=/repository-name for a GitHub Pages project site.
 const siteOrigin = process.env.SITE_ORIGIN;
 if (siteOrigin) {
@@ -37,6 +39,15 @@ export default defineConfig({
       name: 'local-studio-boundary',
       hooks: {
         'astro:config:setup': async ({ injectRoute, command }) => {
+          // Fail before loaders: malformed draft data must not become an empty success.
+          parseWorkCandidates(
+            JSON.parse(
+              await readFile(
+                new URL('./src/data/work-candidates.json', import.meta.url),
+                'utf8',
+              ),
+            ),
+          );
           await checkMarkdownContent({ base: process.env.BASE_PATH || '/' });
           await checkPublicAssets({
             publicDir: fileURLToPath(new URL('./public/', import.meta.url)),
@@ -70,6 +81,13 @@ export default defineConfig({
                   './src/local-pages/compare/[view].astro',
                   import.meta.url,
                 ),
+              ),
+            });
+          if (process.env.LOCAL_CANDIDATES === '1')
+            injectRoute({
+              pattern: '/compare/candidates',
+              entrypoint: fileURLToPath(
+                new URL('./src/local-pages/candidates.astro', import.meta.url),
               ),
             });
           if (process.env.LOCAL_EXPERIMENTS === '1')
