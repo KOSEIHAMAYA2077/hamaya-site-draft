@@ -1,0 +1,41 @@
+{
+  "capture": "1280x900, await fonts.ready then 500ms; static viewport",
+  "covers": {
+    "before": {
+      "before": {
+        "attrWidth": "1200",
+        "attrHeight": "675",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "rectWidth": 840,
+        "rectHeight": 472.5
+      },
+      "after": {
+        "attrWidth": "1200",
+        "attrHeight": "675",
+        "naturalWidth": 360,
+        "naturalHeight": 640,
+        "rectWidth": 840,
+        "rectHeight": 1493.328125
+      }
+    },
+    "after": {
+      "before": {
+        "attrWidth": "360",
+        "attrHeight": "640",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "rectWidth": 840,
+        "rectHeight": 1493.328125
+      },
+      "after": {
+        "attrWidth": "360",
+        "attrHeight": "640",
+        "naturalWidth": 360,
+        "naturalHeight": 640,
+        "rectWidth": 840,
+        "rectHeight": 1493.328125
+      }
+    }
+  }
+}

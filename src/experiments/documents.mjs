@@ -8,6 +8,44 @@ const css = `
 const digest = (content) =>
   createHash('sha256').update(content).digest('base64');
 let documentsPromise;
+const sharedScriptPlaceholder = '__ISOLATED_EXPERIMENT_RUNTIME_20261004__';
+
+/** Keep the script once in the parent HTML; reconstruct the original srcdoc on demand. */
+export function packExperimentDocuments(documents) {
+  let sharedScript;
+  const templates = { motion: '', clock: '' };
+  for (const id of ['motion', 'clock']) {
+    const html = documents[id];
+    if (typeof html !== 'string' || html.includes(sharedScriptPlaceholder))
+      throw new Error(
+        'Experiment document has an invalid placeholder boundary.',
+      );
+    const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+    if (scripts.length !== 1 || (html.match(/<script\b/gi) || []).length !== 1)
+      throw new Error(
+        'Experiment document must have exactly one inline script.',
+      );
+    const script = scripts[0][1];
+    if (!script || /<\/script|sourceMappingURL/i.test(script))
+      throw new Error('Experiment runtime has an unsafe inline boundary.');
+    if (!html.includes(`script-src 'sha256-${digest(script)}'`))
+      throw new Error('Experiment script does not match its CSP.');
+    sharedScript ??= script;
+    if (script !== sharedScript)
+      throw new Error('Experiment documents must use the same runtime.');
+    const index = scripts[0].index + '<script>'.length;
+    templates[id] =
+      html.slice(0, index) +
+      sharedScriptPlaceholder +
+      html.slice(index + script.length);
+  }
+  if (!sharedScript) throw new Error('Experiment runtime is missing.');
+  return Object.freeze({
+    documents: Object.freeze(templates),
+    script: sharedScript,
+    placeholder: sharedScriptPlaceholder,
+  });
+}
 
 function documentFor(id, script) {
   const clock = id === 'clock';

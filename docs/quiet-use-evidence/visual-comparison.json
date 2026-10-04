@@ -1,0 +1,12 @@
+{
+  "focus": {
+    "size": [1280, 900],
+    "differentPixels": 0,
+    "differenceBounds": null
+  },
+  "experiments": {
+    "size": [1280, 2426],
+    "differentPixels": 0,
+    "differenceBounds": null
+  }
+}

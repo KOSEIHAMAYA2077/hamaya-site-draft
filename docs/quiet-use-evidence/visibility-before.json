@@ -1,0 +1,35 @@
+{
+  "label": "before",
+  "outside": {
+    "experiment": "motion",
+    "running": "true",
+    "frameCount": "0"
+  },
+  "returnedWithoutNewInput": {
+    "experiment": "motion",
+    "running": "false",
+    "frameCount": "1"
+  },
+  "otherTab": {
+    "parentHidden": false,
+    "child": {
+      "experiment": "motion",
+      "running": "true",
+      "frameCount": "35",
+      "hidden": false
+    }
+  },
+  "visibilityEventSimulation": true,
+  "simulatedHidden": {
+    "a": {
+      "experiment": "motion",
+      "running": "false",
+      "frameCount": "35"
+    },
+    "b": {
+      "experiment": "motion",
+      "running": "false",
+      "frameCount": "35"
+    }
+  }
+}

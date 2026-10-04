@@ -1,8 +1,15 @@
 ---
 interface Props {
   documents: { motion: string; clock: string };
+  script: string;
+  placeholder: string;
 }
-const { documents } = Astro.props;
+const { documents, script, placeholder } = Astro.props;
+// Escape raw-text end-tag characters; this is data, never an executable parent script.
+const runtimePayload = JSON.stringify({ script, placeholder }).replaceAll(
+  '<',
+  '\\u003c',
+);
 const entries = [
   {
     id: 'motion',
@@ -32,6 +39,11 @@ const entries = [
 ---
 
 <div class="experiment-study shell" data-experiment-study>
+  <script
+    type="application/json"
+    data-experiment-runtime
+    set:html={runtimePayload}
+  />
   <header class="experiment-heading">
     <div class="experiment-context">
       <span class="eyebrow">実験の机</span>
@@ -312,8 +324,67 @@ const entries = [
   if (root) {
     const cards = [...root.querySelectorAll<HTMLElement>('[data-experiment]')];
     const frames = new Map<HTMLElement, HTMLIFrameElement>();
+    const ready = new Set<HTMLElement>();
+    const timeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+    let pageActive = true;
     const status = (card: HTMLElement, text: string) => {
-      card.querySelector<HTMLElement>('[data-status]')!.textContent = text;
+      const element = card.querySelector<HTMLElement>('[data-status]')!;
+      if (element.textContent !== text) element.textContent = text;
+    };
+    const runtime = root.querySelector(
+      '[data-experiment-runtime]',
+    )?.textContent;
+    function documentFor(card: HTMLElement) {
+      const payload = JSON.parse(runtime || '{}');
+      const template =
+        card.querySelector<HTMLElement>('[data-trial]')!.dataset.document || '';
+      if (
+        payload.placeholder !== '__ISOLATED_EXPERIMENT_RUNTIME_20261004__' ||
+        typeof payload.script !== 'string' ||
+        !payload.script ||
+        /<\/script/i.test(payload.script) ||
+        payload.script.includes(payload.placeholder)
+      )
+        throw new Error('Invalid experiment runtime.');
+      const parts = template.split(payload.placeholder);
+      if (
+        parts.length !== 2 ||
+        !parts[0].endsWith('<script>') ||
+        !parts[1].startsWith('<' + '/script>')
+      )
+        throw new Error('Invalid experiment template.');
+      return parts[0] + payload.script + parts[1];
+    }
+    const isAvailable = (card: HTMLElement) => {
+      if (!pageActive || document.hidden || !ready.has(card)) return false;
+      const rect = card
+        .querySelector<HTMLElement>('[data-trial]')!
+        .getBoundingClientRect();
+      return (
+        rect.width > 0 &&
+        rect.height > 0 &&
+        rect.bottom > 0 &&
+        rect.top < innerHeight &&
+        rect.right > 0 &&
+        rect.left < innerWidth
+      );
+    };
+    const syncAvailability = (card: HTMLElement) => {
+      const available = isAvailable(card);
+      frames
+        .get(card)
+        ?.contentWindow?.postMessage(
+          { type: 'experiment:availability', available },
+          '*',
+        );
+      return available;
+    };
+    const syncAll = () => {
+      for (const card of frames.keys()) syncAvailability(card);
+    };
+    const clearTimeoutFor = (card: HTMLElement) => {
+      clearTimeout(timeouts.get(card));
+      timeouts.delete(card);
     };
     const pause = (card: HTMLElement, message: string) => {
       const frame = frames.get(card);
@@ -321,16 +392,30 @@ const entries = [
       frame.contentWindow?.postMessage({ type: 'experiment:pause' }, '*');
       status(card, message);
     };
-    function close(card: HTMLElement) {
+    function close(
+      card: HTMLElement,
+      message = '閉じました。もう一度開くと初めからです。',
+    ) {
+      clearTimeoutFor(card);
       frames.get(card)?.remove();
       frames.delete(card);
+      ready.delete(card);
       card.querySelector<HTMLElement>('[data-trial]')!.hidden = true;
       card.querySelector<HTMLElement>('[data-preview]')!.hidden = false;
       card.querySelector<HTMLElement>('[data-pause]')!.hidden = true;
       const button = card.querySelector<HTMLButtonElement>('[data-open]')!;
       button.textContent = '試してみる ↗';
       button.setAttribute('aria-expanded', 'false');
-      status(card, '閉じました。もう一度開くと初めからです。');
+      status(card, message);
+    }
+    function fail(card: HTMLElement, frame?: HTMLIFrameElement) {
+      if (frame && frames.get(card) !== frame) return;
+      close(
+        card,
+        '試用を開けませんでした。静止図を表示しています。もう一度試せます。',
+      );
+      card.querySelector<HTMLButtonElement>('[data-open]')!.textContent =
+        'もう一度試す ↗';
     }
     for (const card of cards) {
       const button = card.querySelector<HTMLButtonElement>('[data-open]')!;
@@ -342,6 +427,13 @@ const entries = [
         }
         for (const other of frames.keys()) close(other);
         const trial = card.querySelector<HTMLElement>('[data-trial]')!;
+        let source;
+        try {
+          source = documentFor(card);
+        } catch {
+          fail(card);
+          return;
+        }
         const frame = document.createElement('iframe');
         frame.title = `${card.dataset.experiment === 'motion' ? '動きと反応' : '移動と時間'}を試す・シドの試作`;
         frame.setAttribute('sandbox', 'allow-scripts');
@@ -350,22 +442,20 @@ const entries = [
           "camera 'none'; microphone 'none'; geolocation 'none'",
         );
         frame.referrerPolicy = 'no-referrer';
-        frame.srcdoc = trial.dataset.document || '';
+        frame.srcdoc = source;
         frames.set(card, frame);
+        timeouts.set(
+          card,
+          setTimeout(() => fail(card, frame), 6000),
+        );
+        frame.addEventListener('error', () => fail(card, frame));
         trial.append(frame);
-        trial.hidden = false;
-        card.querySelector<HTMLElement>('[data-preview]')!.hidden = true;
-        card.querySelector<HTMLElement>('[data-pause]')!.hidden = false;
-        button.textContent = '試用を閉じる ×';
+        // Keep the static drawing until the isolated runtime confirms initialization.
+        button.textContent = '準備をやめる ×';
         button.setAttribute('aria-expanded', 'true');
         status(card, '準備中です。');
         frame.addEventListener('load', () => {
-          if (
-            document.hidden ||
-            trial.getBoundingClientRect().bottom < 0 ||
-            trial.getBoundingClientRect().top >= innerHeight
-          )
-            pause(card, '試用の画面で操作すると動きます。');
+          if (frames.get(card) === frame) syncAvailability(card);
         });
       });
       card
@@ -376,27 +466,25 @@ const entries = [
     }
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries)
-          if (!entry.isIntersecting) {
-            const card = entry.target.closest<HTMLElement>('[data-experiment]');
-            if (card)
-              pause(
-                card,
-                '画面の外に出たため停止しました。戻って操作すると再開できます。',
-              );
-          }
+        for (const entry of entries) {
+          const card = entry.target.closest<HTMLElement>('[data-experiment]');
+          if (card && frames.has(card)) syncAvailability(card);
+        }
       },
       { threshold: 0 },
     );
     for (const card of cards)
       observer.observe(card.querySelector('[data-trial]')!);
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden)
-        for (const card of frames.keys())
-          pause(card, '画面を離れたため停止しました。');
-    });
+    document.addEventListener('visibilitychange', syncAll);
+    window.addEventListener('resize', syncAll);
     window.addEventListener('pagehide', () => {
-      for (const card of frames.keys()) pause(card, '停止しました。');
+      pageActive = false;
+      syncAll();
+      for (const card of [...frames.keys()]) if (!ready.has(card)) close(card);
+    });
+    window.addEventListener('pageshow', () => {
+      pageActive = true;
+      syncAll();
     });
     window.addEventListener('message', (event) => {
       const match = [...frames].find(
@@ -409,17 +497,42 @@ const entries = [
       )
         return;
       const [card, frame] = match;
-      if (event.data.type === 'experiment:ready')
+      if (event.data.type === 'experiment:error') {
+        fail(card, frame);
+        return;
+      }
+      if (event.data.type === 'experiment:ready') {
+        clearTimeoutFor(card);
+        ready.add(card);
+        card.querySelector<HTMLElement>('[data-trial]')!.hidden = false;
+        card.querySelector<HTMLElement>('[data-preview]')!.hidden = true;
+        card.querySelector<HTMLElement>('[data-pause]')!.hidden = false;
+        card.querySelector<HTMLButtonElement>('[data-open]')!.textContent =
+          '試用を閉じる ×';
         status(card, '準備できました。試用の画面で操作できます。');
-      if (event.data.type === 'experiment:running')
-        status(card, '試用中です。動きを止めるボタンで停止できます。');
+        syncAvailability(card);
+      }
+      if (event.data.type === 'experiment:availability-request')
+        syncAvailability(card);
+      if (event.data.type === 'experiment:running') {
+        const available = syncAvailability(card);
+        status(
+          card,
+          available
+            ? '試用中です。動きを止めるボタンで停止できます。'
+            : '停止中です。画面に戻って操作すると再開できます。',
+        );
+      }
       if (event.data.type === 'experiment:paused')
         status(card, '停止中です。試用の画面で操作すると再開できます。');
       if (
         event.data.type === 'experiment:resize' &&
         Number.isFinite(event.data.height)
-      )
-        frame.style.height = `${Math.min(1100, Math.max(360, event.data.height))}px`;
+      ) {
+        const height = `${Math.min(1100, Math.max(360, event.data.height))}px`;
+        if (frame.style.height !== height) frame.style.height = height;
+        syncAvailability(card);
+      }
     });
   }
 </script>

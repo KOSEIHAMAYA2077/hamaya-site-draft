@@ -1,0 +1,168 @@
+{
+  "browser": "153.0.8010.12",
+  "root": "/tmp/hamaya-quiet-use-20261004/after/hamaya-site-draft",
+  "checks": [
+    {
+      "name": "layout-isolation-lifecycle-1280",
+      "noAutoplay": true,
+      "reducedMotionStep": true,
+      "parentAndStorageBlocked": true,
+      "forgedMessageIgnored": true,
+      "offscreenStops": true,
+      "offscreenSyntheticActivationBlocked": true,
+      "noAutoResume": true,
+      "oneFrameOnly": true,
+      "overflow": false
+    },
+    {
+      "name": "layout-isolation-lifecycle-375",
+      "noAutoplay": true,
+      "reducedMotionStep": true,
+      "parentAndStorageBlocked": true,
+      "forgedMessageIgnored": true,
+      "offscreenStops": true,
+      "offscreenSyntheticActivationBlocked": true,
+      "noAutoResume": true,
+      "oneFrameOnly": true,
+      "overflow": false
+    },
+    {
+      "name": "layout-isolation-lifecycle-320",
+      "noAutoplay": true,
+      "reducedMotionStep": true,
+      "parentAndStorageBlocked": true,
+      "forgedMessageIgnored": true,
+      "offscreenStops": true,
+      "offscreenSyntheticActivationBlocked": true,
+      "noAutoResume": true,
+      "oneFrameOnly": true,
+      "overflow": false
+    },
+    {
+      "name": "shift-release-clears-input"
+    },
+    {
+      "name": "motion-comparison",
+      "results": {
+        "generated": {
+          "mode": "generated",
+          "frames": 330,
+          "seconds": 2.75,
+          "x": 6.171041666666652,
+          "velocity": 0,
+          "distance": 2.9489583333333167,
+          "peakDisplayedAngle": 0.24411884600938558,
+          "peakDisplayedCargo": 0.33468816856671035
+        },
+        "rigid": {
+          "mode": "rigid",
+          "frames": 330,
+          "seconds": 2.75,
+          "x": 6.171041666666652,
+          "velocity": 0,
+          "distance": 2.9489583333333167,
+          "peakDisplayedAngle": 0,
+          "peakDisplayedCargo": 0
+        }
+      }
+    },
+    {
+      "name": "clock-comparison",
+      "results": {
+        "movement": {
+          "mode": "movement",
+          "preset": "long",
+          "frames": 930,
+          "totalFrames": 930,
+          "seconds": 7.75,
+          "pauseSeconds": 3,
+          "player": {
+            "x": 8.9799999999999,
+            "y": 0.9999999999999973
+          },
+          "distance": 10.479999999999865,
+          "worldTime": 4.366666666666633,
+          "contactCount": 0,
+          "hazards": [
+            {
+              "id": "vertical",
+              "x": 7,
+              "y": 5.222222222222111,
+              "radius": 0.35
+            },
+            {
+              "id": "horizontal",
+              "x": 10.26388888888884,
+              "y": 3.8,
+              "radius": 0.38
+            }
+          ]
+        },
+        "realtime": {
+          "mode": "realtime",
+          "preset": "long",
+          "frames": 930,
+          "totalFrames": 930,
+          "seconds": 7.75,
+          "pauseSeconds": 3,
+          "player": {
+            "x": 8.9799999999999,
+            "y": 0.9999999999999973
+          },
+          "distance": 10.479999999999865,
+          "worldTime": 7.750000000000175,
+          "contactCount": 1,
+          "hazards": [
+            {
+              "id": "vertical",
+              "x": 7,
+              "y": 4.500000000000581,
+              "radius": 0.35
+            },
+            {
+              "id": "horizontal",
+              "x": 9.802083333333078,
+              "y": 3.8,
+              "radius": 0.38
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "parent-pause-input-release"
+    },
+    {
+      "name": "bounded-session-12-seconds"
+    },
+    {
+      "name": "history-and-reload-no-autoplay",
+      "persisted": false,
+      "restoredFrames": 0
+    },
+    {
+      "name": "cpu-4x-mobile-operation",
+      "simulatedCPUThrottle": 4,
+      "singleStep": true,
+      "explicitStart": true,
+      "parentPause": true,
+      "noAutoplay": true
+    },
+    {
+      "name": "csp-rejected-runtime-timeout-fallback",
+      "preservedStaticDrawing": true,
+      "retryAfter6500ms": true,
+      "expectedBlockedScriptConsoleErrors": 1
+    },
+    {
+      "name": "no-javascript-readable"
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "adjustments": [
+    "可視性通知やblurが停止理由だけを更新する場合があるため、停止中はmodel state / frameCount / running / activeDirectionsを比較する。モデル進行と入力残りの検査は維持。",
+    "strict availabilityでは画面内で操作する必要があるため、keyboard focus前にcanvasを明示的にscrollIntoViewする。",
+    "履歴検査は実際の同一localhostページ間でBack/Forwardを実行し、pageshow.persistedを記録する。BFCache使用は仮定しない。"
+  ]
+}

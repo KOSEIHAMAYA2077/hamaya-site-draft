@@ -1,0 +1,1138 @@
+{
+  "synthetic": true,
+  "neverPublish": true,
+  "source": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-quiet-use",
+  "sourceCommit": "06701a71141958751b7ffc4903445a054ed23b96",
+  "target": "/private/tmp/hamaya-quiet-fixtures-20261004/before",
+  "nodeModules": "/Users/hamayakousei/Documents/Codex/2026-10-04/task-3/.dot/site-draft/node_modules",
+  "basePath": "/hamaya-site-draft",
+  "notesCount": 100,
+  "worksCount": 6,
+  "imagesCount": 20,
+  "imagesTotalBytes": 11150686,
+  "images": [
+    {
+      "path": "images/fixture/fixture-01-320x180.png",
+      "width": 320,
+      "height": 180,
+      "bytes": 49225,
+      "sha256": "68f4d1fd09b7cd85f46668ffecfb3d233ed5d6609ed45930efb4cd4f058abc61"
+    },
+    {
+      "path": "images/fixture/fixture-02-480x320.png",
+      "width": 480,
+      "height": 320,
+      "bytes": 131203,
+      "sha256": "0a45e8c6d08d0fca2e757cf5a8724a59e39884d061321f7e02203ce56caed00c"
+    },
+    {
+      "path": "images/fixture/fixture-03-640x360.png",
+      "width": 640,
+      "height": 360,
+      "bytes": 196687,
+      "sha256": "8f84012e8d826bef04f077c26ba3d93ed97bb9b8b92e7155d8b1966bc7a50445"
+    },
+    {
+      "path": "images/fixture/fixture-04-768x512.png",
+      "width": 768,
+      "height": 512,
+      "bytes": 335512,
+      "sha256": "5d0e1ec8921ada1a2d12c2150f94ec52ba8eaf41884c0da5f6ac2b9afca44ad3"
+    },
+    {
+      "path": "images/fixture/fixture-05-900x600.png",
+      "width": 900,
+      "height": 600,
+      "bytes": 460946,
+      "sha256": "db8ea78cdb768c4b87bf7dcf9820d9d64b960d1b12c5e43d4608dc9de0320a3f"
+    },
+    {
+      "path": "images/fixture/fixture-06-1024x768.png",
+      "width": 1024,
+      "height": 768,
+      "bytes": 670733,
+      "sha256": "212bad30c31b4e7e86ef79545a80a06e34f8ace834cf58364896767884a5e403"
+    },
+    {
+      "path": "images/fixture/fixture-07-1200x675.png",
+      "width": 1200,
+      "height": 675,
+      "bytes": 691691,
+      "sha256": "3d7d6363d96414843e1503b91ba4c784116ad10c2b7d41db6bb20e85ffe623d0"
+    },
+    {
+      "path": "images/fixture/fixture-08-1280x720.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 785836,
+      "sha256": "801adb5a969fb5ef7c35ed1ed30124871862ac9f363c2417b4bbc5b6dba8786f"
+    },
+    {
+      "path": "images/fixture/fixture-09-1440x900.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 1106339,
+      "sha256": "693b3e72a2fb7daa63818bff8b29da1e88b1423a1bc8f03f2eead17ae3f2cfa3"
+    },
+    {
+      "path": "images/fixture/fixture-10-1600x900.png",
+      "width": 1600,
+      "height": 900,
+      "bytes": 1229370,
+      "sha256": "b240c48a23ba60b41cc27191c9faf8994524825c63804b620b5042af7f0e21d5"
+    },
+    {
+      "path": "images/fixture/fixture-11-360x640.png",
+      "width": 360,
+      "height": 640,
+      "bytes": 197086,
+      "sha256": "2cecfdcf259628af1db407b769a38319ffedec1b232d821248684723085c0d12"
+    },
+    {
+      "path": "images/fixture/fixture-12-480x800.png",
+      "width": 480,
+      "height": 800,
+      "bytes": 327792,
+      "sha256": "91104797efa5631d7eb2be47a34485e5fe3c301ddb4ee5aff197e24558cbfd09"
+    },
+    {
+      "path": "images/fixture/fixture-13-600x900.png",
+      "width": 600,
+      "height": 900,
+      "bytes": 460311,
+      "sha256": "1647c7d2c4e4fc9ab6f685a60da5c64e90c2754f2430b102d2a86a63f3d80f0f"
+    },
+    {
+      "path": "images/fixture/fixture-14-720x1280.png",
+      "width": 720,
+      "height": 1280,
+      "bytes": 787022,
+      "sha256": "12bf782670bf7d63765b1686bd5f9f7f5f53e57daad4da283574b01eeef1f7d1"
+    },
+    {
+      "path": "images/fixture/fixture-15-800x1200.png",
+      "width": 800,
+      "height": 1200,
+      "bytes": 819722,
+      "sha256": "f1d92b6664e5da62c1833e3b765aa1d09a1955990df0e6119e1c54952b0dc152"
+    },
+    {
+      "path": "images/fixture/fixture-16-512x512.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 223582,
+      "sha256": "61b718a0af249c40463a2a0574f97669b2c0d85e174966011bf0371864f935c5"
+    },
+    {
+      "path": "images/fixture/fixture-17-768x768.png",
+      "width": 768,
+      "height": 768,
+      "bytes": 503183,
+      "sha256": "0e219472fc50d8133a59ac13a934611fb62efa43fffe3bb418dd687989182da6"
+    },
+    {
+      "path": "images/fixture/fixture-18-1024x1024.png",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 894283,
+      "sha256": "db93c3a2cdf48c9bf34f80a8a1906f324e5db008448652cc4d668ec22f994048"
+    },
+    {
+      "path": "images/fixture/fixture-19-1500x500.png",
+      "width": 1500,
+      "height": 500,
+      "bytes": 640425,
+      "sha256": "2777a9c20bd564f79ca4cd84313b2fad4424db1f4594b17b6fe9cc8ab5467bf3"
+    },
+    {
+      "path": "images/fixture/fixture-20-500x1500.png",
+      "width": 500,
+      "height": 1500,
+      "bytes": 639738,
+      "sha256": "196020d9e6a7a5f29381a357a5bef4a9a532dac95baba1f8e4e0a3269d874523"
+    }
+  ],
+  "notes": [
+    {
+      "id": "fixture-note-001",
+      "path": "src/content/notes/fixture-note-001.md",
+      "characters": 23832,
+      "bodyCharacters": 23585,
+      "bytes": 63396,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-1", "往復確認"]
+    },
+    {
+      "id": "fixture-note-002",
+      "path": "src/content/notes/fixture-note-002.md",
+      "characters": 681,
+      "bodyCharacters": 427,
+      "bytes": 1491,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-2", "往復確認"]
+    },
+    {
+      "id": "fixture-note-003",
+      "path": "src/content/notes/fixture-note-003.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-3"]
+    },
+    {
+      "id": "fixture-note-004",
+      "path": "src/content/notes/fixture-note-004.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-4"]
+    },
+    {
+      "id": "fixture-note-005",
+      "path": "src/content/notes/fixture-note-005.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-5"]
+    },
+    {
+      "id": "fixture-note-006",
+      "path": "src/content/notes/fixture-note-006.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-1"]
+    },
+    {
+      "id": "fixture-note-007",
+      "path": "src/content/notes/fixture-note-007.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-2"]
+    },
+    {
+      "id": "fixture-note-008",
+      "path": "src/content/notes/fixture-note-008.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-3"]
+    },
+    {
+      "id": "fixture-note-009",
+      "path": "src/content/notes/fixture-note-009.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-4"]
+    },
+    {
+      "id": "fixture-note-010",
+      "path": "src/content/notes/fixture-note-010.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-5"]
+    },
+    {
+      "id": "fixture-note-011",
+      "path": "src/content/notes/fixture-note-011.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-1"]
+    },
+    {
+      "id": "fixture-note-012",
+      "path": "src/content/notes/fixture-note-012.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-2"]
+    },
+    {
+      "id": "fixture-note-013",
+      "path": "src/content/notes/fixture-note-013.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-3"]
+    },
+    {
+      "id": "fixture-note-014",
+      "path": "src/content/notes/fixture-note-014.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-4"]
+    },
+    {
+      "id": "fixture-note-015",
+      "path": "src/content/notes/fixture-note-015.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-5"]
+    },
+    {
+      "id": "fixture-note-016",
+      "path": "src/content/notes/fixture-note-016.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-1"]
+    },
+    {
+      "id": "fixture-note-017",
+      "path": "src/content/notes/fixture-note-017.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-2"]
+    },
+    {
+      "id": "fixture-note-018",
+      "path": "src/content/notes/fixture-note-018.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-3"]
+    },
+    {
+      "id": "fixture-note-019",
+      "path": "src/content/notes/fixture-note-019.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-4"]
+    },
+    {
+      "id": "fixture-note-020",
+      "path": "src/content/notes/fixture-note-020.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-5"]
+    },
+    {
+      "id": "fixture-note-021",
+      "path": "src/content/notes/fixture-note-021.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-1"]
+    },
+    {
+      "id": "fixture-note-022",
+      "path": "src/content/notes/fixture-note-022.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-2"]
+    },
+    {
+      "id": "fixture-note-023",
+      "path": "src/content/notes/fixture-note-023.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-3"]
+    },
+    {
+      "id": "fixture-note-024",
+      "path": "src/content/notes/fixture-note-024.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-4"]
+    },
+    {
+      "id": "fixture-note-025",
+      "path": "src/content/notes/fixture-note-025.md",
+      "characters": 639,
+      "bodyCharacters": 427,
+      "bytes": 1365,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-5", "往復確認"]
+    },
+    {
+      "id": "fixture-note-026",
+      "path": "src/content/notes/fixture-note-026.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-1"]
+    },
+    {
+      "id": "fixture-note-027",
+      "path": "src/content/notes/fixture-note-027.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-2"]
+    },
+    {
+      "id": "fixture-note-028",
+      "path": "src/content/notes/fixture-note-028.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-3"]
+    },
+    {
+      "id": "fixture-note-029",
+      "path": "src/content/notes/fixture-note-029.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-4"]
+    },
+    {
+      "id": "fixture-note-030",
+      "path": "src/content/notes/fixture-note-030.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-5"]
+    },
+    {
+      "id": "fixture-note-031",
+      "path": "src/content/notes/fixture-note-031.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-1"]
+    },
+    {
+      "id": "fixture-note-032",
+      "path": "src/content/notes/fixture-note-032.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-2"]
+    },
+    {
+      "id": "fixture-note-033",
+      "path": "src/content/notes/fixture-note-033.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-3"]
+    },
+    {
+      "id": "fixture-note-034",
+      "path": "src/content/notes/fixture-note-034.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-4"]
+    },
+    {
+      "id": "fixture-note-035",
+      "path": "src/content/notes/fixture-note-035.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-5"]
+    },
+    {
+      "id": "fixture-note-036",
+      "path": "src/content/notes/fixture-note-036.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-1"]
+    },
+    {
+      "id": "fixture-note-037",
+      "path": "src/content/notes/fixture-note-037.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-2"]
+    },
+    {
+      "id": "fixture-note-038",
+      "path": "src/content/notes/fixture-note-038.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-3"]
+    },
+    {
+      "id": "fixture-note-039",
+      "path": "src/content/notes/fixture-note-039.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-4"]
+    },
+    {
+      "id": "fixture-note-040",
+      "path": "src/content/notes/fixture-note-040.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-5"]
+    },
+    {
+      "id": "fixture-note-041",
+      "path": "src/content/notes/fixture-note-041.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-1"]
+    },
+    {
+      "id": "fixture-note-042",
+      "path": "src/content/notes/fixture-note-042.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-2"]
+    },
+    {
+      "id": "fixture-note-043",
+      "path": "src/content/notes/fixture-note-043.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-3"]
+    },
+    {
+      "id": "fixture-note-044",
+      "path": "src/content/notes/fixture-note-044.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-4"]
+    },
+    {
+      "id": "fixture-note-045",
+      "path": "src/content/notes/fixture-note-045.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-5"]
+    },
+    {
+      "id": "fixture-note-046",
+      "path": "src/content/notes/fixture-note-046.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-1"]
+    },
+    {
+      "id": "fixture-note-047",
+      "path": "src/content/notes/fixture-note-047.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-2"]
+    },
+    {
+      "id": "fixture-note-048",
+      "path": "src/content/notes/fixture-note-048.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-3"]
+    },
+    {
+      "id": "fixture-note-049",
+      "path": "src/content/notes/fixture-note-049.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-4"]
+    },
+    {
+      "id": "fixture-note-050",
+      "path": "src/content/notes/fixture-note-050.md",
+      "characters": 639,
+      "bodyCharacters": 427,
+      "bytes": 1365,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-5", "往復確認"]
+    },
+    {
+      "id": "fixture-note-051",
+      "path": "src/content/notes/fixture-note-051.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-1"]
+    },
+    {
+      "id": "fixture-note-052",
+      "path": "src/content/notes/fixture-note-052.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-2"]
+    },
+    {
+      "id": "fixture-note-053",
+      "path": "src/content/notes/fixture-note-053.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-3"]
+    },
+    {
+      "id": "fixture-note-054",
+      "path": "src/content/notes/fixture-note-054.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-4"]
+    },
+    {
+      "id": "fixture-note-055",
+      "path": "src/content/notes/fixture-note-055.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-5"]
+    },
+    {
+      "id": "fixture-note-056",
+      "path": "src/content/notes/fixture-note-056.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-1"]
+    },
+    {
+      "id": "fixture-note-057",
+      "path": "src/content/notes/fixture-note-057.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-2"]
+    },
+    {
+      "id": "fixture-note-058",
+      "path": "src/content/notes/fixture-note-058.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-3"]
+    },
+    {
+      "id": "fixture-note-059",
+      "path": "src/content/notes/fixture-note-059.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-4"]
+    },
+    {
+      "id": "fixture-note-060",
+      "path": "src/content/notes/fixture-note-060.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-5"]
+    },
+    {
+      "id": "fixture-note-061",
+      "path": "src/content/notes/fixture-note-061.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-1"]
+    },
+    {
+      "id": "fixture-note-062",
+      "path": "src/content/notes/fixture-note-062.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-2"]
+    },
+    {
+      "id": "fixture-note-063",
+      "path": "src/content/notes/fixture-note-063.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-3"]
+    },
+    {
+      "id": "fixture-note-064",
+      "path": "src/content/notes/fixture-note-064.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-4"]
+    },
+    {
+      "id": "fixture-note-065",
+      "path": "src/content/notes/fixture-note-065.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-5"]
+    },
+    {
+      "id": "fixture-note-066",
+      "path": "src/content/notes/fixture-note-066.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-1"]
+    },
+    {
+      "id": "fixture-note-067",
+      "path": "src/content/notes/fixture-note-067.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-2"]
+    },
+    {
+      "id": "fixture-note-068",
+      "path": "src/content/notes/fixture-note-068.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-3"]
+    },
+    {
+      "id": "fixture-note-069",
+      "path": "src/content/notes/fixture-note-069.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-4"]
+    },
+    {
+      "id": "fixture-note-070",
+      "path": "src/content/notes/fixture-note-070.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-5"]
+    },
+    {
+      "id": "fixture-note-071",
+      "path": "src/content/notes/fixture-note-071.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-1"]
+    },
+    {
+      "id": "fixture-note-072",
+      "path": "src/content/notes/fixture-note-072.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-2"]
+    },
+    {
+      "id": "fixture-note-073",
+      "path": "src/content/notes/fixture-note-073.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-3"]
+    },
+    {
+      "id": "fixture-note-074",
+      "path": "src/content/notes/fixture-note-074.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-4"]
+    },
+    {
+      "id": "fixture-note-075",
+      "path": "src/content/notes/fixture-note-075.md",
+      "characters": 639,
+      "bodyCharacters": 427,
+      "bytes": 1365,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-5", "往復確認"]
+    },
+    {
+      "id": "fixture-note-076",
+      "path": "src/content/notes/fixture-note-076.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-1"]
+    },
+    {
+      "id": "fixture-note-077",
+      "path": "src/content/notes/fixture-note-077.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-2"]
+    },
+    {
+      "id": "fixture-note-078",
+      "path": "src/content/notes/fixture-note-078.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-3"]
+    },
+    {
+      "id": "fixture-note-079",
+      "path": "src/content/notes/fixture-note-079.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-4"]
+    },
+    {
+      "id": "fixture-note-080",
+      "path": "src/content/notes/fixture-note-080.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-5"]
+    },
+    {
+      "id": "fixture-note-081",
+      "path": "src/content/notes/fixture-note-081.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-1"]
+    },
+    {
+      "id": "fixture-note-082",
+      "path": "src/content/notes/fixture-note-082.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-2"]
+    },
+    {
+      "id": "fixture-note-083",
+      "path": "src/content/notes/fixture-note-083.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-3"]
+    },
+    {
+      "id": "fixture-note-084",
+      "path": "src/content/notes/fixture-note-084.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-4"]
+    },
+    {
+      "id": "fixture-note-085",
+      "path": "src/content/notes/fixture-note-085.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-5"]
+    },
+    {
+      "id": "fixture-note-086",
+      "path": "src/content/notes/fixture-note-086.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-1"]
+    },
+    {
+      "id": "fixture-note-087",
+      "path": "src/content/notes/fixture-note-087.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-2"]
+    },
+    {
+      "id": "fixture-note-088",
+      "path": "src/content/notes/fixture-note-088.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-3"]
+    },
+    {
+      "id": "fixture-note-089",
+      "path": "src/content/notes/fixture-note-089.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-4"]
+    },
+    {
+      "id": "fixture-note-090",
+      "path": "src/content/notes/fixture-note-090.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-5"]
+    },
+    {
+      "id": "fixture-note-091",
+      "path": "src/content/notes/fixture-note-091.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-1"]
+    },
+    {
+      "id": "fixture-note-092",
+      "path": "src/content/notes/fixture-note-092.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-2"]
+    },
+    {
+      "id": "fixture-note-093",
+      "path": "src/content/notes/fixture-note-093.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-3"]
+    },
+    {
+      "id": "fixture-note-094",
+      "path": "src/content/notes/fixture-note-094.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-4"]
+    },
+    {
+      "id": "fixture-note-095",
+      "path": "src/content/notes/fixture-note-095.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-5"]
+    },
+    {
+      "id": "fixture-note-096",
+      "path": "src/content/notes/fixture-note-096.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-1"]
+    },
+    {
+      "id": "fixture-note-097",
+      "path": "src/content/notes/fixture-note-097.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-赤", "集合-2"]
+    },
+    {
+      "id": "fixture-note-098",
+      "path": "src/content/notes/fixture-note-098.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-青", "集合-3"]
+    },
+    {
+      "id": "fixture-note-099",
+      "path": "src/content/notes/fixture-note-099.md",
+      "characters": 631,
+      "bodyCharacters": 427,
+      "bytes": 1349,
+      "category": "学び",
+      "tags": ["検証用", "検索タグ-緑", "集合-4"]
+    },
+    {
+      "id": "fixture-note-100",
+      "path": "src/content/notes/fixture-note-100.md",
+      "characters": 639,
+      "bodyCharacters": 427,
+      "bytes": 1365,
+      "category": "雑記",
+      "tags": ["検証用", "検索タグ-白", "集合-5", "往復確認"]
+    }
+  ],
+  "works": [
+    {
+      "id": "import-typeandsummon",
+      "path": "src/content/works/import-typeandsummon.md",
+      "descriptionCharacters": 2482,
+      "bytes": 7897,
+      "cover": "images/fixture/fixture-11-360x640.png"
+    },
+    {
+      "id": "import-game-ai-search-puzzles",
+      "path": "src/content/works/import-game-ai-search-puzzles.md",
+      "descriptionCharacters": 60,
+      "bytes": 1066,
+      "cover": "images/fixture/fixture-01-320x180.png"
+    },
+    {
+      "id": "import-de10-nano-riscv-invader",
+      "path": "src/content/works/import-de10-nano-riscv-invader.md",
+      "descriptionCharacters": 60,
+      "bytes": 1067,
+      "cover": "images/fixture/fixture-02-480x320.png"
+    },
+    {
+      "id": "import-de10-nano-voice-changer",
+      "path": "src/content/works/import-de10-nano-voice-changer.md",
+      "descriptionCharacters": 60,
+      "bytes": 1067,
+      "cover": "images/fixture/fixture-03-640x360.png"
+    },
+    {
+      "id": "import-pong-study-raylib",
+      "path": "src/content/works/import-pong-study-raylib.md",
+      "descriptionCharacters": 60,
+      "bytes": 1061,
+      "cover": "images/fixture/fixture-04-768x512.png"
+    },
+    {
+      "id": "import-one-board-incremental",
+      "path": "src/content/works/import-one-board-incremental.md",
+      "descriptionCharacters": 60,
+      "bytes": 1065,
+      "cover": "images/fixture/fixture-05-900x600.png"
+    }
+  ],
+  "searchExamples": [
+    {
+      "query": "",
+      "expected": 100
+    },
+    {
+      "query": "ユニーク001",
+      "expected": 1
+    },
+    {
+      "query": "検索タグ-赤",
+      "expected": 25
+    },
+    {
+      "query": "往復確認",
+      "expected": 6
+    },
+    {
+      "query": "集合-3",
+      "expected": 20
+    },
+    {
+      "query": "存在しない検索条件ZZZ",
+      "expected": 0
+    }
+  ],
+  "categoryExamples": {
+    "学び": 50,
+    "雑記": 50
+  },
+  "warnings": [
+    "All generated texts/images are synthetic, not owner content.",
+    "Fixture draft:false is local QA authorization only.",
+    "PNG patterns are deterministic stress assets, not representative photos.",
+    "Existing GitHub comparison links must not be used as provenance for fixture text.",
+    "public-assets.json uses paths; image SHA256 values are recorded here; favicon is unchanged."
+  ]
+}

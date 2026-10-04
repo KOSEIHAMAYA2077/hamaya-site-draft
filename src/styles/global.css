@@ -775,7 +775,6 @@
     color: var(--muted);
   }
   .prose img {
-    width: auto;
     height: auto;
     border-radius: 6px;
   }

@@ -1,0 +1,136 @@
+{
+  "label": "before",
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "bytes": "HTTP response body bytes, no compression, fresh context",
+  "pages": {
+    "compare/focus/": {
+      "resources": [
+        {
+          "url": "/hamaya-site-draft/compare/focus/",
+          "type": "document",
+          "bytes": 25171
+        },
+        {
+          "url": "/hamaya-site-draft/_astro/Layout.NflEH_FA.css",
+          "type": "stylesheet",
+          "bytes": 21073
+        },
+        {
+          "url": "/hamaya-site-draft/_astro/_view_.6nF8kbNR.css",
+          "type": "stylesheet",
+          "bytes": 18806
+        }
+      ],
+      "totalBodyBytes": 65050,
+      "errors": [],
+      "inline": {
+        "scripts": [203, 2489, 288],
+        "documents": [],
+        "images": []
+      },
+      "idle": {
+        "ms": 1000,
+        "raf": 0,
+        "canvas": 0,
+        "mutations": 0,
+        "modelFrames": 0,
+        "hidden": false
+      }
+    },
+    "compare/experiments/": {
+      "resources": [
+        {
+          "url": "/hamaya-site-draft/compare/experiments/",
+          "type": "document",
+          "bytes": 57841
+        },
+        {
+          "url": "/hamaya-site-draft/_astro/experiments.CFgjZP1d.css",
+          "type": "stylesheet",
+          "bytes": 7493
+        },
+        {
+          "url": "/hamaya-site-draft/_astro/Layout.NflEH_FA.css",
+          "type": "stylesheet",
+          "bytes": 21073
+        }
+      ],
+      "totalBodyBytes": 86407,
+      "errors": ["Cannot set properties of null (setting 'fillStyle')"],
+      "inline": {
+        "scripts": [203, 2873, 288],
+        "documents": [19852, 20211],
+        "images": []
+      },
+      "idle": {
+        "ms": 1000,
+        "raf": 0,
+        "canvas": 0,
+        "mutations": 0,
+        "modelFrames": 0,
+        "hidden": false
+      },
+      "openStopped": {
+        "ms": 1000,
+        "raf": 0,
+        "canvas": 0,
+        "mutations": 0,
+        "modelFrames": 0,
+        "running": "false",
+        "hidden": false
+      },
+      "replay": {
+        "ms": 1000,
+        "raf": 60,
+        "canvas": 180,
+        "mutations": 361,
+        "modelFrames": 60,
+        "running": "true",
+        "hidden": false
+      },
+      "paused": {
+        "ms": 1000,
+        "raf": 0,
+        "canvas": 0,
+        "mutations": 0,
+        "modelFrames": 0,
+        "running": "false",
+        "hidden": false
+      },
+      "offscreenBeforeKey": {
+        "ms": 300,
+        "raf": 0,
+        "canvas": 0,
+        "mutations": 0,
+        "modelFrames": 0,
+        "running": "false",
+        "hidden": false
+      },
+      "frameBounds": {
+        "x": 81,
+        "y": 1073.78125,
+        "width": 1118,
+        "height": 861
+      },
+      "offscreenAfterKey": {
+        "ms": 1000,
+        "raf": 0,
+        "canvas": 0,
+        "mutations": 0,
+        "modelFrames": 0,
+        "running": "true",
+        "hidden": false
+      },
+      "closedFrames": 0,
+      "failedCanvas": {
+        "staticVisible": false,
+        "status": "準備中です。",
+        "frames": 1
+      }
+    }
+  }
+}

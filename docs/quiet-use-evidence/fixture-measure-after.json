@@ -1,0 +1,354 @@
+{
+  "label": "after",
+  "syntheticFixture": true,
+  "browser": "153.0.8010.12",
+  "checks": [
+    {
+      "name": "100 synthetic notes visible",
+      "pass": true
+    },
+    {
+      "name": "committed Japanese search",
+      "pass": true
+    },
+    {
+      "name": "article carries search conditions",
+      "pass": true,
+      "details": {
+        "href": "/hamaya-site-draft/notes/fixture-note-001/?q=%E3%83%A6%E3%83%8B%E3%83%BC%E3%82%AF001",
+        "url": "http://127.0.0.1:4353/hamaya-site-draft/notes/fixture-note-001/?q=%E3%83%A6%E3%83%8B%E3%83%BC%E3%82%AF001"
+      }
+    },
+    {
+      "name": "Back preserves search",
+      "pass": true
+    },
+    {
+      "name": "reload preserves search",
+      "pass": true
+    },
+    {
+      "name": "empty search state",
+      "pass": true
+    },
+    {
+      "name": "Focus links synthetic note",
+      "pass": true
+    },
+    {
+      "name": "Focus selection survives Back",
+      "pass": true
+    },
+    {
+      "name": "Focus selection survives reload",
+      "pass": true
+    },
+    {
+      "name": "all 20 images readable after scroll",
+      "pass": true
+    },
+    {
+      "name": "desktop long article has no page overflow",
+      "pass": true
+    },
+    {
+      "name": "320px / 4x simulation / no overflow: notes/",
+      "pass": true
+    },
+    {
+      "name": "main readable: notes/",
+      "pass": true
+    },
+    {
+      "name": "320px / 4x simulation / no overflow: notes/fixture-note-001/",
+      "pass": true
+    },
+    {
+      "name": "main readable: notes/fixture-note-001/",
+      "pass": true
+    },
+    {
+      "name": "320px / 4x simulation / no overflow: compare/focus/",
+      "pass": true
+    },
+    {
+      "name": "main readable: compare/focus/",
+      "pass": true
+    },
+    {
+      "name": "mobile keyboard opens Focus picker",
+      "pass": true
+    },
+    {
+      "name": "mobile keyboard closes Focus picker",
+      "pass": true
+    },
+    {
+      "name": "JS disabled readable: notes/",
+      "pass": true
+    },
+    {
+      "name": "JS disabled readable: notes/fixture-note-001/",
+      "pass": true
+    },
+    {
+      "name": "JS disabled readable: compare/focus/",
+      "pass": true
+    },
+    {
+      "name": "JS disabled readable: compare/experiments/",
+      "pass": true
+    },
+    {
+      "name": "JS disabled experiments retain two diagrams",
+      "pass": true
+    }
+  ],
+  "sameNormalizedQueryMutations": 0,
+  "composition": {
+    "before": 100,
+    "during": 100
+  },
+  "errors": [],
+  "article": {
+    "heightBeforeImages": 33326,
+    "heightAfterInitialImages": 33326,
+    "initialResources": [
+      {
+        "url": "/hamaya-site-draft/notes/fixture-note-001/",
+        "type": "document",
+        "bytes": 76891
+      },
+      {
+        "url": "/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+        "type": "stylesheet",
+        "bytes": 21062
+      },
+      {
+        "url": "/hamaya-site-draft/_astro/_id_.astro_astro_type_script_index_0_lang.BI03n04k.js",
+        "type": "script",
+        "bytes": 261
+      },
+      {
+        "url": "/hamaya-site-draft/_astro/note-query.2YBnpPax.js",
+        "type": "script",
+        "bytes": 808
+      },
+      {
+        "url": "/hamaya-site-draft/images/fixture/fixture-01-320x180.png",
+        "type": "image",
+        "bytes": 49225
+      },
+      {
+        "url": "/hamaya-site-draft/images/fixture/fixture-02-480x320.png",
+        "type": "image",
+        "bytes": 131203
+      }
+    ],
+    "initialBytes": 279450,
+    "initialImageCount": 2,
+    "images": [
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-01-320x180.png",
+        "attrWidth": "320",
+        "attrHeight": "180",
+        "loading": "lazy",
+        "naturalWidth": 320,
+        "naturalHeight": 180,
+        "renderedWidth": 320,
+        "renderedHeight": 180
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-02-480x320.png",
+        "attrWidth": "480",
+        "attrHeight": "320",
+        "loading": "lazy",
+        "naturalWidth": 480,
+        "naturalHeight": 320,
+        "renderedWidth": 480,
+        "renderedHeight": 320
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-03-640x360.png",
+        "attrWidth": "640",
+        "attrHeight": "360",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 640,
+        "renderedHeight": 360
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-04-768x512.png",
+        "attrWidth": "768",
+        "attrHeight": "512",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 768,
+        "renderedHeight": 512
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-05-900x600.png",
+        "attrWidth": "900",
+        "attrHeight": "600",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 560
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-06-1024x768.png",
+        "attrWidth": "1024",
+        "attrHeight": "768",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 630
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-07-1200x675.png",
+        "attrWidth": "1200",
+        "attrHeight": "675",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 473
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-08-1280x720.png",
+        "attrWidth": "1280",
+        "attrHeight": "720",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 473
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-09-1440x900.png",
+        "attrWidth": "1440",
+        "attrHeight": "900",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 525
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-10-1600x900.png",
+        "attrWidth": "1600",
+        "attrHeight": "900",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 473
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-11-360x640.png",
+        "attrWidth": "360",
+        "attrHeight": "640",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 360,
+        "renderedHeight": 640
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-12-480x800.png",
+        "attrWidth": "480",
+        "attrHeight": "800",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 480,
+        "renderedHeight": 800
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-13-600x900.png",
+        "attrWidth": "600",
+        "attrHeight": "900",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 600,
+        "renderedHeight": 900
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-14-720x1280.png",
+        "attrWidth": "720",
+        "attrHeight": "1280",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 720,
+        "renderedHeight": 1280
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-15-800x1200.png",
+        "attrWidth": "800",
+        "attrHeight": "1200",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 800,
+        "renderedHeight": 1200
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-16-512x512.png",
+        "attrWidth": "512",
+        "attrHeight": "512",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 512,
+        "renderedHeight": 512
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-17-768x768.png",
+        "attrWidth": "768",
+        "attrHeight": "768",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 768,
+        "renderedHeight": 768
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-18-1024x1024.png",
+        "attrWidth": "1024",
+        "attrHeight": "1024",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 840
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-19-1500x500.png",
+        "attrWidth": "1500",
+        "attrHeight": "500",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 840,
+        "renderedHeight": 280
+      },
+      {
+        "src": "/hamaya-site-draft/images/fixture/fixture-20-500x1500.png",
+        "attrWidth": "500",
+        "attrHeight": "1500",
+        "loading": "lazy",
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "renderedWidth": 500,
+        "renderedHeight": 1500
+      }
+    ]
+  },
+  "cpuSimulation": "Chromium DevTools 4x slowdown, not a measured physical device"
+}

@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import FocusStudy from '../../components/FocusStudy.astro';
+import relationships from '../../data/work-records.json';
+import { focusStudy } from '../../lib/focus-study.mjs';
+
+const works = await getCollection('works');
+const notes = await getCollection('notes');
+const entries = focusStudy(works, relationships, notes);
+---
+
+<Layout
+  title="ひとつ、開く・非公開比較"
+  description="ひとつの制作を選び、その説明や関連する記録を読む非公開の比較案。"
+  section={null}
+>
+  <FocusStudy entries={entries} />
+</Layout>

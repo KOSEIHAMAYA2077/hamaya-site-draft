@@ -4,6 +4,10 @@ import Layout from '../../layouts/Layout.astro';
 import Toc from '../../components/Toc.astro';
 import { publishedWorks, formatDate } from '../../lib/content';
 import { path } from '../../lib/paths';
+import {
+  loadPublicImageMetadata,
+  publicImageDimensions,
+} from '../../lib/public-image-metadata.mjs';
 export async function getStaticPaths() {
   return (await publishedWorks()).map((entry) => ({
     params: { id: entry.id },
@@ -12,6 +16,9 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
+const coverSize = entry.data.cover
+  ? publicImageDimensions(await loadPublicImageMetadata(), entry.data.cover.src)
+  : undefined;
 ---
 
 <Layout
@@ -41,8 +48,8 @@ const { Content, headings } = await render(entry);
         class="work-cover"
         src={path(entry.data.cover.src)}
         alt={entry.data.cover.alt}
-        width="1200"
-        height="675"
+        width={coverSize?.width}
+        height={coverSize?.height}
         decoding="async"
       />
     )}

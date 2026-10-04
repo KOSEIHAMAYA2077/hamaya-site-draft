@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import markdownBase from './src/lib/markdown-base.mjs';
+import { loadPublicImageMetadata } from './src/lib/public-image-metadata.mjs';
 import {
   markdownSafety,
   markdownUrlSafety,
@@ -73,16 +74,18 @@ export default defineConfig({
                 entrypoint: fileURLToPath(new URL(entrypoint, import.meta.url)),
               });
           }
-          if (process.env.LOCAL_COMPARISON === '1')
-            injectRoute({
-              pattern: '/compare/[view]',
-              entrypoint: fileURLToPath(
-                new URL(
-                  './src/local-pages/compare/[view].astro',
-                  import.meta.url,
+          if (process.env.LOCAL_COMPARISON === '1') {
+            for (const view of ['collection', 'focus'])
+              injectRoute({
+                pattern: `/compare/${view}`,
+                entrypoint: fileURLToPath(
+                  new URL(
+                    `./src/local-pages/compare/${view}.astro`,
+                    import.meta.url,
+                  ),
                 ),
-              ),
-            });
+              });
+          }
           if (process.env.LOCAL_CANDIDATES === '1')
             injectRoute({
               pattern: '/compare/candidates',
@@ -107,7 +110,10 @@ export default defineConfig({
       mdastPlugins: [markdownSafety({ base: process.env.BASE_PATH || '/' })],
       hastPlugins: [
         markdownUrlSafety({ base: process.env.BASE_PATH || '/' }),
-        markdownBase({ base: process.env.BASE_PATH || '/' }),
+        markdownBase({
+          base: process.env.BASE_PATH || '/',
+          imageMetadata: await loadPublicImageMetadata(),
+        }),
       ],
     }),
   },

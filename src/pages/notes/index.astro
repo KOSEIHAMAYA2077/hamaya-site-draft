@@ -104,30 +104,39 @@ const notes = await publishedNotes();
     return link ? [{ link, pathname: link.pathname }] : [];
   });
   let conditions = readNoteQuery(window.location.search);
+  let appliedQuery: string | undefined;
+  let composing = false;
 
   function update() {
+    const nextQuery = noteQueryString(conditions);
+    if (appliedQuery === nextQuery) return;
+    appliedQuery = nextQuery;
     const query = conditions.q.toLocaleLowerCase('ja');
     let visible = 0;
     entries.forEach((entry) => {
-      entry.hidden =
+      const hidden =
         !(
           conditions.category === 'all' ||
           entry.dataset.category === conditions.category
         ) || !(entry.dataset.search || '').includes(query);
+      if (entry.hidden !== hidden) entry.hidden = hidden;
       if (!entry.hidden) visible += 1;
     });
-    filters.forEach((button) =>
-      button.setAttribute(
-        'aria-pressed',
-        String(button.dataset.filter === conditions.category),
-      ),
-    );
-    if (count) count.textContent = `${visible}件の記録`;
-    if (noResults) noResults.hidden = visible > 0;
-    if (clearQuery)
-      clearQuery.hidden = !conditions.q && conditions.category === 'all';
+    filters.forEach((button) => {
+      const pressed = String(button.dataset.filter === conditions.category);
+      if (button.getAttribute('aria-pressed') !== pressed)
+        button.setAttribute('aria-pressed', pressed);
+    });
+    const countText = `${visible}件の記録`;
+    if (count && count.textContent !== countText) count.textContent = countText;
+    if (noResults && noResults.hidden !== visible > 0)
+      noResults.hidden = visible > 0;
+    const cleared = !conditions.q && conditions.category === 'all';
+    if (clearQuery && clearQuery.hidden !== cleared)
+      clearQuery.hidden = cleared;
     links.forEach(({ link, pathname }) => {
-      link.href = withNoteQuery(pathname, conditions);
+      const href = withNoteQuery(pathname, conditions);
+      if (link.getAttribute('href') !== href) link.setAttribute('href', href);
     });
   }
 
@@ -142,6 +151,7 @@ const notes = await publishedNotes();
   }
 
   function restoreConditions() {
+    composing = false;
     conditions = readNoteQuery(window.location.search);
     if (search) search.value = conditions.q;
     saveConditions();
@@ -150,12 +160,23 @@ const notes = await publishedNotes();
   if (tools && search && entries.length > 0) {
     tools.hidden = false;
     restoreConditions();
-    search.addEventListener('input', () => {
+    const applySearchInput = () => {
       conditions = normalizeNoteQuery({
         q: search.value,
         category: conditions.category,
       });
       saveConditions();
+    };
+    search.addEventListener('compositionstart', () => {
+      composing = true;
+    });
+    search.addEventListener('compositionend', () => {
+      composing = false;
+      applySearchInput();
+    });
+    search.addEventListener('input', (event) => {
+      if (!composing && !(event instanceof InputEvent && event.isComposing))
+        applySearchInput();
     });
     filters.forEach((button) =>
       button.addEventListener('click', () => {

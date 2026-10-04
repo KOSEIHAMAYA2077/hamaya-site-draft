@@ -2,6 +2,10 @@
 import type { CollectionEntry } from 'astro:content';
 import { formatDate } from '../lib/content';
 import { path } from '../lib/paths';
+import {
+  loadPublicImageMetadata,
+  publicImageDimensions,
+} from '../lib/public-image-metadata.mjs';
 interface Props {
   entry: CollectionEntry<'notes'> | CollectionEntry<'works'>;
   level?: 2 | 3;
@@ -11,6 +15,9 @@ const Heading: 'h2' | 'h3' = level === 2 ? 'h2' : 'h3';
 const isWork = entry.collection === 'works';
 const category = isWork ? entry.data.status : entry.data.category;
 const cover = isWork ? entry.data.cover : undefined;
+const coverSize = cover
+  ? publicImageDimensions(await loadPublicImageMetadata(), cover.src)
+  : undefined;
 ---
 
 <article
@@ -32,8 +39,8 @@ const cover = isWork ? entry.data.cover : undefined;
           class="entry-cover"
           src={path(cover.src)}
           alt={cover.alt}
-          width="640"
-          height="360"
+          width={coverSize?.width}
+          height={coverSize?.height}
           loading="lazy"
           decoding="async"
         />
