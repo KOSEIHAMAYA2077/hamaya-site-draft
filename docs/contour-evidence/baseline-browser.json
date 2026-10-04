@@ -1,0 +1,5421 @@
+{
+  "capturedAtUtc": "2026-10-04T06:31:16.018Z",
+  "url": "http://127.0.0.1:4360/hamaya-site-draft/",
+  "scope": "Fresh disposable browser contexts. No user browser/profile, storage preset, source/build or server changes. Existing motion control clicked for stable captures only.",
+  "results": [
+    {
+      "label": "desktop",
+      "viewport": {
+        "width": 1280,
+        "height": 812
+      },
+      "reducedMotion": "no-preference",
+      "storagePreset": false,
+      "status": 200,
+      "storageInitial": {
+        "local": {},
+        "session": {}
+      },
+      "natural": {
+        "title": "濱谷康生 — 制作と記録",
+        "url": "http://127.0.0.1:4360/hamaya-site-draft/",
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 812
+        },
+        "documentWidth": 1280,
+        "horizontalOverflow": false,
+        "motion": "on",
+        "activeWork": "import-typeandsummon",
+        "bounds": {
+          "header": {
+            "x": 56,
+            "y": 0,
+            "width": 1168,
+            "height": 112,
+            "right": 1224,
+            "bottom": 112,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "濱谷康生 制作と記録 制作 記録 書く 道具 統合候補・非公開",
+            "href": null
+          },
+          "hero": {
+            "x": 56,
+            "y": 112,
+            "width": 1168,
+            "height": 765.75,
+            "right": 1224,
+            "bottom": 877.75,
+            "visible": true,
+            "withinFirstViewport": false,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを止める 01 / 06 他の制作を選ぶ ＋ 01 いま開いている制作 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗",
+            "href": null
+          },
+          "heroStage": {
+            "x": 56,
+            "y": 196.3125,
+            "width": 1168,
+            "height": 573.703125,
+            "right": 1224,
+            "bottom": 770.015625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋ 01 いま開いている制作 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles →",
+            "href": null
+          },
+          "selection": {
+            "x": 56,
+            "y": 196.3125,
+            "width": 544,
+            "height": 45,
+            "right": 600,
+            "bottom": 241.3125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋",
+            "href": null
+          },
+          "picker": {
+            "x": 125.90625,
+            "y": 196.3125,
+            "width": 474.09375,
+            "height": 44,
+            "right": 600,
+            "bottom": 240.3125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "他の制作を選ぶ ＋",
+            "href": null
+          },
+          "selectedTitle": {
+            "x": 56,
+            "y": 273.3125,
+            "width": 544,
+            "height": 85.703125,
+            "right": 600,
+            "bottom": 359.015625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "開いている制作 TypeAndSummon",
+            "href": null
+          },
+          "primaryCta": {
+            "x": 56,
+            "y": 488.984375,
+            "width": 221.890625,
+            "height": 50.375,
+            "right": 277.890625,
+            "bottom": 539.359375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "14px",
+            "lineHeight": "25.9px",
+            "text": "GitHubでコードを開く ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+          },
+          "art": {
+            "x": 680,
+            "y": 236.3125,
+            "width": 544,
+            "height": 533.703125,
+            "right": 1224,
+            "bottom": 770.015625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 いま開いている制作",
+            "href": null
+          },
+          "main": {
+            "x": 0,
+            "y": 112,
+            "width": 1280,
+            "height": 980.15625,
+            "right": 1280,
+            "bottom": 1092.15625,
+            "visible": true,
+            "withinFirstViewport": false,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを止める 01 / 06 他の制作を選ぶ ＋ 01 いま開いている制作 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗ 記録を読む 記録の一覧へ ↗ 下書き・本人確認待ち 好きなゲームについて思うこと 1 好きなゲームについて思うこと 1 — Cyberpunk2077",
+            "href": null
+          },
+          "motion": {
+            "x": 1150,
+            "y": 136,
+            "width": 74,
+            "height": 33.125,
+            "right": 1224,
+            "bottom": 169.125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "11px",
+            "lineHeight": "20.35px",
+            "text": "動きを止める",
+            "href": null
+          }
+        },
+        "visibleText": "本文へ移動\n濱谷康生\n制作と記録\n制作\n記録\n書く\n道具\n統合候補・非公開\n制作を開く\n統合候補・掲載未定\n動きを止める\n01 / 06\n他の制作を選ぶ\n＋\n01\nいま開いている制作\n\n開いている制作\n\nTypeAndSummon\n\nGitHubにある説明\n\nJava Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only\n\nGitHubでコードを開く\n↗\n記録を書く ＋\n記録の一覧へ ↗\n次の作品を開く\ngame-ai-search-puzzles →\n\n作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。\n\nほかの案を比べる ↗\n記録を読む\n記録の一覧へ ↗\n\n下書き・本人確認待ち\n\n好きなゲームについて思うこと 1\n\n好きなゲームについて思うこと 1 — Cyberpunk2077\n\n濱谷康生\n制作と記録を、少しずつ。\n\nGitHub ↗表示・比較\n非公開の統合候補。採用は未確定です。",
+        "textSet": [
+          "本文へ移動",
+          "濱谷康生",
+          "制作と記録",
+          "制作",
+          "記録",
+          "書く",
+          "道具",
+          "統合候補・非公開",
+          "制作を開く",
+          "統合候補・掲載未定",
+          "動きを止める",
+          "01 / 06",
+          "他の制作を選ぶ",
+          "＋",
+          "01",
+          "いま開いている制作",
+          "開いている制作",
+          "TypeAndSummon",
+          "GitHubにある説明",
+          "Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only",
+          "GitHubでコードを開く",
+          "↗",
+          "記録を書く ＋",
+          "記録の一覧へ ↗",
+          "次の作品を開く",
+          "game-ai-search-puzzles →",
+          "作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。",
+          "ほかの案を比べる ↗",
+          "記録を読む",
+          "下書き・本人確認待ち",
+          "好きなゲームについて思うこと 1",
+          "好きなゲームについて思うこと 1 — Cyberpunk2077",
+          "制作と記録を、少しずつ。",
+          "GitHub ↗表示・比較",
+          "非公開の統合候補。採用は未確定です。"
+        ],
+        "allLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 31.40625,
+              "width": 90.734375,
+              "height": 48.1875,
+              "right": 146.734375,
+              "bottom": 79.59375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "21px",
+              "lineHeight": "29.4px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 865.828125,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 892.3125,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 919.5,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 945.984375,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 973.171875,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 999.65625,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "時系列",
+            "href": "/hamaya-site-draft/compare/timeline/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 94.46875,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 139.296875,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/timeline/"
+            }
+          },
+          {
+            "text": "制作ログを下書きに（別タブ）",
+            "href": "/hamaya-site-draft/write/maker-field/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 139.296875,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 184.125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/write/maker-field/"
+            }
+          },
+          {
+            "text": "実験",
+            "href": "/hamaya-site-draft/compare/experiments/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 184.125,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 228.953125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/experiments/"
+            }
+          },
+          {
+            "text": "作品候補",
+            "href": "/hamaya-site-draft/compare/candidates/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 228.953125,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 273.78125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/candidates/"
+            }
+          },
+          {
+            "text": "自己紹介",
+            "href": "/hamaya-site-draft/about/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 273.78125,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 318.609375,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/about/"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 318.609375,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 363.4375,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          },
+          {
+            "text": "01TypeAndSummon↗",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 259.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 311.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "02game-ai-search-puzzles↗",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 312.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 364.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "03de10-nano-riscv-invader↗",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 365.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 417.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "04de10-nano-voice-changer↗",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 418.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 470.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "05pong-study-raylib↗",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 471.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 523.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "06one-board-incremental↗",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 524.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 576.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 488.984375,
+              "width": 221.890625,
+              "height": 50.375,
+              "right": 277.890625,
+              "bottom": 539.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 559.359375,
+              "width": 71.34375,
+              "height": 32,
+              "right": 127.34375,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 149.734375,
+              "y": 559.359375,
+              "width": 82.59375,
+              "height": 32,
+              "right": 232.328125,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 619.359375,
+              "width": 544,
+              "height": 62.53125,
+              "right": 600,
+              "bottom": 681.890625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-riscv-invader →",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-riscv-invader →",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-voice-changer →",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-voice-changer →",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くpong-study-raylib →",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くpong-study-raylib →",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くone-board-incremental →",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くone-board-incremental →",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くTypeAndSummon →",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くTypeAndSummon →",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 1118.921875,
+              "y": 841.40625,
+              "width": 105.078125,
+              "height": 20.34375,
+              "right": 1224,
+              "bottom": 861.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 1141.40625,
+              "y": 935.75,
+              "width": 82.59375,
+              "height": 36,
+              "right": 1224,
+              "bottom": 971.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 1013.4375,
+              "width": 306.5,
+              "height": 47.484375,
+              "right": 362.5,
+              "bottom": 1060.921875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "22px",
+              "lineHeight": "36.3px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 1074.796875,
+              "y": 1240.546875,
+              "width": 63.8125,
+              "height": 13,
+              "right": 1138.609375,
+              "bottom": 1253.546875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 1157.796875,
+              "y": 1225.953125,
+              "width": 66.203125,
+              "height": 44,
+              "right": 1224,
+              "bottom": 1269.953125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ],
+        "visibleLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 31.40625,
+              "width": 90.734375,
+              "height": 48.1875,
+              "right": 146.734375,
+              "bottom": 79.59375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "21px",
+              "lineHeight": "29.4px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 865.828125,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 892.3125,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 919.5,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 945.984375,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 973.171875,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 999.65625,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 488.984375,
+              "width": 221.890625,
+              "height": 50.375,
+              "right": 277.890625,
+              "bottom": 539.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 559.359375,
+              "width": 71.34375,
+              "height": 32,
+              "right": 127.34375,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 149.734375,
+              "y": 559.359375,
+              "width": 82.59375,
+              "height": 32,
+              "right": 232.328125,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 619.359375,
+              "width": 544,
+              "height": 62.53125,
+              "right": 600,
+              "bottom": 681.890625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 1118.921875,
+              "y": 841.40625,
+              "width": 105.078125,
+              "height": 20.34375,
+              "right": 1224,
+              "bottom": 861.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 1141.40625,
+              "y": 935.75,
+              "width": 82.59375,
+              "height": 36,
+              "right": 1224,
+              "bottom": 971.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 1013.4375,
+              "width": 306.5,
+              "height": 47.484375,
+              "right": 362.5,
+              "bottom": 1060.921875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "22px",
+              "lineHeight": "36.3px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 1074.796875,
+              "y": 1240.546875,
+              "width": 63.8125,
+              "height": 13,
+              "right": 1138.609375,
+              "bottom": 1253.546875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 1157.796875,
+              "y": 1225.953125,
+              "width": 66.203125,
+              "height": 44,
+              "right": 1224,
+              "bottom": 1269.953125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ]
+      },
+      "stopped": {
+        "title": "濱谷康生 — 制作と記録",
+        "url": "http://127.0.0.1:4360/hamaya-site-draft/",
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 812
+        },
+        "documentWidth": 1280,
+        "horizontalOverflow": false,
+        "motion": "off",
+        "activeWork": "import-typeandsummon",
+        "bounds": {
+          "header": {
+            "x": 56,
+            "y": 0,
+            "width": 1168,
+            "height": 112,
+            "right": 1224,
+            "bottom": 112,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "濱谷康生 制作と記録 制作 記録 書く 道具 統合候補・非公開",
+            "href": null
+          },
+          "hero": {
+            "x": 56,
+            "y": 112,
+            "width": 1168,
+            "height": 765.75,
+            "right": 1224,
+            "bottom": 877.75,
+            "visible": true,
+            "withinFirstViewport": false,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを再開 01 / 06 他の制作を選ぶ ＋ 01 いま開いている制作 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗",
+            "href": null
+          },
+          "heroStage": {
+            "x": 56,
+            "y": 196.3125,
+            "width": 1168,
+            "height": 573.703125,
+            "right": 1224,
+            "bottom": 770.015625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋ 01 いま開いている制作 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles →",
+            "href": null
+          },
+          "selection": {
+            "x": 56,
+            "y": 196.3125,
+            "width": 544,
+            "height": 45,
+            "right": 600,
+            "bottom": 241.3125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋",
+            "href": null
+          },
+          "picker": {
+            "x": 125.90625,
+            "y": 196.3125,
+            "width": 474.09375,
+            "height": 44,
+            "right": 600,
+            "bottom": 240.3125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "他の制作を選ぶ ＋",
+            "href": null
+          },
+          "selectedTitle": {
+            "x": 56,
+            "y": 273.3125,
+            "width": 544,
+            "height": 85.703125,
+            "right": 600,
+            "bottom": 359.015625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "開いている制作 TypeAndSummon",
+            "href": null
+          },
+          "primaryCta": {
+            "x": 56,
+            "y": 488.984375,
+            "width": 221.890625,
+            "height": 50.375,
+            "right": 277.890625,
+            "bottom": 539.359375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "14px",
+            "lineHeight": "25.9px",
+            "text": "GitHubでコードを開く ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+          },
+          "art": {
+            "x": 680,
+            "y": 236.3125,
+            "width": 544,
+            "height": 533.703125,
+            "right": 1224,
+            "bottom": 770.015625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 いま開いている制作",
+            "href": null
+          },
+          "main": {
+            "x": 0,
+            "y": 112,
+            "width": 1280,
+            "height": 980.15625,
+            "right": 1280,
+            "bottom": 1092.15625,
+            "visible": true,
+            "withinFirstViewport": false,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを再開 01 / 06 他の制作を選ぶ ＋ 01 いま開いている制作 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗ 記録を読む 記録の一覧へ ↗ 下書き・本人確認待ち 好きなゲームについて思うこと 1 好きなゲームについて思うこと 1 — Cyberpunk2077",
+            "href": null
+          },
+          "motion": {
+            "x": 1161,
+            "y": 136,
+            "width": 63,
+            "height": 33.125,
+            "right": 1224,
+            "bottom": 169.125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "11px",
+            "lineHeight": "20.35px",
+            "text": "動きを再開",
+            "href": null
+          }
+        },
+        "visibleText": "本文へ移動\n濱谷康生\n制作と記録\n制作\n記録\n書く\n道具\n統合候補・非公開\n制作を開く\n統合候補・掲載未定\n動きを再開\n01 / 06\n他の制作を選ぶ\n＋\n01\nいま開いている制作\n\n開いている制作\n\nTypeAndSummon\n\nGitHubにある説明\n\nJava Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only\n\nGitHubでコードを開く\n↗\n記録を書く ＋\n記録の一覧へ ↗\n次の作品を開く\ngame-ai-search-puzzles →\n\n作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。\n\nほかの案を比べる ↗\n記録を読む\n記録の一覧へ ↗\n\n下書き・本人確認待ち\n\n好きなゲームについて思うこと 1\n\n好きなゲームについて思うこと 1 — Cyberpunk2077\n\n濱谷康生\n制作と記録を、少しずつ。\n\nGitHub ↗表示・比較\n非公開の統合候補。採用は未確定です。",
+        "textSet": [
+          "本文へ移動",
+          "濱谷康生",
+          "制作と記録",
+          "制作",
+          "記録",
+          "書く",
+          "道具",
+          "統合候補・非公開",
+          "制作を開く",
+          "統合候補・掲載未定",
+          "動きを再開",
+          "01 / 06",
+          "他の制作を選ぶ",
+          "＋",
+          "01",
+          "いま開いている制作",
+          "開いている制作",
+          "TypeAndSummon",
+          "GitHubにある説明",
+          "Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only",
+          "GitHubでコードを開く",
+          "↗",
+          "記録を書く ＋",
+          "記録の一覧へ ↗",
+          "次の作品を開く",
+          "game-ai-search-puzzles →",
+          "作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。",
+          "ほかの案を比べる ↗",
+          "記録を読む",
+          "下書き・本人確認待ち",
+          "好きなゲームについて思うこと 1",
+          "好きなゲームについて思うこと 1 — Cyberpunk2077",
+          "制作と記録を、少しずつ。",
+          "GitHub ↗表示・比較",
+          "非公開の統合候補。採用は未確定です。"
+        ],
+        "allLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 31.40625,
+              "width": 90.734375,
+              "height": 48.1875,
+              "right": 146.734375,
+              "bottom": 79.59375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "21px",
+              "lineHeight": "29.4px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 865.828125,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 892.3125,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 919.5,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 945.984375,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 973.171875,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 999.65625,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "時系列",
+            "href": "/hamaya-site-draft/compare/timeline/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 94.46875,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 139.296875,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/timeline/"
+            }
+          },
+          {
+            "text": "制作ログを下書きに（別タブ）",
+            "href": "/hamaya-site-draft/write/maker-field/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 139.296875,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 184.125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/write/maker-field/"
+            }
+          },
+          {
+            "text": "実験",
+            "href": "/hamaya-site-draft/compare/experiments/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 184.125,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 228.953125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/experiments/"
+            }
+          },
+          {
+            "text": "作品候補",
+            "href": "/hamaya-site-draft/compare/candidates/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 228.953125,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 273.78125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/candidates/"
+            }
+          },
+          {
+            "text": "自己紹介",
+            "href": "/hamaya-site-draft/about/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 273.78125,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 318.609375,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/about/"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": false,
+            "bounds": {
+              "x": 819.078125,
+              "y": 318.609375,
+              "width": 236,
+              "height": 44.828125,
+              "right": 1055.078125,
+              "bottom": 363.4375,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          },
+          {
+            "text": "01TypeAndSummon↗",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 259.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 311.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "02game-ai-search-puzzles↗",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 312.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 364.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "03de10-nano-riscv-invader↗",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 365.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 417.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "04de10-nano-voice-changer↗",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 418.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 470.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "05pong-study-raylib↗",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 471.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 523.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "06one-board-incremental↗",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 144.5,
+              "y": 524.703125,
+              "width": 436.90625,
+              "height": 52,
+              "right": 581.40625,
+              "bottom": 576.703125,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "21.7px",
+              "text": "",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 488.984375,
+              "width": 221.890625,
+              "height": 50.375,
+              "right": 277.890625,
+              "bottom": 539.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 559.359375,
+              "width": 71.34375,
+              "height": 32,
+              "right": 127.34375,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 149.734375,
+              "y": 559.359375,
+              "width": 82.59375,
+              "height": 32,
+              "right": 232.328125,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 619.359375,
+              "width": 544,
+              "height": 62.53125,
+              "right": 600,
+              "bottom": 681.890625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-riscv-invader →",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-riscv-invader →",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-voice-changer →",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-voice-changer →",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くpong-study-raylib →",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くpong-study-raylib →",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くone-board-incremental →",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くone-board-incremental →",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くTypeAndSummon →",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くTypeAndSummon →",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 1118.921875,
+              "y": 841.40625,
+              "width": 105.078125,
+              "height": 20.34375,
+              "right": 1224,
+              "bottom": 861.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 1141.40625,
+              "y": 935.75,
+              "width": 82.59375,
+              "height": 36,
+              "right": 1224,
+              "bottom": 971.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 1013.4375,
+              "width": 306.5,
+              "height": 47.484375,
+              "right": 362.5,
+              "bottom": 1060.921875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "22px",
+              "lineHeight": "36.3px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 1074.796875,
+              "y": 1240.546875,
+              "width": 63.8125,
+              "height": 13,
+              "right": 1138.609375,
+              "bottom": 1253.546875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 1157.796875,
+              "y": 1225.953125,
+              "width": 66.203125,
+              "height": 44,
+              "right": 1224,
+              "bottom": 1269.953125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ],
+        "visibleLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 31.40625,
+              "width": 90.734375,
+              "height": 48.1875,
+              "right": 146.734375,
+              "bottom": 79.59375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "21px",
+              "lineHeight": "29.4px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 865.828125,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 892.3125,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 919.5,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 945.984375,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 973.171875,
+              "y": 31.46875,
+              "width": 26.484375,
+              "height": 48.046875,
+              "right": 999.65625,
+              "bottom": 79.515625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 488.984375,
+              "width": 221.890625,
+              "height": 50.375,
+              "right": 277.890625,
+              "bottom": 539.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "14px",
+              "lineHeight": "25.9px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 559.359375,
+              "width": 71.34375,
+              "height": 32,
+              "right": 127.34375,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 149.734375,
+              "y": 559.359375,
+              "width": 82.59375,
+              "height": 32,
+              "right": 232.328125,
+              "bottom": 591.359375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 619.359375,
+              "width": 544,
+              "height": 62.53125,
+              "right": 600,
+              "bottom": 681.890625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 1118.921875,
+              "y": 841.40625,
+              "width": 105.078125,
+              "height": 20.34375,
+              "right": 1224,
+              "bottom": 861.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 1141.40625,
+              "y": 935.75,
+              "width": 82.59375,
+              "height": 36,
+              "right": 1224,
+              "bottom": 971.75,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 56,
+              "y": 1013.4375,
+              "width": 306.5,
+              "height": 47.484375,
+              "right": 362.5,
+              "bottom": 1060.921875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "22px",
+              "lineHeight": "36.3px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 1074.796875,
+              "y": 1240.546875,
+              "width": 63.8125,
+              "height": 13,
+              "right": 1138.609375,
+              "bottom": 1253.546875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 1157.796875,
+              "y": 1225.953125,
+              "width": 66.203125,
+              "height": 44,
+              "right": 1224,
+              "bottom": 1269.953125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ]
+      },
+      "storageAfterStop": {
+        "local": {
+          "archive-motion": "off"
+        },
+        "session": {}
+      },
+      "screenshots": {
+        "natural": "baseline-desktop-motion.png",
+        "stopped": "baseline-desktop.png"
+      },
+      "errors": [],
+      "failedRequests": [],
+      "success": true
+    },
+    {
+      "label": "mobile",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "reducedMotion": "no-preference",
+      "storagePreset": false,
+      "status": 200,
+      "storageInitial": {
+        "local": {},
+        "session": {}
+      },
+      "natural": {
+        "title": "濱谷康生 — 制作と記録",
+        "url": "http://127.0.0.1:4360/hamaya-site-draft/",
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "documentWidth": 375,
+        "horizontalOverflow": false,
+        "motion": "on",
+        "activeWork": "import-typeandsummon",
+        "bounds": {
+          "header": {
+            "x": 20,
+            "y": 0,
+            "width": 335,
+            "height": 132.5625,
+            "right": 355,
+            "bottom": 132.5625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "濱谷康生 制作と記録 制作 記録 書く 道具 統合候補・非公開",
+            "href": null
+          },
+          "hero": {
+            "x": 20,
+            "y": 132.5625,
+            "width": 335,
+            "height": 671.84375,
+            "right": 355,
+            "bottom": 804.40625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを止める 01 / 06 他の制作を選ぶ ＋ 01 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗",
+            "href": null
+          },
+          "heroStage": {
+            "x": 20,
+            "y": 182.953125,
+            "width": 335,
+            "height": 496.15625,
+            "right": 355,
+            "bottom": 679.109375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋ 01 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles →",
+            "href": null
+          },
+          "selection": {
+            "x": 20,
+            "y": 182.953125,
+            "width": 335,
+            "height": 45,
+            "right": 355,
+            "bottom": 227.953125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋",
+            "href": null
+          },
+          "picker": {
+            "x": 86.71875,
+            "y": 182.953125,
+            "width": 268.28125,
+            "height": 44,
+            "right": 355,
+            "bottom": 226.953125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "他の制作を選ぶ ＋",
+            "href": null
+          },
+          "selectedTitle": {
+            "x": 20,
+            "y": 275.09375,
+            "width": 184.5,
+            "height": 85.640625,
+            "right": 204.5,
+            "bottom": 360.734375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "開いている制作 TypeAndSummon",
+            "href": null
+          },
+          "primaryCta": {
+            "x": 20,
+            "y": 511.828125,
+            "width": 201.0625,
+            "height": 46.375,
+            "right": 221.0625,
+            "bottom": 558.203125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "13px",
+            "lineHeight": "24.05px",
+            "text": "GitHubでコードを開く ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+          },
+          "art": {
+            "x": 212.5,
+            "y": 242.34375,
+            "width": 142.5,
+            "height": 151.140625,
+            "right": 355,
+            "bottom": 393.484375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01",
+            "href": null
+          },
+          "main": {
+            "x": 0,
+            "y": 132.5625,
+            "width": 375,
+            "height": 858.828125,
+            "right": 375,
+            "bottom": 991.390625,
+            "visible": true,
+            "withinFirstViewport": false,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを止める 01 / 06 他の制作を選ぶ ＋ 01 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗ 記録を読む 記録の一覧へ ↗ 下書き・本人確認待ち 好きなゲームについて思うこと 1 好きなゲームについて思うこと 1 — Cyberpunk2077",
+            "href": null
+          },
+          "motion": {
+            "x": 287,
+            "y": 143.3125,
+            "width": 68,
+            "height": 31.28125,
+            "right": 355,
+            "bottom": 174.59375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "10px",
+            "lineHeight": "18.5px",
+            "text": "動きを止める",
+            "href": null
+          }
+        },
+        "visibleText": "本文へ移動\n濱谷康生\n制作と記録\n制作\n記録\n書く\n道具\n統合候補・非公開\n制作を開く\n統合候補・掲載未定\n動きを止める\n01 / 06\n他の制作を選ぶ\n＋\n01\n\n開いている制作\n\nTypeAndSummon\n\nGitHubにある説明\n\nJava Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only\n\nGitHubでコードを開く\n↗\n記録を書く ＋\n記録の一覧へ ↗\n次の作品を開く\ngame-ai-search-puzzles →\n\n作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。\n\nほかの案を比べる ↗\n記録を読む\n記録の一覧へ ↗\n\n下書き・本人確認待ち\n\n好きなゲームについて思うこと 1\n\n好きなゲームについて思うこと 1 — Cyberpunk2077\n\n濱谷康生\n制作と記録を、少しずつ。\n\nGitHub ↗表示・比較\n非公開の統合候補。採用は未確定です。",
+        "textSet": [
+          "本文へ移動",
+          "濱谷康生",
+          "制作と記録",
+          "制作",
+          "記録",
+          "書く",
+          "道具",
+          "統合候補・非公開",
+          "制作を開く",
+          "統合候補・掲載未定",
+          "動きを止める",
+          "01 / 06",
+          "他の制作を選ぶ",
+          "＋",
+          "01",
+          "開いている制作",
+          "TypeAndSummon",
+          "GitHubにある説明",
+          "Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only",
+          "GitHubでコードを開く",
+          "↗",
+          "記録を書く ＋",
+          "記録の一覧へ ↗",
+          "次の作品を開く",
+          "game-ai-search-puzzles →",
+          "作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。",
+          "ほかの案を比べる ↗",
+          "記録を読む",
+          "下書き・本人確認待ち",
+          "好きなゲームについて思うこと 1",
+          "好きなゲームについて思うこと 1 — Cyberpunk2077",
+          "制作と記録を、少しずつ。",
+          "GitHub ↗表示・比較",
+          "非公開の統合候補。採用は未確定です。"
+        ],
+        "allLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 17.59375,
+              "width": 82.09375,
+              "height": 45.390625,
+              "right": 102.09375,
+              "bottom": 62.984375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "19px",
+              "lineHeight": "26.6px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 44.484375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 117.25,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 141.734375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 214.515625,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 239,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "時系列",
+            "href": "/hamaya-site-draft/compare/timeline/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 138.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 182.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/timeline/"
+            }
+          },
+          {
+            "text": "制作ログを下書きに（別タブ）",
+            "href": "/hamaya-site-draft/write/maker-field/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 182.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 226.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/write/maker-field/"
+            }
+          },
+          {
+            "text": "実験",
+            "href": "/hamaya-site-draft/compare/experiments/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 226.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 270.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/experiments/"
+            }
+          },
+          {
+            "text": "作品候補",
+            "href": "/hamaya-site-draft/compare/candidates/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 270.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 314.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/candidates/"
+            }
+          },
+          {
+            "text": "自己紹介",
+            "href": "/hamaya-site-draft/about/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 314.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 358.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/about/"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 358.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 402.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          },
+          {
+            "text": "01TypeAndSummon↗",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 243.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 295.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "02game-ai-search-puzzles↗",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 296.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 348.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "03de10-nano-riscv-invader↗",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 349.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 401.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "04de10-nano-voice-changer↗",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 402.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 454.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "05pong-study-raylib↗",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 455.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 507.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "06one-board-incremental↗",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 508.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 560.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 511.828125,
+              "width": 201.0625,
+              "height": 46.375,
+              "right": 221.0625,
+              "bottom": 558.203125,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 569.390625,
+              "width": 71.34375,
+              "height": 32,
+              "right": 91.34375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 112.140625,
+              "y": 569.390625,
+              "width": 82.59375,
+              "height": 32,
+              "right": 194.734375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 618.984375,
+              "width": 335,
+              "height": 60.125,
+              "right": 355,
+              "bottom": 679.109375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-riscv-invader →",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-riscv-invader →",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-voice-changer →",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-voice-changer →",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くpong-study-raylib →",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くpong-study-raylib →",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くone-board-incremental →",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くone-board-incremental →",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くTypeAndSummon →",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くTypeAndSummon →",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 777.90625,
+              "width": 95.734375,
+              "height": 18.5,
+              "right": 115.734375,
+              "bottom": 796.40625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "10px",
+              "lineHeight": "18.5px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 272.40625,
+              "y": 841.59375,
+              "width": 82.59375,
+              "height": 36,
+              "right": 355,
+              "bottom": 877.59375,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 919.28125,
+              "width": 251.46875,
+              "height": 40.875,
+              "right": 271.46875,
+              "bottom": 960.15625,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "18px",
+              "lineHeight": "29.7px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 215.5625,
+              "y": 1098.171875,
+              "width": 59.046875,
+              "height": 12,
+              "right": 274.609375,
+              "bottom": 1110.171875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 293.796875,
+              "y": 1083.578125,
+              "width": 61.203125,
+              "height": 44,
+              "right": 355,
+              "bottom": 1127.578125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ],
+        "visibleLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 17.59375,
+              "width": 82.09375,
+              "height": 45.390625,
+              "right": 102.09375,
+              "bottom": 62.984375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "19px",
+              "lineHeight": "26.6px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 44.484375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 117.25,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 141.734375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 214.515625,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 239,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 511.828125,
+              "width": 201.0625,
+              "height": 46.375,
+              "right": 221.0625,
+              "bottom": 558.203125,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 569.390625,
+              "width": 71.34375,
+              "height": 32,
+              "right": 91.34375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 112.140625,
+              "y": 569.390625,
+              "width": 82.59375,
+              "height": 32,
+              "right": 194.734375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 618.984375,
+              "width": 335,
+              "height": 60.125,
+              "right": 355,
+              "bottom": 679.109375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 777.90625,
+              "width": 95.734375,
+              "height": 18.5,
+              "right": 115.734375,
+              "bottom": 796.40625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "10px",
+              "lineHeight": "18.5px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 272.40625,
+              "y": 841.59375,
+              "width": 82.59375,
+              "height": 36,
+              "right": 355,
+              "bottom": 877.59375,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 919.28125,
+              "width": 251.46875,
+              "height": 40.875,
+              "right": 271.46875,
+              "bottom": 960.15625,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "18px",
+              "lineHeight": "29.7px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 215.5625,
+              "y": 1098.171875,
+              "width": 59.046875,
+              "height": 12,
+              "right": 274.609375,
+              "bottom": 1110.171875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 293.796875,
+              "y": 1083.578125,
+              "width": 61.203125,
+              "height": 44,
+              "right": 355,
+              "bottom": 1127.578125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ]
+      },
+      "stopped": {
+        "title": "濱谷康生 — 制作と記録",
+        "url": "http://127.0.0.1:4360/hamaya-site-draft/",
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "documentWidth": 375,
+        "horizontalOverflow": false,
+        "motion": "off",
+        "activeWork": "import-typeandsummon",
+        "bounds": {
+          "header": {
+            "x": 20,
+            "y": 0,
+            "width": 335,
+            "height": 132.5625,
+            "right": 355,
+            "bottom": 132.5625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "濱谷康生 制作と記録 制作 記録 書く 道具 統合候補・非公開",
+            "href": null
+          },
+          "hero": {
+            "x": 20,
+            "y": 132.5625,
+            "width": 335,
+            "height": 671.84375,
+            "right": 355,
+            "bottom": 804.40625,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを再開 01 / 06 他の制作を選ぶ ＋ 01 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗",
+            "href": null
+          },
+          "heroStage": {
+            "x": 20,
+            "y": 182.953125,
+            "width": 335,
+            "height": 496.15625,
+            "right": 355,
+            "bottom": 679.109375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋ 01 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles →",
+            "href": null
+          },
+          "selection": {
+            "x": 20,
+            "y": 182.953125,
+            "width": 335,
+            "height": 45,
+            "right": 355,
+            "bottom": 227.953125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01 / 06 他の制作を選ぶ ＋",
+            "href": null
+          },
+          "picker": {
+            "x": 86.71875,
+            "y": 182.953125,
+            "width": 268.28125,
+            "height": 44,
+            "right": 355,
+            "bottom": 226.953125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "他の制作を選ぶ ＋",
+            "href": null
+          },
+          "selectedTitle": {
+            "x": 20,
+            "y": 275.09375,
+            "width": 184.5,
+            "height": 85.640625,
+            "right": 204.5,
+            "bottom": 360.734375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "開いている制作 TypeAndSummon",
+            "href": null
+          },
+          "primaryCta": {
+            "x": 20,
+            "y": 511.828125,
+            "width": 201.0625,
+            "height": 46.375,
+            "right": 221.0625,
+            "bottom": 558.203125,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "13px",
+            "lineHeight": "24.05px",
+            "text": "GitHubでコードを開く ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+          },
+          "art": {
+            "x": 212.5,
+            "y": 242.34375,
+            "width": 142.5,
+            "height": 151.140625,
+            "right": 355,
+            "bottom": 393.484375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "01",
+            "href": null
+          },
+          "main": {
+            "x": 0,
+            "y": 132.5625,
+            "width": 375,
+            "height": 858.828125,
+            "right": 375,
+            "bottom": 991.390625,
+            "visible": true,
+            "withinFirstViewport": false,
+            "fontSize": "16px",
+            "lineHeight": "29.6px",
+            "text": "制作を開く 統合候補・掲載未定 動きを再開 01 / 06 他の制作を選ぶ ＋ 01 開いている制作 TypeAndSummon GitHubにある説明 Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only GitHubでコードを開く ↗ 記録を書く ＋ 記録の一覧へ ↗ 次の作品を開く game-ai-search-puzzles → 作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。 ほかの案を比べる ↗ 記録を読む 記録の一覧へ ↗ 下書き・本人確認待ち 好きなゲームについて思うこと 1 好きなゲームについて思うこと 1 — Cyberpunk2077",
+            "href": null
+          },
+          "motion": {
+            "x": 297,
+            "y": 143.3125,
+            "width": 58,
+            "height": 31.28125,
+            "right": 355,
+            "bottom": 174.59375,
+            "visible": true,
+            "withinFirstViewport": true,
+            "fontSize": "10px",
+            "lineHeight": "18.5px",
+            "text": "動きを再開",
+            "href": null
+          }
+        },
+        "visibleText": "本文へ移動\n濱谷康生\n制作と記録\n制作\n記録\n書く\n道具\n統合候補・非公開\n制作を開く\n統合候補・掲載未定\n動きを再開\n01 / 06\n他の制作を選ぶ\n＋\n01\n\n開いている制作\n\nTypeAndSummon\n\nGitHubにある説明\n\nJava Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only\n\nGitHubでコードを開く\n↗\n記録を書く ＋\n記録の一覧へ ↗\n次の作品を開く\ngame-ai-search-puzzles →\n\n作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。\n\nほかの案を比べる ↗\n記録を読む\n記録の一覧へ ↗\n\n下書き・本人確認待ち\n\n好きなゲームについて思うこと 1\n\n好きなゲームについて思うこと 1 — Cyberpunk2077\n\n濱谷康生\n制作と記録を、少しずつ。\n\nGitHub ↗表示・比較\n非公開の統合候補。採用は未確定です。",
+        "textSet": [
+          "本文へ移動",
+          "濱谷康生",
+          "制作と記録",
+          "制作",
+          "記録",
+          "書く",
+          "道具",
+          "統合候補・非公開",
+          "制作を開く",
+          "統合候補・掲載未定",
+          "動きを再開",
+          "01 / 06",
+          "他の制作を選ぶ",
+          "＋",
+          "01",
+          "開いている制作",
+          "TypeAndSummon",
+          "GitHubにある説明",
+          "Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm only",
+          "GitHubでコードを開く",
+          "↗",
+          "記録を書く ＋",
+          "記録の一覧へ ↗",
+          "次の作品を開く",
+          "game-ai-search-puzzles →",
+          "作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。",
+          "ほかの案を比べる ↗",
+          "記録を読む",
+          "下書き・本人確認待ち",
+          "好きなゲームについて思うこと 1",
+          "好きなゲームについて思うこと 1 — Cyberpunk2077",
+          "制作と記録を、少しずつ。",
+          "GitHub ↗表示・比較",
+          "非公開の統合候補。採用は未確定です。"
+        ],
+        "allLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 17.59375,
+              "width": 82.09375,
+              "height": 45.390625,
+              "right": 102.09375,
+              "bottom": 62.984375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "19px",
+              "lineHeight": "26.6px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 44.484375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 117.25,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 141.734375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 214.515625,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 239,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "時系列",
+            "href": "/hamaya-site-draft/compare/timeline/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 138.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 182.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/timeline/"
+            }
+          },
+          {
+            "text": "制作ログを下書きに（別タブ）",
+            "href": "/hamaya-site-draft/write/maker-field/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 182.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 226.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/write/maker-field/"
+            }
+          },
+          {
+            "text": "実験",
+            "href": "/hamaya-site-draft/compare/experiments/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 226.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 270.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/experiments/"
+            }
+          },
+          {
+            "text": "作品候補",
+            "href": "/hamaya-site-draft/compare/candidates/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 270.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 314.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/compare/candidates/"
+            }
+          },
+          {
+            "text": "自己紹介",
+            "href": "/hamaya-site-draft/about/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 314.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 358.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/about/"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": false,
+            "bounds": {
+              "x": 102,
+              "y": 358.65625,
+              "width": 185.375,
+              "height": 44,
+              "right": 287.375,
+              "bottom": 402.65625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          },
+          {
+            "text": "01TypeAndSummon↗",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 243.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 295.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "02game-ai-search-puzzles↗",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 296.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 348.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "03de10-nano-riscv-invader↗",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 349.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 401.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "04de10-nano-voice-changer↗",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 402.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 454.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "05pong-study-raylib↗",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 455.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 507.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "06one-board-incremental↗",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 100.515625,
+              "y": 508.140625,
+              "width": 240.6875,
+              "height": 52,
+              "right": 341.203125,
+              "bottom": 560.140625,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "20.15px",
+              "text": "",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 511.828125,
+              "width": 201.0625,
+              "height": 46.375,
+              "right": 221.0625,
+              "bottom": 558.203125,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 569.390625,
+              "width": 71.34375,
+              "height": 32,
+              "right": 91.34375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 112.140625,
+              "y": 569.390625,
+              "width": 82.59375,
+              "height": 32,
+              "right": 194.734375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 618.984375,
+              "width": 335,
+              "height": 60.125,
+              "right": 355,
+              "bottom": 679.109375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-riscv-invader →",
+            "href": "#piece-import-de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-riscv-invader →",
+              "href": "#piece-import-de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くde10-nano-voice-changer →",
+            "href": "#piece-import-de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くde10-nano-voice-changer →",
+              "href": "#piece-import-de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くpong-study-raylib →",
+            "href": "#piece-import-pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くpong-study-raylib →",
+              "href": "#piece-import-pong-study-raylib"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くone-board-incremental →",
+            "href": "#piece-import-one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くone-board-incremental →",
+              "href": "#piece-import-one-board-incremental"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くTypeAndSummon →",
+            "href": "#piece-import-typeandsummon",
+            "visible": false,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "right": 0,
+              "bottom": 0,
+              "visible": false,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開くTypeAndSummon →",
+              "href": "#piece-import-typeandsummon"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 777.90625,
+              "width": 95.734375,
+              "height": 18.5,
+              "right": 115.734375,
+              "bottom": 796.40625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "10px",
+              "lineHeight": "18.5px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 272.40625,
+              "y": 841.59375,
+              "width": 82.59375,
+              "height": 36,
+              "right": 355,
+              "bottom": 877.59375,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 919.28125,
+              "width": 251.46875,
+              "height": 40.875,
+              "right": 271.46875,
+              "bottom": 960.15625,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "18px",
+              "lineHeight": "29.7px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 215.5625,
+              "y": 1098.171875,
+              "width": 59.046875,
+              "height": 12,
+              "right": 274.609375,
+              "bottom": 1110.171875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 293.796875,
+              "y": 1083.578125,
+              "width": 61.203125,
+              "height": 44,
+              "right": 355,
+              "bottom": 1127.578125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ],
+        "visibleLinks": [
+          {
+            "text": "本文へ移動",
+            "href": "#main-content",
+            "visible": true,
+            "bounds": {
+              "x": 16,
+              "y": -100,
+              "width": 116.390625,
+              "height": 51.96875,
+              "right": 132.390625,
+              "bottom": -48.03125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "本文へ移動",
+              "href": "#main-content"
+            }
+          },
+          {
+            "text": "濱谷康生制作と記録",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 17.59375,
+              "width": 82.09375,
+              "height": 45.390625,
+              "right": 102.09375,
+              "bottom": 62.984375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "19px",
+              "lineHeight": "26.6px",
+              "text": "濱谷康生 制作と記録",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "制作",
+            "href": "/hamaya-site-draft/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 44.484375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "制作",
+              "href": "/hamaya-site-draft/"
+            }
+          },
+          {
+            "text": "記録",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 117.25,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 141.734375,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "記録",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "書く",
+            "href": "/hamaya-site-draft/write/",
+            "visible": true,
+            "bounds": {
+              "x": 214.515625,
+              "y": 75.78125,
+              "width": 24.484375,
+              "height": 47.78125,
+              "right": 239,
+              "bottom": 123.5625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "書く",
+              "href": "/hamaya-site-draft/write/"
+            }
+          },
+          {
+            "text": "GitHubでコードを開く↗",
+            "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 511.828125,
+              "width": 201.0625,
+              "height": 46.375,
+              "right": 221.0625,
+              "bottom": 558.203125,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "13px",
+              "lineHeight": "24.05px",
+              "text": "GitHubでコードを開く ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+            }
+          },
+          {
+            "text": "記録を書く ＋",
+            "href": "/hamaya-site-draft/write/?kind=note",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 569.390625,
+              "width": 71.34375,
+              "height": 32,
+              "right": 91.34375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録を書く ＋",
+              "href": "/hamaya-site-draft/write/?kind=note"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 112.140625,
+              "y": 569.390625,
+              "width": 82.59375,
+              "height": 32,
+              "right": 194.734375,
+              "bottom": 601.390625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "次の作品を開くgame-ai-search-puzzles →",
+            "href": "#piece-import-game-ai-search-puzzles",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 618.984375,
+              "width": 335,
+              "height": 60.125,
+              "right": 355,
+              "bottom": 679.109375,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "16px",
+              "lineHeight": "29.6px",
+              "text": "次の作品を開く game-ai-search-puzzles →",
+              "href": "#piece-import-game-ai-search-puzzles"
+            }
+          },
+          {
+            "text": "ほかの案を比べる ↗",
+            "href": "/hamaya-site-draft/room/compare/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 777.90625,
+              "width": 95.734375,
+              "height": 18.5,
+              "right": 115.734375,
+              "bottom": 796.40625,
+              "visible": true,
+              "withinFirstViewport": true,
+              "fontSize": "10px",
+              "lineHeight": "18.5px",
+              "text": "ほかの案を比べる ↗",
+              "href": "/hamaya-site-draft/room/compare/"
+            }
+          },
+          {
+            "text": "記録の一覧へ ↗",
+            "href": "/hamaya-site-draft/room/notes/",
+            "visible": true,
+            "bounds": {
+              "x": 272.40625,
+              "y": 841.59375,
+              "width": 82.59375,
+              "height": 36,
+              "right": 355,
+              "bottom": 877.59375,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "11px",
+              "lineHeight": "20.35px",
+              "text": "記録の一覧へ ↗",
+              "href": "/hamaya-site-draft/room/notes/"
+            }
+          },
+          {
+            "text": "好きなゲームについて思うこと 1",
+            "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/",
+            "visible": true,
+            "bounds": {
+              "x": 20,
+              "y": 919.28125,
+              "width": 251.46875,
+              "height": 40.875,
+              "right": 271.46875,
+              "bottom": 960.15625,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "18px",
+              "lineHeight": "29.7px",
+              "text": "好きなゲームについて思うこと 1",
+              "href": "/hamaya-site-draft/room/notes/legacy-cyberpunk2077-1/"
+            }
+          },
+          {
+            "text": "GitHub ↗",
+            "href": "https://github.com/KOSEIHAMAYA2077",
+            "visible": true,
+            "bounds": {
+              "x": 215.5625,
+              "y": 1098.171875,
+              "width": 59.046875,
+              "height": 12,
+              "right": 274.609375,
+              "bottom": 1110.171875,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "GitHub ↗",
+              "href": "https://github.com/KOSEIHAMAYA2077"
+            }
+          },
+          {
+            "text": "表示・比較",
+            "href": "/hamaya-site-draft/room/settings/",
+            "visible": true,
+            "bounds": {
+              "x": 293.796875,
+              "y": 1083.578125,
+              "width": 61.203125,
+              "height": 44,
+              "right": 355,
+              "bottom": 1127.578125,
+              "visible": true,
+              "withinFirstViewport": false,
+              "fontSize": "12px",
+              "lineHeight": "22.2px",
+              "text": "表示・比較",
+              "href": "/hamaya-site-draft/room/settings/"
+            }
+          }
+        ]
+      },
+      "storageAfterStop": {
+        "local": {
+          "archive-motion": "off"
+        },
+        "session": {}
+      },
+      "screenshots": {
+        "natural": "baseline-mobile-motion.png",
+        "stopped": "baseline-mobile.png"
+      },
+      "errors": [],
+      "failedRequests": [],
+      "success": true
+    }
+  ],
+  "browserVersion": "153.0.8010.12",
+  "disposableBrowserClosed": true
+}

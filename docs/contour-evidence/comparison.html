@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+  <meta charset="utf-8" /><title>曲面と重なり — 統合版との比較</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #e4e7df;
+      color: #243035;
+      font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: 2648px;
+      padding: 32px;
+    }
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 40px;
+      letter-spacing: -0.04em;
+      line-height: 1.3;
+      margin: 0;
+    }
+    header p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0;
+      color: #52605c;
+    }
+    section.desktop {
+      display: grid;
+      grid-template-columns: 1280px 1280px;
+      gap: 24px;
+    }
+    figure {
+      margin: 0;
+    }
+    figcaption {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 22px;
+      line-height: 32px;
+      margin-bottom: 12px;
+    }
+    figcaption span {
+      font-size: 16px;
+      color: #57635e;
+    }
+    img {
+      display: block;
+      max-width: none;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px #bcc5bd;
+    }
+    section.mobile {
+      display: grid;
+      grid-template-columns: 375px 375px 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    aside {
+      padding: 58px 64px;
+      background: #eff1eb;
+      border-radius: 6px 100px 6px 6px;
+      margin-left: 36px;
+    }
+    aside h2 {
+      font-size: 34px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin: 0 0 36px;
+    }
+    aside dl {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 26px 30px;
+      font-size: 24px;
+      line-height: 1.8;
+      margin: 0;
+    }
+    dt {
+      color: #52665a;
+    }
+    dd {
+      margin: 0;
+    }
+    aside p {
+      font-size: 20px;
+      line-height: 1.9;
+      margin: 52px 0 0;
+      color: #55625c;
+    }
+    footer {
+      font-size: 18px;
+      margin-top: 26px;
+      color: #52605c;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+  <main>
+    <header>
+      <div>
+        <h1>曲面と重なり</h1>
+        <p>同じ作品・同じ文章で、最初の画面を比べる</p>
+      </div>
+      <p>
+        2026.10.04 / ローカルの独立比較<br />同じサイズ・同じ選択・動きを止めた状態
+      </p>
+    </header>
+    <section class="desktop">
+      <figure>
+        <figcaption>基準 <span>統合版 · PC 1280 × 812</span></figcaption>
+        <img
+          src="baseline-desktop.png"
+          width="1280"
+          height="812"
+          alt="基準の統合版・PC"
+        />
+      </figure>
+      <figure>
+        <figcaption>新案 <span>曲面と重なり · PC 1280 × 812</span></figcaption>
+        <img
+          src="contour-desktop.png"
+          width="1280"
+          height="812"
+          alt="新案・PC"
+        />
+      </figure>
+    </section>
+    <section class="mobile">
+      <figure>
+        <figcaption>基準 <span>375 × 812</span></figcaption>
+        <img
+          src="baseline-mobile.png"
+          width="375"
+          height="812"
+          alt="基準の統合版・375px"
+        />
+      </figure>
+      <figure>
+        <figcaption>新案 <span>375 × 812</span></figcaption>
+        <img
+          src="contour-mobile.png"
+          width="375"
+          height="812"
+          alt="新案・375px"
+        />
+      </figure>
+      <aside>
+        <h2>印象を変える、3つの差分</h2>
+        <dl>
+          <dt>作品名</dt>
+          <dd>
+            大きく見せ、余白との対比を強める。<br />説明と本人の文章はそのまま。
+          </dd>
+          <dt>一つの立体</dt>
+          <dd>
+            既存の銀色の造形を、読む面の背後へ。<br />375pxでも穴と金属の厚みを見せる。
+          </dd>
+          <dt>読む面</dt>
+          <dd>
+            片側の大きい曲率と薄い面の重なり。<br />文字や操作に立体をかぶせない。
+          </dd>
+        </dl>
+        <p>
+          機能・原文・依存関係・描画スクリプトは基準のまま。<br />導入待ちなし。新しい描画ループ・アニメーションなし。<br />採用と公開は、本人が比較してから判断します。
+        </p>
+      </aside>
+    </section>
+    <footer>
+      <span>初期の主導線の下端：PC 587px / 375px 659px（新案）</span
+      ><span>基準 integrated-workroom → 独立案 contour-study</span>
+    </footer>
+  </main>
+</html>

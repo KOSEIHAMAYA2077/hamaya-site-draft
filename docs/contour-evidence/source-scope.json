@@ -1,0 +1,10 @@
+{
+  "clientScriptUnchanged": true,
+  "sculptureSvgUnchanged": true,
+  "dependenciesUnchanged": true,
+  "implementationFiles": [
+    "src/components/FocusStudy.astro",
+    "src/components/WorkroomHome.astro"
+  ],
+  "newAnimationOrRafLoop": false
+}

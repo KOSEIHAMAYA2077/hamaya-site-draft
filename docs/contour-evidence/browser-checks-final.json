@@ -1,0 +1,2034 @@
+{
+  "overall": "passed",
+  "scope": "Local contour comparison only; existing six work texts and all link values compared to integrated baseline. Synthetic writer input only. No source or server mutations by this QA.",
+  "browser": "153.0.8010.12",
+  "checkGroups": 11,
+  "checks": [
+    {
+      "name": "1280px: unchanged six works/links, keyboard picker/Escape/next/hash reload, contained text and unobstructed controls",
+      "initialPrimaryBottom": 587.46875,
+      "longestTitle": "game-ai-search-puzzles",
+      "longestTitleBottom": 445.796875,
+      "run": "JavaScript ON; reused after final CSS change limited to :not([data-focus-enhanced]) desktop fallback"
+    },
+    {
+      "name": "Motion OFF gives zero decorative transition; no requestAnimationFrame calls added while idle for 1.1s",
+      "rafBefore": 0,
+      "rafAfter": 0,
+      "run": "JavaScript ON; reused after final CSS change limited to :not([data-focus-enhanced]) desktop fallback"
+    },
+    {
+      "name": "Actual writer link opens; read/edit, Maker separate tab and canceled unsaved navigation preserve synthetic input",
+      "run": "JavaScript ON; reused after final CSS change limited to :not([data-focus-enhanced]) desktop fallback"
+    },
+    {
+      "name": "375px: unchanged six works/links, keyboard picker/Escape/next/hash reload, contained text and unobstructed controls",
+      "initialPrimaryBottom": 659.4375,
+      "longestTitle": "game-ai-search-puzzles",
+      "longestTitleBottom": 349.796875,
+      "run": "JavaScript ON; reused after final CSS change limited to :not([data-focus-enhanced]) desktop fallback"
+    },
+    {
+      "name": "320px: unchanged six works/links, keyboard picker/Escape/next/hash reload, contained text and unobstructed controls",
+      "initialPrimaryBottom": 678.5625,
+      "longestTitle": "game-ai-search-puzzles",
+      "longestTitleBottom": 341.265625,
+      "run": "JavaScript ON; reused after final CSS change limited to :not([data-focus-enhanced]) desktop fallback"
+    },
+    {
+      "name": "768px: unchanged six works/links, keyboard picker/Escape/next/hash reload, contained text and unobstructed controls",
+      "initialPrimaryBottom": 588.34375,
+      "longestTitle": "game-ai-search-puzzles",
+      "longestTitleBottom": 392.046875,
+      "run": "JavaScript ON; reused after final CSS change limited to :not([data-focus-enhanced]) desktop fallback"
+    },
+    {
+      "name": "Reduced-motion keeps selection working immediately with zero decorative transition",
+      "run": "JavaScript ON; reused after final CSS change limited to :not([data-focus-enhanced]) desktop fallback"
+    },
+    {
+      "name": "1280px JavaScript OFF: first CTA visible, all six works/links remain and all native anchors scroll correctly",
+      "viewport": 1280,
+      "html": 1280,
+      "body": 1280,
+      "primaryBottom": 565.75,
+      "run": "Final JavaScript OFF fallback after CSS repair"
+    },
+    {
+      "name": "375px JavaScript OFF: first CTA visible, all six works/links remain and all native anchors scroll correctly",
+      "viewport": 375,
+      "html": 375,
+      "body": 375,
+      "primaryBottom": 702.640625,
+      "run": "Final JavaScript OFF fallback after CSS repair"
+    },
+    {
+      "name": "No external requests, content transmission, console errors or page errors",
+      "run": "Final JavaScript OFF fallback after CSS repair"
+    },
+    {
+      "name": "Natural motion ON adds no requestAnimationFrame calls while idle for 1.1 seconds",
+      "before": {
+        "motion": "on",
+        "calls": 0
+      },
+      "after": {
+        "motion": "on",
+        "calls": 0
+      }
+    }
+  ],
+  "resolvedIssues": [
+    {
+      "type": "product",
+      "finding": "1280px JavaScript OFF initially placed the first CTA below the first viewport",
+      "beforePrimaryBottom": 1119.453125,
+      "afterPrimaryBottom": 565.75,
+      "resolution": "Root changed desktop JavaScript OFF layout only; first CTA and all six native anchors pass final checks."
+    },
+    {
+      "type": "harness",
+      "finding": "The initial native-anchor assertion ran during browser smooth scrolling",
+      "resolution": "Waited 900 ms on the host without injected page RAF; all six native anchors reach visible titles at 1280px and 375px."
+    }
+  ],
+  "geometries": [
+    {
+      "label": "1280-initial",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 302.453125,
+          "right": 638.390625,
+          "bottom": 374.125,
+          "width": 582.390625,
+          "height": 71.671875
+        },
+        "body": {
+          "x": 56,
+          "y": 401.3125,
+          "right": 750.390625,
+          "bottom": 783.609375,
+          "width": 694.390625,
+          "height": 382.296875
+        },
+        "description": {
+          "x": 93,
+          "y": 434.3125,
+          "right": 589,
+          "bottom": 514.703125,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 537.09375,
+          "right": 314.890625,
+          "bottom": 587.46875,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 659.46875,
+          "right": 589,
+          "bottom": 722,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 608.390625,
+        "y": 216.3125,
+        "right": 1185.984375,
+        "bottom": 783.609375,
+        "width": 577.59375,
+        "height": 567.296875
+      }
+    },
+    {
+      "label": "1280-import-typeandsummon",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 302.453125,
+          "right": 638.390625,
+          "bottom": 374.125,
+          "width": 582.390625,
+          "height": 71.671875
+        },
+        "body": {
+          "x": 56,
+          "y": 401.3125,
+          "right": 750.390625,
+          "bottom": 783.609375,
+          "width": 694.390625,
+          "height": 382.296875
+        },
+        "description": {
+          "x": 93,
+          "y": 434.3125,
+          "right": 589,
+          "bottom": 514.703125,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 537.09375,
+          "right": 314.890625,
+          "bottom": 587.46875,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 659.46875,
+          "right": 589,
+          "bottom": 722,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 608.390625,
+        "y": 216.3125,
+        "right": 1185.984375,
+        "bottom": 783.609375,
+        "width": 577.59375,
+        "height": 567.296875
+      }
+    },
+    {
+      "label": "1280-import-game-ai-search-puzzles",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-game-ai-search-puzzles",
+      "title": "game-ai-search-puzzles",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 302.453125,
+          "right": 638.390625,
+          "bottom": 445.796875,
+          "width": 582.390625,
+          "height": 143.34375
+        },
+        "body": {
+          "x": 56,
+          "y": 472.984375,
+          "right": 750.390625,
+          "bottom": 823.46875,
+          "width": 694.390625,
+          "height": 350.484375
+        },
+        "description": {
+          "x": 93,
+          "y": 505.984375,
+          "right": 589,
+          "bottom": 586.375,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 608.765625,
+          "right": 314.890625,
+          "bottom": 659.140625,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 731.140625,
+          "right": 589,
+          "bottom": 793.671875,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 608.390625,
+        "y": 216.3125,
+        "right": 1185.984375,
+        "bottom": 783.609375,
+        "width": 577.59375,
+        "height": 567.296875
+      }
+    },
+    {
+      "label": "1280-import-de10-nano-riscv-invader",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-de10-nano-riscv-invader",
+      "title": "de10-nano-riscv-invader",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 302.453125,
+          "right": 638.390625,
+          "bottom": 445.796875,
+          "width": 582.390625,
+          "height": 143.34375
+        },
+        "body": {
+          "x": 56,
+          "y": 472.984375,
+          "right": 750.390625,
+          "bottom": 823.46875,
+          "width": 694.390625,
+          "height": 350.484375
+        },
+        "description": {
+          "x": 93,
+          "y": 505.984375,
+          "right": 589,
+          "bottom": 586.375,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 608.765625,
+          "right": 314.890625,
+          "bottom": 659.140625,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 731.140625,
+          "right": 589,
+          "bottom": 793.671875,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 608.390625,
+        "y": 216.3125,
+        "right": 1185.984375,
+        "bottom": 783.609375,
+        "width": 577.59375,
+        "height": 567.296875
+      }
+    },
+    {
+      "label": "1280-import-de10-nano-voice-changer",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-de10-nano-voice-changer",
+      "title": "de10-nano-voice-changer",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 302.453125,
+          "right": 638.390625,
+          "bottom": 445.796875,
+          "width": 582.390625,
+          "height": 143.34375
+        },
+        "body": {
+          "x": 56,
+          "y": 472.984375,
+          "right": 750.390625,
+          "bottom": 823.46875,
+          "width": 694.390625,
+          "height": 350.484375
+        },
+        "description": {
+          "x": 93,
+          "y": 505.984375,
+          "right": 589,
+          "bottom": 586.375,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 608.765625,
+          "right": 314.890625,
+          "bottom": 659.140625,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 731.140625,
+          "right": 589,
+          "bottom": 793.671875,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 608.390625,
+        "y": 216.3125,
+        "right": 1185.984375,
+        "bottom": 783.609375,
+        "width": 577.59375,
+        "height": 567.296875
+      }
+    },
+    {
+      "label": "1280-import-pong-study-raylib",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-pong-study-raylib",
+      "title": "pong-study-raylib",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 302.453125,
+          "right": 638.390625,
+          "bottom": 374.125,
+          "width": 582.390625,
+          "height": 71.671875
+        },
+        "body": {
+          "x": 56,
+          "y": 401.3125,
+          "right": 750.390625,
+          "bottom": 783.609375,
+          "width": 694.390625,
+          "height": 382.296875
+        },
+        "description": {
+          "x": 93,
+          "y": 434.3125,
+          "right": 589,
+          "bottom": 514.703125,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 537.09375,
+          "right": 314.890625,
+          "bottom": 587.46875,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 659.46875,
+          "right": 589,
+          "bottom": 722,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 608.390625,
+        "y": 216.3125,
+        "right": 1185.984375,
+        "bottom": 783.609375,
+        "width": 577.59375,
+        "height": 567.296875
+      }
+    },
+    {
+      "label": "1280-import-one-board-incremental",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-one-board-incremental",
+      "title": "one-board-incremental",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 302.453125,
+          "right": 638.390625,
+          "bottom": 445.796875,
+          "width": 582.390625,
+          "height": 143.34375
+        },
+        "body": {
+          "x": 56,
+          "y": 472.984375,
+          "right": 750.390625,
+          "bottom": 783.609375,
+          "width": 694.390625,
+          "height": 310.625
+        },
+        "description": null,
+        "primary": {
+          "x": 93,
+          "y": 528.375,
+          "right": 314.890625,
+          "bottom": 578.75,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 650.75,
+          "right": 589,
+          "bottom": 713.28125,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 608.390625,
+        "y": 216.3125,
+        "right": 1185.984375,
+        "bottom": 783.609375,
+        "width": 577.59375,
+        "height": 567.296875
+      }
+    },
+    {
+      "label": "375-initial",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 272.828125,
+          "right": 355,
+          "bottom": 311.3125,
+          "width": 335,
+          "height": 38.484375
+        },
+        "body": {
+          "x": 20,
+          "y": 485.71875,
+          "right": 355,
+          "bottom": 799.75,
+          "width": 335,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 508.3125,
+          "right": 334.8125,
+          "bottom": 599.46875,
+          "width": 294.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 613.0625,
+          "right": 241.25,
+          "bottom": 659.4375,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 718.625,
+          "right": 334.8125,
+          "bottom": 778.75,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 107,
+        "y": 305.71875,
+        "right": 359,
+        "bottom": 493.71875,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "375-import-typeandsummon",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 272.828125,
+          "right": 355,
+          "bottom": 311.3125,
+          "width": 335,
+          "height": 38.484375
+        },
+        "body": {
+          "x": 20,
+          "y": 485.71875,
+          "right": 355,
+          "bottom": 799.75,
+          "width": 335,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 508.3125,
+          "right": 334.8125,
+          "bottom": 599.46875,
+          "width": 294.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 613.0625,
+          "right": 241.25,
+          "bottom": 659.4375,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 718.625,
+          "right": 334.8125,
+          "bottom": 778.75,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 107,
+        "y": 305.71875,
+        "right": 359,
+        "bottom": 493.71875,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "375-import-game-ai-search-puzzles",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-game-ai-search-puzzles",
+      "title": "game-ai-search-puzzles",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 272.828125,
+          "right": 355,
+          "bottom": 349.796875,
+          "width": 335,
+          "height": 76.96875
+        },
+        "body": {
+          "x": 20,
+          "y": 524.203125,
+          "right": 355,
+          "bottom": 814.84375,
+          "width": 335,
+          "height": 290.640625
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 546.796875,
+          "right": 334.8125,
+          "bottom": 614.5625,
+          "width": 294.625,
+          "height": 67.765625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 628.15625,
+          "right": 241.25,
+          "bottom": 674.53125,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 733.71875,
+          "right": 334.8125,
+          "bottom": 793.84375,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 107,
+        "y": 344.203125,
+        "right": 359,
+        "bottom": 532.203125,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "375-import-de10-nano-riscv-invader",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-de10-nano-riscv-invader",
+      "title": "de10-nano-riscv-invader",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 272.828125,
+          "right": 355,
+          "bottom": 349.796875,
+          "width": 335,
+          "height": 76.96875
+        },
+        "body": {
+          "x": 20,
+          "y": 524.203125,
+          "right": 355,
+          "bottom": 838.234375,
+          "width": 335,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 546.796875,
+          "right": 334.8125,
+          "bottom": 637.953125,
+          "width": 294.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 651.546875,
+          "right": 241.25,
+          "bottom": 697.921875,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 757.109375,
+          "right": 334.8125,
+          "bottom": 817.234375,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 107,
+        "y": 344.203125,
+        "right": 359,
+        "bottom": 532.203125,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "375-import-de10-nano-voice-changer",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-de10-nano-voice-changer",
+      "title": "de10-nano-voice-changer",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 272.828125,
+          "right": 355,
+          "bottom": 349.796875,
+          "width": 335,
+          "height": 76.96875
+        },
+        "body": {
+          "x": 20,
+          "y": 524.203125,
+          "right": 355,
+          "bottom": 838.234375,
+          "width": 335,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 546.796875,
+          "right": 334.8125,
+          "bottom": 637.953125,
+          "width": 294.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 651.546875,
+          "right": 241.25,
+          "bottom": 697.921875,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 757.109375,
+          "right": 334.8125,
+          "bottom": 817.234375,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 107,
+        "y": 344.203125,
+        "right": 359,
+        "bottom": 532.203125,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "375-import-pong-study-raylib",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-pong-study-raylib",
+      "title": "pong-study-raylib",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 272.828125,
+          "right": 355,
+          "bottom": 311.3125,
+          "width": 335,
+          "height": 38.484375
+        },
+        "body": {
+          "x": 20,
+          "y": 485.71875,
+          "right": 355,
+          "bottom": 776.359375,
+          "width": 335,
+          "height": 290.640625
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 508.3125,
+          "right": 334.8125,
+          "bottom": 576.078125,
+          "width": 294.625,
+          "height": 67.765625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 589.671875,
+          "right": 241.25,
+          "bottom": 636.046875,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 695.234375,
+          "right": 334.8125,
+          "bottom": 755.359375,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 107,
+        "y": 305.71875,
+        "right": 359,
+        "bottom": 493.71875,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "375-import-one-board-incremental",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-one-board-incremental",
+      "title": "one-board-incremental",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 272.828125,
+          "right": 355,
+          "bottom": 349.796875,
+          "width": 335,
+          "height": 76.96875
+        },
+        "body": {
+          "x": 20,
+          "y": 524.203125,
+          "right": 355,
+          "bottom": 747.078125,
+          "width": 335,
+          "height": 222.875
+        },
+        "description": null,
+        "primary": {
+          "x": 40.1875,
+          "y": 560.390625,
+          "right": 241.25,
+          "bottom": 606.765625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 665.953125,
+          "right": 334.8125,
+          "bottom": 726.078125,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 107,
+        "y": 344.203125,
+        "right": 359,
+        "bottom": 532.203125,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "320-initial",
+      "width": 320,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 16,
+          "y": 272.828125,
+          "right": 304,
+          "bottom": 307.046875,
+          "width": 288,
+          "height": 34.21875
+        },
+        "body": {
+          "x": 16,
+          "y": 481.453125,
+          "right": 304,
+          "bottom": 818.875,
+          "width": 288,
+          "height": 337.421875
+        },
+        "description": {
+          "x": 36.1875,
+          "y": 504.046875,
+          "right": 283.8125,
+          "bottom": 618.59375,
+          "width": 247.625,
+          "height": 114.546875
+        },
+        "primary": {
+          "x": 36.1875,
+          "y": 632.1875,
+          "right": 237.25,
+          "bottom": 678.5625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 36.1875,
+          "y": 737.75,
+          "right": 283.8125,
+          "bottom": 797.875,
+          "width": 247.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 56,
+        "y": 301.453125,
+        "right": 308,
+        "bottom": 489.453125,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "320-import-typeandsummon",
+      "width": 320,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 16,
+          "y": 272.828125,
+          "right": 304,
+          "bottom": 307.046875,
+          "width": 288,
+          "height": 34.21875
+        },
+        "body": {
+          "x": 16,
+          "y": 481.453125,
+          "right": 304,
+          "bottom": 818.875,
+          "width": 288,
+          "height": 337.421875
+        },
+        "description": {
+          "x": 36.1875,
+          "y": 504.046875,
+          "right": 283.8125,
+          "bottom": 618.59375,
+          "width": 247.625,
+          "height": 114.546875
+        },
+        "primary": {
+          "x": 36.1875,
+          "y": 632.1875,
+          "right": 237.25,
+          "bottom": 678.5625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 36.1875,
+          "y": 737.75,
+          "right": 283.8125,
+          "bottom": 797.875,
+          "width": 247.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 56,
+        "y": 301.453125,
+        "right": 308,
+        "bottom": 489.453125,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "320-import-game-ai-search-puzzles",
+      "width": 320,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "id": "import-game-ai-search-puzzles",
+      "title": "game-ai-search-puzzles",
+      "bounds": {
+        "title": {
+          "x": 16,
+          "y": 272.828125,
+          "right": 304,
+          "bottom": 341.265625,
+          "width": 288,
+          "height": 68.4375
+        },
+        "body": {
+          "x": 16,
+          "y": 515.671875,
+          "right": 304,
+          "bottom": 829.703125,
+          "width": 288,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 36.1875,
+          "y": 538.265625,
+          "right": 283.8125,
+          "bottom": 629.421875,
+          "width": 247.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 36.1875,
+          "y": 643.015625,
+          "right": 237.25,
+          "bottom": 689.390625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 36.1875,
+          "y": 748.578125,
+          "right": 283.8125,
+          "bottom": 808.703125,
+          "width": 247.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 56,
+        "y": 335.671875,
+        "right": 308,
+        "bottom": 523.671875,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "320-import-de10-nano-riscv-invader",
+      "width": 320,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "id": "import-de10-nano-riscv-invader",
+      "title": "de10-nano-riscv-invader",
+      "bounds": {
+        "title": {
+          "x": 16,
+          "y": 272.828125,
+          "right": 304,
+          "bottom": 341.265625,
+          "width": 288,
+          "height": 68.4375
+        },
+        "body": {
+          "x": 16,
+          "y": 515.671875,
+          "right": 304,
+          "bottom": 829.703125,
+          "width": 288,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 36.1875,
+          "y": 538.265625,
+          "right": 283.8125,
+          "bottom": 629.421875,
+          "width": 247.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 36.1875,
+          "y": 643.015625,
+          "right": 237.25,
+          "bottom": 689.390625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 36.1875,
+          "y": 748.578125,
+          "right": 283.8125,
+          "bottom": 808.703125,
+          "width": 247.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 56,
+        "y": 335.671875,
+        "right": 308,
+        "bottom": 523.671875,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "320-import-de10-nano-voice-changer",
+      "width": 320,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "id": "import-de10-nano-voice-changer",
+      "title": "de10-nano-voice-changer",
+      "bounds": {
+        "title": {
+          "x": 16,
+          "y": 272.828125,
+          "right": 304,
+          "bottom": 341.265625,
+          "width": 288,
+          "height": 68.4375
+        },
+        "body": {
+          "x": 16,
+          "y": 515.671875,
+          "right": 304,
+          "bottom": 829.703125,
+          "width": 288,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 36.1875,
+          "y": 538.265625,
+          "right": 283.8125,
+          "bottom": 629.421875,
+          "width": 247.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 36.1875,
+          "y": 643.015625,
+          "right": 237.25,
+          "bottom": 689.390625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 36.1875,
+          "y": 748.578125,
+          "right": 283.8125,
+          "bottom": 808.703125,
+          "width": 247.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 56,
+        "y": 335.671875,
+        "right": 308,
+        "bottom": 523.671875,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "320-import-pong-study-raylib",
+      "width": 320,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "id": "import-pong-study-raylib",
+      "title": "pong-study-raylib",
+      "bounds": {
+        "title": {
+          "x": 16,
+          "y": 272.828125,
+          "right": 304,
+          "bottom": 307.046875,
+          "width": 288,
+          "height": 34.21875
+        },
+        "body": {
+          "x": 16,
+          "y": 481.453125,
+          "right": 304,
+          "bottom": 795.484375,
+          "width": 288,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 36.1875,
+          "y": 504.046875,
+          "right": 283.8125,
+          "bottom": 595.203125,
+          "width": 247.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 36.1875,
+          "y": 608.796875,
+          "right": 237.25,
+          "bottom": 655.171875,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 36.1875,
+          "y": 714.359375,
+          "right": 283.8125,
+          "bottom": 774.484375,
+          "width": 247.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 56,
+        "y": 301.453125,
+        "right": 308,
+        "bottom": 489.453125,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "320-import-one-board-incremental",
+      "width": 320,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "id": "import-one-board-incremental",
+      "title": "one-board-incremental",
+      "bounds": {
+        "title": {
+          "x": 16,
+          "y": 272.828125,
+          "right": 304,
+          "bottom": 341.265625,
+          "width": 288,
+          "height": 68.4375
+        },
+        "body": {
+          "x": 16,
+          "y": 515.671875,
+          "right": 304,
+          "bottom": 738.546875,
+          "width": 288,
+          "height": 222.875
+        },
+        "description": null,
+        "primary": {
+          "x": 36.1875,
+          "y": 551.859375,
+          "right": 237.25,
+          "bottom": 598.234375,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 36.1875,
+          "y": 657.421875,
+          "right": 283.8125,
+          "bottom": 717.546875,
+          "width": 247.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 56,
+        "y": 335.671875,
+        "right": 308,
+        "bottom": 523.671875,
+        "width": 252,
+        "height": 188
+      }
+    },
+    {
+      "label": "768-initial",
+      "width": 768,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 36,
+          "y": 302.453125,
+          "right": 383.359375,
+          "bottom": 347.25,
+          "width": 347.359375,
+          "height": 44.796875
+        },
+        "body": {
+          "x": 36,
+          "y": 374.4375,
+          "right": 443.359375,
+          "bottom": 752.671875,
+          "width": 407.359375,
+          "height": 378.234375
+        },
+        "description": {
+          "x": 62.59375,
+          "y": 407.4375,
+          "right": 416.765625,
+          "bottom": 515.578125,
+          "width": 354.171875,
+          "height": 108.140625
+        },
+        "primary": {
+          "x": 62.59375,
+          "y": 537.96875,
+          "right": 284.484375,
+          "bottom": 588.34375,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 62.59375,
+          "y": 660.34375,
+          "right": 416.765625,
+          "bottom": 722.875,
+          "width": 354.171875,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 377.359375,
+        "y": 216.3125,
+        "right": 737.984375,
+        "bottom": 566.640625,
+        "width": 360.625,
+        "height": 350.328125
+      }
+    },
+    {
+      "label": "768-import-typeandsummon",
+      "width": 768,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 36,
+          "y": 302.453125,
+          "right": 383.359375,
+          "bottom": 347.25,
+          "width": 347.359375,
+          "height": 44.796875
+        },
+        "body": {
+          "x": 36,
+          "y": 374.4375,
+          "right": 443.359375,
+          "bottom": 752.671875,
+          "width": 407.359375,
+          "height": 378.234375
+        },
+        "description": {
+          "x": 62.59375,
+          "y": 407.4375,
+          "right": 416.765625,
+          "bottom": 515.578125,
+          "width": 354.171875,
+          "height": 108.140625
+        },
+        "primary": {
+          "x": 62.59375,
+          "y": 537.96875,
+          "right": 284.484375,
+          "bottom": 588.34375,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 62.59375,
+          "y": 660.34375,
+          "right": 416.765625,
+          "bottom": 722.875,
+          "width": 354.171875,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 377.359375,
+        "y": 216.3125,
+        "right": 737.984375,
+        "bottom": 566.640625,
+        "width": 360.625,
+        "height": 350.328125
+      }
+    },
+    {
+      "label": "768-import-game-ai-search-puzzles",
+      "width": 768,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "id": "import-game-ai-search-puzzles",
+      "title": "game-ai-search-puzzles",
+      "bounds": {
+        "title": {
+          "x": 36,
+          "y": 302.453125,
+          "right": 383.359375,
+          "bottom": 392.046875,
+          "width": 347.359375,
+          "height": 89.59375
+        },
+        "body": {
+          "x": 36,
+          "y": 419.234375,
+          "right": 443.359375,
+          "bottom": 769.71875,
+          "width": 407.359375,
+          "height": 350.484375
+        },
+        "description": {
+          "x": 62.59375,
+          "y": 452.234375,
+          "right": 416.765625,
+          "bottom": 532.625,
+          "width": 354.171875,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 62.59375,
+          "y": 555.015625,
+          "right": 284.484375,
+          "bottom": 605.390625,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 62.59375,
+          "y": 677.390625,
+          "right": 416.765625,
+          "bottom": 739.921875,
+          "width": 354.171875,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 377.359375,
+        "y": 216.3125,
+        "right": 737.984375,
+        "bottom": 566.640625,
+        "width": 360.625,
+        "height": 350.328125
+      }
+    },
+    {
+      "label": "768-import-de10-nano-riscv-invader",
+      "width": 768,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "id": "import-de10-nano-riscv-invader",
+      "title": "de10-nano-riscv-invader",
+      "bounds": {
+        "title": {
+          "x": 36,
+          "y": 302.453125,
+          "right": 383.359375,
+          "bottom": 392.046875,
+          "width": 347.359375,
+          "height": 89.59375
+        },
+        "body": {
+          "x": 36,
+          "y": 419.234375,
+          "right": 443.359375,
+          "bottom": 797.46875,
+          "width": 407.359375,
+          "height": 378.234375
+        },
+        "description": {
+          "x": 62.59375,
+          "y": 452.234375,
+          "right": 416.765625,
+          "bottom": 560.375,
+          "width": 354.171875,
+          "height": 108.140625
+        },
+        "primary": {
+          "x": 62.59375,
+          "y": 582.765625,
+          "right": 284.484375,
+          "bottom": 633.140625,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 62.59375,
+          "y": 705.140625,
+          "right": 416.765625,
+          "bottom": 767.671875,
+          "width": 354.171875,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 377.359375,
+        "y": 216.3125,
+        "right": 737.984375,
+        "bottom": 566.640625,
+        "width": 360.625,
+        "height": 350.328125
+      }
+    },
+    {
+      "label": "768-import-de10-nano-voice-changer",
+      "width": 768,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "id": "import-de10-nano-voice-changer",
+      "title": "de10-nano-voice-changer",
+      "bounds": {
+        "title": {
+          "x": 36,
+          "y": 302.453125,
+          "right": 383.359375,
+          "bottom": 392.046875,
+          "width": 347.359375,
+          "height": 89.59375
+        },
+        "body": {
+          "x": 36,
+          "y": 419.234375,
+          "right": 443.359375,
+          "bottom": 797.46875,
+          "width": 407.359375,
+          "height": 378.234375
+        },
+        "description": {
+          "x": 62.59375,
+          "y": 452.234375,
+          "right": 416.765625,
+          "bottom": 560.375,
+          "width": 354.171875,
+          "height": 108.140625
+        },
+        "primary": {
+          "x": 62.59375,
+          "y": 582.765625,
+          "right": 284.484375,
+          "bottom": 633.140625,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 62.59375,
+          "y": 705.140625,
+          "right": 416.765625,
+          "bottom": 767.671875,
+          "width": 354.171875,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 377.359375,
+        "y": 216.3125,
+        "right": 737.984375,
+        "bottom": 566.640625,
+        "width": 360.625,
+        "height": 350.328125
+      }
+    },
+    {
+      "label": "768-import-pong-study-raylib",
+      "width": 768,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "id": "import-pong-study-raylib",
+      "title": "pong-study-raylib",
+      "bounds": {
+        "title": {
+          "x": 36,
+          "y": 302.453125,
+          "right": 383.359375,
+          "bottom": 347.25,
+          "width": 347.359375,
+          "height": 44.796875
+        },
+        "body": {
+          "x": 36,
+          "y": 374.4375,
+          "right": 443.359375,
+          "bottom": 724.921875,
+          "width": 407.359375,
+          "height": 350.484375
+        },
+        "description": {
+          "x": 62.59375,
+          "y": 407.4375,
+          "right": 416.765625,
+          "bottom": 487.828125,
+          "width": 354.171875,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 62.59375,
+          "y": 510.21875,
+          "right": 284.484375,
+          "bottom": 560.59375,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 62.59375,
+          "y": 632.59375,
+          "right": 416.765625,
+          "bottom": 695.125,
+          "width": 354.171875,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 377.359375,
+        "y": 216.3125,
+        "right": 737.984375,
+        "bottom": 566.640625,
+        "width": 360.625,
+        "height": 350.328125
+      }
+    },
+    {
+      "label": "768-import-one-board-incremental",
+      "width": 768,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "id": "import-one-board-incremental",
+      "title": "one-board-incremental",
+      "bounds": {
+        "title": {
+          "x": 36,
+          "y": 302.453125,
+          "right": 383.359375,
+          "bottom": 392.046875,
+          "width": 347.359375,
+          "height": 89.59375
+        },
+        "body": {
+          "x": 36,
+          "y": 419.234375,
+          "right": 443.359375,
+          "bottom": 689.328125,
+          "width": 407.359375,
+          "height": 270.09375
+        },
+        "description": null,
+        "primary": {
+          "x": 62.59375,
+          "y": 474.625,
+          "right": 284.484375,
+          "bottom": 525,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 62.59375,
+          "y": 597,
+          "right": 416.765625,
+          "bottom": 659.53125,
+          "width": 354.171875,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 377.359375,
+        "y": 216.3125,
+        "right": 737.984375,
+        "bottom": 566.640625,
+        "width": 360.625,
+        "height": 350.328125
+      }
+    },
+    {
+      "label": "1280-nojs-initial",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 280.734375,
+          "right": 663.359375,
+          "bottom": 352.40625,
+          "width": 607.359375,
+          "height": 71.671875
+        },
+        "body": {
+          "x": 56,
+          "y": 379.59375,
+          "right": 733.4375,
+          "bottom": 730.078125,
+          "width": 677.4375,
+          "height": 350.484375
+        },
+        "description": {
+          "x": 93,
+          "y": 412.59375,
+          "right": 589,
+          "bottom": 492.984375,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 515.375,
+          "right": 314.890625,
+          "bottom": 565.75,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 637.75,
+          "right": 589,
+          "bottom": 700.28125,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 686.734375,
+        "y": 258.796875,
+        "right": 1224,
+        "bottom": 785.765625,
+        "width": 537.265625,
+        "height": 526.96875
+      }
+    },
+    {
+      "label": "1280-nojs-all-native-anchors",
+      "anchors": [
+        {
+          "id": "import-typeandsummon",
+          "title": {
+            "x": 56,
+            "y": 77.734375,
+            "width": 607.359375,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-typeandsummon",
+          "scrollY": 203
+        },
+        {
+          "id": "import-game-ai-search-puzzles",
+          "title": {
+            "x": 56,
+            "y": 77.703125,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-game-ai-search-puzzles",
+          "scrollY": 762
+        },
+        {
+          "id": "import-de10-nano-riscv-invader",
+          "title": {
+            "x": 56,
+            "y": 77.984375,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-de10-nano-riscv-invader",
+          "scrollY": 1313
+        },
+        {
+          "id": "import-de10-nano-voice-changer",
+          "title": {
+            "x": 56,
+            "y": 78.265625,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-de10-nano-voice-changer",
+          "scrollY": 1864
+        },
+        {
+          "id": "import-pong-study-raylib",
+          "title": {
+            "x": 56,
+            "y": 77.546875,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-pong-study-raylib",
+          "scrollY": 2416
+        },
+        {
+          "id": "import-one-board-incremental",
+          "title": {
+            "x": 56,
+            "y": 77.828125,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-one-board-incremental",
+          "scrollY": 2967
+        }
+      ]
+    },
+    {
+      "label": "375-nojs-initial",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 490.4375,
+          "right": 355,
+          "bottom": 528.921875,
+          "width": 335,
+          "height": 38.484375
+        },
+        "body": {
+          "x": 20,
+          "y": 528.921875,
+          "right": 355,
+          "bottom": 842.953125,
+          "width": 335,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 551.515625,
+          "right": 334.8125,
+          "bottom": 642.671875,
+          "width": 294.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 656.265625,
+          "right": 241.25,
+          "bottom": 702.640625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 761.828125,
+          "right": 334.8125,
+          "bottom": 821.953125,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 97.5,
+        "y": 245.546875,
+        "right": 277.5,
+        "bottom": 425.546875,
+        "width": 180,
+        "height": 180
+      }
+    },
+    {
+      "label": "375-nojs-all-native-anchors",
+      "anchors": [
+        {
+          "id": "import-typeandsummon",
+          "title": {
+            "x": 20,
+            "y": 72.4375,
+            "width": 335,
+            "height": 38.484375
+          },
+          "hash": "#piece-import-typeandsummon",
+          "scrollY": 418
+        },
+        {
+          "id": "import-game-ai-search-puzzles",
+          "title": {
+            "x": 20,
+            "y": 72.84375,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-game-ai-search-puzzles",
+          "scrollY": 867
+        },
+        {
+          "id": "import-de10-nano-riscv-invader",
+          "title": {
+            "x": 20,
+            "y": 73.34375,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-de10-nano-riscv-invader",
+          "scrollY": 1331
+        },
+        {
+          "id": "import-de10-nano-voice-changer",
+          "title": {
+            "x": 20,
+            "y": 73.234375,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-de10-nano-voice-changer",
+          "scrollY": 1819
+        },
+        {
+          "id": "import-pong-study-raylib",
+          "title": {
+            "x": 20,
+            "y": 73.125,
+            "width": 335,
+            "height": 38.484375
+          },
+          "hash": "#piece-import-pong-study-raylib",
+          "scrollY": 2307
+        },
+        {
+          "id": "import-one-board-incremental",
+          "title": {
+            "x": 20,
+            "y": 73.140625,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-one-board-incremental",
+          "scrollY": 2733
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "checked-1280-initial.png",
+    "checked-1280-longest.png",
+    "checked-375-initial.png",
+    "checked-375-longest.png",
+    "checked-320-initial.png",
+    "checked-320-longest.png",
+    "checked-768-initial.png",
+    "checked-768-longest.png",
+    "checked-375-reduced.png",
+    "checked-1280-nojs-first.png",
+    "checked-375-nojs-first.png"
+  ],
+  "externalRequests": 0,
+  "pageErrors": 0,
+  "consoleErrors": 0,
+  "disposableBrowserClosed": true,
+  "rawLogs": [
+    "browser-checks.json",
+    "browser-checks-nojs.json",
+    "idle-motion.json"
+  ],
+  "failure": null
+}

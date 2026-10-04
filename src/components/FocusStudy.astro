@@ -3,6 +3,7 @@ import { path } from '../lib/paths';
 import FocusSculpture from './FocusSculpture.astro';
 interface Props {
   integrated?: boolean;
+  contour?: boolean;
   entries: {
     id: string;
     title: string;
@@ -11,7 +12,7 @@ interface Props {
     relatedNotes: { id: string; title: string; excerpt: string | null }[];
   }[];
 }
-const { entries, integrated = false } = Astro.props;
+const { entries, integrated = false, contour = false } = Astro.props;
 const notesPath = integrated ? 'room/notes/' : 'notes/';
 ---
 
@@ -19,6 +20,7 @@ const notesPath = integrated ? 'room/notes/' : 'notes/';
   class="focus-study shell"
   data-focus-study
   data-focus-integrated={integrated ? '' : undefined}
+  data-focus-contour={contour ? '' : undefined}
 >
   <div class="focus-context">
     <div>
@@ -825,6 +827,212 @@ const notesPath = integrated ? 'room/notes/' : 'notes/';
       margin: 0;
       min-height: 126px;
       align-self: center;
+    }
+  }
+
+  /* A static composition for the independent integrated-home comparison.
+     Keep the original controls, text and sculpture; overlap only their surfaces.
+     No loading sequence, extra artwork, animation or new client state. */
+  [data-focus-contour] {
+    padding-top: 1.8rem;
+  }
+  [data-focus-contour] .focus-context {
+    margin-bottom: 1.25rem;
+  }
+  [data-focus-contour] .focus-context h1 {
+    font-size: 14px;
+    letter-spacing: 0.09em;
+  }
+  [data-focus-contour] .focus-position > span {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+  [data-focus-contour] .focus-picker nav {
+    border-radius: 8px 8px 36px 8px;
+  }
+  [data-focus-contour] .focus-title h2 {
+    color: #202b31;
+    font-size: clamp(40px, 5vw, 66px);
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+    margin-top: 0.6rem;
+    text-wrap: pretty;
+  }
+  [data-focus-contour] .focus-body {
+    position: relative;
+    isolation: isolate;
+    padding: 2rem 2.25rem 1.8rem;
+    margin-top: 1.7rem;
+    border: 1px solid #ffffff;
+    border-radius: 10px 100px 12px 12px;
+    background: #fcfcf8;
+    box-shadow: 0 12px 36px #233e3c08;
+  }
+  [data-focus-contour] .focus-body::before {
+    content: '';
+    position: absolute;
+    inset: 12px -15px -12px 14px;
+    z-index: -2;
+    border: 1px solid #cfd9d1;
+    border-radius: 12px 96px 12px 12px;
+    background: #e6ebe2;
+    transform: rotate(1deg);
+    pointer-events: none;
+  }
+  [data-focus-contour] .focus-body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: #fcfcf8;
+    pointer-events: none;
+  }
+  [data-focus-contour] .focus-description,
+  [data-focus-contour] .focus-record {
+    max-width: 31rem;
+  }
+  [data-focus-contour] .focus-next {
+    max-width: 31rem;
+    margin-top: 1.25rem;
+  }
+  [data-focus-contour] .focus-art {
+    z-index: 0;
+  }
+  [data-focus-contour] .focus-art-label {
+    justify-content: flex-end;
+    padding-right: 2rem;
+  }
+  [data-focus-contour] .focus-footnote {
+    margin-top: 3.2rem;
+  }
+  [data-focus-contour][data-focus-enhanced] .focus-stage {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    column-gap: 3rem;
+    isolation: isolate;
+  }
+  [data-focus-contour][data-focus-enhanced] .focus-selection {
+    z-index: 4;
+    margin-bottom: 2.1rem;
+  }
+  [data-focus-contour][data-focus-enhanced] .focus-title {
+    z-index: 1;
+    position: relative;
+  }
+  [data-focus-contour][data-focus-enhanced] .focus-body {
+    z-index: 2;
+    width: calc(100% + 112px);
+  }
+  [data-focus-contour][data-focus-enhanced] .focus-art {
+    width: calc(100% + 40px);
+    max-width: 600px;
+    margin: 1.4rem 0 0 -78px;
+  }
+  @media (min-width: 761px) {
+    /* Without scripting, show all six articles in normal document order.
+       Float only the first illustration so it cannot delay the first action. */
+    [data-focus-contour]:not([data-focus-enhanced]) .focus-stage {
+      display: flow-root;
+    }
+    [data-focus-contour]:not([data-focus-enhanced]) .focus-art {
+      float: right;
+      width: 46%;
+      margin: 2rem 0 0 2rem;
+    }
+    [data-focus-contour]:not([data-focus-enhanced])
+      .focus-piece
+      + .focus-piece {
+      clear: both;
+    }
+    [data-focus-contour]:not([data-focus-enhanced])
+      .focus-piece:first-child
+      .focus-title {
+      max-width: 52%;
+    }
+    [data-focus-contour]:not([data-focus-enhanced])
+      .focus-piece:first-child
+      .focus-body {
+      width: 58%;
+    }
+  }
+  @media (min-width: 761px) and (max-width: 1000px) {
+    [data-focus-contour][data-focus-enhanced] .focus-stage {
+      column-gap: 1.75rem;
+    }
+    [data-focus-contour][data-focus-enhanced] .focus-body {
+      width: calc(100% + 60px);
+      padding-inline: 1.6rem;
+    }
+    [data-focus-contour][data-focus-enhanced] .focus-art {
+      margin-left: -34px;
+    }
+  }
+  @media (max-width: 760px) {
+    [data-focus-contour] {
+      padding-top: 0.7rem;
+    }
+    [data-focus-contour] .focus-context {
+      margin-bottom: 0.55rem;
+    }
+    [data-focus-contour] .focus-context h1 {
+      font-size: 11px;
+    }
+    [data-focus-contour] .focus-position > span {
+      font-size: 17px;
+    }
+    [data-focus-contour] .focus-title h2 {
+      font-size: clamp(29px, 8.7vw, 38px);
+      line-height: 1.18;
+      margin-top: 0.4rem;
+      letter-spacing: -0.04em;
+    }
+    [data-focus-contour] .focus-body {
+      padding: 1.35rem 1.2rem 1.25rem;
+      border-radius: 8px 64px 10px 10px;
+      margin-top: 0;
+    }
+    [data-focus-contour] .focus-body::before {
+      inset: 8px -6px -9px 10px;
+      border-radius: 8px 62px 10px 10px;
+      transform: rotate(0.8deg);
+    }
+    [data-focus-contour] .focus-next {
+      margin-top: 1rem;
+    }
+    [data-focus-contour] .focus-art-label {
+      position: absolute;
+      right: 0.8rem;
+      top: 36px;
+      padding: 0;
+      margin: 0;
+    }
+    [data-focus-contour] .focus-footnote {
+      margin-top: 2.5rem;
+    }
+    [data-focus-contour][data-focus-enhanced] .focus-stage {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: 'selection' 'title' 'art' 'body';
+      column-gap: 0;
+    }
+    [data-focus-contour][data-focus-enhanced] .focus-selection {
+      margin-bottom: 1.15rem;
+    }
+    [data-focus-contour][data-focus-enhanced] .focus-body {
+      width: 100%;
+    }
+    [data-focus-contour][data-focus-enhanced] .focus-art {
+      width: 252px;
+      height: 188px;
+      min-height: 0;
+      justify-self: end;
+      align-self: start;
+      margin: -0.35rem -4px -8px 0;
+    }
+    [data-focus-contour][data-focus-enhanced]
+      .focus-art
+      :global(.focus-sculpture) {
+      transform: translateY(-18px);
     }
   }
 </style>

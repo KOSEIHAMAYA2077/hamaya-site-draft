@@ -1,0 +1,473 @@
+{
+  "scope": "Disposable contexts; visual-comparison interaction QA with no source, owner-content or server edits.",
+  "checks": [
+    {
+      "name": "1280px JavaScript OFF: first CTA visible, all six works/links remain and all native anchors scroll correctly",
+      "viewport": 1280,
+      "html": 1280,
+      "body": 1280,
+      "primaryBottom": 565.75
+    },
+    {
+      "name": "375px JavaScript OFF: first CTA visible, all six works/links remain and all native anchors scroll correctly",
+      "viewport": 375,
+      "html": 375,
+      "body": 375,
+      "primaryBottom": 702.640625
+    },
+    {
+      "name": "No external requests, content transmission, console errors or page errors"
+    }
+  ],
+  "geometries": [
+    {
+      "label": "1280-nojs-initial",
+      "width": 1280,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 1280,
+      "bodyWidth": 1280,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 56,
+          "y": 280.734375,
+          "right": 663.359375,
+          "bottom": 352.40625,
+          "width": 607.359375,
+          "height": 71.671875
+        },
+        "body": {
+          "x": 56,
+          "y": 379.59375,
+          "right": 733.4375,
+          "bottom": 730.078125,
+          "width": 677.4375,
+          "height": 350.484375
+        },
+        "description": {
+          "x": 93,
+          "y": 412.59375,
+          "right": 589,
+          "bottom": 492.984375,
+          "width": 496,
+          "height": 80.390625
+        },
+        "primary": {
+          "x": 93,
+          "y": 515.375,
+          "right": 314.890625,
+          "bottom": 565.75,
+          "width": 221.890625,
+          "height": 50.375
+        },
+        "next": {
+          "x": 93,
+          "y": 637.75,
+          "right": 589,
+          "bottom": 700.28125,
+          "width": 496,
+          "height": 62.53125
+        }
+      },
+      "art": {
+        "x": 686.734375,
+        "y": 258.796875,
+        "right": 1224,
+        "bottom": 785.765625,
+        "width": 537.265625,
+        "height": 526.96875
+      }
+    },
+    {
+      "label": "1280-nojs-all-native-anchors",
+      "anchors": [
+        {
+          "id": "import-typeandsummon",
+          "title": {
+            "x": 56,
+            "y": 77.734375,
+            "width": 607.359375,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-typeandsummon",
+          "scrollY": 203
+        },
+        {
+          "id": "import-game-ai-search-puzzles",
+          "title": {
+            "x": 56,
+            "y": 77.703125,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-game-ai-search-puzzles",
+          "scrollY": 762
+        },
+        {
+          "id": "import-de10-nano-riscv-invader",
+          "title": {
+            "x": 56,
+            "y": 77.984375,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-de10-nano-riscv-invader",
+          "scrollY": 1313
+        },
+        {
+          "id": "import-de10-nano-voice-changer",
+          "title": {
+            "x": 56,
+            "y": 78.265625,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-de10-nano-voice-changer",
+          "scrollY": 1864
+        },
+        {
+          "id": "import-pong-study-raylib",
+          "title": {
+            "x": 56,
+            "y": 77.546875,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-pong-study-raylib",
+          "scrollY": 2416
+        },
+        {
+          "id": "import-one-board-incremental",
+          "title": {
+            "x": 56,
+            "y": 77.828125,
+            "width": 1168,
+            "height": 71.671875
+          },
+          "hash": "#piece-import-one-board-incremental",
+          "scrollY": 2967
+        }
+      ]
+    },
+    {
+      "label": "375-nojs-initial",
+      "width": 375,
+      "height": 812,
+      "scrollY": 0,
+      "htmlWidth": 375,
+      "bodyWidth": 375,
+      "id": "import-typeandsummon",
+      "title": "TypeAndSummon",
+      "bounds": {
+        "title": {
+          "x": 20,
+          "y": 490.4375,
+          "right": 355,
+          "bottom": 528.921875,
+          "width": 335,
+          "height": 38.484375
+        },
+        "body": {
+          "x": 20,
+          "y": 528.921875,
+          "right": 355,
+          "bottom": 842.953125,
+          "width": 335,
+          "height": 314.03125
+        },
+        "description": {
+          "x": 40.1875,
+          "y": 551.515625,
+          "right": 334.8125,
+          "bottom": 642.671875,
+          "width": 294.625,
+          "height": 91.15625
+        },
+        "primary": {
+          "x": 40.1875,
+          "y": 656.265625,
+          "right": 241.25,
+          "bottom": 702.640625,
+          "width": 201.0625,
+          "height": 46.375
+        },
+        "next": {
+          "x": 40.1875,
+          "y": 761.828125,
+          "right": 334.8125,
+          "bottom": 821.953125,
+          "width": 294.625,
+          "height": 60.125
+        }
+      },
+      "art": {
+        "x": 97.5,
+        "y": 245.546875,
+        "right": 277.5,
+        "bottom": 425.546875,
+        "width": 180,
+        "height": 180
+      }
+    },
+    {
+      "label": "375-nojs-all-native-anchors",
+      "anchors": [
+        {
+          "id": "import-typeandsummon",
+          "title": {
+            "x": 20,
+            "y": 72.4375,
+            "width": 335,
+            "height": 38.484375
+          },
+          "hash": "#piece-import-typeandsummon",
+          "scrollY": 418
+        },
+        {
+          "id": "import-game-ai-search-puzzles",
+          "title": {
+            "x": 20,
+            "y": 72.84375,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-game-ai-search-puzzles",
+          "scrollY": 867
+        },
+        {
+          "id": "import-de10-nano-riscv-invader",
+          "title": {
+            "x": 20,
+            "y": 73.34375,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-de10-nano-riscv-invader",
+          "scrollY": 1331
+        },
+        {
+          "id": "import-de10-nano-voice-changer",
+          "title": {
+            "x": 20,
+            "y": 73.234375,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-de10-nano-voice-changer",
+          "scrollY": 1819
+        },
+        {
+          "id": "import-pong-study-raylib",
+          "title": {
+            "x": 20,
+            "y": 73.125,
+            "width": 335,
+            "height": 38.484375
+          },
+          "hash": "#piece-import-pong-study-raylib",
+          "scrollY": 2307
+        },
+        {
+          "id": "import-one-board-incremental",
+          "title": {
+            "x": 20,
+            "y": 73.140625,
+            "width": 335,
+            "height": 76.96875
+          },
+          "hash": "#piece-import-one-board-incremental",
+          "scrollY": 2733
+        }
+      ]
+    }
+  ],
+  "screenshots": ["checked-1280-nojs-first.png", "checked-375-nojs-first.png"],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4360/hamaya-site-draft/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4360/hamaya-site-draft/_astro/Layout.LoHf1MJz.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4360/hamaya-site-draft/_astro/focus-study.CkiZmwLn.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4360/hamaya-site-draft/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4360/hamaya-site-draft/_astro/preferences.CQ4SO5w1.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4366/hamaya-site-draft/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4366/hamaya-site-draft/_astro/Layout.LoHf1MJz.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4366/hamaya-site-draft/_astro/focus-study.dsoShLbf.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4366/hamaya-site-draft/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4366/hamaya-site-draft/_astro/Layout.LoHf1MJz.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4366/hamaya-site-draft/_astro/focus-study.dsoShLbf.css",
+      "method": "GET"
+    }
+  ],
+  "external": [],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "failure": null,
+  "browser": "153.0.8010.12",
+  "originalWorkSnapshot": [
+    {
+      "id": "import-typeandsummon",
+      "text": "開いている制作TypeAndSummonGitHubにある説明Java Swing real-time typing battle game with HTTP/TCP multiplayer/ Used AI for coding and music, bgm onlyGitHubでコードを開く↗記録を書く ＋記録の一覧へ ↗次の作品を開くgame-ai-search-puzzles →",
+      "links": [
+        {
+          "text": "GitHubでコードを開く↗",
+          "href": "https://github.com/KOSEIHAMAYA2077/TypeAndSummon"
+        },
+        {
+          "text": "記録を書く ＋",
+          "href": "/hamaya-site-draft/write/?kind=note"
+        },
+        {
+          "text": "記録の一覧へ ↗",
+          "href": "/hamaya-site-draft/room/notes/"
+        },
+        {
+          "text": "次の作品を開くgame-ai-search-puzzles →",
+          "href": "#piece-import-game-ai-search-puzzles"
+        }
+      ]
+    },
+    {
+      "id": "import-game-ai-search-puzzles",
+      "text": "開いている制作game-ai-search-puzzlesGitHubにある説明ゲームAIの探索アルゴリズム学習として，8パズルでIDSとA*を実装・比較した記録GitHubでコードを開く↗記録を書く ＋記録の一覧へ ↗次の作品を開くde10-nano-riscv-invader →",
+      "links": [
+        {
+          "text": "GitHubでコードを開く↗",
+          "href": "https://github.com/KOSEIHAMAYA2077/game-ai-search-puzzles"
+        },
+        {
+          "text": "記録を書く ＋",
+          "href": "/hamaya-site-draft/write/?kind=note"
+        },
+        {
+          "text": "記録の一覧へ ↗",
+          "href": "/hamaya-site-draft/room/notes/"
+        },
+        {
+          "text": "次の作品を開くde10-nano-riscv-invader →",
+          "href": "#piece-import-de10-nano-riscv-invader"
+        }
+      ]
+    },
+    {
+      "id": "import-de10-nano-riscv-invader",
+      "text": "開いている制作de10-nano-riscv-invaderGitHubにある説明DE10-NanoとQuartus Prime Lite 24.xで実装した簡易RV32I CPUによるインベーダー風ゲーム no AI only meGitHubでコードを開く↗記録を書く ＋記録の一覧へ ↗次の作品を開くde10-nano-voice-changer →",
+      "links": [
+        {
+          "text": "GitHubでコードを開く↗",
+          "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-riscv-invader"
+        },
+        {
+          "text": "記録を書く ＋",
+          "href": "/hamaya-site-draft/write/?kind=note"
+        },
+        {
+          "text": "記録の一覧へ ↗",
+          "href": "/hamaya-site-draft/room/notes/"
+        },
+        {
+          "text": "次の作品を開くde10-nano-voice-changer →",
+          "href": "#piece-import-de10-nano-voice-changer"
+        }
+      ]
+    },
+    {
+      "id": "import-de10-nano-voice-changer",
+      "text": "開いている制作de10-nano-voice-changerGitHubにある説明DE10-Nano message transmitter and real-time FFT voice changer created for a university IoT course / no AIGitHubでコードを開く↗記録を書く ＋記録の一覧へ ↗次の作品を開くpong-study-raylib →",
+      "links": [
+        {
+          "text": "GitHubでコードを開く↗",
+          "href": "https://github.com/KOSEIHAMAYA2077/de10-nano-voice-changer"
+        },
+        {
+          "text": "記録を書く ＋",
+          "href": "/hamaya-site-draft/write/?kind=note"
+        },
+        {
+          "text": "記録の一覧へ ↗",
+          "href": "/hamaya-site-draft/room/notes/"
+        },
+        {
+          "text": "次の作品を開くpong-study-raylib →",
+          "href": "#piece-import-pong-study-raylib"
+        }
+      ]
+    },
+    {
+      "id": "import-pong-study-raylib",
+      "text": "開いている制作pong-study-raylibGitHubにある説明C++ and raylib Pong study project based on Programming With Nick tutorials/ no AIGitHubでコードを開く↗記録を書く ＋記録の一覧へ ↗次の作品を開くone-board-incremental →",
+      "links": [
+        {
+          "text": "GitHubでコードを開く↗",
+          "href": "https://github.com/KOSEIHAMAYA2077/pong-study-raylib"
+        },
+        {
+          "text": "記録を書く ＋",
+          "href": "/hamaya-site-draft/write/?kind=note"
+        },
+        {
+          "text": "記録の一覧へ ↗",
+          "href": "/hamaya-site-draft/room/notes/"
+        },
+        {
+          "text": "次の作品を開くone-board-incremental →",
+          "href": "#piece-import-one-board-incremental"
+        }
+      ]
+    },
+    {
+      "id": "import-one-board-incremental",
+      "text": "開いている制作one-board-incrementalGitHubでコードを開く↗記録を書く ＋記録の一覧へ ↗次の作品を開くTypeAndSummon →",
+      "links": [
+        {
+          "text": "GitHubでコードを開く↗",
+          "href": "https://github.com/KOSEIHAMAYA2077/one-board-incremental"
+        },
+        {
+          "text": "記録を書く ＋",
+          "href": "/hamaya-site-draft/write/?kind=note"
+        },
+        {
+          "text": "記録の一覧へ ↗",
+          "href": "/hamaya-site-draft/room/notes/"
+        },
+        {
+          "text": "次の作品を開くTypeAndSummon →",
+          "href": "#piece-import-typeandsummon"
+        }
+      ]
+    }
+  ],
+  "disposableBrowserClosed": true
+}
