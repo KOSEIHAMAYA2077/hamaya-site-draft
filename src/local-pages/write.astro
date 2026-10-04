@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { path } from '../lib/paths';
 const today = new Date().toISOString().slice(0, 10);
+const workroom = import.meta.env.LOCAL_WORKROOM === '1';
 ---
 
 <Layout
@@ -14,6 +15,11 @@ const today = new Date().toISOString().slice(0, 10);
       <p class="eyebrow">下書きの道具</p>
       <h1>下書きを書く</h1>
       <p>Markdownの下書きをダウンロードできます。入力は自動保存されません。</p>
+      {workroom && (
+        <p class="field-hint">
+          未ダウンロードの入力があるときは、移動前に確認します。
+        </p>
+      )}
       <p>
         <a
           href={path('write/maker-field/')}
@@ -31,7 +37,12 @@ const today = new Date().toISOString().slice(0, 10);
         が必要です。Markdownファイルを直接編集する方法も使えます。
       </p>
     </noscript>
-    <div id="draft-writer" role="form" aria-label="下書きの入力">
+    <div
+      id="draft-writer"
+      role="form"
+      aria-label="下書きの入力"
+      data-workroom-unsaved={workroom ? '1' : undefined}
+    >
       <div class="writer-field writer-title">
         <label for="write-title">
           題 <span>必須</span>
@@ -390,6 +401,10 @@ const today = new Date().toISOString().slice(0, 10);
 <script>
   import { DraftExportError, exportDraft } from '../lib/draft-export.mjs';
   import { renderDraftPreview } from '../lib/draft-preview.mjs';
+  import {
+    createDraftHandoffTracker,
+    createUnsavedDraftGuard,
+  } from '../lib/unsaved-draft.mjs';
 
   const writer = document.querySelector<HTMLElement>('#draft-writer');
   if (writer) {
@@ -474,6 +489,15 @@ const today = new Date().toISOString().slice(0, 10);
     fields.date.value = new Date().toISOString().slice(0, 10);
     const initialDate = fields.date.value;
     const initialKind = fields.kind.value;
+    const handoffs = createDraftHandoffTracker();
+    const unsavedGuard = createUnsavedDraftGuard({
+      enabled: writer.dataset.workroomUnsaved === '1',
+      target: window,
+      hasUnsaved: () =>
+        handoffs.hasPending([
+          ['writer', hasInput() ? JSON.stringify(formInput()) : undefined],
+        ]),
+    });
     for (const control of [
       previewButton,
       downloadButton,
@@ -613,6 +637,7 @@ const today = new Date().toISOString().slice(0, 10);
           '入力を変更しました。「下書きを確認」で内容を確認できます。';
       needsConfirmation = false;
       clearErrors();
+      unsavedGuard.refresh();
     }
     writer.addEventListener('input', (event) => {
       if (event.target === fileInput) return;
@@ -717,6 +742,8 @@ const today = new Date().toISOString().slice(0, 10);
       document.body.append(link);
       try {
         link.click();
+        handoffs.handoff('writer', JSON.stringify(formInput()));
+        unsavedGuard.refresh();
         feedback.textContent = `${draft.filename} のダウンロードを開始しました。保存先を確認し、${draft.directory} へ自分で追加してください。同名のファイルは上書きせず、別の名前で書き出してください。`;
       } finally {
         link.remove();

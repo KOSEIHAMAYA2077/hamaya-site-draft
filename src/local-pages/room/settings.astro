@@ -1,0 +1,304 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { path } from '../../lib/paths';
+---
+
+<Layout
+  title="表示・比較"
+  description="制作室の道具の表示と動きを調整する、非公開の統合候補。"
+  section={null}
+>
+  <div class="shell inner-page workroom-settings">
+    <header class="page-heading">
+      <p class="eyebrow">統合候補 / 非公開</p>
+      <h1>表示・比較</h1>
+      <p>日々使う道具を、メニューに残せます。</p>
+    </header>
+
+    <section aria-labelledby="display-title" class="settings-section">
+      <h2 id="display-title">画面の表示</h2>
+      <p>
+        変更はこのブラウザに保存します。作品の公開や案の採用は決まりません。
+      </p>
+      <div data-workroom-settings hidden>
+        <fieldset>
+          <legend>「道具」のメニューに表示</legend>
+          <label class="setting-row">
+            <input
+              type="checkbox"
+              name="timeline"
+              data-display-option="timeline"
+              checked
+            />
+            <span>
+              時系列<span class="setting-help">制作を時間から見返す</span>
+            </span>
+          </label>
+          <label class="setting-row">
+            <input
+              type="checkbox"
+              name="experiments"
+              data-display-option="experiments"
+              checked
+            />
+            <span>
+              実験<span class="setting-help">サンプルを開いて試す</span>
+            </span>
+          </label>
+        </fieldset>
+        <label class="setting-row motion-setting">
+          <input type="checkbox" name="motion-paused" data-motion-setting />
+          <span>
+            画面の動きを止める
+            <span class="setting-help">
+              端末の「動きを減らす」設定も優先します。
+            </span>
+          </span>
+        </label>
+        <p
+          class="settings-status"
+          role="status"
+          aria-live="polite"
+          data-settings-status
+        >
+          入力中の下書きは保存しません。
+        </p>
+      </div>
+      <noscript>
+        <p class="settings-notice">
+          表示の変更にはJavaScriptが必要です。道具はすべてメニューから開けます。
+        </p>
+      </noscript>
+      <details class="settings-details">
+        <summary>非表示にした道具を開く</summary>
+        <p>メニューから隠すだけなので、ここからいつでも開けます。</p>
+        <div class="settings-links">
+          <a href={path('compare/timeline/')}>時系列を開く</a>
+          <a href={path('compare/experiments/')}>実験を開く</a>
+        </div>
+      </details>
+    </section>
+
+    <section
+      class="settings-section comparison-entry"
+      aria-labelledby="comparison-title"
+    >
+      <div>
+        <h2 id="comparison-title">残している別案</h2>
+        <p>ひとつずつ開く今の入口と、一覧や見た目の別案を比べられます。</p>
+      </div>
+      <a class="comparison-link" href={path('room/compare/')}>
+        比較案を見る <span aria-hidden="true">→</span>
+      </a>
+    </section>
+    <a class="back-link" href={path()}>
+      ← 制作に戻る
+    </a>
+  </div>
+</Layout>
+
+<script>
+  import {
+    DISPLAY_STORAGE_KEY,
+    MOTION_STORAGE_KEY,
+    PREFERENCES_EVENT,
+    MOTION_EVENT,
+    readDisplayPreferences,
+    saveDisplayPreferences,
+    readMotionPreference,
+    saveMotionPreference,
+  } from '../../workroom/preferences.mjs';
+
+  const panel = document.querySelector<HTMLElement>('[data-workroom-settings]');
+  if (panel) {
+    const options = [
+      ...panel.querySelectorAll<HTMLInputElement>('[data-display-option]'),
+    ];
+    const motion = panel.querySelector<HTMLInputElement>(
+      '[data-motion-setting]',
+    );
+    const status = panel.querySelector<HTMLElement>('[data-settings-status]');
+    let storage: Storage | undefined;
+    try {
+      storage = window.localStorage;
+    } catch {
+      /* Saving preferences is optional. */
+    }
+    let preferences = readDisplayPreferences(storage);
+    let motionPaused = readMotionPreference(storage);
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const render = () => {
+      options.forEach((input) => {
+        const key = input.dataset.displayOption;
+        if (key === 'timeline' || key === 'experiments')
+          input.checked = preferences[key];
+      });
+      if (motion) motion.checked = motionPaused;
+    };
+    const syncMotion = () => {
+      document.documentElement.dataset.motion =
+        motionPaused || reduced.matches ? 'off' : 'on';
+    };
+    const report = (saved: boolean) => {
+      if (status)
+        status.textContent = saved
+          ? '表示の設定を保存しました。入力中の下書きは保存しません。'
+          : 'このブラウザでは設定を保存できません。変更はこの画面だけに反映します。';
+    };
+    options.forEach((input) =>
+      input.addEventListener('change', () => {
+        const key = input.dataset.displayOption;
+        if (key !== 'timeline' && key !== 'experiments') return;
+        preferences = { ...preferences, [key]: input.checked };
+        const saved = saveDisplayPreferences(preferences, storage);
+        window.dispatchEvent(
+          new CustomEvent(PREFERENCES_EVENT, { detail: preferences }),
+        );
+        report(saved);
+      }),
+    );
+    motion?.addEventListener('change', () => {
+      motionPaused = motion.checked;
+      const saved = saveMotionPreference(motionPaused, storage);
+      syncMotion();
+      window.dispatchEvent(
+        new CustomEvent(MOTION_EVENT, { detail: { paused: motionPaused } }),
+      );
+      report(saved);
+    });
+    const refresh = () => {
+      preferences = readDisplayPreferences(storage);
+      motionPaused = readMotionPreference(storage);
+      syncMotion();
+      render();
+    };
+    window.addEventListener(MOTION_EVENT, (event) => {
+      const paused = (event as CustomEvent<{ paused?: boolean }>).detail
+        ?.paused;
+      if (typeof paused !== 'boolean') return;
+      motionPaused = paused;
+      syncMotion();
+      render();
+    });
+    window.addEventListener('storage', (event) => {
+      if (event.key === DISPLAY_STORAGE_KEY || event.key === null) {
+        preferences = readDisplayPreferences(storage);
+        render();
+      }
+      if (event.key === MOTION_STORAGE_KEY || event.key === null) {
+        motionPaused = readMotionPreference(storage);
+        syncMotion();
+        render();
+      }
+    });
+    window.addEventListener('pageshow', refresh);
+    reduced.addEventListener('change', syncMotion);
+    panel.hidden = false;
+    syncMotion();
+    render();
+    if (!storage && status)
+      status.textContent =
+        'このブラウザでは設定を保存できません。変更はこの画面だけに反映します。';
+  }
+</script>
+
+<style>
+  .workroom-settings {
+    max-width: 850px;
+  }
+  .settings-section {
+    padding-block: 0.5rem 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .settings-section h2 {
+    font-size: 22px;
+    margin-bottom: 0.7rem;
+  }
+  .settings-section p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 1.8rem 0 0;
+    min-width: 0;
+  }
+  legend {
+    font-size: 13px;
+    margin-bottom: 0.7rem;
+  }
+  .setting-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    font-size: 15px;
+    width: fit-content;
+    min-height: 44px;
+  }
+  .setting-row input {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto;
+    margin: 0.27rem 0 0;
+    accent-color: var(--accent);
+  }
+  .setting-help {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .motion-setting {
+    margin-top: 1rem;
+  }
+  .settings-status {
+    min-height: 3em;
+    margin-top: 1.2rem;
+  }
+  .settings-details {
+    margin-top: 1.2rem;
+    font-size: 13px;
+  }
+  .settings-details summary {
+    cursor: pointer;
+    padding-block: 0.7rem;
+    min-height: 44px;
+  }
+  .settings-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin-top: 0.4rem;
+  }
+  .settings-links a,
+  .comparison-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 13px;
+  }
+  .comparison-entry {
+    display: flex;
+    gap: 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .comparison-link {
+    flex-shrink: 0;
+    gap: 1rem;
+  }
+  .settings-notice {
+    margin-top: 1rem;
+  }
+  @media (max-width: 760px) {
+    .comparison-entry {
+      display: block;
+    }
+    .comparison-link {
+      margin-top: 1rem;
+    }
+  }
+</style>

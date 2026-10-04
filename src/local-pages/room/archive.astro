@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HomeSurface from '../../components/HomeSurface.astro';
+import { path } from '../../lib/paths';
+---
+
+<Layout
+  title="一覧から入る・比較案"
+  description="最初に用意したホーム本文を残した、非公開の比較案。"
+  section={null}
+>
+  <div class="archive-comparison shell">
+    <a href={path('room/compare/')}>← 比較案へ</a>
+    <span>一覧から入る / 比較用</span>
+  </div>
+  <HomeSurface />
+</Layout>
+
+<style>
+  .archive-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    padding-top: 1rem;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .archive-comparison a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

@@ -1,8 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import HomeSurface from '../components/HomeSurface.astro';
+import WorkroomHome from '../components/WorkroomHome.astro';
+import relationships from '../data/work-records.json';
+import { workroomEnabled } from '../lib/build-mode.mjs';
+import { focusStudy } from '../lib/focus-study.mjs';
+import { workroomNotes } from '../lib/workroom-notes.mjs';
+
+const integrated = workroomEnabled(import.meta.env.LOCAL_WORKROOM);
+const works = integrated ? await getCollection('works') : [];
+const notes = integrated ? await getCollection('notes') : [];
+const entries = integrated ? focusStudy(works, relationships, notes) : [];
+const localNotes = integrated ? workroomNotes(notes) : [];
 ---
 
 <Layout>
-  <HomeSurface />
+  {integrated ? (
+    <WorkroomHome entries={entries} notes={localNotes} />
+  ) : (
+    <HomeSurface />
+  )}
 </Layout>

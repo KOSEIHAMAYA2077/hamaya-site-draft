@@ -1,0 +1,20 @@
+{
+  "base": "c0a25809d229c18c6bad88e7c5d0cfbc6fa51195",
+  "sha256": {
+    "src/content/notes/_example.md": "362da201db6d72c4d78334b1698a4eafaca29bc42d1f81e6226a8ab51d26b344",
+    "src/content/notes/legacy-cyberpunk2077-1.md": "cd173d32ec5de03c81f23188d059ce759a1ca33482edc3caa3d204bf16e48b51",
+    "src/content/works/_example.md": "411013da78d509acf8c839a957fd3acd1f6acb6e0c187b5eebaab5de5810ec4f",
+    "src/content/works/import-de10-nano-riscv-invader.md": "bb49a6e939a10cdb4b7c24e08a18a69d5887a22811df3e470d512e76d6ac7afe",
+    "src/content/works/import-de10-nano-voice-changer.md": "a2eaa1488d0100505fe0db00370ce301d364b27a5f88694f27e6c6c5630a6ae8",
+    "src/content/works/import-game-ai-search-puzzles.md": "3fb5a0041e48385a1f197a82ab28b8b18222153d59d322ed2deb94ae6b05b151",
+    "src/content/works/import-one-board-incremental.md": "6a71b6dd44f30e52ca06422f5a42e20ff7fb32f41e7719d04cdb60db5744123e",
+    "src/content/works/import-pong-study-raylib.md": "a66cb9d1e5b9d87481e5ad77a3f7e2d92fac61ffb061797931b87ce4ef4d7a00",
+    "src/content/works/import-typeandsummon.md": "ce1690bd7fc9ecff1826411ad574293cad179560b155c70269c7c918a0f0adbd",
+    "src/data/creation-dates.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "src/data/public-assets.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "src/data/site.json": "be95d1e49dd8a22fffe174abb0eb083e7f8b8b9e8c11cfda19fe46de7e5d7392",
+    "src/data/work-candidates.json": "f4a25b0c66b225819b126df6321b3aa5e1e78dbc3f01c8c4b3551b5c919f1a96",
+    "src/data/work-records.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "src/pages/about.astro": "22af795ebfdfe7d783d235e0c54fdd56f4d177c3a5342493aafa594e3fe86a73"
+  }
+}

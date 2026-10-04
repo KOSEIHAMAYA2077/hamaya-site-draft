@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { path } from '../../lib/paths';
+const entries = [
+  {
+    href: 'compare/focus/',
+    title: 'ひとつずつ開く',
+    description: '統合前の入口。制作を選んで、説明や記録を読む。',
+  },
+  {
+    href: 'compare/collection/',
+    title: '棚から選ぶ',
+    description: '制作を並べて、全体から気になるものを探す。',
+  },
+  {
+    href: 'room/archive/',
+    title: '一覧から入る',
+    description: '最初に用意したホーム本文。作品・雑記・自己紹介へ進む。',
+  },
+];
+---
+
+<Layout
+  title="比較案"
+  description="統合候補に入れた機能と、残している入口・見た目の別案。"
+  section={null}
+>
+  <div class="shell inner-page comparison-page">
+    <header class="page-heading">
+      <p class="eyebrow">統合候補 / 非公開</p>
+      <h1>残している別案</h1>
+      <p>本人の好みと採用判断は、まだ確認していません。</p>
+    </header>
+
+    <section class="current-candidate" aria-labelledby="current-title">
+      <p class="comparison-label">いまの統合候補</p>
+      <h2 id="current-title">ひとつの制作から、読む・書くへ</h2>
+      <p>
+        「制作」を入口に、記録の検索、下書き作成、Makerの記録の取り込みをつないでいます。時系列と実験は「道具」から開けます。
+      </p>
+      <p class="candidate-note">
+        下書きは公開されません。実験のサンプルは本人の実績とは分けて表示しています。
+      </p>
+      <div class="comparison-links">
+        <a href={path()}>統合候補を開く →</a>
+        <a href={path('room/settings/')}>メニューの表示を変える</a>
+      </div>
+    </section>
+
+    <section class="comparison-section" aria-labelledby="entrance-title">
+      <h2 id="entrance-title">入口を比べる</h2>
+      <p>別の配置も、比較用として残しています。</p>
+      <ul class="comparison-list">
+        {entries.map((entry) => (
+          <li>
+            <a href={path(entry.href)}>
+              <div>
+                <h3>{entry.title}</h3>
+                <p>{entry.description}</p>
+              </div>
+              <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="comparison-section" aria-labelledby="appearance-title">
+      <h2 id="appearance-title">見た目を比べる</h2>
+      <p>
+        光の制作室、静かな軌道、円のある紙面、やわらかな場、分類を開く制作机の5案です。
+      </p>
+      <a class="comparison-link" href={path('directions/')}>
+        5つの見た目を開く →
+      </a>
+    </section>
+    <a class="back-link" href={path()}>
+      ← 制作に戻る
+    </a>
+  </div>
+</Layout>
+
+<style>
+  .comparison-page {
+    max-width: 960px;
+  }
+  .current-candidate {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #eef1e6;
+    padding: 1.8rem 2rem;
+  }
+  .comparison-label {
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .current-candidate h2,
+  .comparison-section h2 {
+    font-size: 23px;
+  }
+  .current-candidate > p:not(.comparison-label) {
+    font-size: 14px;
+    margin-top: 0.8rem;
+  }
+  .current-candidate .candidate-note {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .comparison-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 2rem;
+    margin-top: 1rem;
+  }
+  .comparison-links a,
+  .comparison-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 13px;
+  }
+  .comparison-section {
+    margin-block: 3rem;
+  }
+  .comparison-section > p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-block: 0.7rem 1rem;
+  }
+  .comparison-list {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .comparison-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-decoration: none;
+    padding-block: 1.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .comparison-list h3 {
+    font-size: 18px;
+  }
+  .comparison-list p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 0.45rem;
+  }
+  .comparison-list a:hover h3 {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+  @media (max-width: 760px) {
+    .current-candidate {
+      padding: 1.4rem;
+    }
+    .current-candidate h2,
+    .comparison-section h2 {
+      font-size: 21px;
+    }
+  }
+</style>

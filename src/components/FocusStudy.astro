@@ -2,6 +2,7 @@
 import { path } from '../lib/paths';
 import FocusSculpture from './FocusSculpture.astro';
 interface Props {
+  integrated?: boolean;
   entries: {
     id: string;
     title: string;
@@ -10,14 +11,19 @@ interface Props {
     relatedNotes: { id: string; title: string; excerpt: string | null }[];
   }[];
 }
-const { entries } = Astro.props;
+const { entries, integrated = false } = Astro.props;
+const notesPath = integrated ? 'room/notes/' : 'notes/';
 ---
 
-<div class="focus-study shell" data-focus-study>
+<div
+  class="focus-study shell"
+  data-focus-study
+  data-focus-integrated={integrated ? '' : undefined}
+>
   <div class="focus-context">
     <div>
       <h1>制作を開く</h1>
-      <span>非公開の比較案</span>
+      <span>{integrated ? '統合候補・掲載未定' : '非公開の比較案'}</span>
     </div>
     <button
       type="button"
@@ -160,7 +166,9 @@ const { entries } = Astro.props;
                   </a>
                 )}
                 <a href={path('write/?kind=note')}>記録を書く ＋</a>
-                <a href={path('notes/')}>学び・雑記の一覧へ ↗</a>
+                <a href={path(notesPath)}>
+                  {integrated ? '記録の一覧へ' : '学び・雑記の一覧へ'} ↗
+                </a>
               </div>
               <a
                 class="focus-next"
@@ -188,7 +196,9 @@ const { entries } = Astro.props;
     <p>
       作品名と説明は公開GitHubで確認した情報です。掲載と主案の採用は本人の確認待ちです。
     </p>
-    <a href={path()}>現在のホームへ ↗</a>
+    <a href={path(integrated ? 'room/compare/' : '')}>
+      {integrated ? 'ほかの案を比べる' : '現在のホームへ'} ↗
+    </a>
   </div>
 </div>
 
@@ -196,6 +206,7 @@ const { entries } = Astro.props;
   const focusStudy = document.querySelector<HTMLElement>('[data-focus-study]');
   if (focusStudy) {
     const root = focusStudy;
+    const integrated = root.hasAttribute('data-focus-integrated');
     const panels = [
       ...root.querySelectorAll<HTMLElement>('[data-focus-panel]'),
     ];
@@ -221,7 +232,9 @@ const { entries } = Astro.props;
       [0, -3, -1, 212],
       [-4, 1, 1, 272],
     ];
-    let paused = document.documentElement.dataset.motion === 'off';
+    let paused = integrated
+      ? false
+      : document.documentElement.dataset.motion === 'off';
     let accentAngle = poses[0][3];
 
     function syncMotion() {
@@ -230,6 +243,14 @@ const { entries } = Astro.props;
       motion.hidden = reduced.matches;
       motion.textContent = paused ? '動きを再開' : '動きを止める';
       motion.setAttribute('aria-pressed', String(paused));
+    }
+    function restoreMotion() {
+      try {
+        paused = localStorage.getItem('archive-motion') === 'off';
+      } catch {
+        /* Keep the current page's choice when storage is unavailable. */
+      }
+      syncMotion();
     }
     function select(id: string, announce = true) {
       const index = panels.findIndex(
@@ -267,7 +288,8 @@ const { entries } = Astro.props;
       return true;
     }
     root.dataset.focusEnhanced = '';
-    syncMotion();
+    if (integrated) restoreMotion();
+    else syncMotion();
     const initial =
       panels.find((panel) => `#${panel.id}` === location.hash) ?? panels[0];
     if (initial?.dataset.focusPanel) select(initial.dataset.focusPanel, false);
@@ -319,8 +341,26 @@ const { entries } = Astro.props;
         /* optional preference */
       }
       syncMotion();
+      if (integrated)
+        window.dispatchEvent(
+          new CustomEvent('workroom:motion-change', { detail: { paused } }),
+        );
     });
     reduced.addEventListener('change', syncMotion);
+    if (integrated) {
+      window.addEventListener('workroom:motion-change', (event) => {
+        const value = (event as CustomEvent<{ paused?: boolean }>).detail
+          ?.paused;
+        if (typeof value !== 'boolean') return;
+        paused = value;
+        syncMotion();
+      });
+      window.addEventListener('storage', (event) => {
+        if (event.key === 'archive-motion' || event.key === null)
+          restoreMotion();
+      });
+      window.addEventListener('pageshow', restoreMotion);
+    }
   }
 </script>
 

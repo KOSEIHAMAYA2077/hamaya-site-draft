@@ -3,6 +3,7 @@ import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { localFeatures } from '../src/lib/build-mode.mjs';
 
 const dist = fileURLToPath(new URL('../dist/', import.meta.url));
 const base = (process.env.BASE_PATH || '/').replace(/\/+$/, '');
@@ -13,7 +14,7 @@ test('比較ルートは明示時のみ生成し、相手の比較用CSSを読�
     ['collection', 'focus'],
   ]) {
     const page = path.join(dist, 'compare', view, 'index.html');
-    if (process.env.LOCAL_COMPARISON !== '1') {
+    if (!localFeatures(process.env).comparison) {
       await assert.rejects(access(page), { code: 'ENOENT' });
       continue;
     }

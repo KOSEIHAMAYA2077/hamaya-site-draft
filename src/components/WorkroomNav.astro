@@ -1,0 +1,217 @@
+---
+import { path } from '../lib/paths';
+
+const current = Astro.url.pathname;
+const primary = [
+  { href: '', label: '制作' },
+  { href: 'room/notes/', label: '記録' },
+  { href: 'write/', label: '書く' },
+];
+const tools = [
+  { href: 'compare/timeline/', label: '時系列', option: 'timeline' },
+  { href: 'write/maker-field/', label: '制作ログを下書きに', newTab: true },
+  { href: 'compare/experiments/', label: '実験', option: 'experiments' },
+  { href: 'compare/candidates/', label: '作品候補' },
+  { href: 'about/', label: '自己紹介' },
+  { href: 'room/settings/', label: '表示・比較' },
+];
+const isCurrent = (href: string) =>
+  current === path(href) ||
+  (href === 'room/notes/' && current.startsWith(path(href)));
+---
+
+<nav class="workroom-nav" aria-label="制作室のページ" data-workroom-nav>
+  <ul class="workroom-primary">
+    {primary.map(({ href, label }) => (
+      <li>
+        <a
+          href={path(href)}
+          aria-current={isCurrent(href) ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+    <li>
+      <details class="workroom-tools" data-workroom-tools>
+        <summary>道具</summary>
+        <ul class="workroom-tool-list">
+          {tools.map(({ href, label, option, newTab }) => (
+            <li data-workroom-menu-option={option}>
+              <a
+                href={path(href)}
+                target={newTab ? '_blank' : undefined}
+                rel={newTab ? 'noopener' : undefined}
+                aria-current={isCurrent(href) ? 'page' : undefined}
+                data-local-tool
+                data-maker-entry={href === 'write/maker-field/' || undefined}
+                data-timeline-entry={option === 'timeline' || undefined}
+                data-experiment-entry={option === 'experiments' || undefined}
+                data-candidate-entry={
+                  href === 'compare/candidates/' || undefined
+                }
+              >
+                {label}
+                {newTab && <span class="tool-note">（別タブ）</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  import {
+    DISPLAY_STORAGE_KEY,
+    MOTION_STORAGE_KEY,
+    PREFERENCES_EVENT,
+    MOTION_EVENT,
+    readDisplayPreferences,
+    readMotionPreference,
+  } from '../workroom/preferences.mjs';
+
+  const nav = document.querySelector<HTMLElement>('[data-workroom-nav]');
+  if (nav) {
+    const details = nav.querySelector<HTMLDetailsElement>(
+      '[data-workroom-tools]',
+    );
+    let storage: Storage | undefined;
+    try {
+      storage = window.localStorage;
+    } catch {
+      /* Display choices remain optional. */
+    }
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let motionPaused = readMotionPreference(storage);
+    const syncMenu = (preferences = readDisplayPreferences(storage)) => {
+      nav
+        .querySelectorAll<HTMLElement>('[data-workroom-menu-option]')
+        .forEach((item) => {
+          const option = item.dataset.workroomMenuOption;
+          if (option === 'timeline' || option === 'experiments')
+            item.hidden = !preferences[option];
+        });
+    };
+    const syncMotion = () => {
+      document.documentElement.dataset.motion =
+        motionPaused || reduced.matches ? 'off' : 'on';
+    };
+    const restoreMotion = () => {
+      motionPaused = readMotionPreference(storage);
+      syncMotion();
+      window.dispatchEvent(
+        new CustomEvent(MOTION_EVENT, { detail: { paused: motionPaused } }),
+      );
+    };
+    const refresh = () => {
+      syncMenu();
+      restoreMotion();
+    };
+    window.addEventListener(PREFERENCES_EVENT, (event) => {
+      const preferences = (event as CustomEvent).detail;
+      if (
+        preferences?.version === 1 &&
+        typeof preferences.timeline === 'boolean' &&
+        typeof preferences.experiments === 'boolean'
+      )
+        syncMenu(preferences);
+    });
+    window.addEventListener(MOTION_EVENT, (event) => {
+      const paused = (event as CustomEvent<{ paused?: boolean }>).detail
+        ?.paused;
+      if (typeof paused !== 'boolean') return;
+      motionPaused = paused;
+      syncMotion();
+    });
+    window.addEventListener('storage', (event) => {
+      if (event.key === DISPLAY_STORAGE_KEY || event.key === null) syncMenu();
+      if (event.key === MOTION_STORAGE_KEY || event.key === null)
+        restoreMotion();
+    });
+    window.addEventListener('pageshow', refresh);
+    reduced.addEventListener('change', syncMotion);
+    document.addEventListener('click', (event) => {
+      if (
+        details?.open &&
+        event.target instanceof Node &&
+        !details.contains(event.target)
+      )
+        details.open = false;
+    });
+    details?.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && details.open) {
+        details.open = false;
+        details.querySelector('summary')?.focus();
+        event.preventDefault();
+      }
+    });
+    refresh();
+  }
+</script>
+
+<style>
+  .workroom-nav .workroom-primary {
+    align-items: center;
+    gap: 1.7rem;
+  }
+  .workroom-tools {
+    position: relative;
+  }
+  .workroom-tools summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 13px;
+    list-style: none;
+  }
+  .workroom-tools summary::-webkit-details-marker {
+    display: none;
+  }
+  .workroom-tools summary::after {
+    content: '+';
+    font-size: 16px;
+    color: var(--muted);
+  }
+  .workroom-tools[open] summary::after {
+    content: '−';
+  }
+  .workroom-nav .workroom-tool-list {
+    display: grid;
+    gap: 0;
+    position: absolute;
+    z-index: 20;
+    right: 0;
+    top: calc(100% + 0.35rem);
+    width: min(270px, calc(100vw - 40px));
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--white);
+    box-shadow: 0 10px 24px #2b30320c;
+  }
+  .workroom-nav .workroom-tool-list a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.65rem 0.25rem;
+  }
+  .tool-note {
+    color: var(--muted);
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  @media (max-width: 760px) {
+    .workroom-nav .workroom-primary {
+      gap: 1rem;
+    }
+    .workroom-tools summary {
+      font-size: 12px;
+    }
+  }
+</style>

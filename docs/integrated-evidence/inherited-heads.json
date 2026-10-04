@@ -1,0 +1,34 @@
+{
+  "audit-static-safety": {
+    "commit": "10f6781bc7d8ea4930081e6e913b274e27c67855",
+    "includedInBase": true
+  },
+  "experiment-study": {
+    "commit": "83377a0e5c26fb6408e165ccbd7500e0cf357630",
+    "includedInBase": true
+  },
+  "work-candidates": {
+    "commit": "386ba0208fc89181f20a2a1103f95e0f3cc9d40c",
+    "includedInBase": true
+  },
+  "comparison-guide": {
+    "commit": "06701a71141958751b7ffc4903445a054ed23b96",
+    "includedInBase": true
+  },
+  "quiet-use-quality": {
+    "commit": "739bcdbcabaa2ef3dcda077ced41e2821634efd8",
+    "includedInBase": true
+  },
+  "maker-field-handoff": {
+    "commit": "c0f2075df7cfb0e7fac2b78e1d0d947e9139d695",
+    "includedInBase": true
+  },
+  "timeline-study": {
+    "commit": "5ec128d361835eef225799d426510039cc141f46",
+    "includedInBase": true
+  },
+  "japanese-ui-copy": {
+    "commit": "c0a25809d229c18c6bad88e7c5d0cfbc6fa51195",
+    "includedInBase": true
+  }
+}

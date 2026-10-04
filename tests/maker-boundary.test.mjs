@@ -4,11 +4,12 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { decodeHTMLAttribute } from 'entities';
-import { localBuildEnabled } from '../src/lib/build-mode.mjs';
+import { localBuildEnabled, workroomEnabled } from '../src/lib/build-mode.mjs';
 
 const dist = fileURLToPath(new URL('../dist/', import.meta.url));
 const base = (process.env.BASE_PATH || '/').replace(/\/+$/, '');
 const localOn = localBuildEnabled(process.env);
+const workroomOn = workroomEnabled(process.env.LOCAL_WORKROOM);
 const makerPage = 'write/maker-field/index.html';
 const makerHref = `${base}/write/maker-field/`;
 
@@ -74,11 +75,25 @@ test('Maker Field入口は既存のlocal modeに従い、通常buildには生成
     assert.equal(html.includes('data-maker-entry'), localOn, filename);
     if (!localOn) continue;
     for (const tag of entryLinks(html, 'data-maker-entry')) {
-      assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
-      assert.match(tag, /\bhidden(?:[\s=>])/);
+      if (workroomOn) {
+        assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
+        assert.doesNotMatch(tag, /\bhidden(?:[\s=>])/);
+        const nav = html.match(
+          /<nav\b[^>]*data-workroom-nav[\s\S]*?<\/nav>/,
+        )?.[0];
+        assert.ok(
+          nav?.includes(tag),
+          `${filename}: 統合navの入口ではありません。`,
+        );
+      } else {
+        assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
+        assert.match(tag, /\bhidden(?:[\s=>])/);
+      }
     }
-    assert.match(html, /localhost/);
-    assert.match(html, /127\.0\.0\.1/);
+    if (!workroomOn) {
+      assert.match(html, /localhost/);
+      assert.match(html, /127\.0\.0\.1/);
+    }
   }
 });
 

@@ -1,11 +1,12 @@
 ---
 import { path } from '../lib/paths';
-import { localBuildEnabled } from '../lib/build-mode.mjs';
+import { localBuildEnabled, workroomEnabled } from '../lib/build-mode.mjs';
 interface Props {
   kind?: 'note' | 'work';
   label?: string;
 }
 const { kind = 'note', label = '下書きを書く' } = Astro.props;
+const integrated = workroomEnabled(import.meta.env.LOCAL_WORKROOM);
 const enabled = localBuildEnabled(
   {
     LOCAL_STUDIO: import.meta.env.LOCAL_STUDIO,
@@ -13,6 +14,7 @@ const enabled = localBuildEnabled(
     LOCAL_EXPERIMENTS: import.meta.env.LOCAL_EXPERIMENTS,
     LOCAL_CANDIDATES: import.meta.env.LOCAL_CANDIDATES,
     LOCAL_TIMELINE: import.meta.env.LOCAL_TIMELINE,
+    LOCAL_WORKROOM: import.meta.env.LOCAL_WORKROOM,
   },
   import.meta.env.DEV,
 );
@@ -24,25 +26,27 @@ const enabled = localBuildEnabled(
       class="local-write-link"
       href={path(`write/?kind=${kind}`)}
       data-local-tool
-      hidden
+      hidden={!integrated}
     >
       {label}
       <span aria-hidden="true">↗</span>
     </a>
 
-    <a
-      class="local-write-link"
-      href={path('write/maker-field/')}
-      target="_blank"
-      rel="noopener"
-      data-local-tool
-      data-maker-entry
-      hidden
-    >
-      制作ログを下書きに <span>（別タブ）</span>
-    </a>
+    {!integrated && (
+      <a
+        class="local-write-link"
+        href={path('write/maker-field/')}
+        target="_blank"
+        rel="noopener"
+        data-local-tool
+        data-maker-entry
+        hidden
+      >
+        制作ログを下書きに <span>（別タブ）</span>
+      </a>
+    )}
 
-    {import.meta.env.LOCAL_EXPERIMENTS === '1' && (
+    {!integrated && import.meta.env.LOCAL_EXPERIMENTS === '1' && (
       <a
         class="local-write-link"
         href={path('compare/experiments/')}
@@ -54,7 +58,7 @@ const enabled = localBuildEnabled(
       </a>
     )}
 
-    {import.meta.env.LOCAL_CANDIDATES === '1' && (
+    {!integrated && import.meta.env.LOCAL_CANDIDATES === '1' && (
       <a
         class="local-write-link"
         href={path('compare/candidates/')}
@@ -66,7 +70,7 @@ const enabled = localBuildEnabled(
       </a>
     )}
 
-    {import.meta.env.LOCAL_TIMELINE === '1' && (
+    {!integrated && import.meta.env.LOCAL_TIMELINE === '1' && (
       <a
         class="local-write-link"
         href={path('compare/timeline/')}

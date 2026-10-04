@@ -5,6 +5,10 @@ import {
   RECORD_FIELDS,
   LABELS,
 } from './adapter.mjs';
+import {
+  createDraftHandoffTracker,
+  createUnsavedDraftGuard,
+} from '../lib/unsaved-draft.mjs';
 
 const root = document.querySelector('[data-maker-field]');
 if (root) {
@@ -41,6 +45,32 @@ if (root) {
   const downloadedNames = new Set();
   const recordInputs = new Map();
   const objectURLs = new Set();
+  const handoffs = createDraftHandoffTracker();
+  const unsavedGuard = createUnsavedDraftGuard({
+    enabled: root.dataset.workroomUnsaved === '1',
+    target: window,
+    hasUnsaved: () => {
+      // The selected record may not have been stored by renderSelection yet.
+      const inputs = new Map(recordInputs);
+      if (selected) inputs.set(JSON.stringify(selected), currentInputs());
+      return handoffs.hasPending(
+        [...inputs].map(([key, value]) => [key, inputSnapshot(value)]),
+      );
+    },
+  });
+
+  function currentInputs() {
+    return {
+      description: description.value,
+      category: category.value,
+      slug: slug.value,
+    };
+  }
+  function inputSnapshot(input) {
+    return Object.values(input).some((value) => value !== '')
+      ? JSON.stringify(input)
+      : undefined;
+  }
 
   function setStatus(element, message) {
     element.textContent = message;
@@ -60,6 +90,7 @@ if (root) {
       input.removeAttribute('aria-invalid');
     setStatus(downloadStatus, '');
     prepareButton.disabled = !selected;
+    unsavedGuard.refresh();
   }
   function shortPreview(text, remaining) {
     if (text.length <= remaining) return { text, used: text.length };
@@ -80,14 +111,10 @@ if (root) {
     category.value = '';
     slug.value = '';
     setStatus(selectionStatus, '下書きにする記録を1件選んでください。');
+    unsavedGuard.refresh();
   }
   function renderSelection() {
-    if (selected)
-      recordInputs.set(JSON.stringify(selected), {
-        description: description.value,
-        category: category.value,
-        slug: slug.value,
-      });
+    if (selected) recordInputs.set(JSON.stringify(selected), currentInputs());
     clearSelection();
     const index = Number(choice.value);
     if (!choice.value || !Number.isInteger(index) || !rows[index]) return;
@@ -147,6 +174,7 @@ if (root) {
         ? 'この記録に入力した要約・記事の種類・ファイル名を表示しました。内容を確認できます。'
         : 'この1件だけを下書きにします。要約・記事の種類・ファイル名を入力してください。',
     );
+    unsavedGuard.refresh();
   }
   function applyPending() {
     if (!pending) return;
@@ -155,6 +183,7 @@ if (root) {
     pendingPanel.hidden = true;
     rows = [];
     recordInputs.clear();
+    handoffs.clear();
     clearSelection();
     const placeholder = document.createElement('option');
     placeholder.value = '';
@@ -331,6 +360,11 @@ if (root) {
       document.body.append(link);
       link.click();
       link.remove();
+      handoffs.handoff(
+        JSON.stringify(selected),
+        inputSnapshot(currentInputs()),
+      );
+      unsavedGuard.refresh();
       downloadedNames.add(result.filename);
       setTimeout(() => {
         URL.revokeObjectURL(url);
@@ -376,6 +410,7 @@ if (root) {
       pending = undefined;
       rows = [];
       recordInputs.clear();
+      handoffs.clear();
       choice.replaceChildren();
       clearSelection();
       get('records').hidden = true;

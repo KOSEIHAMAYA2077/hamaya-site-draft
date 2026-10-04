@@ -4,13 +4,15 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { decodeHTMLAttribute } from 'entities';
-import { localBuildEnabled } from '../src/lib/build-mode.mjs';
+import { localBuildEnabled, localFeatures } from '../src/lib/build-mode.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = path.join(root, 'dist');
 const base = (process.env.BASE_PATH || '/').replace(/\/+$/, '');
-const timelineOn = process.env.LOCAL_TIMELINE === '1';
-const candidateOn = process.env.LOCAL_CANDIDATES === '1';
+const features = localFeatures(process.env);
+const workroomOn = features.workroom;
+const timelineOn = features.timeline;
+const candidateOn = features.candidates;
 const timelinePage = 'compare/timeline/index.html';
 const candidatePage = 'compare/candidates/index.html';
 const timelineHref = `${base}/compare/timeline/`;
@@ -78,7 +80,7 @@ test('LOCAL_TIMELINEは文字列1だけで既存のローカル執筆境界を�
   assert.equal(localBuildEnabled({}, true), true);
 });
 
-test('timelineのルートとlocalhost用入口は独立flagがあるときだけ生成する', async () => {
+test('timelineのルートと入口は独立flagか明示した統合modeだけで生成する', async () => {
   const artifacts = await builtArtifacts();
   assert.equal(artifacts.has(timelinePage), timelineOn);
   for (const [filename, source] of artifacts) {
@@ -98,13 +100,27 @@ test('timelineのルートとlocalhost用入口は独立flagがあるときだ�
     for (const tag of links) {
       const attrs = attributes(tag.slice(0, tag.indexOf('>') + 1));
       assert.equal(attrs.href, timelineHref);
-      assert.equal(attrs.target, '_blank');
-      assert.ok(attrs.rel?.split(/\s+/).includes('noopener'));
-      assert.match(tag, /時間で見返す（別タブ）/);
-      assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
-      assert.match(tag, /\bhidden(?:[\s=>])/);
-      assert.match(source, /localhost/);
-      assert.match(source, /127\.0\.0\.1/);
+      if (workroomOn) {
+        assert.equal(attrs.target, undefined);
+        assert.match(tag, /時系列/);
+        assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
+        assert.doesNotMatch(tag, /\bhidden(?:[\s=>])/);
+        const nav = source.match(
+          /<nav\b[^>]*data-workroom-nav[\s\S]*?<\/nav>/,
+        )?.[0];
+        assert.ok(
+          nav?.includes(tag),
+          `${filename}: 統合navの入口ではありません。`,
+        );
+      } else {
+        assert.equal(attrs.target, '_blank');
+        assert.ok(attrs.rel?.split(/\s+/).includes('noopener'));
+        assert.match(tag, /時間で見返す（別タブ）/);
+        assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
+        assert.match(tag, /\bhidden(?:[\s=>])/);
+        assert.match(source, /localhost/);
+        assert.match(source, /127\.0\.0\.1/);
+      }
     }
   }
   if (timelineOn) {

@@ -1,0 +1,97 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FocusStudy from './FocusStudy.astro';
+import { focusStudy } from '../lib/focus-study.mjs';
+import { path } from '../lib/paths';
+
+interface Props {
+  entries: ReturnType<typeof focusStudy>;
+  notes: CollectionEntry<'notes'>[];
+}
+
+const { entries, notes } = Astro.props;
+const record = notes[0];
+---
+
+<FocusStudy entries={entries} integrated />
+
+<section class="workroom-record shell" aria-labelledby="workroom-record-title">
+  <header>
+    <h2 id="workroom-record-title">記録を読む</h2>
+    <a href={path('room/notes/')}>記録の一覧へ ↗</a>
+  </header>
+  {record ? (
+    <article>
+      <p class="record-state">下書き・本人確認待ち</p>
+      <h3>
+        <a href={path(`room/notes/${record.id}/`)}>{record.data.title}</a>
+      </h3>
+      <p class="record-description">{record.data.description}</p>
+    </article>
+  ) : (
+    <p class="record-empty">読む記録はまだありません。</p>
+  )}
+</section>
+
+<style>
+  .workroom-record {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .workroom-record > header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .workroom-record h2 {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .workroom-record > header > a {
+    flex-shrink: 0;
+    min-height: 36px;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .workroom-record article {
+    margin-top: 1rem;
+    max-width: 48rem;
+  }
+  .record-state {
+    color: var(--muted);
+    font-size: 10px;
+  }
+  .workroom-record h3 {
+    margin-top: 0.45rem;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 500;
+    line-height: 1.65;
+  }
+  .workroom-record h3 > a {
+    display: inline-block;
+    padding-block: 0.35rem;
+    text-decoration: none;
+    text-underline-offset: 0.3em;
+  }
+  .workroom-record a:hover {
+    text-decoration: underline;
+  }
+  .record-description,
+  .record-empty {
+    margin-top: 0.45rem;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.85;
+  }
+  @media (max-width: 760px) {
+    .workroom-record {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      padding-top: 1.2rem;
+    }
+  }
+</style>

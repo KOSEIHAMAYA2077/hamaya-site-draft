@@ -6,8 +6,10 @@
   "scripts": {
     "guide": "node scripts/serve-comparison-guide.mjs",
     "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "dev:workroom": "LOCAL_WORKROOM=1 astro dev --host 127.0.0.1 --port 4361",
     "build": "astro build",
     "build:local": "LOCAL_STUDIO=1 astro build",
+    "build:workroom": "LOCAL_WORKROOM=1 astro build",
     "build:compare": "LOCAL_COMPARISON=1 astro build",
     "build:candidates": "LOCAL_CANDIDATES=1 astro build",
     "build:timeline": "LOCAL_TIMELINE=1 astro build",

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { path } from '../lib/paths';
+const workroom = import.meta.env.LOCAL_WORKROOM === '1';
 ---
 
 <Layout
@@ -19,6 +20,11 @@ import { path } from '../lib/paths';
         このブラウザ内で読み込みます。元のJSONは変更せず、画像本体は下書きに含めません。
         入力は自動保存されず、ページを閉じると消えます。
       </p>
+      {workroom && (
+        <p class="maker-hint">
+          未ダウンロードの入力があるときは、移動前に確認します。
+        </p>
+      )}
     </header>
 
     <noscript>
@@ -31,6 +37,7 @@ import { path } from '../lib/paths';
     <div
       id="maker-field-bridge"
       data-maker-field
+      data-workroom-unsaved={workroom ? '1' : undefined}
       role="form"
       aria-label="制作ログから下書きを作る"
     >

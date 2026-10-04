@@ -5,12 +5,10 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 import { decodeHTMLAttribute } from 'entities';
-import {
-  comparisonEnabled,
-  comparisonSources,
-} from '../src/lib/collection-study.mjs';
+import { comparisonSources } from '../src/lib/collection-study.mjs';
 import {
   localBuildEnabled,
+  localFeatures,
   privateRoutePrefixes,
 } from '../src/lib/build-mode.mjs';
 
@@ -27,9 +25,20 @@ const workCandidates = JSON.parse(
     'utf8',
   ),
 );
-const candidateOn = process.env.LOCAL_CANDIDATES === '1';
+const features = localFeatures(process.env);
+const workroomOn = features.workroom;
+const homePage = path.join(dist, 'index.html');
+const roomComparePage = path.join(dist, 'room/compare/index.html');
+const workroomNoteId = 'legacy-cyberpunk2077-1';
+const workroomNotePages = new Set([
+  homePage,
+  path.join(dist, 'room/notes/index.html'),
+  path.join(dist, `room/notes/${workroomNoteId}/index.html`),
+]);
+let workroomNoteTitle;
+const candidateOn = features.candidates;
 const candidatePage = path.join(dist, 'compare/candidates/index.html');
-const timelineOn = process.env.LOCAL_TIMELINE === '1';
+const timelineOn = features.timeline;
 const timelinePage = path.join(dist, 'compare/timeline/index.html');
 const timelineExternalLinks = new Set(
   workCandidates.flatMap((candidate) => [
@@ -93,7 +102,7 @@ const comparePages = new Map([
   [path.join(dist, 'compare/collection/index.html'), 'data-piece-panel'],
   [path.join(dist, 'compare/focus/index.html'), 'data-focus-panel'],
 ]);
-const compareOn = comparisonEnabled(process.env.LOCAL_COMPARISON);
+const compareOn = features.comparison;
 const localOn = localBuildEnabled(process.env);
 const comparisonTitles = new Set();
 const comparisonUrls = new Set(
@@ -110,6 +119,11 @@ for (const filename of contentFiles) {
   const header = content.match(/^---\s*\n([\s\S]*?)\n---(?:\n|$)/)?.[1] || '';
   const data = parseYaml(header) || {};
   const entryId = path.basename(filename, '.md');
+  if (
+    filename ===
+    path.join(projectRoot, 'src/content/notes', `${workroomNoteId}.md`)
+  )
+    workroomNoteTitle = data.title;
   if (
     workCandidates.some(
       (candidate) =>
@@ -174,6 +188,9 @@ async function checkLocalReference(reference, page, { anchor = false } = {}) {
           (compareOn &&
             comparePages.has(page) &&
             comparisonUrls.has(resolved.href)) ||
+          (workroomOn &&
+            page === homePage &&
+            comparisonUrls.has(resolved.href)) ||
           (candidateOn &&
             page === candidatePage &&
             candidateExternalLinks.has(resolved.href)) ||
@@ -235,10 +252,21 @@ test('トップ・作品・記事・自己紹介・404と.nojekyllが生成さ�
 
 test('通常配布はローカル制作道具・試作ルート・そのbundleを含めない', async () => {
   assert.equal(
-    pages.get(path.join(dist, 'index.html')).includes('data-local-tool'),
+    pages.get(homePage).includes('data-local-tool'),
     localOn,
-    'local build の執筆入口だけを出力する',
+    'local buildの執筆入口だけを出力する',
   );
+  if (workroomOn) {
+    for (const [filename, html] of pages) {
+      const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
+      assert.ok(footer, filename);
+      assert.doesNotMatch(
+        footer,
+        /data-local-tool|data-maker-entry|data-timeline-entry|data-experiment-entry|data-candidate-entry/,
+        `${filename}: 統合navの道具をfooterへ重複させない`,
+      );
+    }
+  }
   for (const file of [
     'write/index.html',
     'write/maker-field/index.html',
@@ -259,7 +287,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
         const content = await readFile(filename, 'utf8');
         assert.doesNotMatch(
           content,
-          /draft-writer|data-maker-(?:entry|writer-entry|field)|maker-field-bridge|data-timeline-(?:study|panel|choice|entry)|TimelineStudy|LOCAL_TIMELINE|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|data-candidate-study|data-candidate-entry|LOCAL_CANDIDATES|LOCAL_COMPARISON|DESIGN STUDIES/,
+          /draft-writer|data-maker-(?:entry|writer-entry|field)|maker-field-bridge|data-timeline-(?:study|panel|choice|entry)|TimelineStudy|LOCAL_TIMELINE|data-focus-study|data-collection-study|data-desk-surface|data-experiment-study|experiment:pause|peakDisplayedCargo|data-candidate-study|data-candidate-entry|LOCAL_CANDIDATES|LOCAL_COMPARISON|DESIGN STUDIES|data-workroom-|LOCAL_WORKROOM/,
         );
         for (const prefix of privateRoutePrefixes)
           assert.ok(
@@ -272,7 +300,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
 });
 
 test('実験は明示したローカルbuildにだけ含め、原本や研究資料を配布しない', async () => {
-  const enabled = process.env.LOCAL_EXPERIMENTS === '1';
+  const enabled = features.experiments;
   const filename = path.join(dist, 'compare/experiments/index.html');
   assert.equal(await exists(filename), enabled);
   assert.equal(
@@ -354,8 +382,8 @@ test('候補の説明は明示した専用HTML、候補操作は候補ページ�
         // Only the exact old title is exempt; a new candidate summary is never exempt.
         if (
           field === 'title' &&
-          compareOn &&
-          comparePages.has(filename) &&
+          ((compareOn && comparePages.has(filename)) ||
+            (workroomOn && filename === homePage)) &&
           comparisonTitles.has(value)
         )
           continue;
@@ -543,7 +571,11 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時�
           candidateDraftTitles.has(title)) ||
         (timelineOn &&
           filename === timelinePage &&
-          candidateDraftTitles.has(title))
+          candidateDraftTitles.has(title)) ||
+        (workroomOn && filename === homePage && comparisonTitles.has(title)) ||
+        (workroomOn &&
+          workroomNotePages.has(filename) &&
+          title === workroomNoteTitle)
       )
         continue;
       assert.ok(
@@ -573,6 +605,7 @@ test('非公開比較は明示build時だけ生成し、通常ページへの導
   }
   for (const [filename, html] of pages) {
     if (comparePages.has(filename)) continue;
+    if (workroomOn && filename === roomComparePage) continue;
     for (const view of ['collection', 'focus'])
       assert.ok(!html.includes(`${base}/compare/${view}/`), filename);
   }
@@ -598,7 +631,11 @@ test('各ページのtitle・説明・OGと設定したcanonicalのbaseが一致
     const canonical = [...html.matchAll(/<link\b[^>]*>/g)]
       .map((match) => attributes(match[0]))
       .find((link) => link.rel === 'canonical')?.href;
-    if (process.env.SITE_ORIGIN && path.basename(filename) !== '404.html') {
+    if (
+      process.env.SITE_ORIGIN &&
+      !workroomOn &&
+      path.basename(filename) !== '404.html'
+    ) {
       const relative = path
         .relative(dist, filename)
         .split(path.sep)

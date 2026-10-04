@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Failed storage write does not undo Focus stop or lose manual pause when reduced-motion changes",
+    "Settings report failed persistence and retain in-page menu/motion choices across media changes"
+  ],
+  "errors": [],
+  "failure": null
+}

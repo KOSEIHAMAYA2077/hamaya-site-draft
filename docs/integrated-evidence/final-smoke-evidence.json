@@ -1,0 +1,84 @@
+{
+  "checks": [
+    "Final assets: initial work hash and two-way motion/menu cross-tab events work",
+    "Final writer: downloaded input leaves without a prompt; later edit prompts, cancel retains, accept leaves",
+    "Final Maker: edit after download arms native exit guard; cancel retains input",
+    "Open experiment card captured while initially stopped",
+    "Final asset byte counts captured; optional parser and experiment code absent from initial home"
+  ],
+  "errors": [],
+  "dialogs": [
+    {
+      "type": "beforeunload",
+      "action": "dismiss"
+    },
+    {
+      "type": "beforeunload",
+      "action": "accept"
+    },
+    {
+      "type": "beforeunload",
+      "action": "dismiss"
+    },
+    {
+      "type": "beforeunload",
+      "action": "accept"
+    }
+  ],
+  "screenshots": ["writer-1280.png", "experiment-open-1280.png"],
+  "performance": {
+    "integrated": {
+      "htmlBytes": 32783,
+      "assetBytes": 36631,
+      "responses": [
+        {
+          "path": "/hamaya-site-draft/",
+          "type": "document",
+          "bytes": 32783
+        },
+        {
+          "path": "/hamaya-site-draft/_astro/focus-study.CkiZmwLn.css",
+          "type": "stylesheet",
+          "bytes": 11691
+        },
+        {
+          "path": "/hamaya-site-draft/_astro/Layout.LoHf1MJz.css",
+          "type": "stylesheet",
+          "bytes": 22701
+        },
+        {
+          "path": "/hamaya-site-draft/_astro/WorkroomNav.astro_astro_type_script_index_0_lang.CZAxXLhH.js",
+          "type": "script",
+          "bytes": 1277
+        },
+        {
+          "path": "/hamaya-site-draft/_astro/preferences.CQ4SO5w1.js",
+          "type": "script",
+          "bytes": 962
+        }
+      ]
+    },
+    "focusBaseline": {
+      "htmlBytes": 25910,
+      "assetBytes": 32753,
+      "responses": [
+        {
+          "path": "/hamaya-site-draft/compare/focus/",
+          "type": "document",
+          "bytes": 25910
+        },
+        {
+          "path": "/hamaya-site-draft/_astro/Layout.BVhKv45o.css",
+          "type": "stylesheet",
+          "bytes": 21062
+        },
+        {
+          "path": "/hamaya-site-draft/_astro/focus.CkiZmwLn.css",
+          "type": "stylesheet",
+          "bytes": 11691
+        }
+      ]
+    }
+  },
+  "failure": null
+}
