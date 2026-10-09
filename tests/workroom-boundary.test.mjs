@@ -167,7 +167,10 @@ test('統合専用の5ページはLOCAL_WORKROOMだけで生成される', async
     for (const filename of roomPages) {
       const html = output.get(filename);
       assert.match(html, /data-workroom-nav(?:[\s=>])/);
-      assert.match(html, /統合候補・非公開/);
+      assert.match(
+        html,
+        /<meta\b[^>]*name="robots"[^>]*content="noindex, nofollow"/,
+      );
       assert.doesNotMatch(html, /rel="canonical"|property="og:url"/);
     }
     return;
@@ -217,24 +220,43 @@ test('原文の本文はallowlistのローカル記事HTMLだけに含め、公�
   }
 });
 
-test('統合ホームは既存6作品と原文の題・要約だけを投影し、比較案の本体を重ねない', async () => {
+test('統合ホームと作品一覧は既存6作品だけを投影し、記事の要約や比較案の本体を重ねない', async () => {
   if (!enabled) return;
   const output = await artifacts();
+  for (const filename of ['index.html', 'works/index.html']) {
+    const html = output.get(filename);
+    assert.match(html, /data-simple-home(?:[\s=>])/);
+    const list = html.match(
+      /<ul\b[^>]*class="simple-works"[^>]*>[\s\S]*?<\/ul>/,
+    )?.[0];
+    assert.ok(list, `${filename}: 作品一覧がありません`);
+    const items = [...list.matchAll(/<li\b[^>]*>[\s\S]*?<\/li>/g)].map(
+      ([item]) => item,
+    );
+    assert.equal(items.length, comparisonSources.length, filename);
+    for (const [index, source] of comparisonSources.entries()) {
+      const item = items[index];
+      assert.equal(
+        attributes(item.match(/^<li\b[^>]*>/)[0]).id,
+        `piece-${source.id}`,
+      );
+      const links = [...item.matchAll(/<a\b[^>]*>/g)].map(
+        ([tag]) => attributes(tag).href,
+      );
+      assert.deepEqual(links, [source.repository], `${filename}: ${source.id}`);
+    }
+    assert.ok(!decoded(html).includes(legacyHeader.description), filename);
+    const links = [...html.matchAll(/<a\b[^>]*>/g)].map(
+      ([tag]) => attributes(tag).href,
+    );
+    assert.ok(!links.includes(`${base}/room/notes/${legacyId}/`), filename);
+    assert.doesNotMatch(
+      html,
+      /data-(?:focus-study|collection-study|desk-surface|candidate-study|timeline-study|experiment-study|maker-field)(?:[\s=>])|\bid="draft-writer"|<iframe\b/,
+    );
+  }
+
   const html = output.get('index.html');
-  assert.match(html, /data-focus-study(?:[\s=>])/);
-  assert.equal(
-    (html.match(/data-focus-panel=/g) || []).length,
-    comparisonSources.length,
-  );
-  for (const source of comparisonSources)
-    assert.ok(html.includes(`href="${source.repository}"`), source.id);
-  assert.ok(decoded(html).includes(legacyHeader.title));
-  assert.ok(decoded(html).includes(legacyHeader.description));
-  assert.ok(html.includes(`${base}/room/notes/${legacyId}/`));
-  assert.doesNotMatch(
-    html,
-    /data-(?:collection-study|desk-surface|candidate-study|timeline-study|experiment-study|maker-field)(?:[\s=>])|\bid="draft-writer"|<iframe\b/,
-  );
 
   const styles = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)].map(
     ([, source]) => source,
@@ -259,10 +281,9 @@ test('統合ホームは既存6作品と原文の題・要約だけを投影し�
     else inlineScripts.push(body);
   }
   const css = styles.join('\n');
-  assert.match(css, /\.focus-study/);
   assert.doesNotMatch(
     css,
-    /\.(?:collection-study|desk-surface|timeline-study|candidate-study|experiment-study|maker-page)(?:[\s[{.:>#]|$)/,
+    /\.(?:focus-study|collection-study|desk-surface|timeline-study|candidate-study|experiment-study|maker-page)(?:[\s[{.:>#]|$)/,
   );
   // Follow imported chunks too: a small nav bundle may otherwise hide an eager
   // experiment, candidate, timeline or YAML-parser dependency.
@@ -282,28 +303,57 @@ test('統合ホームは既存6作品と原文の題・要約だけを投影し�
   );
 });
 
-test('比較案への入口は統合の比較ページにまとめ、主navへ増やさない', async () => {
+test('主navは作品・雑記・自己紹介にし、編集と設定はfooterへ置く', async () => {
   if (!enabled) return;
   const output = await artifacts();
   for (const [filename, html] of output) {
     if (!filename.endsWith('.html')) continue;
     const nav = html.match(/<nav\b[^>]*data-workroom-nav[\s\S]*?<\/nav>/)?.[0];
     assert.ok(nav, filename);
-    const hrefs = [...nav.matchAll(/<a\b[^>]*>/g)].map(
+    const links = [...nav.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g)].map(
+      ([tag, label]) => ({
+        href: attributes(tag.slice(0, tag.indexOf('>') + 1)).href,
+        label: decoded(label)
+          .replace(/<[^>]*>/g, '')
+          .trim(),
+      }),
+    );
+    assert.deepEqual(
+      links,
+      [
+        { href: `${base}/`, label: '作品' },
+        { href: `${base}/room/notes/`, label: '雑記' },
+        { href: `${base}/about/`, label: '自己紹介' },
+      ],
+      filename,
+    );
+    const footer = html.match(
+      /<footer\b[^>]*class="[^"\n]*\bsite-footer\b[^"\n]*"[^>]*>[\s\S]*?<\/footer>/,
+    )?.[0];
+    const tools = footer?.match(/<details\b[^>]*>[\s\S]*?<\/details>/)?.[0];
+    assert.ok(tools, `${filename}: footerの編集入口がありません`);
+    assert.match(tools, /<summary\b[^>]*>\s*編集\s*<\/summary>/);
+    assert.doesNotMatch(
+      tools.match(/^<details\b[^>]*>/)[0],
+      /\bopen(?:[\s=>])/,
+    );
+    // The home page retains its resume panel inside this closed details. Check
+    // the primary editing links before that nested panel, not its history links.
+    const directTools = tools
+      .slice(tools.indexOf('>') + 1)
+      .split(/<details\b/, 1)[0];
+    const toolHrefs = [...directTools.matchAll(/<a\b[^>]*>/g)].map(
       ([tag]) => attributes(tag).href,
     );
-    for (const href of ['room/notes/', 'write/', 'room/settings/'])
-      assert.ok(hrefs.includes(`${base}/${href}`), `${filename}: ${href}`);
-    for (const href of [
-      'compare/focus/',
-      'compare/collection/',
-      'directions/',
-      'room/archive/',
-    ])
-      assert.ok(
-        !hrefs.includes(`${base}/${href}`),
-        `${filename}: 比較案が主navにあります`,
-      );
+    assert.deepEqual(
+      toolHrefs,
+      [
+        `${base}/write/?kind=note`,
+        `${base}/write/?kind=work`,
+        `${base}/room/settings/`,
+      ],
+      filename,
+    );
   }
   const compare = output.get('room/compare/index.html');
   for (const href of [

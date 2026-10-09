@@ -64,3 +64,17 @@ test('ローカル記録の戻り先は固定し、検索語と記事の種類�
     '/qa/room/notes/',
   );
 });
+
+test('ローカル記録でもゲーム・感想の検索条件を同じbaseの一覧へ引き継ぐ', () => {
+  for (const category of ['ゲーム', '感想']) {
+    const params = new URLSearchParams({ category, q: 'C++ & 記録' });
+    const resolved = new URL(
+      workroomNotesListHref(params, '/qa-site/'),
+      'https://local-preview.invalid',
+    );
+    assert.equal(resolved.pathname, '/qa-site/room/notes/');
+    assert.equal(resolved.searchParams.get('category'), category);
+    assert.equal(resolved.searchParams.get('q'), 'C++ & 記録');
+    assert.deepEqual([...resolved.searchParams.keys()], ['q', 'category']);
+  }
+});

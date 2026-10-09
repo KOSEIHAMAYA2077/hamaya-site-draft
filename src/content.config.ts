@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { validHttpsUrl, validImagePath } from './lib/content-safety.mjs';
+import { NOTE_CATEGORIES } from './lib/note-categories.mjs';
 
 import { workCandidateSchema } from './lib/work-candidates.mjs';
 
@@ -38,7 +39,7 @@ const works = defineCollection({
 });
 const notes = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/notes' }),
-  schema: shared.extend({ category: z.enum(['学び', '雑記']) }),
+  schema: shared.extend({ category: z.enum(NOTE_CATEGORIES) }),
 });
 
 const workCandidates = defineCollection({

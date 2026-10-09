@@ -24,16 +24,14 @@ const { Content, headings } = await render(entry);
 >
   <article class="shell article-page" data-return-note-id={entry.id}>
     <a class="back-link" href={path('room/notes/')} data-note-back>
-      ← 記録の一覧へ
+      ← 雑記
     </a>
-    <p class="local-record-status">
+    <p class="local-record-status visually-hidden">
       <strong>下書き・本人確認待ち</strong>
       <span>ローカル閲覧</span>
     </p>
     <header class="article-heading">
-      <p class="eyebrow">NOTE / {entry.data.category}</p>
       <h1>{entry.data.title}</h1>
-      <p>{entry.data.description}</p>
       <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
       <ul class="tags" aria-label="タグ">
         {entry.data.tags.map((tag) => (
@@ -46,7 +44,7 @@ const { Content, headings } = await render(entry);
       <Content />
     </div>
     <a class="back-link bottom-back" href={path('room/notes/')} data-note-back>
-      ← 記録の一覧へ
+      ← 雑記
     </a>
   </article>
 </Layout>

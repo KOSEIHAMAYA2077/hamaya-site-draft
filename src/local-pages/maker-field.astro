@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { path } from '../lib/paths';
+import { NOTE_CATEGORIES } from '../lib/note-categories.mjs';
 const workroom = import.meta.env.LOCAL_WORKROOM === '1';
 ---
 
@@ -163,8 +164,9 @@ const workroom = import.meta.env.LOCAL_WORKROOM === '1';
             </label>
             <select id="maker-category" required>
               <option value="">選んでください</option>
-              <option value="学び">学び</option>
-              <option value="雑記">雑記</option>
+              {NOTE_CATEGORIES.map((category) => (
+                <option value={category}>{category}</option>
+              ))}
             </select>
           </div>
           <div class="maker-field">

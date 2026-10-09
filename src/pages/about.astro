@@ -4,77 +4,28 @@ import { site } from '../lib/site';
 import { path } from '../lib/paths';
 ---
 
-<Layout
-  title="自己紹介"
-  description="この場所をつくっている人について。自己紹介と本人のリンク。"
-  section="about"
->
-  <div class="shell inner-page">
-    <header class="page-heading">
-      <p class="eyebrow">03 / ABOUT</p>
-      <h1>自己紹介</h1>
-      <p>この場所をつくっている人について。</p>
-    </header>
-    <div class="profile-grid">
-      {site.portrait ? (
-        <img
-          class="profile-portrait"
-          src={path(site.portrait.src)}
-          alt={site.portrait.alt}
-          width="480"
-          height="560"
-        />
-      ) : (
-        <div class="portrait-placeholder">
-          <span class="eyebrow">PORTRAIT</span>
-          <span class="portrait-rings" aria-hidden="true"></span>
-          <p>写真は未入力です。</p>
-        </div>
+<Layout title="自己紹介" description="濱谷康生の自己紹介。" section="about">
+  <div class="shell inner-page simple-about">
+    <h1 class="visually-hidden">自己紹介</h1>
+    {site.portrait && (
+      <img
+        class="simple-portrait"
+        src={path(site.portrait.src)}
+        alt={site.portrait.alt}
+        width="240"
+        height="280"
+      />
+    )}
+    {site.bio && <p>{site.bio}</p>}
+    <ul>
+      <li>
+        <a href={site.links.github}>GitHub ↗</a>
+      </li>
+      {site.links.atcoder && (
+        <li>
+          <a href={site.links.atcoder}>AtCoder ↗</a>
+        </li>
       )}
-      <section class="profile-copy" aria-labelledby="profile-name">
-        <p class="eyebrow">NAME</p>
-        <h2 id="profile-name">{site.name}</h2>
-        <p class="bio-empty">{site.bio || '自己紹介文は未入力です。'}</p>
-        <p>
-          制作物、学んだこと、日々の雑記を
-          <br class="desktop-break" />
-          少しずつまとめていく場所です。
-        </p>
-        <dl class="profile-links">
-          <div>
-            <dt>GitHub</dt>
-            <dd>
-              <a href={site.links.github}>
-                KOSEIHAMAYA2077 <span aria-hidden="true">↗</span>
-              </a>
-            </dd>
-          </div>
-          <div>
-            <dt>AtCoder</dt>
-            <dd>
-              {site.links.atcoder ? (
-                <a href={site.links.atcoder}>
-                  プロフィール <span aria-hidden="true">↗</span>
-                </a>
-              ) : (
-                <span class="unfilled">URL未入力</span>
-              )}
-            </dd>
-          </div>
-        </dl>
-      </section>
-    </div>
-    <section class="about-note">
-      <p class="eyebrow">この場所について</p>
-      <h2>書きながら、整えていきます。</h2>
-      <p>
-        完成した作品だけでなく、試したことや考えたことも残しておきたい。
-        <br class="desktop-break" />
-        あとから自分で読み返せるように、少しずつ書き足します。
-      </p>
-      <p class="draft-explanation">
-        このページは下書きです。自己紹介や写真は、本人の言葉と素材を待っています。
-      </p>
-    </section>
+    </ul>
   </div>
 </Layout>

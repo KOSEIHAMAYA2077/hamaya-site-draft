@@ -1,4 +1,5 @@
 import { validHttpsUrl, validImagePath } from './content-safety.mjs';
+import { isNoteCategory } from './note-categories.mjs';
 
 /**
  * @typedef {Object} DraftInput
@@ -109,7 +110,7 @@ export function exportDraft(input = {}) {
   } else if (/^(?:con|prn|aux|nul|com[1-9]|lpt[1-9])$/.test(slug)) {
     issues.slug = 'このファイル名は使用できません。別の名前を選んでください。';
   }
-  if (kind === 'note' && !['学び', '雑記'].includes(category))
+  if (kind === 'note' && !isNoteCategory(category))
     issues.category = '記事の種類を選んでください。';
   if (kind === 'work' && !['制作中', '完成', '記録'].includes(status))
     issues.status = '作品の状態を選んでください。';

@@ -1,0 +1,33 @@
+---
+interface Props {
+  entries: {
+    id: string;
+    title: string;
+    description: string | null;
+    repository: string;
+    href?: string;
+  }[];
+}
+const { entries } = Astro.props;
+---
+
+<ul class="simple-works">
+  {entries.map((entry) => (
+    <li id={`piece-${entry.id}`}>
+      <a
+        href={entry.href || entry.repository}
+        data-return-work-id={
+          import.meta.env.LOCAL_WORKROOM === '1' ? entry.id : undefined
+        }
+      >
+        <div>
+          <h2>{entry.title}</h2>
+          {entry.description && <p>{entry.description}</p>}
+        </div>
+        <span class="simple-work-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>

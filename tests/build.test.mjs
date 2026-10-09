@@ -29,6 +29,12 @@ const workCandidates = JSON.parse(
 const features = localFeatures(process.env);
 const workroomOn = features.workroom;
 const homePage = path.join(dist, 'index.html');
+// The simplified workroom has the same verified six-work list at both entrances.
+// Keep this exception to these HTML pages and the explicit local mode only.
+const workroomWorkPages = new Set([
+  homePage,
+  path.join(dist, 'works/index.html'),
+]);
 const roomComparePage = path.join(dist, 'room/compare/index.html');
 const workroomNoteId = 'legacy-cyberpunk2077-1';
 const workroomNotePages = new Set([
@@ -190,7 +196,7 @@ async function checkLocalReference(reference, page, { anchor = false } = {}) {
             comparePages.has(page) &&
             comparisonUrls.has(resolved.href)) ||
           (workroomOn &&
-            page === homePage &&
+            workroomWorkPages.has(page) &&
             comparisonUrls.has(resolved.href)) ||
           (candidateOn &&
             page === candidatePage &&
@@ -254,8 +260,8 @@ test('トップ・作品・記事・自己紹介・404と.nojekyllが生成さ�
 test('通常配布はローカル制作道具・試作ルート・そのbundleを含めない', async () => {
   assert.equal(
     pages.get(homePage).includes('data-local-tool'),
-    localOn,
-    'local buildの執筆入口だけを出力する',
+    localOn && !workroomOn,
+    'standaloneの執筆入口はLocalTools、統合版はfooterの編集から開く',
   );
   if (workroomOn) {
     for (const [filename, html] of pages) {
@@ -264,7 +270,7 @@ test('通常配布はローカル制作道具・試作ルート・そのbundle�
       assert.doesNotMatch(
         footer,
         /data-local-tool|data-maker-entry|data-timeline-entry|data-experiment-entry|data-candidate-entry/,
-        `${filename}: 統合navの道具をfooterへ重複させない`,
+        `${filename}: footerへ旧比較用の道具一覧を重ねない`,
       );
     }
   }
@@ -306,7 +312,7 @@ test('実験は明示したローカルbuildにだけ含め、原本や研究資
   assert.equal(await exists(filename), enabled);
   assert.equal(
     pages.get(path.join(dist, 'index.html')).includes('data-experiment-entry'),
-    enabled,
+    enabled && !workroomOn,
   );
   for (const file of builtFiles) {
     assert.doesNotMatch(
@@ -384,7 +390,7 @@ test('候補の説明は明示した専用HTML、候補操作は候補ページ�
         if (
           field === 'title' &&
           ((compareOn && comparePages.has(filename)) ||
-            (workroomOn && filename === homePage)) &&
+            (workroomOn && workroomWorkPages.has(filename))) &&
           comparisonTitles.has(value)
         )
           continue;
@@ -427,7 +433,7 @@ test('候補の説明は明示した専用HTML、候補操作は候補ページ�
   }
   assert.equal(
     pages.get(path.join(dist, 'index.html')).includes('data-candidate-entry'),
-    candidateOn,
+    candidateOn && !workroomOn,
   );
 });
 
@@ -645,7 +651,9 @@ test('下書きの題はHTML・JS・JSONへ埋め込まれず、明示比較時�
         (timelineOn &&
           filename === timelinePage &&
           candidateDraftTitles.has(title)) ||
-        (workroomOn && filename === homePage && comparisonTitles.has(title)) ||
+        (workroomOn &&
+          workroomWorkPages.has(filename) &&
+          comparisonTitles.has(title)) ||
         (workroomOn &&
           workroomNotePages.has(filename) &&
           title === workroomNoteTitle)
@@ -781,39 +789,45 @@ test('HTMLのリンク・画像・CSS・スクリプトとCSS内参照がBASE_PA
   }
 });
 
-test('未入力のAtCoder URLはアンカーにならず、プロフィールと空状態が明示される', () => {
+test('未入力のプロフィールや未公開項目から実リンク・文章・一覧項目を作らない', () => {
+  const about = pages.get(path.join(dist, 'about/index.html'));
+  const aboutMain = about.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0];
+  assert.ok(aboutMain, '自己紹介のmainがありません');
   if (site.links.atcoder === null) {
     for (const html of pages.values()) {
       for (const anchor of html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)) {
         assert.doesNotMatch(anchor[0], /atcoder/i);
       }
     }
-    assert.match(pages.get(path.join(dist, 'about/index.html')), /URL未入力/);
   }
   if (site.bio === null) {
-    assert.match(
-      pages.get(path.join(dist, 'about/index.html')),
-      /自己紹介文は未入力です。/,
-    );
+    assert.doesNotMatch(aboutMain, /<p\b/, '未入力の自己紹介文を補っている');
   }
+  if (site.portrait === null)
+    assert.doesNotMatch(aboutMain, /<img\b/, '未入力の写真を補っている');
   if (
+    !workroomOn &&
     !published.some((filename) =>
       filename.includes(`${path.sep}works${path.sep}`),
     )
   ) {
-    assert.match(
-      pages.get(path.join(dist, 'works/index.html')),
-      /まだ公開している作品はありません。/,
-    );
+    for (const filename of ['index.html', 'works/index.html']) {
+      const html = pages.get(path.join(dist, filename));
+      const list = html.match(
+        /<ul\b[^>]*class="simple-works"[^>]*>[\s\S]*?<\/ul>/,
+      )?.[0];
+      assert.ok(list, filename);
+      assert.doesNotMatch(list, /<li\b/, `${filename}: 未公開の作品項目`);
+    }
   }
   if (
     !published.some((filename) =>
       filename.includes(`${path.sep}notes${path.sep}`),
     )
   ) {
-    assert.match(
+    assert.doesNotMatch(
       pages.get(path.join(dist, 'notes/index.html')),
-      /まだ公開している記事はありません。/,
+      /\bdata-entry(?:[\s=>])/,
     );
   }
 });

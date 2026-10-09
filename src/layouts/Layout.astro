@@ -2,9 +2,13 @@
 import { site } from '../lib/site';
 import { path } from '../lib/paths';
 import '../styles/global.css';
+import '../styles/simple.css';
 import LocalTools from '../components/LocalTools.astro';
-import WorkroomNav from '../components/WorkroomNav.astro';
 import ReturnBridge from '../components/ReturnBridge.astro';
+import ReturnEntry from '../components/ReturnEntry.astro';
+import { getCollection } from 'astro:content';
+import { collectionStudy } from '../lib/collection-study.mjs';
+import { workroomNotes } from '../lib/workroom-notes.mjs';
 import { workroomEnabled } from '../lib/build-mode.mjs';
 const integrated = workroomEnabled(import.meta.env.LOCAL_WORKROOM);
 interface Props {
@@ -23,9 +27,10 @@ const {
   image = site.socialImage,
   canonical: includeCanonical = true,
 } = Astro.props;
-const pageTitle = title
-  ? `${title} | ${site.name}`
-  : `${site.name} — 制作と記録`;
+const resume = integrated && section === 'home';
+const resumeWorks = resume ? collectionStudy(await getCollection('works')) : [];
+const resumeNotes = resume ? workroomNotes(await getCollection('notes')) : [];
+const pageTitle = title ? `${title} | ${site.name}` : site.name;
 const canonical =
   Astro.site && includeCanonical && !integrated
     ? new URL(Astro.url.pathname, Astro.site).href
@@ -33,9 +38,8 @@ const canonical =
 const shareImage =
   Astro.site && image ? new URL(path(image.src), Astro.site).href : undefined;
 const links = [
-  { href: '', label: 'ホーム', key: 'home' },
-  { href: 'works/', label: '作品', key: 'works' },
-  { href: 'notes/', label: '学び・雑記', key: 'notes' },
+  { href: '', label: '作品', key: 'works' },
+  { href: integrated ? 'room/notes/' : 'notes/', label: '雑記', key: 'notes' },
   { href: 'about/', label: '自己紹介', key: 'about' },
 ];
 ---
@@ -47,7 +51,7 @@ const links = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="theme-color" content="#f2f1eb" />
+    <meta name="theme-color" content="#fcfcfb" />
     <link rel="icon" type="image/svg+xml" href={path('favicon.svg')} />
     <title>{pageTitle}</title>
     <meta property="og:title" content={pageTitle} />
@@ -68,63 +72,59 @@ const links = [
       }
     </script>
   </head>
-  <body>
+  <body class="simple-site">
     <a class="skip-link" href="#main-content">
       本文へ移動
     </a>
     <header class="site-header shell">
       <a class="site-name" href={path()} aria-label={`${site.name} ホーム`}>
         {site.name}
-        <span class="name-caption">制作と記録</span>
       </a>
-      {integrated ? (
-        <WorkroomNav />
-      ) : (
-        <nav aria-label="主なページ">
-          <ul>
-            {links.map(({ href, label, key }) => (
-              <li>
-                <a
-                  href={path(href)}
-                  aria-current={section === key ? 'page' : undefined}
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
-      <span class="draft-label">
-        <span aria-hidden="true"></span>
-        {integrated ? '統合候補・非公開' : '下書き'}
-      </span>
+      <nav
+        aria-label="主なページ"
+        data-workroom-nav={integrated ? '' : undefined}
+      >
+        <ul>
+          {links.map(({ href, label, key }) => (
+            <li>
+              <a
+                href={path(href)}
+                aria-current={
+                  section === key || (section === 'home' && key === 'works')
+                    ? 'page'
+                    : undefined
+                }
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
     {integrated && <ReturnBridge />}
     <footer class="site-footer shell">
-      <p>
-        {site.name}
-        <span>制作と記録を、少しずつ。</span>
-      </p>
+      <p>{site.name}</p>
       <div>
         <a href={site.links.github}>
           GitHub <span aria-hidden="true">↗</span>
         </a>
         {integrated ? (
-          <a class="workroom-footer-link" href={path('room/settings/')}>
-            表示・比較
-          </a>
+          <details class="simple-tools">
+            <summary>編集</summary>
+            <a href={path('write/?kind=note')}>記事を書く</a>
+            <a href={path('write/?kind=work')}>作品を追加</a>
+            <a href={path('room/settings/')}>設定</a>
+            {resume && (
+              <ReturnEntry entries={resumeWorks} notes={resumeNotes} />
+            )}
+          </details>
         ) : (
           <LocalTools />
         )}
-        <span class="footer-note">
-          {integrated
-            ? '非公開の統合候補。採用は未確定です。'
-            : '公開前のローカル確認用'}
-        </span>
       </div>
     </footer>
   </body>

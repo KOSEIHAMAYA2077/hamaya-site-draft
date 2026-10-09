@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import { site } from '../lib/site';
+import { path } from '../lib/paths';
+import { publishedWorks } from '../lib/content';
+import { workroomEnabled } from '../lib/build-mode.mjs';
+import { collectionStudy } from '../lib/collection-study.mjs';
+import SimpleWorks from './SimpleWorks.astro';
+const local = workroomEnabled(import.meta.env.LOCAL_WORKROOM);
+const entries = local
+  ? collectionStudy(await getCollection('works'))
+  : (await publishedWorks()).map((entry) => ({
+      id: entry.id,
+      title: entry.data.title,
+      description: entry.data.description,
+      href: path(`works/${entry.id}/`),
+      repository: entry.data.repository || '',
+      relatedNotes: [],
+    }));
+---
+
+<div class="shell simple-home" data-simple-home>
+  <h1 class="visually-hidden">{site.name}の作品</h1>
+  <SimpleWorks entries={entries} />
+</div>

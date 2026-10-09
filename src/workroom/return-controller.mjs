@@ -127,9 +127,14 @@ export function setupReturnEntry(base) {
     if (event.type === 'click' && event.button !== 0) return;
     if (event.type === 'auxclick' && event.button !== 1) return;
     const choice = event.target.closest(
-      '[data-focus-study] [data-focus-choice]',
+      'a[data-return-work-id], [data-focus-study] [data-focus-choice]',
     );
-    if (choice) remember('work', choice.getAttribute('data-focus-choice'));
+    if (choice)
+      remember(
+        'work',
+        choice.getAttribute('data-return-work-id') ??
+          choice.getAttribute('data-focus-choice'),
+      );
   };
   document.addEventListener('click', selectedWork);
   document.addEventListener('auxclick', selectedWork);

@@ -1,3 +1,5 @@
+import { isNoteCategory } from './note-categories.mjs';
+
 export const NOTE_QUERY_LIMIT = 120;
 
 /** @typedef {{ q: string, category: string }} NoteQuery */
@@ -10,7 +12,7 @@ export function normalizeNoteQuery({ q = '', category = 'all' } = {}) {
       .slice(0, NOTE_QUERY_LIMIT)
       .join('')
       .trim(),
-    category: category === '学び' || category === '雑記' ? category : 'all',
+    category: isNoteCategory(category) ? category : 'all',
   };
 }
 

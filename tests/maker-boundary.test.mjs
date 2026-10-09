@@ -53,11 +53,11 @@ function attributes(tag) {
   );
 }
 
-function entryLinks(html, marker) {
+function entryLinks(html, marker, required = true) {
   const links = [...html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)]
     .map(([tag]) => tag)
     .filter((tag) => new RegExp(`\\b${marker}(?:[\\s=>])`).test(tag));
-  assert.ok(links.length > 0, `${marker} の入口がありません。`);
+  if (required) assert.ok(links.length > 0, `${marker} の入口がありません。`);
   for (const tag of links) {
     const attrs = attributes(tag.slice(0, tag.indexOf('>') + 1));
     assert.equal(attrs.href, makerHref);
@@ -72,19 +72,17 @@ function entryLinks(html, marker) {
 test('Maker Field入口は既存のlocal modeに従い、通常buildには生成されない', () => {
   assert.equal(pages.has(makerPage), localOn);
   for (const [filename, html] of pages) {
-    assert.equal(html.includes('data-maker-entry'), localOn, filename);
+    if (!workroomOn)
+      assert.equal(html.includes('data-maker-entry'), localOn, filename);
     if (!localOn) continue;
-    for (const tag of entryLinks(html, 'data-maker-entry')) {
+    for (const tag of entryLinks(html, 'data-maker-entry', !workroomOn)) {
       if (workroomOn) {
         assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
         assert.doesNotMatch(tag, /\bhidden(?:[\s=>])/);
         const nav = html.match(
           /<nav\b[^>]*data-workroom-nav[\s\S]*?<\/nav>/,
         )?.[0];
-        assert.ok(
-          nav?.includes(tag),
-          `${filename}: 統合navの入口ではありません。`,
-        );
+        assert.ok(!nav?.includes(tag), `${filename}: 主navへ道具を混ぜない。`);
       } else {
         assert.match(tag, /\bdata-local-tool(?:[\s=>])/);
         assert.match(tag, /\bhidden(?:[\s=>])/);
@@ -95,6 +93,26 @@ test('Maker Field入口は既存のlocal modeに従い、通常buildには生成
       assert.match(html, /127\.0\.0\.1/);
     }
   }
+});
+
+test('統合modeのMakerはフッターの編集から書く画面を経て開ける', () => {
+  if (!workroomOn) return;
+  const home = pages.get('index.html');
+  assert.ok(home);
+  const footer = home.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
+  assert.ok(footer);
+  const editing = [...footer.matchAll(/<details\b[^>]*>[\s\S]*?<\/details>/g)]
+    .map(([tag]) => tag)
+    .find((tag) => /<summary\b[^>]*>\s*編集\s*<\/summary>/.test(tag));
+  assert.ok(editing, '編集の入口がありません。');
+  const hrefs = [...editing.matchAll(/<a\b[^>]*>/g)].map(
+    ([tag]) => attributes(tag).href,
+  );
+  assert.ok(hrefs.includes(`${base}/write/?kind=note`));
+  assert.ok(pages.has(makerPage));
+  const writer = pages.get('write/index.html');
+  assert.ok(writer);
+  assert.equal(entryLinks(writer, 'data-maker-writer-entry').length, 1);
 });
 
 test('書く画面のJSON変換入口はbase付き別タブで、既存の明示的なMarkdown取込を残す', () => {

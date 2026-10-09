@@ -52,6 +52,18 @@ function rejectState(value) {
   assert.throws(() => parseMakerField(bytes(value)), Error);
 }
 
+test('制作ログをゲーム・感想の記事へ変換しても種類と下書き設定を保つ', async () => {
+  for (const category of ['ゲーム', '感想']) {
+    const result = await convertRecord({}, { category });
+    const { data } = unpack(result.markdown);
+    assert.equal(data.category, category);
+    assert.equal(data.draft, true);
+    const imported = importDraft(result.markdown, result.filename);
+    assert.equal(imported.input.category, category);
+    assert.equal(exportDraft(imported.input).markdown, result.markdown);
+  }
+});
+
 // Independent synthetic data and SHA-256 expectations transcribed from the
 // standalone adapter's supplied example/exports on 2026-10-04. No test reads
 // that checkout, its implementation, or any owner records at runtime.

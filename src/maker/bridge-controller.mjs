@@ -9,6 +9,7 @@ import {
   createDraftHandoffTracker,
   createUnsavedDraftGuard,
 } from '../lib/unsaved-draft.mjs';
+import { isNoteCategory } from '../lib/note-categories.mjs';
 
 const root = document.querySelector('[data-maker-field]');
 if (root) {
@@ -287,7 +288,7 @@ if (root) {
       };
       if (!description.value.trim())
         invalid(description, '短い要約を入力してください。');
-      if (!['学び', '雑記'].includes(category.value))
+      if (!isNoteCategory(category.value))
         invalid(category, '記事の種類を選んでください。');
       if (
         !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug.value) ||

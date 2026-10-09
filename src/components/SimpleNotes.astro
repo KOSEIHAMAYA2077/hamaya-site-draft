@@ -1,0 +1,219 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { path } from '../lib/paths';
+import { formatDate } from '../lib/content';
+import { NOTE_QUERY_LIMIT } from '../lib/note-query.mjs';
+import { noteTopics } from '../lib/note-topics.mjs';
+interface Props {
+  notes: CollectionEntry<'notes'>[];
+  local?: boolean;
+}
+const { notes, local = false } = Astro.props;
+const notesPath = local ? 'room/notes/' : 'notes/';
+const categories = [
+  ...new Set(['ゲーム', '感想', ...notes.flatMap(noteTopics)]),
+];
+---
+
+<div class="shell inner-page">
+  <h1 class="visually-hidden">雑記</h1>
+  <div class="notes-tools" data-note-tools hidden>
+    <div class="filter-group" role="group" aria-label="記事の種類">
+      <button type="button" data-filter="all" aria-pressed="true">
+        すべて
+      </button>
+      {categories.map((category) => (
+        <button type="button" data-filter={category} aria-pressed="false">
+          {category}
+        </button>
+      ))}
+    </div>
+    <div class="search-field">
+      <label for="note-search" class="visually-hidden">
+        記事を検索
+      </label>
+      <input
+        id="note-search"
+        type="search"
+        placeholder="検索"
+        maxlength={NOTE_QUERY_LIMIT}
+      />
+    </div>
+    <button
+      type="button"
+      class="reset-button clear-query"
+      data-reset
+      data-clear-query
+      hidden
+    >
+      解除
+    </button>
+  </div>
+  <p
+    class="visually-hidden"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-count
+  >
+    {notes.length}件
+  </p>
+  {notes.length ? (
+    <>
+      <div class="entry-list">
+        {notes.map((entry) => (
+          <article
+            class="entry-row"
+            data-entry
+            data-category={entry.data.category}
+            data-topics={noteTopics(entry).join('|')}
+            data-search={`${entry.data.title} ${entry.data.description} ${entry.data.tags.join(' ')} ${noteTopics(entry).join(' ')}`.toLocaleLowerCase(
+              'ja',
+            )}
+          >
+            <a href={path(`${notesPath}${entry.id}/`)}>
+              <div class="entry-meta">
+                <time datetime={entry.data.date}>
+                  {formatDate(entry.data.date)}
+                </time>
+              </div>
+              <div class="entry-content">
+                <h2 class="entry-title">{entry.data.title}</h2>
+                <p>{[...noteTopics(entry), ...entry.data.tags].join(' / ')}</p>
+              </div>
+              <span class="entry-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          </article>
+        ))}
+      </div>
+      <div class="no-results" data-no-results hidden>
+        <p>該当する記事はありません。</p>
+        <button type="button" class="reset-button" data-reset>
+          解除
+        </button>
+      </div>
+    </>
+  ) : (
+    <p class="visually-hidden">記事はまだありません。</p>
+  )}
+</div>
+
+<script>
+  import {
+    normalizeNoteQuery,
+    noteQueryString,
+    readNoteQuery,
+    withNoteQuery,
+  } from '../lib/note-query.mjs';
+
+  const tools = document.querySelector<HTMLElement>('[data-note-tools]');
+  const search = document.querySelector<HTMLInputElement>('#note-search');
+  const entries = [...document.querySelectorAll<HTMLElement>('[data-entry]')];
+  const filters = [
+    ...document.querySelectorAll<HTMLButtonElement>('[data-filter]'),
+  ];
+  const count = document.querySelector<HTMLElement>('[data-count]');
+  const noResults = document.querySelector<HTMLElement>('[data-no-results]');
+  const clearQuery = document.querySelector<HTMLElement>('[data-clear-query]');
+  const links = entries.flatMap((entry) => {
+    const link = entry.querySelector<HTMLAnchorElement>('a');
+    return link ? [{ link, pathname: link.pathname }] : [];
+  });
+  let conditions = readNoteQuery(window.location.search);
+  let appliedQuery: string | undefined;
+  let composing = false;
+
+  function update() {
+    const nextQuery = noteQueryString(conditions);
+    if (appliedQuery === nextQuery) return;
+    appliedQuery = nextQuery;
+    const query = conditions.q.toLocaleLowerCase('ja');
+    let visible = 0;
+    entries.forEach((entry) => {
+      const hidden =
+        !(
+          conditions.category === 'all' ||
+          (entry.dataset.topics || '').split('|').includes(conditions.category)
+        ) || !(entry.dataset.search || '').includes(query);
+      if (entry.hidden !== hidden) entry.hidden = hidden;
+      if (!entry.hidden) visible += 1;
+    });
+    filters.forEach((button) => {
+      const pressed = String(button.dataset.filter === conditions.category);
+      if (button.getAttribute('aria-pressed') !== pressed)
+        button.setAttribute('aria-pressed', pressed);
+    });
+    const countText = `${visible}件`;
+    if (count && count.textContent !== countText) count.textContent = countText;
+    if (noResults && noResults.hidden !== visible > 0)
+      noResults.hidden = visible > 0;
+    const cleared = !conditions.q && conditions.category === 'all';
+    if (clearQuery && clearQuery.hidden !== cleared)
+      clearQuery.hidden = cleared;
+    links.forEach(({ link, pathname }) => {
+      const href = withNoteQuery(pathname, conditions);
+      if (link.getAttribute('href') !== href) link.setAttribute('href', href);
+    });
+  }
+
+  function saveConditions() {
+    const next = `${window.location.pathname}${noteQueryString(conditions)}${window.location.hash}`;
+    if (
+      next !==
+      `${window.location.pathname}${window.location.search}${window.location.hash}`
+    )
+      window.history.replaceState(window.history.state, '', next);
+    update();
+  }
+
+  function restoreConditions() {
+    composing = false;
+    conditions = readNoteQuery(window.location.search);
+    if (search) search.value = conditions.q;
+    saveConditions();
+  }
+
+  if (tools && search && entries.length > 0) {
+    tools.hidden = false;
+    restoreConditions();
+    const applySearchInput = () => {
+      conditions = normalizeNoteQuery({
+        q: search.value,
+        category: conditions.category,
+      });
+      saveConditions();
+    };
+    search.addEventListener('compositionstart', () => {
+      composing = true;
+    });
+    search.addEventListener('compositionend', () => {
+      composing = false;
+      applySearchInput();
+    });
+    search.addEventListener('input', (event) => {
+      if (!composing && !(event instanceof InputEvent && event.isComposing))
+        applySearchInput();
+    });
+    filters.forEach((button) =>
+      button.addEventListener('click', () => {
+        conditions = normalizeNoteQuery({
+          q: search.value,
+          category: button.dataset.filter,
+        });
+        saveConditions();
+      }),
+    );
+    document.querySelectorAll('[data-reset]').forEach((button) =>
+      button.addEventListener('click', () => {
+        conditions = normalizeNoteQuery();
+        search.value = '';
+        saveConditions();
+        search.focus();
+      }),
+    );
+    window.addEventListener('popstate', restoreConditions);
+    window.addEventListener('pageshow', restoreConditions);
+  }
+</script>

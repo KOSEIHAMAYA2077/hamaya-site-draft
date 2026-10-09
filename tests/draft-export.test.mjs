@@ -66,6 +66,18 @@ test('記事と作品はschemaに合う設定と固定の追加先で書き出�
   });
 });
 
+test('ゲーム・感想を含む記事の種類を選んで下書きに書き出せる', () => {
+  for (const category of ['学び', '雑記', 'ゲーム', '感想']) {
+    const generated = exportDraft({ ...note, category, tags: ['ゲーム'] });
+    const { data, body } = unpack(generated.markdown);
+    assert.equal(data.category, category);
+    assert.equal(data.draft, true);
+    assert.deepEqual(data.tags, ['ゲーム']);
+    assert.equal(body, `${note.body}\n`);
+    assert.equal(generated.directory, 'src/content/notes/');
+  }
+});
+
 test('Unicode・引用符・複数行の要約・YAMLに見える入力を文字列として保つ', () => {
   const title = '「記録」: "文字列" / it\'s / 🛰️ / $&';
   const description =

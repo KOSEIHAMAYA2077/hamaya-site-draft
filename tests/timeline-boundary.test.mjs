@@ -96,7 +96,7 @@ test('timelineのルートと入口は独立flagか明示した統合modeだけ�
     const links = [...source.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)]
       .map(([tag]) => tag)
       .filter((tag) => /\bdata-timeline-entry(?:[\s=>])/.test(tag));
-    assert.equal(links.length > 0, timelineOn, filename);
+    if (!workroomOn) assert.equal(links.length > 0, timelineOn, filename);
     for (const tag of links) {
       const attrs = attributes(tag.slice(0, tag.indexOf('>') + 1));
       assert.equal(attrs.href, timelineHref);
@@ -108,10 +108,7 @@ test('timelineのルートと入口は独立flagか明示した統合modeだけ�
         const nav = source.match(
           /<nav\b[^>]*data-workroom-nav[\s\S]*?<\/nav>/,
         )?.[0];
-        assert.ok(
-          nav?.includes(tag),
-          `${filename}: 統合navの入口ではありません。`,
-        );
+        assert.ok(!nav?.includes(tag), `${filename}: 主navへ道具を混ぜない。`);
       } else {
         assert.equal(attrs.target, '_blank');
         assert.ok(attrs.rel?.split(/\s+/).includes('noopener'));
@@ -127,6 +124,30 @@ test('timelineのルートと入口は独立flagか明示した統合modeだけ�
     assert.ok(artifacts.has('write/index.html'));
     assert.ok(artifacts.has('write/maker-field/index.html'));
   }
+});
+
+test('統合modeのtimelineはフッターの編集と設定を経て開ける', async () => {
+  if (!workroomOn) return;
+  const artifacts = await builtArtifacts();
+  const home = artifacts.get('index.html');
+  assert.ok(home);
+  const footer = home.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
+  assert.ok(footer);
+  const editing = [...footer.matchAll(/<details\b[^>]*>[\s\S]*?<\/details>/g)]
+    .map(([tag]) => tag)
+    .find((tag) => /<summary\b[^>]*>\s*編集\s*<\/summary>/.test(tag));
+  assert.ok(editing, '編集の入口がありません。');
+  const editingHrefs = [...editing.matchAll(/<a\b[^>]*>/g)].map(
+    ([tag]) => attributes(tag).href,
+  );
+  assert.ok(editingHrefs.includes(`${base}/room/settings/`));
+  const settings = artifacts.get('room/settings/index.html');
+  assert.ok(settings);
+  const settingsHrefs = [...settings.matchAll(/<a\b[^>]*>/g)].map(
+    ([tag]) => attributes(tag).href,
+  );
+  assert.ok(settingsHrefs.includes(timelineHref));
+  assert.ok(artifacts.has(timelinePage));
 });
 
 test('timelineは確認待ち9件の題・説明・commit日時と固定SHAの入口だけを表示する', async () => {

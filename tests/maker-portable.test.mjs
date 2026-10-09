@@ -186,6 +186,23 @@ test('2画像のZIPも元byteを維持し、画像なしならデコーダー不
   assert.match(empty.markdown, /## サンプルの指定\n\n```text\nfalse\n```/);
 });
 
+test('ゲーム・感想の記事はZIPでも種類を保ちwriterで完全往復する', async () => {
+  for (const category of ['ゲーム', '感想']) {
+    const result = await createMakerPortablePackage(
+      bytes(state(record({ beforeImage: '' }))),
+      { ...options, category },
+      { decodeImage: async () => assert.fail('画像なしの記録はdecodeしない') },
+    );
+    const files = readZip(result.bytes);
+    const markdown = decoder.decode(files.get(result.markdownFilename));
+    assert.equal(markdown, result.markdown);
+    const imported = importDraft(markdown, result.markdownFilename);
+    assert.equal(imported.input.category, category);
+    assert.equal(imported.originalDraft, true);
+    assert.equal(exportDraft(imported.input).markdown, markdown);
+  }
+});
+
 test('ZIP処理中に呼出側の入力や選択が変わっても開始時の記録を使う', async () => {
   const source = bytes(state());
   const sourceHash = hash(source);

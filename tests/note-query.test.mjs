@@ -19,6 +19,25 @@ test('URLの日本語・空白・プラス記号を検索条件として往復�
   assert.equal(noteQueryString({ q: '  ', category: 'all' }), '');
 });
 
+test('ゲーム・感想を含む記事の種類は一覧と詳細の検索条件で往復する', () => {
+  for (const category of ['学び', '雑記', 'ゲーム', '感想']) {
+    const conditions = { q: '題 C++ & 記録', category };
+    const search = noteQueryString(conditions);
+    assert.deepEqual(readNoteQuery(search), conditions);
+    const detail = new URL(
+      withNoteQuery('/qa-site/notes/selected/', conditions),
+      'https://local-preview.invalid',
+    );
+    assert.deepEqual(readNoteQuery(detail.search), conditions);
+    const back = new URL(
+      notesListHref(detail.search, '/qa-site/'),
+      'https://local-preview.invalid',
+    );
+    assert.equal(back.pathname, '/qa-site/notes/');
+    assert.deepEqual(readNoteQuery(back.search), conditions);
+  }
+});
+
 test('種類は許可した値だけを使い、不明なキーと重複値を引き継がない', () => {
   assert.deepEqual(
     readNoteQuery('?category=作品&q=first&q=second&tag=private'),

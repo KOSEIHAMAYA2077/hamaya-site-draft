@@ -46,6 +46,22 @@ test('既存の旧記事を往復しても原文・強調・題と設定を変�
   assert.ok(result.body.includes('**攻殻機動隊（原作と押井版映画の２つ）**'));
 });
 
+test('ゲーム・感想の記事も種類・タグ・本文を保って取り込み、下書きとして書き戻す', () => {
+  for (const category of ['ゲーム', '感想']) {
+    const source = note('', '本文の改行を保つ。\r\n\r\n')
+      .replace('category: "雑記"', `category: "${category}"`)
+      .replace('tags: []', 'tags: ["ゲーム", "感想"]')
+      .replace('draft: true', 'draft: false');
+    const imported = importDraft(source, 'selected.md');
+    const original = unpack(source);
+    const result = unpack(exportDraft(imported.input).markdown);
+    assert.equal(imported.input.category, category);
+    assert.equal(imported.originalDraft, false);
+    assert.deepEqual(result.data, { ...original.data, draft: true });
+    assert.equal(result.body, original.body);
+  }
+});
+
 test('作品の表紙・URL・要約・タグの文字列値と本文を保ち、公開設定だけ下書きにする', () => {
   const source = `---\ntitle: "  自分の題  "\ndescription: "a\\r\\nb: # 説明"\ndate: 2026-10-03\ntags: ["a,b", " a ", "a,b", "true", "2026-01-01"]\ndraft: false\nstatus: 完成\nurl: https://example.com/works?q=1\nrepository: https://github.com/example/work\ncover:\n  src: images/selected-cover.webp\n  alt: "表紙の説明\\n次の行"\n---\n\n# 本文の題\r\n\r\n**本人の言葉**  \r\n末尾に改行なし`;
   const imported = importDraft(source, 'owner-work.md');

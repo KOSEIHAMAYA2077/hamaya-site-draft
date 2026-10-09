@@ -5,7 +5,7 @@
 ## API
 
 - `parseMakerField(bytes: Uint8Array)` は同期処理で、検証した `{ version, logs, experiments, ideas }` を返します。
-- `await convertMakerField(bytes, { collection, id, slug, description, category })` は `{ filename, markdown, report }` を返します。`category` は `学び` または `雑記` です。
+- `await convertMakerField(bytes, { collection, id, slug, description, category })` は `{ filename, markdown, report }` を返します。`category` は `学び`・`雑記`・`ゲーム`・`感想` から選びます。
 - `RECORD_FIELDS`、`LABELS`、`COLLECTION_LABELS`、`MAX_INPUT_BYTES` を画面から参照できます。
 
 Node.js 24以上とブラウザの標準APIを使います。SHA-256にはWebCryptoが必要です。Nodeのimport、CLI、ファイル操作、通信、localStorage、DOM操作は含みません。既存の `../lib/draft-export.mjs` を再利用します。ダウンロードや取り込み操作は画面側の責務です。

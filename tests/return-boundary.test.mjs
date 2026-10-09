@@ -15,7 +15,8 @@ const enabled = workroomEnabled(process.env.LOCAL_WORKROOM);
 const base = (process.env.BASE_PATH || '/').replace(/\/+$/, '');
 const origin = 'https://return-boundary.invalid';
 // These owner-content hashes were checked before the independent return-entry
-// experiment. A UI-only comparison must not silently rewrite the source text.
+// experiment. The simple layout may change about.astro, while the biography and
+// profile settings in site.json and every original content file remain unchanged.
 const protectedHashes = {
   'src/content/notes/_example.md':
     '362da201db6d72c4d78334b1698a4eafaca29bc42d1f81e6226a8ab51d26b344',
@@ -45,8 +46,6 @@ const protectedHashes = {
     'f4a25b0c66b225819b126df6321b3aa5e1e78dbc3f01c8c4b3551b5c919f1a96',
   'src/data/work-records.json':
     'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356',
-  'src/pages/about.astro':
-    '22af795ebfdfe7d783d235e0c54fdd56f4d177c3a5342493aafa594e3fe86a73',
 };
 const integratedPages = [
   '404.html',
@@ -138,11 +137,10 @@ function localAsset(reference, parent) {
   );
 }
 
-test('再開入口の比較は本人の原文・プロフィール・素材設定15ファイルを変更しない', async () => {
+test('簡素な表示への変更でも本人の原文・プロフィール・素材設定14ファイルを変更しない', async () => {
   const protectedFiles = [
     ...(await filesIn(path.join(root, 'src/content'))),
     ...(await filesIn(path.join(root, 'src/data'))),
-    path.join(root, 'src/pages/about.astro'),
   ].map((filename) => path.relative(root, filename).split(path.sep).join('/'));
   assert.deepEqual(protectedFiles.sort(), Object.keys(protectedHashes).sort());
   for (const [filename, expected] of Object.entries(protectedHashes)) {
@@ -228,6 +226,33 @@ test('再開欄・設定・記録IDは必要なページだけに置き、共通
   }
 
   const home = output.get('index.html');
+  const main = home.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0];
+  assert.ok(main);
+  assert.doesNotMatch(
+    main,
+    /data-return-panel/,
+    '再開欄が主コンテンツへ戻っています',
+  );
+  const footer = home.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
+  assert.ok(footer, '再開欄を置くfooterがありません');
+  const details = [];
+  let behindClosedDetails = false;
+  for (const [tag] of footer.matchAll(/<\/?details\b[^>]*>/g)) {
+    if (tag.startsWith('</')) details.pop();
+    else {
+      if (Object.hasOwn(attributes(tag), 'data-return-panel')) {
+        behindClosedDetails = details.some(
+          (attrs) => !Object.hasOwn(attrs, 'open'),
+        );
+        break;
+      }
+      details.push(attributes(tag));
+    }
+  }
+  assert.ok(
+    behindClosedDetails,
+    '初回の再開欄が閉じた編集欄に収まっていません',
+  );
   for (const name of ['enabled', 'work-link', 'note-link']) {
     const tag = home.match(
       new RegExp(`<[^>]+data-return-${name}(?:[\\s=>])[^>]*>`),
