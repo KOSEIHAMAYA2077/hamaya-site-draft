@@ -41,10 +41,14 @@ const notes = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/notes' }),
   schema: shared.extend({ category: z.enum(NOTE_CATEGORIES) }),
 });
+const publicPreviewNotes = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/public-preview/notes' }),
+  schema: shared.extend({ category: z.enum(NOTE_CATEGORIES) }),
+});
 
 const workCandidates = defineCollection({
   loader: file('src/data/work-candidates.json'),
   schema: workCandidateSchema,
 });
 
-export const collections = { works, notes, workCandidates };
+export const collections = { works, notes, publicPreviewNotes, workCandidates };

@@ -1,8 +1,22 @@
 /** Local authoring and design studies are never ordinary distribution routes. */
 export const workroomEnabled = (value) => value === '1';
 
+/** The separately approved public selection never includes local features. */
+export const publicPreviewEnabled = (value) => value === '1';
+
+export function assertPublicPreviewMode(env = {}) {
+  if (
+    publicPreviewEnabled(env.PUBLIC_PREVIEW) &&
+    Object.entries(env).some(
+      ([flag, value]) => flag.startsWith('LOCAL_') && value === '1',
+    )
+  )
+    throw new Error('PUBLIC_PREVIEW と LOCAL_* は同時に指定できません。');
+}
+
 /** An explicit integrated preview includes the existing, isolated tools. */
 export function localFeatures(env = {}) {
+  assertPublicPreviewMode(env);
   const workroom = workroomEnabled(env.LOCAL_WORKROOM);
   return {
     workroom,
@@ -14,6 +28,8 @@ export function localFeatures(env = {}) {
 }
 
 export function localBuildEnabled(env = {}, development = false) {
+  assertPublicPreviewMode(env);
+  if (publicPreviewEnabled(env.PUBLIC_PREVIEW)) return false;
   return (
     development ||
     workroomEnabled(env.LOCAL_WORKROOM) ||

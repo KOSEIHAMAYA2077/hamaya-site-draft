@@ -4,11 +4,13 @@ import Layout from '../../layouts/Layout.astro';
 import Toc from '../../components/Toc.astro';
 import { publishedWorks, formatDate } from '../../lib/content';
 import { path } from '../../lib/paths';
+import { publicPreviewEnabled } from '../../lib/build-mode.mjs';
 import {
   loadPublicImageMetadata,
   publicImageDimensions,
 } from '../../lib/public-image-metadata.mjs';
 export async function getStaticPaths() {
+  if (publicPreviewEnabled(import.meta.env.PUBLIC_PREVIEW)) return [];
   return (await publishedWorks()).map((entry) => ({
     params: { id: entry.id },
     props: { entry },

@@ -5,7 +5,7 @@ import { formatDate } from '../lib/content';
 import { NOTE_QUERY_LIMIT } from '../lib/note-query.mjs';
 import { noteTopics } from '../lib/note-topics.mjs';
 interface Props {
-  notes: CollectionEntry<'notes'>[];
+  notes: (CollectionEntry<'notes'> | CollectionEntry<'publicPreviewNotes'>)[];
   local?: boolean;
 }
 const { notes, local = false } = Astro.props;

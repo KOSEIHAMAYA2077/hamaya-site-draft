@@ -2,10 +2,10 @@
 import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Toc from '../../components/Toc.astro';
-import { publishedNotes, formatDate } from '../../lib/content';
+import { displayedNotes, formatDate } from '../../lib/content';
 import { path } from '../../lib/paths';
 export async function getStaticPaths() {
-  return (await publishedNotes()).map((entry) => ({
+  return (await displayedNotes()).map((entry) => ({
     params: { id: entry.id },
     props: { entry },
   }));

@@ -7,16 +7,22 @@ import {
   markdownUrlSafety,
 } from './src/lib/markdown-safety.mjs';
 import { fileURLToPath } from 'node:url';
-import { readFile } from 'node:fs/promises';
-import { localBuildEnabled, localFeatures } from './src/lib/build-mode.mjs';
+import { readFile, copyFile } from 'node:fs/promises';
+import {
+  localBuildEnabled,
+  localFeatures,
+  publicPreviewEnabled,
+} from './src/lib/build-mode.mjs';
 import { checkPublicAssets } from './scripts/check-public-assets.mjs';
 import { checkMarkdownContent } from './scripts/check-markdown-content.mjs';
+import { checkPublicPreviewSource } from './scripts/check-public-preview-source.mjs';
 
 import { parseWorkCandidates } from './src/lib/work-candidates.mjs';
 
 // Set BASE_PATH=/repository-name for a GitHub Pages project site.
 const siteOrigin = process.env.SITE_ORIGIN;
 const features = localFeatures(process.env);
+const publicPreview = publicPreviewEnabled(process.env.PUBLIC_PREVIEW);
 const approvedAssets = JSON.parse(
   await readFile(
     new URL('./src/data/public-assets.json', import.meta.url),
@@ -40,7 +46,9 @@ if (siteOrigin) {
 export default defineConfig({
   output: 'static',
   base: process.env.BASE_PATH || '/',
-  site: siteOrigin,
+  site:
+    siteOrigin ||
+    (publicPreview ? 'https://koseihamaya2077.github.io/' : undefined),
   trailingSlash: 'always',
   integrations: [
     {
@@ -51,6 +59,7 @@ export default defineConfig({
           injectScript,
           command,
         }) => {
+          if (publicPreview) await checkPublicPreviewSource();
           // Fail before loaders: malformed draft data must not become an empty success.
           parseWorkCandidates(
             JSON.parse(
@@ -140,6 +149,15 @@ export default defineConfig({
                 entrypoint: fileURLToPath(new URL(entrypoint, import.meta.url)),
               });
           }
+        },
+        'astro:build:done': async ({ dir }) => {
+          if (!publicPreview) return;
+          // Preserve the existing public URL with the same checked article and
+          // the canonical link to its new route. No local source is copied.
+          await copyFile(
+            new URL('notes/cyberpunk2077-1/index.html', dir),
+            new URL('notes/cyberpunk2077-1.html', dir),
+          );
         },
       },
     },

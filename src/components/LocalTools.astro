@@ -9,6 +9,7 @@ const { kind = 'note', label = '下書きを書く' } = Astro.props;
 const integrated = workroomEnabled(import.meta.env.LOCAL_WORKROOM);
 const enabled = localBuildEnabled(
   {
+    PUBLIC_PREVIEW: import.meta.env.PUBLIC_PREVIEW,
     LOCAL_STUDIO: import.meta.env.LOCAL_STUDIO,
     LOCAL_COMPARISON: import.meta.env.LOCAL_COMPARISON,
     LOCAL_EXPERIMENTS: import.meta.env.LOCAL_EXPERIMENTS,

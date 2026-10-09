@@ -1,8 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SimpleNotes from '../../components/SimpleNotes.astro';
-import { publishedNotes } from '../../lib/content';
-const notes = await publishedNotes();
+import { displayedNotes } from '../../lib/content';
+const notes = await displayedNotes();
 ---
 
 <Layout title="雑記" description="ゲームや日々の感想。" section="notes">

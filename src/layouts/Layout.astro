@@ -9,7 +9,7 @@ import ReturnEntry from '../components/ReturnEntry.astro';
 import { getCollection } from 'astro:content';
 import { collectionStudy } from '../lib/collection-study.mjs';
 import { workroomNotes } from '../lib/workroom-notes.mjs';
-import { workroomEnabled } from '../lib/build-mode.mjs';
+import { workroomEnabled, publicPreviewEnabled } from '../lib/build-mode.mjs';
 const integrated = workroomEnabled(import.meta.env.LOCAL_WORKROOM);
 interface Props {
   title?: string;
@@ -28,6 +28,8 @@ const {
   canonical: includeCanonical = true,
 } = Astro.props;
 const resume = integrated && section === 'home';
+const indexable =
+  publicPreviewEnabled(import.meta.env.PUBLIC_PREVIEW) && includeCanonical;
 const resumeWorks = resume ? collectionStudy(await getCollection('works')) : [];
 const resumeNotes = resume ? workroomNotes(await getCollection('notes')) : [];
 const pageTitle = title ? `${title} | ${site.name}` : site.name;
@@ -50,7 +52,7 @@ const links = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="robots" content="noindex, nofollow" />
+    {!indexable && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#fcfcfb" />
     <link rel="icon" type="image/svg+xml" href={path('favicon.svg')} />
     <title>{pageTitle}</title>
